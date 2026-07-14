@@ -1,61 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
-<title>Pista</title>
+<title>Búsqueda del Tesoro</title>
 
 <style>
+
 body{
-    font-family:Arial;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f4f4;
     text-align:center;
-    margin-top:80px;
-    background:#fafafa;
+    margin:40px;
 }
 
-#contenido{
+.posta{
     display:none;
+    margin-top:40px;
 }
 
 input{
-    padding:10px;
-    font-size:18px;
+    font-size:20px;
+    padding:8px;
+    width:180px;
+    text-align:center;
 }
 
 button{
-    padding:10px 20px;
     font-size:18px;
+    padding:8px 18px;
+    margin-left:10px;
 }
+
+h1{
+    color:#c2185b;
+}
+
+h2{
+    color:#2e7d32;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h2>Hola HERMOSÍSIMA!!! Esta pista está protegida.</h2>
+<h1>Hola HERMOSÍSIMA ❤️</h1>
 
-<p>Ingresá el código secreto.</p>
+<p style="font-size:22px;">
+Esta pista está protegida.<br>
+Para continuar tenés que poner el código.
+</p>
 
-<input id="clave" type="password">
+<!-- POSTA 1 -->
 
-<button onclick="verificar()">Aceptar</button>
+<div id="inicio">
 
-<div id="contenido">
+<input id="c1" type="password">
 
-<h2>¡Correcto!</h2>
+<button onclick="verificar1()">Aceptar</button>
 
-<p style="font-size:28px; font-weight:bold; color:#1b5e20; margin-top:30px;">
-La próxima pista es la arbolada.
+</div>
+
+<div id="p1" class="posta">
+
+<h2>¡¡Excelente!! Vas perfecto.</h2>
+
+<p style="font-size:22px;">
+Vamos a buscar el <b>2° código</b>.
+</p>
+
+<input id="c2" type="password">
+
+<button onclick="verificar2()">Aceptar</button>
+
+</div>
+
+<!-- POSTA 2 -->
+
+<div id="p2" class="posta">
+
+<h2>Muy bien ❤️</h2>
+
+<p style="font-size:22px;">
+Ya llegaste a la tercera posta.<br>
+Ingresá el <b>3° código</b>.
+</p>
+
+<input id="c3" type="password">
+
+<button onclick="verificar3()">Aceptar</button>
+
+</div>
+
+<!-- POSTA 3 -->
+
+<div id="p3" class="posta">
+
+<h2>¡Sos una genia!</h2>
+
+<p style="font-size:22px;">
+Busquemos ahora el <b>4° código</b>.
+</p>
+
+<input id="c4" type="password">
+
+<button onclick="verificar4()">Aceptar</button>
+
+</div>
+
+<!-- POSTA 4 -->
+
+<div id="p4" class="posta">
+
+<h2>Ya falta poquito ❤️</h2>
+
+<p style="font-size:22px;">
+Ingresá el <b>5° código</b>.
+</p>
+
+<input id="c5" type="password">
+
+<button onclick="verificar5()">Aceptar</button>
+
+</div>
+
+<!-- POSTA 5 -->
+
+<div id="p5" class="posta">
+
+<h2>¡¡Increíble!!</h2>
+
+<p style="font-size:22px;">
+Último esfuerzo.<br>
+Ingresá el <b>6° código</b>.
+</p>
+
+<input id="c6" type="password">
+
+<button onclick="verificar6()">Aceptar</button>
+
+</div>
+
+<!-- FINAL -->
+
+<div id="final" class="posta">
+
+<h1>🎉 ¡FELICITACIONES! 🎉</h1>
+
+<p style="font-size:28px;">
+
+Terminaste la búsqueda.
+
+❤️❤️❤️
+
+</p>
+
+<p style="font-size:22px;">
+Ahora andá a buscar tu tesoro...
 </p>
 
 </div>
 
 <script>
 
-function verificar(){
+function verificar1(){
 
-if(document.getElementById("clave").value=="2511"){
+if(document.getElementById("c1").value=="1111"){
 
-document.getElementById("contenido").style.display="block";
+document.getElementById("inicio").style.display="none";
+document.getElementById("p1").style.display="block";
+
+}else{
+
+alert("Código incorrecto");
+
+}
+
+}
+
+function verificar2(){
+
+if(document.getElementById("c2").value=="2222"){
+
+document.getElementById("p2").style.display="block";
+document.getElementById("c2").disabled=true;
+
+}else{
+
+alert("Código incorrecto");
+
+}
+
+}
+
+function verificar3(){
+
+if(document.getElementById("c3").value=="3333"){
+
+document.getElementById("p3").style.display="block";
+document.getElementById("c3").disabled=true;
+
+}else{
+
+alert("Código incorrecto");
+
+}
+
+}
+
+function verificar4(){
+
+if(document.getElementById("c4").value=="4444"){
+
+document.getElementById("p4").style.display="block";
+document.getElementById("c4").disabled=true;
+
+}else{
+
+alert("Código incorrecto");
+
+}
+
+}
+
+function verificar5(){
+
+if(document.getElementById("c5").value=="5555"){
+
+document.getElementById("p5").style.display="block";
+document.getElementById("c5").disabled=true;
+
+}else{
+
+alert("Código incorrecto");
+
+}
+
+}
+
+function verificar6(){
+
+if(document.getElementById("c6").value=="6666"){
+
+document.getElementById("final").style.display="block";
+document.getElementById("c6").disabled=true;
 
 }else{
 
