@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pista</title>
+
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    margin-top:80px;
+    background:#fafafa;
+}
+
+#contenido{
+    display:none;
+}
+
+input{
+    padding:10px;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:18px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Esta pista está protegida.</h2>
+
+<p>Ingresá el código secreto.</p>
+
+<input id="clave" type="password">
+
+<button onclick="verificar()">Aceptar</button>
+
+<div id="contenido">
+
+<h2>¡Muy bien!</h2>
+
+<p>Escuchá el siguiente mensaje.</p>
+
+<audio controls>
+<source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+function verificar(){
+
+if(document.getElementById("clave").value=="2511"){
+
+document.getElementById("contenido").style.display="block";
+
+}else{
+
+alert("Código incorrecto");
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
