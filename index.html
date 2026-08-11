@@ -2,267 +2,572 @@
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
-<title>Búsqueda del Tesoro</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recorrido por nuestra historia</title>
 
 <style>
 
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    font-size:16px;
+}
+
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
+    background:#f7f3f5;
+    color:#333;
     text-align:center;
-    margin:40px;
+    margin:0;
+    padding:20px 16px 50px 16px;
 }
 
-.posta{
-    display:none;
-    margin-top:40px;
+/* Contenedor principal */
+
+.contenedor{
+    width:100%;
+    max-width:650px;
+    margin:0 auto;
 }
 
-input{
-    font-size:20px;
-    padding:8px;
-    width:180px;
-    text-align:center;
-}
-
-button{
-    font-size:18px;
-    padding:8px 18px;
-    margin-left:10px;
-}
+/* =========================
+   TÍTULOS
+   ========================= */
 
 h1{
     color:#c2185b;
+    font-size:32px;
+    line-height:1.2;
+    margin:15px 0 25px 0;
 }
 
 h2{
     color:#2e7d32;
+    font-size:28px;
+    line-height:1.25;
+    margin:20px 0;
+}
+
+h3{
+    font-size:24px;
+    margin:15px 0;
+}
+
+/* =========================
+   TEXTOS
+   ========================= */
+
+p{
+    font-size:21px;
+    line-height:1.5;
+}
+
+.texto-grande{
+    font-size:23px;
+    line-height:1.55;
+}
+
+/* =========================
+   VIDEO DE YOUTUBE
+   ========================= */
+
+.video{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+    margin:25px 0 35px 0;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.20);
+}
+
+.video iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* =========================
+   POSTAS
+   ========================= */
+
+.posta{
+    display:none;
+    margin-top:35px;
+}
+
+/* =========================
+   CAMPOS DE CÓDIGO
+   ========================= */
+
+input{
+    display:block;
+    width:100%;
+    max-width:400px;
+    margin:20px auto;
+    padding:16px 12px;
+    font-size:24px;
+    border:2px solid #aaa;
+    border-radius:10px;
+    text-align:center;
+    background:white;
+    outline:none;
+}
+
+input:focus{
+    border-color:#c2185b;
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+
+button{
+    display:block;
+    width:100%;
+    max-width:400px;
+    margin:15px auto;
+    padding:16px 20px;
+    font-size:22px;
+    font-weight:bold;
+    color:white;
+    background:#c2185b;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(0.98);
+}
+
+/* =========================
+   SEPARADORES
+   ========================= */
+
+.separador{
+    width:80%;
+    max-width:400px;
+    height:2px;
+    background:#ddd;
+    margin:30px auto;
+}
+
+/* =========================
+   CELULARES PEQUEÑOS
+   ========================= */
+
+@media (max-width:400px){
+
+    body{
+        padding:15px 12px 40px 12px;
+    }
+
+    h1{
+        font-size:29px;
+    }
+
+    h2{
+        font-size:25px;
+    }
+
+    p{
+        font-size:20px;
+    }
+
+    .texto-grande{
+        font-size:21px;
+    }
+
+    input{
+        font-size:22px;
+        padding:15px 10px;
+    }
+
+    button{
+        font-size:21px;
+        padding:15px;
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<h1>Hola HERMOSÍSIMA ❤️</h1>
-    <div style="margin:30px auto; max-width:700px;">
-    <iframe
-        width="100%"
-        height="400"
-        src="https://www.youtube-nocookie.com/embed/dYAL6Bbq3PY"
-        title="Video"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
-</div>
+<div class="contenedor">
 
-<p style="font-size:22px;">
-Esta pista está protegida.<br>
-Para continuar tenés que poner el código.
-</p>
 
-<!-- POSTA 1 -->
+<!-- =========================
+     INICIO
+     ========================= -->
 
 <div id="inicio">
 
-<input id="c1" type="password">
+<h1>Hola HERMOSÍSIMA ❤️</h1>
 
-<button onclick="verificar1()">Aceptar</button>
+
+<!-- VIDEO -->
+
+<div class="video">
+
+<iframe
+src="https://www.youtube-nocookie.com/embed/dYAL6Bbq3PY"
+title="Video"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
 
 </div>
+
+
+<p class="texto-grande">
+
+Esta pista está protegida.
+
+<br><br>
+
+Para continuar tenés que poner el código.
+
+</p>
+
+
+<input
+id="c1"
+type="password"
+inputmode="text"
+autocomplete="off"
+placeholder="Ingresá el código">
+
+
+<button onclick="verificar1()">
+Aceptar
+</button>
+
+</div>
+
+
+
+<!-- =========================
+     POSTA 1
+     ========================= -->
 
 <div id="p1" class="posta">
 
-<h2>¡¡Excelente!! Vas perfecto.</h2>
+<h2>¡¡Excelente!! ❤️</h2>
 
-<p style="font-size:22px;">
+<p class="texto-grande">
+
+Vas perfecto.
+
+<br><br>
+
 Vamos a buscar el <b>2° código</b>.
+
 </p>
 
-<input id="c2" type="password">
+<input
+id="c2"
+type="password"
+inputmode="text"
+autocomplete="off"
+placeholder="Ingresá el código">
 
-<button onclick="verificar2()">Aceptar</button>
+<button onclick="verificar2()">
+Aceptar
+</button>
 
 </div>
 
-<!-- POSTA 2 -->
+
+
+<!-- =========================
+     POSTA 2
+     ========================= -->
 
 <div id="p2" class="posta">
 
 <h2>Muy bien ❤️</h2>
 
-<p style="font-size:22px;">
-Ya llegaste a la tercera posta.<br>
+<p class="texto-grande">
+
+Ya llegaste a la tercera posta.
+
+<br><br>
+
 Ingresá el <b>3° código</b>.
+
 </p>
 
-<input id="c3" type="password">
+<input
+id="c3"
+type="password"
+inputmode="text"
+autocomplete="off"
+placeholder="Ingresá el código">
 
-<button onclick="verificar3()">Aceptar</button>
+<button onclick="verificar3()">
+Aceptar
+</button>
 
 </div>
 
-<!-- POSTA 3 -->
+
+
+<!-- =========================
+     POSTA 3
+     ========================= -->
 
 <div id="p3" class="posta">
 
-<h2>¡Sos una genia!</h2>
+<h2>¡Sos una genia! ❤️</h2>
 
-<p style="font-size:22px;">
+<p class="texto-grande">
+
 Busquemos ahora el <b>4° código</b>.
+
 </p>
 
-<input id="c4" type="password">
+<input
+id="c4"
+type="password"
+inputmode="text"
+autocomplete="off"
+placeholder="Ingresá el código">
 
-<button onclick="verificar4()">Aceptar</button>
+<button onclick="verificar4()">
+Aceptar
+</button>
 
 </div>
 
-<!-- POSTA 4 -->
+
+
+<!-- =========================
+     POSTA 4
+     ========================= -->
 
 <div id="p4" class="posta">
 
 <h2>Ya falta poquito ❤️</h2>
 
-<p style="font-size:22px;">
+<p class="texto-grande">
+
 Ingresá el <b>5° código</b>.
+
 </p>
 
-<input id="c5" type="password">
+<input
+id="c5"
+type="password"
+inputmode="text"
+autocomplete="off"
+placeholder="Ingresá el código">
 
-<button onclick="verificar5()">Aceptar</button>
+<button onclick="verificar5()">
+Aceptar
+</button>
 
 </div>
 
-<!-- POSTA 5 -->
+
+
+<!-- =========================
+     POSTA 5
+     ========================= -->
 
 <div id="p5" class="posta">
 
-<h2>¡¡Increíble!!</h2>
+<h2>¡¡Increíble!! ❤️</h2>
 
-<p style="font-size:22px;">
-Último esfuerzo.<br>
+<p class="texto-grande">
+
+Último esfuerzo.
+
+<br><br>
+
 Ingresá el <b>6° código</b>.
+
 </p>
 
-<input id="c6" type="password">
+<input
+id="c6"
+type="password"
+inputmode="text"
+autocomplete="off"
+placeholder="Ingresá el código">
 
-<button onclick="verificar6()">Aceptar</button>
+<button onclick="verificar6()">
+Aceptar
+</button>
 
 </div>
 
-<!-- FINAL -->
+
+
+<!-- =========================
+     FINAL
+     ========================= -->
 
 <div id="final" class="posta">
 
 <h1>🎉 ¡FELICITACIONES! 🎉</h1>
 
-<p style="font-size:28px;">
+<p class="texto-grande">
 
-Terminaste la búsqueda.
+Terminaste el recorrido.
+
+<br><br>
 
 ❤️❤️❤️
 
 </p>
 
-<p style="font-size:22px;">
+<p class="texto-grande">
+
 Ahora andá a buscar tu tesoro...
+
 </p>
 
 </div>
+
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+     ========================= -->
 
 <script>
 
 function verificar1(){
 
-if(document.getElementById("c1").value=="1111"){
+    if(document.getElementById("c1").value=="1111"){
 
-document.getElementById("inicio").style.display="none";
-document.getElementById("p1").style.display="block";
+        document.getElementById("inicio").style.display="none";
 
-}else{
+        document.getElementById("p1").style.display="block";
 
-alert("Código incorrecto");
+        window.scrollTo(0,0);
+
+    }else{
+
+        alert("Código incorrecto");
+
+    }
 
 }
 
-}
 
 function verificar2(){
 
-if(document.getElementById("c2").value=="2222"){
+    if(document.getElementById("c2").value=="2222"){
 
-document.getElementById("p2").style.display="block";
-document.getElementById("c2").disabled=true;
+        document.getElementById("p2").style.display="block";
 
-}else{
+        document.getElementById("c2").disabled=true;
 
-alert("Código incorrecto");
+        window.scrollTo(0,0);
+
+    }else{
+
+        alert("Código incorrecto");
+
+    }
 
 }
 
-}
 
 function verificar3(){
 
-if(document.getElementById("c3").value=="3333"){
+    if(document.getElementById("c3").value=="3333"){
 
-document.getElementById("p3").style.display="block";
-document.getElementById("c3").disabled=true;
+        document.getElementById("p3").style.display="block";
 
-}else{
+        document.getElementById("c3").disabled=true;
 
-alert("Código incorrecto");
+        window.scrollTo(0,0);
+
+    }else{
+
+        alert("Código incorrecto");
+
+    }
 
 }
 
-}
 
 function verificar4(){
 
-if(document.getElementById("c4").value=="4444"){
+    if(document.getElementById("c4").value=="4444"){
 
-document.getElementById("p4").style.display="block";
-document.getElementById("c4").disabled=true;
+        document.getElementById("p4").style.display="block";
 
-}else{
+        document.getElementById("c4").disabled=true;
 
-alert("Código incorrecto");
+        window.scrollTo(0,0);
+
+    }else{
+
+        alert("Código incorrecto");
+
+    }
 
 }
 
-}
 
 function verificar5(){
 
-if(document.getElementById("c5").value=="5555"){
+    if(document.getElementById("c5").value=="5555"){
 
-document.getElementById("p5").style.display="block";
-document.getElementById("c5").disabled=true;
+        document.getElementById("p5").style.display="block";
 
-}else{
+        document.getElementById("c5").disabled=true;
 
-alert("Código incorrecto");
+        window.scrollTo(0,0);
+
+    }else{
+
+        alert("Código incorrecto");
+
+    }
 
 }
 
-}
 
 function verificar6(){
 
-if(document.getElementById("c6").value=="6666"){
+    if(document.getElementById("c6").value=="6666"){
 
-document.getElementById("final").style.display="block";
-document.getElementById("c6").disabled=true;
+        document.getElementById("final").style.display="block";
 
-}else{
+        document.getElementById("c6").disabled=true;
 
-alert("Código incorrecto");
+        window.scrollTo(0,0);
 
-}
+    }else{
+
+        alert("Código incorrecto");
+
+    }
 
 }
 
