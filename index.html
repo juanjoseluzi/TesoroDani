@@ -56,7 +56,7 @@
         }
 
 
-        /* =================================
+        /* ================================
            EXPEDIENTE
         ================================= */
 
@@ -72,7 +72,7 @@
 
             border: 2px solid #626262;
 
-            padding: 32px 24px 30px;
+            padding: 34px 24px 32px;
 
             box-shadow:
                 0 0 35px rgba(0,0,0,0.9),
@@ -80,21 +80,16 @@
         }
 
 
-        /* =================================
-           NUMERO DE EXPEDIENTE
-        ================================= */
-
         .file-number {
 
             position: absolute;
 
             top: 10px;
-
             right: 12px;
 
             color: #666666;
 
-            font-size: 11px;
+            font-size: 12px;
 
             letter-spacing: 1px;
         }
@@ -104,11 +99,11 @@
 
             border-top: 1px solid #555555;
 
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
 
-        /* =================================
+        /* ================================
            CLASIFICACION
         ================================= */
 
@@ -116,7 +111,7 @@
 
             text-align: center;
 
-            font-size: 17px;
+            font-size: 18px;
 
             letter-spacing: 5px;
 
@@ -126,7 +121,7 @@
         }
 
 
-        /* =================================
+        /* ================================
            SELLO CONFIDENCIAL
         ================================= */
 
@@ -142,17 +137,15 @@
 
         .stamp {
 
-            position: relative;
-
             display: inline-block;
 
             padding: 9px 18px;
 
             border: 3px solid #a51f1f;
 
-            color: #c52a2a;
+            color: #d12b2b;
 
-            font-size: 21px;
+            font-size: 23px;
 
             font-weight: bold;
 
@@ -161,46 +154,25 @@
             transform: rotate(-5deg);
 
             opacity: 0.95;
+
+            box-shadow:
+                0 0 5px rgba(165,31,31,0.15);
         }
 
 
-        /* Linea roja que cruza CONFIDENCIAL */
-
-        .stamp::after {
-
-            content: "";
-
-            position: absolute;
-
-            left: -8px;
-
-            right: -8px;
-
-            top: 50%;
-
-            height: 4px;
-
-            background: #a51f1f;
-
-            transform: rotate(-8deg);
-
-            pointer-events: none;
-        }
-
-
-        /* =================================
+        /* ================================
            TITULO
         ================================= */
 
         h1 {
 
-            margin: 0 0 32px;
+            margin: 0 0 34px;
 
             text-align: center;
 
             color: #f2f2f2;
 
-            font-size: 31px;
+            font-size: 34px;
 
             line-height: 1.3;
 
@@ -208,7 +180,7 @@
         }
 
 
-        /* =================================
+        /* ================================
            AVISO
         ================================= */
 
@@ -216,13 +188,13 @@
 
             text-align: center;
 
-            font-size: 20px;
+            font-size: 21px;
 
-            line-height: 1.6;
+            line-height: 1.65;
 
             color: #d5d5d5;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
         }
 
 
@@ -232,7 +204,7 @@
 
             color: #eeeeee;
 
-            font-size: 21px;
+            font-size: 22px;
 
             font-weight: bold;
 
@@ -242,23 +214,15 @@
         }
 
 
-        .warning-important {
-
-            color: #eeeeee;
-
-            font-weight: bold;
-        }
-
-
-        /* =================================
+        /* ================================
            MENSAJE CLASIFICADO
         ================================= */
 
         .classified {
 
-            margin: 28px 0 32px;
+            margin: 30px 0 34px;
 
-            padding: 18px 14px;
+            padding: 19px 14px;
 
             border-left: 2px solid #666666;
 
@@ -268,9 +232,9 @@
 
             color: #999999;
 
-            font-size: 17px;
+            font-size: 18px;
 
-            line-height: 1.65;
+            line-height: 1.7;
         }
 
 
@@ -278,11 +242,11 @@
 
             color: #dddddd;
 
-            font-size: 18px;
+            font-size: 19px;
         }
 
 
-        /* =================================
+        /* ================================
            SEPARADOR
         ================================= */
 
@@ -290,11 +254,11 @@
 
             border-top: 1px dashed #555555;
 
-            margin: 28px 0;
+            margin: 30px 0;
         }
 
 
-        /* =================================
+        /* ================================
            PREGUNTA
         ================================= */
 
@@ -302,9 +266,9 @@
 
             text-align: center;
 
-            margin: 30px 0;
+            margin: 32px 0;
 
-            padding: 24px 12px;
+            padding: 26px 12px;
 
             background: #151515;
 
@@ -321,11 +285,11 @@
 
             color: #999999;
 
-            font-size: 15px;
+            font-size: 16px;
 
             letter-spacing: 3px;
 
-            margin-bottom: 17px;
+            margin-bottom: 18px;
         }
 
 
@@ -333,7 +297,7 @@
 
             color: #ffffff;
 
-            font-size: 29px;
+            font-size: 31px;
 
             line-height: 1.4;
 
@@ -346,8 +310,8 @@
         }
 
 
-        /* =================================
-           CAMPO DE RESPUESTA
+        /* ================================
+           CAMPO
         ================================= */
 
         .input-label {
@@ -356,11 +320,11 @@
 
             color: #999999;
 
-            font-size: 15px;
+            font-size: 16px;
 
             letter-spacing: 1px;
 
-            margin-bottom: 9px;
+            margin-bottom: 10px;
         }
 
 
@@ -370,7 +334,7 @@
 
             width: 100%;
 
-            height: 64px;
+            height: 66px;
 
             padding: 10px 14px;
 
@@ -389,7 +353,7 @@
                 Courier,
                 monospace;
 
-            font-size: 22px;
+            font-size: 23px;
 
             text-align: center;
         }
@@ -404,7 +368,7 @@
         }
 
 
-        /* =================================
+        /* ================================
            BOTON
         ================================= */
 
@@ -414,7 +378,7 @@
 
             width: 100%;
 
-            height: 68px;
+            height: 70px;
 
             margin-top: 20px;
 
@@ -431,7 +395,7 @@
                 Courier,
                 monospace;
 
-            font-size: 19px;
+            font-size: 20px;
 
             font-weight: bold;
 
@@ -447,7 +411,7 @@
         }
 
 
-        /* =================================
+        /* ================================
            ERROR
         ================================= */
 
@@ -457,7 +421,7 @@
 
             margin-top: 20px;
 
-            padding: 12px;
+            padding: 13px;
 
             border: 1px solid #7a2525;
 
@@ -465,21 +429,21 @@
 
             text-align: center;
 
-            font-size: 17px;
+            font-size: 18px;
 
             line-height: 1.5;
         }
 
 
-        /* =================================
-           PIE DEL DOCUMENTO
+        /* ================================
+           PIE
         ================================= */
 
         .footer {
 
-            margin-top: 32px;
+            margin-top: 34px;
 
-            padding-top: 17px;
+            padding-top: 18px;
 
             border-top: 1px solid #444444;
 
@@ -487,7 +451,7 @@
 
             text-align: center;
 
-            font-size: 11px;
+            font-size: 12px;
 
             line-height: 1.7;
 
@@ -495,7 +459,7 @@
         }
 
 
-        /* =================================
+        /* ================================
            CELULARES PEQUEÑOS
         ================================= */
 
@@ -512,33 +476,33 @@
 
 
             .classification {
-                font-size: 14px;
+                font-size: 15px;
                 letter-spacing: 4px;
             }
 
 
             h1 {
-                font-size: 27px;
+                font-size: 29px;
             }
 
 
             .warning {
-                font-size: 18px;
+                font-size: 19px;
             }
 
 
             .question {
-                font-size: 25px;
+                font-size: 27px;
             }
 
 
             input {
-                font-size: 20px;
+                font-size: 21px;
             }
 
 
             button {
-                font-size: 17px;
+                font-size: 18px;
             }
 
         }
@@ -598,7 +562,6 @@
 
             El acceso a este archivo
             ha sido autorizado para una sola persona.
-
 
         </div>
 
@@ -718,10 +681,6 @@
     <script>
 
 
-        /* =================================
-           CLAVES VALIDAS
-        ================================= */
-
         const respuestasCorrectas = [
 
             "thebase",
@@ -743,10 +702,6 @@
         ];
 
 
-        /* =================================
-           NORMALIZAR RESPUESTA
-        ================================= */
-
         function normalizar(texto) {
 
             return texto
@@ -758,10 +713,6 @@
 
         }
 
-
-        /* =================================
-           VERIFICAR IDENTIDAD
-        ================================= */
 
         function verificarIdentidad() {
 
@@ -803,10 +754,6 @@
 
         }
 
-
-        /* =================================
-           ENTER
-        ================================= */
 
         document
             .getElementById("respuesta")
