@@ -1,578 +1,477 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>EXPEDIENTE Dani & Juan</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-<title>Recorrido por nuestra historia</title>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
 
-<style>
+        body {
+            background:
+                radial-gradient(circle at center, #252525 0%, #0b0b0b 75%);
+            color: #e8e8e8;
+            font-family: "Courier New", Courier, monospace;
 
-/* =========================
-   CONFIGURACIÓN GENERAL
-   ========================= */
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-*{
-    box-sizing:border-box;
-}
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-html{
-    font-size:16px;
-}
+        .document {
+            width: 100%;
+            max-width: 520px;
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f7f3f5;
-    color:#333;
-    text-align:center;
-    margin:0;
-    padding:20px 16px 50px 16px;
-}
+            background: #111;
+            border: 2px solid #666;
 
-/* Contenedor principal */
+            padding: 28px 22px 30px;
 
-.contenedor{
-    width:100%;
-    max-width:650px;
-    margin:0 auto;
-}
+            position: relative;
 
-/* =========================
-   TÍTULOS
-   ========================= */
+            box-shadow:
+                0 0 30px rgba(0,0,0,0.8),
+                inset 0 0 40px rgba(255,255,255,0.02);
+        }
 
-h1{
-    color:#c2185b;
-    font-size:32px;
-    line-height:1.2;
-    margin:15px 0 25px 0;
-}
+        .file-number {
+            position: absolute;
+            top: 10px;
+            right: 12px;
 
-h2{
-    color:#2e7d32;
-    font-size:28px;
-    line-height:1.25;
-    margin:20px 0;
-}
+            font-size: 11px;
+            color: #666;
+        }
 
-h3{
-    font-size:24px;
-    margin:15px 0;
-}
+        .top-line {
+            border-top: 1px solid #555;
+            margin-bottom: 18px;
+        }
 
-/* =========================
-   TEXTOS
-   ========================= */
+        .classification {
+            text-align: center;
 
-p{
-    font-size:21px;
-    line-height:1.5;
-}
+            font-size: 15px;
+            letter-spacing: 4px;
 
-.texto-grande{
-    font-size:23px;
-    line-height:1.55;
-}
+            color: #cfcfcf;
 
-/* =========================
-   VIDEO DE YOUTUBE
-   ========================= */
+            margin-bottom: 25px;
+        }
 
-.video{
-    position:relative;
-    width:100%;
-    padding-bottom:56.25%;
-    height:0;
-    overflow:hidden;
-    margin:25px 0 35px 0;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.20);
-}
+        .stamp-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-.video iframe{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    border:0;
-}
+        .stamp {
+            display: inline-block;
 
-/* =========================
-   POSTAS
-   ========================= */
+            border: 3px solid #b22222;
+            color: #d52b2b;
 
-.posta{
-    display:none;
-    margin-top:35px;
-}
+            padding: 7px 12px;
 
-/* =========================
-   CAMPOS DE CÓDIGO
-   ========================= */
+            font-size: 19px;
+            font-weight: bold;
 
-input{
-    display:block;
-    width:100%;
-    max-width:400px;
-    margin:20px auto;
-    padding:16px 12px;
-    font-size:24px;
-    border:2px solid #aaa;
-    border-radius:10px;
-    text-align:center;
-    background:white;
-    outline:none;
-}
+            letter-spacing: 3px;
 
-input:focus{
-    border-color:#c2185b;
-}
+            transform: rotate(-4deg);
+        }
 
-/* =========================
-   BOTONES
-   ========================= */
+        h1 {
+            font-size: 28px;
+            line-height: 1.25;
 
-button{
-    display:block;
-    width:100%;
-    max-width:400px;
-    margin:15px auto;
-    padding:16px 20px;
-    font-size:22px;
-    font-weight:bold;
-    color:white;
-    background:#c2185b;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
+            text-align: center;
 
-button:active{
-    transform:scale(0.98);
-}
+            margin: 5px 0 28px;
 
-/* =========================
-   SEPARADORES
-   ========================= */
+            letter-spacing: 1px;
+        }
 
-.separador{
-    width:80%;
-    max-width:400px;
-    height:2px;
-    background:#ddd;
-    margin:30px auto;
-}
+        .warning {
+            font-size: 18px;
+            line-height: 1.55;
 
-/* =========================
-   CELULARES PEQUEÑOS
-   ========================= */
+            text-align: center;
 
-@media (max-width:400px){
+            margin-bottom: 28px;
+        }
 
-    body{
-        padding:15px 12px 40px 12px;
-    }
+        .warning strong {
+            color: #ffffff;
+        }
 
-    h1{
-        font-size:29px;
-    }
+        .separator {
+            border-top: 1px dashed #555;
+            margin: 25px 0;
+        }
 
-    h2{
-        font-size:25px;
-    }
+        .question {
+            font-size: 21px;
+            line-height: 1.5;
 
-    p{
-        font-size:20px;
-    }
+            text-align: center;
 
-    .texto-grande{
-        font-size:21px;
-    }
+            margin-bottom: 20px;
+        }
 
-    input{
-        font-size:22px;
-        padding:15px 10px;
-    }
+        .input-label {
+            display: block;
 
-    button{
-        font-size:21px;
-        padding:15px;
-    }
+            font-size: 14px;
+            color: #999;
 
-}
+            margin-bottom: 8px;
+        }
 
-</style>
+        input {
+            width: 100%;
+            height: 58px;
 
+            background: #050505;
+
+            border: 2px solid #777;
+
+            color: white;
+
+            font-family: "Courier New", monospace;
+            font-size: 20px;
+
+            padding: 10px 14px;
+
+            outline: none;
+
+            text-align: center;
+
+            border-radius: 0;
+        }
+
+        input:focus {
+            border-color: #ddd;
+        }
+
+        button {
+            width: 100%;
+            height: 62px;
+
+            margin-top: 18px;
+
+            background: #dedede;
+            color: #111;
+
+            border: none;
+
+            font-family: "Courier New", monospace;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            border-radius: 0;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .error {
+            display: none;
+
+            color: #e33;
+
+            text-align: center;
+
+            font-size: 16px;
+            line-height: 1.4;
+
+            margin-top: 18px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+
+            border-top: 1px solid #444;
+
+            color: #666;
+
+            font-size: 11px;
+            line-height: 1.5;
+
+            text-align: center;
+        }
+
+        @media (max-width: 380px) {
+
+            .document {
+                padding: 22px 17px 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .warning {
+                font-size: 17px;
+            }
+
+            .question {
+                font-size: 19px;
+            }
+
+            .stamp {
+                font-size: 17px;
+            }
+        }
+    </style>
 </head>
 
 
 <body>
 
-<div class="contenedor">
+    <main class="document">
 
+        <div class="file-number">
+            EXP. 01
+        </div>
 
-<!-- =========================
-     INICIO
-     ========================= -->
+        <div class="top-line"></div>
 
-<div id="inicio">
 
-<h1>Hola HERMOSÍSIMA ❤️</h1>
+        <div class="classification">
+            DOCUMENTO CLASIFICADO
+        </div>
 
 
-<!-- VIDEO -->
+        <div class="stamp-container">
 
-<div class="video">
+            <div class="stamp">
+                CONFIDENCIAL
+            </div>
 
-<iframe
-src="https://www.youtube-nocookie.com/embed/dYAL6Bbq3PY"
-title="Video"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+        </div>
 
-</div>
 
+        <h1>
+            EXPEDIENTE<br>
+            Dani &amp; Juan
+        </h1>
 
-<p class="texto-grande">
 
-Esta pista está protegida.
+        <div class="warning">
 
-<br><br>
+            <strong>¡ACCESO RESTRINGIDO!</strong>
 
-Para continuar tenés que poner el código.
+            <br><br>
 
-</p>
+            Esta página contiene información confidencial
+            sobre una historia real.
 
+            <br><br>
 
-<input
-id="c1"
-type="password"
-inputmode="text"
-autocomplete="off"
-placeholder="Ingresá el código">
+            Sólo una persona puede acceder a ésta web.
 
+        </div>
 
-<button onclick="verificar1()">
-Aceptar
-</button>
 
-</div>
+        <div class="separator"></div>
 
 
+        <div class="question">
 
-<!-- =========================
-     POSTA 1
-     ========================= -->
+            Para verificar identidad:
 
-<div id="p1" class="posta">
+            <br>
 
-<h2>¡¡Excelente!! ❤️</h2>
+            <strong>¿Dónde comenzó todo?</strong>
 
-<p class="texto-grande">
+        </div>
 
-Vas perfecto.
 
-<br><br>
+        <label class="input-label" for="respuesta">
+            INGRESE LA RESPUESTA:
+        </label>
 
-Vamos a buscar el <b>2° código</b>.
 
-</p>
+        <input
+            type="text"
+            id="respuesta"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="Escriba aquí..."
+        >
 
-<input
-id="c2"
-type="password"
-inputmode="text"
-autocomplete="off"
-placeholder="Ingresá el código">
 
-<button onclick="verificar2()">
-Aceptar
-</button>
+        <button onclick="verificarIdentidad()">
+            CONFIRMAR IDENTIDAD
+        </button>
 
-</div>
 
+        <div id="error" class="error">
 
+            ⚠ IDENTIDAD NO VERIFICADA
 
-<!-- =========================
-     POSTA 2
-     ========================= -->
+            <br>
 
-<div id="p2" class="posta">
+            La respuesta ingresada no coincide con los registros.
 
-<h2>Muy bien ❤️</h2>
+        </div>
 
-<p class="texto-grande">
 
-Ya llegaste a la tercera posta.
+        <div class="footer">
 
-<br><br>
+            ARCHIVO RESERVADO · ACCESO PERSONAL
 
-Ingresá el <b>3° código</b>.
+            <br>
 
-</p>
+            TODA TENTATIVA DE ACCESO NO AUTORIZADO SERÁ REGISTRADA.
 
-<input
-id="c3"
-type="password"
-inputmode="text"
-autocomplete="off"
-placeholder="Ingresá el código">
+        </div>
 
-<button onclick="verificar3()">
-Aceptar
-</button>
+    </main>
 
-</div>
-
-
-
-<!-- =========================
-     POSTA 3
-     ========================= -->
-
-<div id="p3" class="posta">
-
-<h2>¡Sos una genia! ❤️</h2>
-
-<p class="texto-grande">
-
-Busquemos ahora el <b>4° código</b>.
-
-</p>
-
-<input
-id="c4"
-type="password"
-inputmode="text"
-autocomplete="off"
-placeholder="Ingresá el código">
-
-<button onclick="verificar4()">
-Aceptar
-</button>
-
-</div>
-
-
-
-<!-- =========================
-     POSTA 4
-     ========================= -->
-
-<div id="p4" class="posta">
-
-<h2>Ya falta poquito ❤️</h2>
-
-<p class="texto-grande">
-
-Ingresá el <b>5° código</b>.
-
-</p>
-
-<input
-id="c5"
-type="password"
-inputmode="text"
-autocomplete="off"
-placeholder="Ingresá el código">
-
-<button onclick="verificar5()">
-Aceptar
-</button>
-
-</div>
-
-
-
-<!-- =========================
-     POSTA 5
-     ========================= -->
-
-<div id="p5" class="posta">
-
-<h2>¡¡Increíble!! ❤️</h2>
-
-<p class="texto-grande">
-
-Último esfuerzo.
-
-<br><br>
-
-Ingresá el <b>6° código</b>.
-
-</p>
-
-<input
-id="c6"
-type="password"
-inputmode="text"
-autocomplete="off"
-placeholder="Ingresá el código">
-
-<button onclick="verificar6()">
-Aceptar
-</button>
-
-</div>
-
-
-
-<!-- =========================
-     FINAL
-     ========================= -->
-
-<div id="final" class="posta">
-
-<h1>🎉 ¡FELICITACIONES! 🎉</h1>
-
-<p class="texto-grande">
-
-Terminaste el recorrido.
-
-<br><br>
-
-❤️❤️❤️
-
-</p>
-
-<p class="texto-grande">
-
-Ahora andá a buscar tu tesoro...
-
-</p>
-
-</div>
-
-
-</div>
-
-
-<!-- =========================
-     JAVASCRIPT
-     ========================= -->
 
 <script>
 
-function verificar1(){
+    /*
+    ==========================================
+    RESPUESTAS VÁLIDAS
+    ==========================================
+    */
 
-    if(document.getElementById("c1").value=="1111"){
+    const respuestasCorrectas = [
 
-        document.getElementById("inicio").style.display="none";
+        "thebase",
+        "the base",
+        "thebaseperformance",
+        "the base performance",
+        "baseperformance",
+        "gym",
+        "gimnasio",
+        "the baseperformance",
+        "base performance",
+        "gimnasio thebase",
+        "gimnasio the base",
+        "gimnasiothebase",
+        "gimnasio thebaseperformance",
+        "gimnasio the base performance",
+        "gimnasio baseperformance"
 
-        document.getElementById("p1").style.display="block";
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        alert("Código incorrecto");
-
-    }
-
-}
-
-
-function verificar2(){
-
-    if(document.getElementById("c2").value=="2222"){
-
-        document.getElementById("p2").style.display="block";
-
-        document.getElementById("c2").disabled=true;
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        alert("Código incorrecto");
-
-    }
-
-}
+    ];
 
 
-function verificar3(){
+    /*
+    ==========================================
+    NORMALIZAR RESPUESTA
+    ==========================================
+    */
 
-    if(document.getElementById("c3").value=="3333"){
+    function normalizar(texto) {
 
-        document.getElementById("p3").style.display="block";
-
-        document.getElementById("c3").disabled=true;
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        alert("Código incorrecto");
+        return texto
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, " ")
+            .trim();
 
     }
 
-}
+
+    /*
+    ==========================================
+    VERIFICAR IDENTIDAD
+    ==========================================
+    */
+
+    function verificarIdentidad() {
+
+        const respuesta =
+            document.getElementById("respuesta").value;
+
+        const error =
+            document.getElementById("error");
 
 
-function verificar4(){
-
-    if(document.getElementById("c4").value=="4444"){
-
-        document.getElementById("p4").style.display="block";
-
-        document.getElementById("c4").disabled=true;
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        alert("Código incorrecto");
-
-    }
-
-}
+        const respuestaNormalizada =
+            normalizar(respuesta);
 
 
-function verificar5(){
-
-    if(document.getElementById("c5").value=="5555"){
-
-        document.getElementById("p5").style.display="block";
-
-        document.getElementById("c5").disabled=true;
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        alert("Código incorrecto");
-
-    }
-
-}
+        const esCorrecta =
+            respuestasCorrectas.some(
+                respuestaValida =>
+                    normalizar(respuestaValida)
+                    === respuestaNormalizada
+            );
 
 
-function verificar6(){
+        if (esCorrecta) {
 
-    if(document.getElementById("c6").value=="6666"){
+            /*
+            RESPUESTA CORRECTA
 
-        document.getElementById("final").style.display="block";
+            Lleva a la segunda página.
+            */
 
-        document.getElementById("c6").disabled=true;
+            window.location.href = "pagina2.html";
 
-        window.scrollTo(0,0);
 
-    }else{
+        } else {
 
-        alert("Código incorrecto");
+            /*
+            RESPUESTA INCORRECTA
+            */
+
+            error.style.display = "block";
+
+            document
+                .getElementById("respuesta")
+                .focus();
+
+        }
 
     }
 
-}
+
+    /*
+    ==========================================
+    PERMITIR ENTER
+    ==========================================
+    */
+
+    document
+        .getElementById("respuesta")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                verificarIdentidad();
+
+            }
+
+        });
 
 </script>
 
 </body>
-
 </html>
