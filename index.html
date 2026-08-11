@@ -1,12 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EXPEDIENTE Dani & Juan</title>
+    <title>EXPEDIENTE D&J — ACCESO RESTRINGIDO</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -19,8 +21,10 @@
 
         body {
             background:
-                radial-gradient(circle at center, #252525 0%, #0b0b0b 75%);
+                radial-gradient(circle at center, #252525 0%, #090909 75%);
+
             color: #e8e8e8;
+
             font-family: "Courier New", Courier, monospace;
 
             display: flex;
@@ -28,130 +32,291 @@
             align-items: center;
 
             min-height: 100vh;
-            padding: 20px;
+
+            padding: 18px;
         }
 
-        .document {
-            width: 100%;
-            max-width: 520px;
 
-            background: #111;
+        /* ================================
+           EXPEDIENTE
+        ================================= */
+
+        .document {
+
+            width: 100%;
+            max-width: 540px;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.015),
+                    rgba(255,255,255,0.015)
+                ),
+                #111;
+
             border: 2px solid #666;
 
-            padding: 28px 22px 30px;
+            padding: 30px 24px 32px;
 
             position: relative;
 
             box-shadow:
-                0 0 30px rgba(0,0,0,0.8),
-                inset 0 0 40px rgba(255,255,255,0.02);
+                0 0 35px rgba(0,0,0,0.9),
+                inset 0 0 50px rgba(255,255,255,0.015);
         }
 
+
         .file-number {
+
             position: absolute;
+
             top: 10px;
             right: 12px;
 
-            font-size: 11px;
+            font-size: 12px;
+
             color: #666;
         }
 
+
         .top-line {
+
             border-top: 1px solid #555;
-            margin-bottom: 18px;
+
+            margin-bottom: 20px;
         }
+
+
+        /* ================================
+           CLASIFICACIÓN
+        ================================= */
 
         .classification {
+
             text-align: center;
 
-            font-size: 15px;
-            letter-spacing: 4px;
+            font-size: 17px;
 
-            color: #cfcfcf;
+            letter-spacing: 5px;
 
-            margin-bottom: 25px;
+            color: #d0d0d0;
+
+            margin-bottom: 27px;
         }
+
+
+        /* ================================
+           SELLO
+        ================================= */
 
         .stamp-container {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .stamp {
-            display: inline-block;
-
-            border: 3px solid #b22222;
-            color: #d52b2b;
-
-            padding: 7px 12px;
-
-            font-size: 19px;
-            font-weight: bold;
-
-            letter-spacing: 3px;
-
-            transform: rotate(-4deg);
-        }
-
-        h1 {
-            font-size: 28px;
-            line-height: 1.25;
-
-            text-align: center;
-
-            margin: 5px 0 28px;
-
-            letter-spacing: 1px;
-        }
-
-        .warning {
-            font-size: 18px;
-            line-height: 1.55;
 
             text-align: center;
 
             margin-bottom: 28px;
         }
 
-        .warning strong {
-            color: #ffffff;
-        }
 
-        .separator {
-            border-top: 1px dashed #555;
-            margin: 25px 0;
-        }
+        .stamp {
 
-        .question {
+            display: inline-block;
+
+            border: 3px solid #b22222;
+
+            color: #d52b2b;
+
+            padding: 8px 15px;
+
             font-size: 21px;
-            line-height: 1.5;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            transform: rotate(-4deg);
+
+            box-shadow:
+                0 0 8px rgba(178,34,34,0.15);
+        }
+
+
+        /* ================================
+           TÍTULO
+        ================================= */
+
+        h1 {
+
+            font-size: 31px;
+
+            line-height: 1.3;
 
             text-align: center;
 
-            margin-bottom: 20px;
+            margin: 5px 0 30px;
+
+            letter-spacing: 2px;
+
+            color: #f0f0f0;
         }
 
-        .input-label {
+
+        /* ================================
+           ADVERTENCIA
+        ================================= */
+
+        .warning {
+
+            font-size: 20px;
+
+            line-height: 1.6;
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+            color: #d8d8d8;
+        }
+
+
+        .warning strong {
+
+            color: #ffffff;
+        }
+
+
+        .warning .special {
+
+            color: #bdbdbd;
+
+            font-size: 18px;
+
             display: block;
 
-            font-size: 14px;
-            color: #999;
-
-            margin-bottom: 8px;
+            margin-top: 12px;
         }
 
+
+        /* ================================
+           MENSAJE PERSONAL
+        ================================= */
+
+        .classified-message {
+
+            border-left: 3px solid #777;
+
+            border-right: 3px solid #777;
+
+            padding: 16px 12px;
+
+            margin: 25px 0 30px;
+
+            text-align: center;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            color: #aaa;
+        }
+
+
+        .classified-message strong {
+
+            color: #e5e5e5;
+        }
+
+
+        /* ================================
+           SEPARADOR
+        ================================= */
+
+        .separator {
+
+            border-top: 1px dashed #555;
+
+            margin: 28px 0;
+        }
+
+
+        /* ================================
+           PREGUNTA
+        ================================= */
+
+        .question-container {
+
+            text-align: center;
+
+            margin: 30px 0 26px;
+
+            padding: 22px 12px;
+
+            border-top: 1px solid #444;
+
+            border-bottom: 1px solid #444;
+
+            background: rgba(255,255,255,0.015);
+        }
+
+
+        .question-small {
+
+            font-size: 16px;
+
+            letter-spacing: 3px;
+
+            color: #999;
+
+            margin-bottom: 14px;
+        }
+
+
+        .question {
+
+            font-size: 28px;
+
+            line-height: 1.4;
+
+            font-weight: bold;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 8px rgba(255,255,255,0.08);
+        }
+
+
+        /* ================================
+           INPUT
+        ================================= */
+
+        .input-label {
+
+            display: block;
+
+            font-size: 15px;
+
+            color: #999;
+
+            margin-bottom: 9px;
+
+            letter-spacing: 1px;
+        }
+
+
         input {
+
             width: 100%;
-            height: 58px;
+
+            height: 64px;
 
             background: #050505;
 
             border: 2px solid #777;
 
-            color: white;
+            color: #ffffff;
 
             font-family: "Courier New", monospace;
-            font-size: 20px;
+
+            font-size: 22px;
 
             padding: 10px 14px;
 
@@ -162,202 +327,283 @@
             border-radius: 0;
         }
 
+
         input:focus {
+
             border-color: #ddd;
+
+            box-shadow:
+                0 0 8px rgba(255,255,255,0.08);
         }
 
-        button {
-            width: 100%;
-            height: 62px;
 
-            margin-top: 18px;
+        /* ================================
+           BOTÓN
+        ================================= */
+
+        button {
+
+            width: 100%;
+
+            height: 68px;
+
+            margin-top: 20px;
 
             background: #dedede;
+
             color: #111;
 
             border: none;
 
             font-family: "Courier New", monospace;
 
-            font-size: 18px;
+            font-size: 19px;
+
             font-weight: bold;
 
-            letter-spacing: 1px;
+            letter-spacing: 2px;
 
             cursor: pointer;
 
             border-radius: 0;
         }
 
+
         button:active {
+
             transform: scale(0.98);
         }
 
+
+        /* ================================
+           ERROR
+        ================================= */
+
         .error {
+
             display: none;
 
             color: #e33;
 
             text-align: center;
 
-            font-size: 16px;
-            line-height: 1.4;
+            font-size: 17px;
 
-            margin-top: 18px;
+            line-height: 1.5;
+
+            margin-top: 20px;
         }
 
+
+        /* ================================
+           PIE
+        ================================= */
+
         .footer {
-            margin-top: 30px;
-            padding-top: 15px;
+
+            margin-top: 32px;
+
+            padding-top: 17px;
 
             border-top: 1px solid #444;
 
             color: #666;
 
-            font-size: 11px;
-            line-height: 1.5;
+            font-size: 12px;
+
+            line-height: 1.6;
 
             text-align: center;
         }
 
+
+        /* ================================
+           CELULARES PEQUEÑOS
+        ================================= */
+
         @media (max-width: 380px) {
 
             .document {
-                padding: 22px 17px 25px;
+
+                padding: 25px 18px 28px;
             }
 
             h1 {
-                font-size: 24px;
+
+                font-size: 27px;
             }
 
             .warning {
-                font-size: 17px;
+
+                font-size: 18px;
             }
 
             .question {
-                font-size: 19px;
+
+                font-size: 24px;
             }
 
             .stamp {
-                font-size: 17px;
+
+                font-size: 18px;
             }
         }
+
     </style>
 </head>
 
 
 <body>
 
-    <main class="document">
 
-        <div class="file-number">
-            EXP. 01
+<main class="document">
+
+
+    <div class="file-number">
+        EXP. D&amp;J — 001
+    </div>
+
+
+    <div class="top-line"></div>
+
+
+    <div class="classification">
+        DOCUMENTO CLASIFICADO
+    </div>
+
+
+    <div class="stamp-container">
+
+        <div class="stamp">
+            CONFIDENCIAL
         </div>
 
-        <div class="top-line"></div>
+    </div>
 
 
-        <div class="classification">
-            DOCUMENTO CLASIFICADO
+    <h1>
+        EXPEDIENTE<br>
+        DANI &amp; JUAN
+    </h1>
+
+
+    <div class="warning">
+
+        <strong>⚠ ACCESO RESTRINGIDO ⚠</strong>
+
+        <br><br>
+
+        Este expediente contiene información
+        relacionada con una historia real.
+
+        <span class="special">
+
+            Su contenido no está destinado al público.
+
+        </span>
+
+    </div>
+
+
+    <div class="classified-message">
+
+        <strong>ADVERTENCIA</strong>
+
+        <br><br>
+
+        El sistema ha identificado a una única persona
+        autorizada para continuar.
+
+        <br><br>
+
+        No se requieren documentos.
+        No se requieren nombres.
+        No se requieren contraseñas convencionales.
+
+        <br><br>
+
+        <strong>
+            Sólo alguien que haya vivido la historia
+            puede conocer la primera clave.
+        </strong>
+
+    </div>
+
+
+    <div class="separator"></div>
+
+
+    <div class="question-container">
+
+        <div class="question-small">
+            PRIMER PROTOCOLO DE VERIFICACIÓN
         </div>
-
-
-        <div class="stamp-container">
-
-            <div class="stamp">
-                CONFIDENCIAL
-            </div>
-
-        </div>
-
-
-        <h1>
-            EXPEDIENTE<br>
-            Dani &amp; Juan
-        </h1>
-
-
-        <div class="warning">
-
-            <strong>¡ACCESO RESTRINGIDO!</strong>
-
-            <br><br>
-
-            Esta página contiene información confidencial
-            sobre una historia real.
-
-            <br><br>
-
-            Sólo una persona puede acceder a ésta web.
-
-        </div>
-
-
-        <div class="separator"></div>
 
 
         <div class="question">
-
-            Para verificar identidad:
-
-            <br>
-
-            <strong>¿Dónde comenzó todo?</strong>
-
+            ¿DÓNDE COMENZÓ TODO?
         </div>
 
-
-        <label class="input-label" for="respuesta">
-            INGRESE LA RESPUESTA:
-        </label>
+    </div>
 
 
-        <input
-            type="text"
-            id="respuesta"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="Escriba aquí..."
-        >
+    <label class="input-label" for="respuesta">
+        INGRESE LA CLAVE DE ACCESO:
+    </label>
 
 
-        <button onclick="verificarIdentidad()">
-            CONFIRMAR IDENTIDAD
-        </button>
+    <input
+        type="text"
+        id="respuesta"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Escriba aquí..."
+    >
 
 
-        <div id="error" class="error">
-
-            ⚠ IDENTIDAD NO VERIFICADA
-
-            <br>
-
-            La respuesta ingresada no coincide con los registros.
-
-        </div>
+    <button onclick="verificarIdentidad()">
+        CONFIRMAR IDENTIDAD
+    </button>
 
 
-        <div class="footer">
+    <div id="error" class="error">
 
-            ARCHIVO RESERVADO · ACCESO PERSONAL
+        ⚠ IDENTIDAD NO VERIFICADA
 
-            <br>
+        <br>
 
-            TODA TENTATIVA DE ACCESO NO AUTORIZADO SERÁ REGISTRADA.
+        La clave ingresada no coincide
+        con los registros del expediente.
 
-        </div>
+    </div>
 
-    </main>
+
+    <div class="footer">
+
+        ARCHIVO RESERVADO · D&amp;J · 001
+
+        <br>
+
+        ACCESO PERSONAL E INTRANSFERIBLE
+
+        <br><br>
+
+        TODA TENTATIVA DE ACCESO NO AUTORIZADO
+        SERÁ REGISTRADA.
+
+    </div>
+
+
+</main>
 
 
 <script>
 
-    /*
-    ==========================================
-    RESPUESTAS VÁLIDAS
-    ==========================================
-    */
+
+    /* ================================
+       RESPUESTAS VÁLIDAS
+    ================================= */
 
     const respuestasCorrectas = [
 
@@ -380,11 +626,9 @@
     ];
 
 
-    /*
-    ==========================================
-    NORMALIZAR RESPUESTA
-    ==========================================
-    */
+    /* ================================
+       NORMALIZAR
+    ================================= */
 
     function normalizar(texto) {
 
@@ -398,11 +642,9 @@
     }
 
 
-    /*
-    ==========================================
-    VERIFICAR IDENTIDAD
-    ==========================================
-    */
+    /* ================================
+       VERIFICAR
+    ================================= */
 
     function verificarIdentidad() {
 
@@ -427,20 +669,9 @@
 
         if (esCorrecta) {
 
-            /*
-            RESPUESTA CORRECTA
-
-            Lleva a la segunda página.
-            */
-
             window.location.href = "pagina2.html";
 
-
         } else {
-
-            /*
-            RESPUESTA INCORRECTA
-            */
 
             error.style.display = "block";
 
@@ -453,11 +684,9 @@
     }
 
 
-    /*
-    ==========================================
-    PERMITIR ENTER
-    ==========================================
-    */
+    /* ================================
+       ENTER
+    ================================= */
 
     document
         .getElementById("respuesta")
@@ -471,7 +700,10 @@
 
         });
 
+
 </script>
+
 
 </body>
 </html>
+```
