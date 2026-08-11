@@ -1,11 +1,15 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EXPEDIENTE D&J — ACCESO RESTRINGIDO</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EXPEDIENTE DANI & JUAN</title>
+
 
     <style>
 
@@ -13,22 +17,37 @@
             box-sizing: border-box;
         }
 
-        html, body {
+
+        html,
+        body {
             margin: 0;
             padding: 0;
+            width: 100%;
             min-height: 100%;
         }
 
+
         body {
+
             background:
-                radial-gradient(circle at center, #252525 0%, #090909 75%);
+                radial-gradient(
+                    circle at center,
+                    #292929 0%,
+                    #111111 55%,
+                    #050505 100%
+                );
 
-            color: #e8e8e8;
+            color: #e5e5e5;
 
-            font-family: "Courier New", Courier, monospace;
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             min-height: 100vh;
@@ -37,57 +56,60 @@
         }
 
 
-        /* ================================
+        /* =================================
            EXPEDIENTE
         ================================= */
 
         .document {
 
+            position: relative;
+
             width: 100%;
+
             max-width: 540px;
 
-            background:
-                linear-gradient(
-                    rgba(255,255,255,0.015),
-                    rgba(255,255,255,0.015)
-                ),
-                #111;
+            background: #111111;
 
-            border: 2px solid #666;
+            border: 2px solid #626262;
 
-            padding: 30px 24px 32px;
-
-            position: relative;
+            padding: 32px 24px 30px;
 
             box-shadow:
                 0 0 35px rgba(0,0,0,0.9),
-                inset 0 0 50px rgba(255,255,255,0.015);
+                inset 0 0 50px rgba(255,255,255,0.02);
         }
 
+
+        /* =================================
+           NUMERO DE EXPEDIENTE
+        ================================= */
 
         .file-number {
 
             position: absolute;
 
             top: 10px;
+
             right: 12px;
 
-            font-size: 12px;
+            color: #666666;
 
-            color: #666;
+            font-size: 11px;
+
+            letter-spacing: 1px;
         }
 
 
         .top-line {
 
-            border-top: 1px solid #555;
+            border-top: 1px solid #555555;
 
             margin-bottom: 20px;
         }
 
 
-        /* ================================
-           CLASIFICACIÓN
+        /* =================================
+           CLASIFICACION
         ================================= */
 
         .classification {
@@ -98,33 +120,37 @@
 
             letter-spacing: 5px;
 
-            color: #d0d0d0;
+            color: #cccccc;
 
-            margin-bottom: 27px;
+            margin-bottom: 30px;
         }
 
 
-        /* ================================
-           SELLO
+        /* =================================
+           SELLO CONFIDENCIAL
         ================================= */
 
         .stamp-container {
 
-            text-align: center;
+            display: flex;
 
-            margin-bottom: 28px;
+            justify-content: center;
+
+            margin-bottom: 32px;
         }
 
 
         .stamp {
 
+            position: relative;
+
             display: inline-block;
 
-            border: 3px solid #b22222;
+            padding: 9px 18px;
 
-            color: #d52b2b;
+            border: 3px solid #a51f1f;
 
-            padding: 8px 15px;
+            color: #c52a2a;
 
             font-size: 21px;
 
@@ -132,216 +158,259 @@
 
             letter-spacing: 4px;
 
-            transform: rotate(-4deg);
+            transform: rotate(-5deg);
 
-            box-shadow:
-                0 0 8px rgba(178,34,34,0.15);
+            opacity: 0.95;
         }
 
 
-        /* ================================
-           TÍTULO
+        /* Linea roja que cruza CONFIDENCIAL */
+
+        .stamp::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: -8px;
+
+            right: -8px;
+
+            top: 50%;
+
+            height: 4px;
+
+            background: #a51f1f;
+
+            transform: rotate(-8deg);
+
+            pointer-events: none;
+        }
+
+
+        /* =================================
+           TITULO
         ================================= */
 
         h1 {
+
+            margin: 0 0 32px;
+
+            text-align: center;
+
+            color: #f2f2f2;
 
             font-size: 31px;
 
             line-height: 1.3;
 
-            text-align: center;
-
-            margin: 5px 0 30px;
-
             letter-spacing: 2px;
-
-            color: #f0f0f0;
         }
 
 
-        /* ================================
-           ADVERTENCIA
+        /* =================================
+           AVISO
         ================================= */
 
         .warning {
+
+            text-align: center;
 
             font-size: 20px;
 
             line-height: 1.6;
 
-            text-align: center;
+            color: #d5d5d5;
 
-            margin-bottom: 30px;
-
-            color: #d8d8d8;
+            margin-bottom: 28px;
         }
 
 
-        .warning strong {
-
-            color: #ffffff;
-        }
-
-
-        .warning .special {
-
-            color: #bdbdbd;
-
-            font-size: 18px;
+        .warning-title {
 
             display: block;
 
-            margin-top: 12px;
+            color: #eeeeee;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
         }
 
 
-        /* ================================
-           MENSAJE PERSONAL
+        .warning-important {
+
+            color: #eeeeee;
+
+            font-weight: bold;
+        }
+
+
+        /* =================================
+           MENSAJE CLASIFICADO
         ================================= */
 
-        .classified-message {
+        .classified {
 
-            border-left: 3px solid #777;
+            margin: 28px 0 32px;
 
-            border-right: 3px solid #777;
+            padding: 18px 14px;
 
-            padding: 16px 12px;
+            border-left: 2px solid #666666;
 
-            margin: 25px 0 30px;
+            border-right: 2px solid #666666;
 
             text-align: center;
 
+            color: #999999;
+
             font-size: 17px;
 
-            line-height: 1.6;
-
-            color: #aaa;
+            line-height: 1.65;
         }
 
 
-        .classified-message strong {
+        .classified strong {
 
-            color: #e5e5e5;
+            color: #dddddd;
+
+            font-size: 18px;
         }
 
 
-        /* ================================
+        /* =================================
            SEPARADOR
         ================================= */
 
         .separator {
 
-            border-top: 1px dashed #555;
+            border-top: 1px dashed #555555;
 
             margin: 28px 0;
         }
 
 
-        /* ================================
+        /* =================================
            PREGUNTA
         ================================= */
 
-        .question-container {
+        .question-box {
 
             text-align: center;
 
-            margin: 30px 0 26px;
+            margin: 30px 0;
 
-            padding: 22px 12px;
+            padding: 24px 12px;
 
-            border-top: 1px solid #444;
+            background: #151515;
 
-            border-bottom: 1px solid #444;
+            border-top: 1px solid #555555;
 
-            background: rgba(255,255,255,0.015);
+            border-bottom: 1px solid #555555;
+
+            box-shadow:
+                inset 0 0 20px rgba(255,255,255,0.015);
         }
 
 
-        .question-small {
+        .question-label {
 
-            font-size: 16px;
+            color: #999999;
+
+            font-size: 15px;
 
             letter-spacing: 3px;
 
-            color: #999;
-
-            margin-bottom: 14px;
+            margin-bottom: 17px;
         }
 
 
         .question {
 
-            font-size: 28px;
+            color: #ffffff;
+
+            font-size: 29px;
 
             line-height: 1.4;
 
             font-weight: bold;
 
-            color: #ffffff;
+            letter-spacing: 1px;
 
             text-shadow:
-                0 0 8px rgba(255,255,255,0.08);
+                0 0 10px rgba(255,255,255,0.08);
         }
 
 
-        /* ================================
-           INPUT
+        /* =================================
+           CAMPO DE RESPUESTA
         ================================= */
 
         .input-label {
 
             display: block;
 
+            color: #999999;
+
             font-size: 15px;
 
-            color: #999;
+            letter-spacing: 1px;
 
             margin-bottom: 9px;
-
-            letter-spacing: 1px;
         }
 
 
         input {
 
+            display: block;
+
             width: 100%;
 
             height: 64px;
 
+            padding: 10px 14px;
+
             background: #050505;
 
-            border: 2px solid #777;
+            border: 2px solid #707070;
 
-            color: #ffffff;
-
-            font-family: "Courier New", monospace;
-
-            font-size: 22px;
-
-            padding: 10px 14px;
+            border-radius: 0;
 
             outline: none;
 
-            text-align: center;
+            color: #ffffff;
 
-            border-radius: 0;
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 22px;
+
+            text-align: center;
         }
 
 
         input:focus {
 
-            border-color: #ddd;
+            border-color: #dddddd;
 
             box-shadow:
-                0 0 8px rgba(255,255,255,0.08);
+                0 0 10px rgba(255,255,255,0.08);
         }
 
 
-        /* ================================
-           BOTÓN
+        /* =================================
+           BOTON
         ================================= */
 
         button {
+
+            display: block;
 
             width: 100%;
 
@@ -349,13 +418,18 @@
 
             margin-top: 20px;
 
-            background: #dedede;
-
-            color: #111;
-
             border: none;
 
-            font-family: "Courier New", monospace;
+            border-radius: 0;
+
+            background: #dddddd;
+
+            color: #111111;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
 
             font-size: 19px;
 
@@ -364,8 +438,6 @@
             letter-spacing: 2px;
 
             cursor: pointer;
-
-            border-radius: 0;
         }
 
 
@@ -375,7 +447,7 @@
         }
 
 
-        /* ================================
+        /* =================================
            ERROR
         ================================= */
 
@@ -383,20 +455,24 @@
 
             display: none;
 
-            color: #e33;
+            margin-top: 20px;
+
+            padding: 12px;
+
+            border: 1px solid #7a2525;
+
+            color: #d63a3a;
 
             text-align: center;
 
             font-size: 17px;
 
             line-height: 1.5;
-
-            margin-top: 20px;
         }
 
 
-        /* ================================
-           PIE
+        /* =================================
+           PIE DEL DOCUMENTO
         ================================= */
 
         .footer {
@@ -405,305 +481,351 @@
 
             padding-top: 17px;
 
-            border-top: 1px solid #444;
+            border-top: 1px solid #444444;
 
-            color: #666;
-
-            font-size: 12px;
-
-            line-height: 1.6;
+            color: #666666;
 
             text-align: center;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            letter-spacing: 0.5px;
         }
 
 
-        /* ================================
+        /* =================================
            CELULARES PEQUEÑOS
         ================================= */
 
         @media (max-width: 380px) {
 
-            .document {
-
-                padding: 25px 18px 28px;
+            body {
+                padding: 12px;
             }
 
-            h1 {
 
+            .document {
+                padding: 28px 18px 26px;
+            }
+
+
+            .classification {
+                font-size: 14px;
+                letter-spacing: 4px;
+            }
+
+
+            h1 {
                 font-size: 27px;
             }
 
-            .warning {
 
+            .warning {
                 font-size: 18px;
             }
+
 
             .question {
-
-                font-size: 24px;
+                font-size: 25px;
             }
 
-            .stamp {
 
-                font-size: 18px;
+            input {
+                font-size: 20px;
             }
+
+
+            button {
+                font-size: 17px;
+            }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-<main class="document">
+    <main class="document">
 
 
-    <div class="file-number">
-        EXP. D&amp;J — 001
-    </div>
-
-
-    <div class="top-line"></div>
-
-
-    <div class="classification">
-        DOCUMENTO CLASIFICADO
-    </div>
-
-
-    <div class="stamp-container">
-
-        <div class="stamp">
-            CONFIDENCIAL
-        </div>
-
-    </div>
-
-
-    <h1>
-        EXPEDIENTE<br>
-        DANI &amp; JUAN
-    </h1>
-
-
-    <div class="warning">
-
-        <strong>⚠ ACCESO RESTRINGIDO ⚠</strong>
-
-        <br><br>
-
-        Este expediente contiene información
-        relacionada con una historia real.
-
-        <span class="special">
-
-            Su contenido no está destinado al público.
-
-        </span>
-
-    </div>
-
-
-    <div class="classified-message">
-
-        <strong>ADVERTENCIA</strong>
-
-        <br><br>
-
-        El sistema ha identificado a una única persona
-        autorizada para continuar.
-
-        <br><br>
-
-        No se requieren documentos.
-        No se requieren nombres.
-        No se requieren contraseñas convencionales.
-
-        <br><br>
-
-        <strong>
-            Sólo alguien que haya vivido la historia
-            puede conocer la primera clave.
-        </strong>
-
-    </div>
-
-
-    <div class="separator"></div>
-
-
-    <div class="question-container">
-
-        <div class="question-small">
-            PRIMER PROTOCOLO DE VERIFICACIÓN
+        <div class="file-number">
+            EXP. D&amp;J - 001
         </div>
 
 
-        <div class="question">
-            ¿DÓNDE COMENZÓ TODO?
+        <div class="top-line"></div>
+
+
+        <div class="classification">
+            DOCUMENTO CLASIFICADO
         </div>
 
-    </div>
+
+        <div class="stamp-container">
+
+            <div class="stamp">
+                CONFIDENCIAL
+            </div>
+
+        </div>
 
 
-    <label class="input-label" for="respuesta">
-        INGRESE LA CLAVE DE ACCESO:
-    </label>
+        <h1>
+            EXPEDIENTE<br>
+            DANI &amp; JUAN
+        </h1>
 
 
-    <input
-        type="text"
-        id="respuesta"
-        autocomplete="off"
-        autocapitalize="none"
-        spellcheck="false"
-        placeholder="Escriba aquí..."
-    >
+        <div class="warning">
+
+            <span class="warning-title">
+                ACCESO RESTRINGIDO
+            </span>
 
 
-    <button onclick="verificarIdentidad()">
-        CONFIRMAR IDENTIDAD
-    </button>
+            Este expediente contiene información
+            confidencial sobre una historia real.
 
 
-    <div id="error" class="error">
-
-        ⚠ IDENTIDAD NO VERIFICADA
-
-        <br>
-
-        La clave ingresada no coincide
-        con los registros del expediente.
-
-    </div>
+            <br><br>
 
 
-    <div class="footer">
-
-        ARCHIVO RESERVADO · D&amp;J · 001
-
-        <br>
-
-        ACCESO PERSONAL E INTRANSFERIBLE
-
-        <br><br>
-
-        TODA TENTATIVA DE ACCESO NO AUTORIZADO
-        SERÁ REGISTRADA.
-
-    </div>
+            El acceso a este archivo
+            ha sido autorizado para una sola persona.
 
 
-</main>
+        </div>
 
 
-<script>
+        <div class="classified">
+
+            <strong>
+                ADVERTENCIA DE SEGURIDAD
+            </strong>
 
 
-    /* ================================
-       RESPUESTAS VÁLIDAS
-    ================================= */
-
-    const respuestasCorrectas = [
-
-        "thebase",
-        "the base",
-        "thebaseperformance",
-        "the base performance",
-        "baseperformance",
-        "gym",
-        "gimnasio",
-        "the baseperformance",
-        "base performance",
-        "gimnasio thebase",
-        "gimnasio the base",
-        "gimnasiothebase",
-        "gimnasio thebaseperformance",
-        "gimnasio the base performance",
-        "gimnasio baseperformance"
-
-    ];
+            <br><br>
 
 
-    /* ================================
-       NORMALIZAR
-    ================================= */
-
-    function normalizar(texto) {
-
-        return texto
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s+/g, " ")
-            .trim();
-
-    }
+            No existen contraseñas convencionales
+            para acceder a este expediente.
 
 
-    /* ================================
-       VERIFICAR
-    ================================= */
-
-    function verificarIdentidad() {
-
-        const respuesta =
-            document.getElementById("respuesta").value;
-
-        const error =
-            document.getElementById("error");
+            <br><br>
 
 
-        const respuestaNormalizada =
-            normalizar(respuesta);
+            La primera clave solamente puede ser conocida
+            por alguien que estuvo allí.
 
 
-        const esCorrecta =
-            respuestasCorrectas.some(
-                respuestaValida =>
-                    normalizar(respuestaValida)
-                    === respuestaNormalizada
-            );
+            <br><br>
 
 
-        if (esCorrecta) {
+            <strong>
+                Si usted es la persona indicada,
+                sabrá qué responder.
+            </strong>
 
-            window.location.href = "pagina2.html";
+        </div>
 
-        } else {
 
-            error.style.display = "block";
+        <div class="separator"></div>
 
-            document
-                .getElementById("respuesta")
-                .focus();
+
+        <div class="question-box">
+
+
+            <div class="question-label">
+                PRIMER PROTOCOLO DE VERIFICACION
+            </div>
+
+
+            <div class="question">
+                ¿DÓNDE COMENZÓ TODO?
+            </div>
+
+
+        </div>
+
+
+        <label
+            class="input-label"
+            for="respuesta">
+
+            INGRESE LA CLAVE DE ACCESO:
+
+        </label>
+
+
+        <input
+            type="text"
+            id="respuesta"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="Escriba aquí..."
+        >
+
+
+        <button
+            type="button"
+            onclick="verificarIdentidad()">
+
+            CONFIRMAR IDENTIDAD
+
+        </button>
+
+
+        <div
+            id="error"
+            class="error">
+
+            IDENTIDAD NO VERIFICADA
+
+            <br>
+
+            La clave ingresada no coincide
+            con los registros del expediente.
+
+        </div>
+
+
+        <div class="footer">
+
+            ARCHIVO RESERVADO - D&amp;J - 001
+
+            <br>
+
+            ACCESO PERSONAL E INTRANSFERIBLE
+
+            <br>
+
+            TODA TENTATIVA DE ACCESO NO AUTORIZADO
+            SERA REGISTRADA.
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+
+
+        /* =================================
+           CLAVES VALIDAS
+        ================================= */
+
+        const respuestasCorrectas = [
+
+            "thebase",
+            "the base",
+            "thebaseperformance",
+            "the base performance",
+            "baseperformance",
+            "gym",
+            "gimnasio",
+            "the baseperformance",
+            "base performance",
+            "gimnasio thebase",
+            "gimnasio the base",
+            "gimnasiothebase",
+            "gimnasio thebaseperformance",
+            "gimnasio the base performance",
+            "gimnasio baseperformance"
+
+        ];
+
+
+        /* =================================
+           NORMALIZAR RESPUESTA
+        ================================= */
+
+        function normalizar(texto) {
+
+            return texto
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
 
         }
 
-    }
+
+        /* =================================
+           VERIFICAR IDENTIDAD
+        ================================= */
+
+        function verificarIdentidad() {
+
+            const campo =
+                document.getElementById("respuesta");
+
+            const error =
+                document.getElementById("error");
 
 
-    /* ================================
-       ENTER
-    ================================= */
+            const respuesta =
+                normalizar(campo.value);
 
-    document
-        .getElementById("respuesta")
-        .addEventListener("keydown", function(event) {
 
-            if (event.key === "Enter") {
+            const esCorrecta =
+                respuestasCorrectas.some(
+                    function(clave) {
 
-                verificarIdentidad();
+                        return normalizar(clave)
+                            === respuesta;
+
+                    }
+                );
+
+
+            if (esCorrecta) {
+
+                window.location.href =
+                    "pagina2.html";
+
+            } else {
+
+                error.style.display =
+                    "block";
+
+                campo.focus();
 
             }
 
-        });
+        }
 
 
-</script>
+        /* =================================
+           ENTER
+        ================================= */
+
+        document
+            .getElementById("respuesta")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+
+                        verificarIdentidad();
+
+                    }
+
+                }
+            );
+
+    </script>
 
 
 </body>
+
 </html>
-```
