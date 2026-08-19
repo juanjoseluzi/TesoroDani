@@ -118,41 +118,90 @@
         }
 
 
+        /* =================================
+           ESTADO DEL SISTEMA
+        ================================= */
+
         .status {
 
-            color: #777777;
+            color: #888888;
 
             font-size: 16px;
 
             letter-spacing: 4px;
 
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
 
+        /* =================================
+           IDENTIDAD VERIFICADA
+        ================================= */
+
         .verified {
 
-            color: #dddddd;
+            color: #39d353;
 
-            font-size: 28px;
+            font-size: 34px;
 
-            font-weight: bold;
+            font-weight: 900;
 
             letter-spacing: 2px;
 
-            margin-bottom: 38px;
+            line-height: 1.2;
+
+            margin-bottom: 34px;
+
+            text-shadow:
+                0 0 8px rgba(57,211,83,0.35),
+                0 0 20px rgba(57,211,83,0.15);
+
+            animation:
+                verificacion 0.8s ease-out;
+        }
+
+
+        @keyframes verificacion {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.85);
+            }
+
+            60% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.06);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+
         }
 
 
         .verified-line {
 
-            width: 80px;
+            width: 90px;
 
             height: 2px;
 
-            background: #888888;
+            background: #39d353;
 
             margin: 0 auto 38px;
+
+            box-shadow:
+                0 0 8px rgba(57,211,83,0.25);
 
             transition:
                 background 2.5s ease;
@@ -165,7 +214,7 @@
 
         .welcome {
 
-            font-size: 29px;
+            font-size: 30px;
 
             font-weight: bold;
 
@@ -257,7 +306,8 @@
             cursor: pointer;
 
             transition:
-                background 0.3s ease;
+                background 0.3s ease,
+                transform 0.2s ease;
         }
 
 
@@ -277,13 +327,14 @@
 
             margin-top: 32px;
 
-            animation: aparecer 1.5s ease;
+            animation:
+                aparecer 1.5s ease;
         }
 
 
         .video-title {
 
-            color: #999999;
+            color: #b89da2;
 
             font-size: 14px;
 
@@ -305,7 +356,7 @@
 
             overflow: hidden;
 
-            border: 1px solid #555555;
+            border: 1px solid #765158;
 
             background: #000000;
 
@@ -325,6 +376,27 @@
             height: 100%;
 
             border: 0;
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
         }
 
 
@@ -355,34 +427,7 @@
 
 
         /* =================================
-           ANIMACIÓN
-        ================================= */
-
-        @keyframes aparecer {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(18px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-        /* =================================
-           TRANSICIÓN AL MODO HISTORIA
+           MODO HISTORIA
         ================================= */
 
         body.historia {
@@ -394,7 +439,6 @@
                     #351c22 45%,
                     #170d10 100%
                 );
-
         }
 
 
@@ -420,6 +464,8 @@
         body.historia .verified-line {
 
             background: #9b626b;
+
+            box-shadow: none;
         }
 
 
@@ -454,13 +500,13 @@
 
             .verified {
 
-                font-size: 25px;
+                font-size: 28px;
             }
 
 
             .welcome {
 
-                font-size: 26px;
+                font-size: 27px;
             }
 
 
@@ -503,7 +549,7 @@
 
 
         <div class="status">
-            SISTEMA DE SEGURIDAD
+            ACCESO AUTORIZADO
         </div>
 
 
@@ -619,38 +665,36 @@
 
 
             /*
-             * Cambiamos suavemente
-             * del ambiente de expediente
-             * al ambiente de la historia.
+             * Se abandona gradualmente
+             * la estética de expediente.
              */
 
             document.body.classList.add("historia");
 
 
             /*
-             * Mostramos el video.
+             * Mostrar el video.
              */
 
             const video =
                 document.getElementById("video");
 
-
             video.style.display = "block";
 
 
             /*
-             * Ocultamos el botón.
+             * Ocultar el botón.
              */
 
             const boton =
                 document.querySelector(".button");
 
-
             boton.style.display = "none";
 
 
             /*
-             * Bajamos suavemente hasta el video.
+             * Llevar suavemente
+             * hasta el video.
              */
 
             setTimeout(function() {
