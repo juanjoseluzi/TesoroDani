@@ -88,6 +88,11 @@
         }
 
 
+        /* =========================================
+           RECORRIDO ACEPTADO
+           "LATE" DURANTE 4 SEGUNDOS
+        ========================================= */
+
         .accepted {
 
             color: #39d353;
@@ -101,11 +106,48 @@
             letter-spacing: 2px;
 
             text-shadow:
-                0 0 8px rgba(57,211,83,0.30),
-                0 0 22px rgba(57,211,83,0.15);
+                0 0 8px rgba(57,211,83,0.35),
+                0 0 22px rgba(57,211,83,0.18);
 
             animation:
-                aparecer 0.9s ease;
+                aceptarLate 0.75s ease-in-out 6;
+
+        }
+
+
+        @keyframes aceptarLate {
+
+            0% {
+
+                opacity: 0.25;
+
+                transform: scale(0.94);
+
+                text-shadow:
+                    0 0 3px rgba(57,211,83,0.15);
+            }
+
+            50% {
+
+                opacity: 1;
+
+                transform: scale(1.06);
+
+                text-shadow:
+                    0 0 12px rgba(57,211,83,0.45),
+                    0 0 26px rgba(57,211,83,0.20);
+            }
+
+            100% {
+
+                opacity: 0.25;
+
+                transform: scale(0.94);
+
+                text-shadow:
+                    0 0 3px rgba(57,211,83,0.15);
+            }
+
         }
 
 
@@ -327,11 +369,33 @@
 
         .key-hint {
 
-            color: #bda3aa;
+            color: #dec8cd;
 
-            font-size: 16px;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
 
-            line-height: 1.6;
+            font-size: 20px;
+
+            line-height: 1.65;
+
+            margin-bottom: 24px;
+        }
+
+
+        .key-location {
+
+            color: #ffffff;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 17px;
+
+            line-height: 1.55;
 
             margin-bottom: 18px;
         }
@@ -395,39 +459,11 @@
             border:
                 1px solid #8b4c5a;
 
-            color: #e8b8c1;
+            color: #efc1c8;
 
             font-size: 16px;
 
             line-height: 1.5;
-        }
-
-
-        .success-message {
-
-            display: none;
-
-            margin-top: 25px;
-
-            color: #ffffff;
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 22px;
-
-            line-height: 1.6;
-
-            animation:
-                revelar 1s ease;
-        }
-
-
-        .success-message strong {
-
-            color: #ffffff;
         }
 
 
@@ -444,7 +480,7 @@
 
             font-size: 25px;
 
-            line-height: 1.55;
+            line-height: 1.6;
 
             color: #ffffff;
 
@@ -489,27 +525,27 @@
         }
 
 
-        .yes-button {
+        /* Los dos botones ahora tienen
+           exactamente el mismo color */
 
-            background: #d9c1c6;
+        .yes-button,
+        .no-button {
+
+            background: #e5d3d7;
 
             color: #321820;
         }
 
 
-        .no-button {
+        .yes-button:hover,
+        .no-button:hover {
 
-            background: #242024;
-
-            color: #cccccc;
-
-            border:
-                1px solid #5f5157 !important;
+            background: #f0e2e5;
         }
 
 
         /* =========================================
-           PREGUNTA SOBRE SIDRA
+           BEBIDA
         ========================================= */
 
         .drink-section {
@@ -523,6 +559,26 @@
         }
 
 
+        .party {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 58px;
+
+            line-height: 1;
+
+            margin-bottom: 8px;
+
+            animation:
+                festejo 0.8s ease;
+        }
+
+
         .drink-question {
 
             font-family:
@@ -530,13 +586,41 @@
                 "Times New Roman",
                 serif;
 
-            font-size: 22px;
+            font-size: 24px;
 
-            line-height: 1.6;
+            line-height: 1.65;
 
             color: #ffffff;
 
             margin-bottom: 22px;
+        }
+
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 25px;
+
+            color: #ffffff;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 23px;
+
+            line-height: 1.7;
+
+            animation:
+                revelar 1s ease;
+        }
+
+
+        .success-message strong {
+
+            color: #ffffff;
         }
 
 
@@ -603,6 +687,37 @@
         }
 
 
+        @keyframes festejo {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.6)
+                    rotate(-8deg);
+            }
+
+            60% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.15)
+                    rotate(6deg);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+            }
+        }
+
+
         /* =========================================
            CELULARES PEQUEÑOS
         ========================================= */
@@ -627,9 +742,21 @@
             }
 
 
+            .key-hint {
+
+                font-size: 18px;
+            }
+
+
             .invitation {
 
                 font-size: 22px;
+            }
+
+
+            .drink-question {
+
+                font-size: 21px;
             }
 
 
@@ -705,7 +832,8 @@
 
         Y hay otras que,
         cuando vuelven a aparecer,
-        nos hacen sonreír de una manera distinta.
+        nos hacen sonreír y emocionar
+        de una manera distinta.
 
         <br><br>
 
@@ -798,10 +926,30 @@
 
             Pero no puede aparecer todavía.
 
-            <br>
+            <br><br>
 
-            Primero hay que demostrar
-            que sabés cómo encontrarlo.
+            Las historias no se pueden recorrer
+            fríamente desde una pantalla.
+
+            <br><br>
+
+            Las historias son para revivirlas
+            con el cuerpo y con el corazón.
+
+        </div>
+
+
+        <div class="key-location">
+
+            La siguiente clave está escondida
+            donde empezó todo.
+
+            <br><br>
+
+            <strong>
+                Ingresá la clave que encontraste
+                escondida en la puerta del gimnasio.
+            </strong>
 
         </div>
 
@@ -833,7 +981,7 @@
 
             <br>
 
-            Probá otra vez.
+            Volvé a pensar dónde la encontraste...
 
         </div>
 
@@ -852,7 +1000,7 @@
 
         <div class="video-title">
 
-            ARCHIVO DE MEMORIA
+            UN RECUERDO MÁS
 
         </div>
 
@@ -891,7 +1039,7 @@
             class="button"
             onclick="mostrarInvitacion()">
 
-            TENGO UNA PROPUESTA PARA VOS
+            ESCUCHAR PROPUESTA
 
         </button>
 
@@ -910,9 +1058,22 @@
 
         <div class="invitation">
 
-            ¿Aceptás mi propuesta
-            de ir a tomar algo
-            a <strong>Materia Prima</strong>?
+            Te invito a tomar algo
+            en <strong>Materia Prima</strong>...
+
+            <br><br>
+
+            Sí, sí...
+
+            <br>
+
+            <strong>
+                ¡Así como estamos!
+            </strong>
+
+            <br><br>
+
+            ¿Aceptás?
 
         </div>
 
@@ -950,13 +1111,24 @@
             class="drink-section">
 
 
+            <span class="party">
+                🎉
+            </span>
+
+
             <div class="drink-question">
 
-                Buenísimo.
+                <strong>
+                    ¡Buenísimo!
+                </strong>
 
                 <br><br>
 
-                ¿Qué podríamos tomar
+                Ahora decime...
+
+                <br>
+
+                ¿qué podríamos tomar
                 en Materia Prima?
 
             </div>
@@ -998,11 +1170,15 @@
                 id="bebidaCorrecta"
                 class="success-message">
 
-                Perfecto.
+                <strong>
+                    ¡Perfecto!
+                </strong>
 
                 <br><br>
 
                 Además de buen gusto,
+
+                <br>
 
                 <strong>
                     tenés buena memoria.
@@ -1035,12 +1211,13 @@
 
 
     /* ==================================================
-       CONFIGURACIÓN
+       CONFIGURACIÓN DE VIDEOS
     ================================================== */
 
+
     /*
-     * VIDEO 2:
-     * https://www.youtube.com/shorts/y_jdW-yCff0
+     * VIDEO 2
+     * Short del gimnasio
      */
 
     const VIDEO_GIMNASIO_ID =
@@ -1048,8 +1225,8 @@
 
 
     /*
-     * VIDEO 3:
-     * https://www.youtube.com/shorts/ANuGH9qfzu0
+     * VIDEO 3
+     * Segundo Short
      */
 
     const VIDEO_RECUERDOS_ID =
@@ -1057,11 +1234,8 @@
 
 
     /*
-     * Clave provisoria para abrir
-     * el Video 3.
-     *
-     * Podés cambiar "recuerdo"
-     * por la palabra que quieras.
+     * CLAVE PROVISORIA
+     * PARA ABRIR EL VIDEO 3
      */
 
     const CLAVE_SEGUNDO_VIDEO =
@@ -1143,7 +1317,7 @@
 
 
     /* ==================================================
-       VERIFICAR CLAVE VIDEO 3
+       VERIFICAR CLAVE DEL VIDEO 3
     ================================================== */
 
     function verificarClaveVideo() {
@@ -1215,7 +1389,7 @@
 
 
     /* ==================================================
-       MOSTRAR INVITACIÓN
+       MOSTRAR PROPUESTA
     ================================================== */
 
     function mostrarInvitacion() {
@@ -1291,7 +1465,7 @@
 
 
     /* ==================================================
-       VERIFICAR SIDRA
+       VERIFICAR BEBIDA
     ================================================== */
 
     function verificarBebida() {
