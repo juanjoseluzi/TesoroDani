@@ -275,7 +275,7 @@
 
 
         /* =================================
-           BOTÓN
+           BOTONES
         ================================= */
 
         .button {
@@ -350,9 +350,11 @@
 
             width: 100%;
 
-            padding-bottom: 56.25%;
+            max-width: 360px;
 
-            height: 0;
+            margin: 0 auto;
+
+            aspect-ratio: 9 / 16;
 
             overflow: hidden;
 
@@ -378,6 +380,31 @@
             border: 0;
         }
 
+
+        /* =================================
+           BOTÓN COMENZAR RECORRIDO
+        ================================= */
+
+        .recorrido-button {
+
+            display: none;
+
+            margin-top: 30px;
+
+            background: #e3cdd1;
+
+            color: #351c22;
+
+            border: 1px solid #9b626b;
+
+            animation:
+                aparecer 1.5s ease;
+        }
+
+
+        /* =================================
+           ANIMACIÓN
+        ================================= */
 
         @keyframes aparecer {
 
@@ -607,7 +634,12 @@
         </div>
 
 
+        <!-- =============================
+             BOTÓN INICIAL
+        ============================== -->
+
         <button
+            id="continuarHistoria"
             class="button"
             type="button"
             onclick="mostrarVideo()">
@@ -616,6 +648,10 @@
 
         </button>
 
+
+        <!-- =============================
+             VIDEO
+        ============================== -->
 
         <div
             id="video"
@@ -632,7 +668,7 @@
             <div class="video-wrapper">
 
                 <iframe
-                    src="https://www.youtube.com/embed/dYAL6Bbq3PY"
+                    src="https://www.youtube.com/embed/rzEyZk1cOEg"
                     title="Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
@@ -641,8 +677,27 @@
             </div>
 
 
+            <!-- =========================
+                 BOTÓN SIGUIENTE
+            ========================== -->
+
+            <button
+                id="comenzarRecorrido"
+                class="button recorrido-button"
+                type="button"
+                onclick="comenzarRecorrido()">
+
+                COMENZAR RECORRIDO
+
+            </button>
+
+
         </div>
 
+
+        <!-- =============================
+             PIE
+        ============================== -->
 
         <div class="footer">
 
@@ -661,12 +716,17 @@
     <script>
 
 
+        /* =================================
+           MOSTRAR VIDEO
+        ================================= */
+
         function mostrarVideo() {
 
 
             /*
-             * Se abandona gradualmente
-             * la estética de expediente.
+             * Cambiar gradualmente
+             * del ambiente de expediente
+             * al ambiente de la historia.
              */
 
             document.body.classList.add("historia");
@@ -683,13 +743,31 @@
 
 
             /*
-             * Ocultar el botón.
+             * Ocultar el botón
+             * CONTINUAR HISTORIA.
              */
 
             const boton =
-                document.querySelector(".button");
+                document.getElementById("continuarHistoria");
 
             boton.style.display = "none";
+
+
+            /*
+             * Después de un pequeño momento,
+             * aparece el botón para continuar.
+             */
+
+            setTimeout(function() {
+
+                const comenzar =
+                    document.getElementById(
+                        "comenzarRecorrido"
+                    );
+
+                comenzar.style.display = "block";
+
+            }, 1200);
 
 
             /*
@@ -708,6 +786,18 @@
                 });
 
             }, 400);
+
+        }
+
+
+        /* =================================
+           COMENZAR RECORRIDO
+        ================================= */
+
+        function comenzarRecorrido() {
+
+            window.location.href =
+                "pagina3.html";
 
         }
 
