@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dani & Juan — Materia Prima</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #67333f 0%,
+                    #421f2a 38%,
+                    #1d0e14 74%,
+                    #090608 100%
+                );
+
+            color: #eeeeee;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 20px 15px 45px;
+
+            transition:
+                background 2.5s ease;
+        }
+
+
+        .document {
+
+            width: 100%;
+
+            max-width: 540px;
+
+            text-align: center;
+
+            padding: 18px 20px 40px;
+        }
+
+
+        /* =================================
+           ENCABEZADO
+        ================================= */
+
+        .place-label {
+
+            color: #c8aab2;
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 31px;
+
+            line-height: 1.3;
+
+            color: #ffffff;
+
+            margin-bottom: 25px;
+        }
+
+
+        .title strong {
+
+            color: #ffffff;
+        }
+
+
+        .intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.7;
+
+            color: #eadcdf;
+
+            margin-bottom: 28px;
+        }
+
+
+        .emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 34px;
+
+            line-height: 1;
+
+            margin: 5px 0 20px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .small-note {
+
+            color: #c3aab0;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =================================
+           VIDEO SHORT
+        ================================= */
+
+        .video-title {
+
+            color: #c5aab1;
+
+            font-size: 14px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .video-wrapper {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 360px;
+
+            margin: 0 auto;
+
+            aspect-ratio: 9 / 16;
+
+            background: #000000;
+
+            border:
+                1px solid #82525e;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.45);
+        }
+
+
+        .video-wrapper iframe {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 0;
+        }
+
+
+        /* =================================
+           BOTÓN
+        ================================= */
+
+        .button {
+
+            width: 100%;
+
+            min-height: 68px;
+
+            margin-top: 28px;
+
+            padding: 12px 18px;
+
+            border: none;
+
+            background: #e5d3d7;
+
+            color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                background .3s ease;
+        }
+
+
+        .button:active {
+
+            transform:
+                scale(0.98);
+        }
+
+
+        .button:hover {
+
+            background: #f0e2e5;
+        }
+
+
+        /* =================================
+           PREPARAÇÃO DOS PERMISSÕES
+        ================================= */
+
+        .permissions {
+
+            display: none;
+
+            margin-top: 45px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .permission-intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 24px;
+
+            line-height: 1.55;
+
+            color: #ffffff;
+
+            margin-bottom: 20px;
+        }
+
+
+        .permission-text {
+
+            color: #d3bdc2;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 28px;
+        }
+
+
+        .permission-list {
+
+            margin: 0 auto 25px;
+
+            width: 100%;
+
+            max-width: 390px;
+
+            text-align: left;
+
+            font-size: 17px;
+
+            line-height: 2;
+        }
+
+
+        .permission-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 6px 0;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            color: #decdd1;
+        }
+
+
+        .permission-status {
+
+            color: #9a858b;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            white-space: nowrap;
+        }
+
+
+        .permission-status.ok {
+
+            color: #57d66a;
+        }
+
+
+        .permission-status.no {
+
+            color: #dd7777;
+        }
+
+
+        .permission-message {
+
+            min-height: 55px;
+
+            color: #eadcdf;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        .continue-button {
+
+            display: none;
+
+            background: #cfadb6;
+
+            color: #321820;
+        }
+
+
+        /* =================================
+           ANIMACIÓN
+        ================================= */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =================================
+           CELULARES PEQUEÑOS
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            .title {
+
+                font-size: 27px;
+            }
+
+
+            .intro {
+
+                font-size: 20px;
+            }
+
+
+            .permission-intro {
+
+                font-size: 22px;
+            }
+
+
+            .button {
+
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="document">
+
+
+    <!-- =================================
+         PRESENTACIÓN
+    ================================= -->
+
+    <div class="place-label">
+
+        POSTA 04
+
+    </div>
+
+
+    <div class="emoji">
+        🍎🥂
+    </div>
+
+
+    <div class="title">
+
+        Ya estamos en
+
+        <br>
+
+        <strong>Materia Prima.</strong>
+
+    </div>
+
+
+    <div class="intro">
+
+        Busquemos una mesa libre,
+        acomodémonos un poquito...
+
+        <br><br>
+
+        y sigamos con nuestra historia.
+
+    </div>
+
+
+    <div class="small-note">
+
+        Pero antes...
+
+    </div>
+
+
+    <!-- =================================
+         VIDEO
+    ================================= -->
+
+    <div class="video-title">
+
+        UN PEQUEÑO RECUERDO
+
+    </div>
+
+
+    <div class="video-wrapper">
+
+        <iframe
+            src="https://www.youtube.com/embed/TNOClWRgltM"
+            title="Recuerdo de Materia Prima"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+    <!-- =================================
+         BOTÓN PEDIR OTRA SIDRA
+    ================================= -->
+
+    <button
+        id="sidraButton"
+        class="button"
+        type="button"
+        onclick="prepararRecorrido()">
+
+        PEDIR OTRA SIDRA
+
+    </button>
+
+
+    <!-- =================================
+         SECCIÓN DE PERMISOS
+    ================================= -->
+
+    <section
+        id="permissions"
+        class="permissions">
+
+
+        <div class="emoji">
+            🥂
+        </div>
+
+
+        <div class="permission-intro">
+
+            Muy bien.
+
+            <br>
+
+            Antes de seguir...
+
+        </div>
+
+
+        <div class="permission-text">
+
+            A partir de ahora el teléfono
+            va a formar parte del recorrido.
+
+            <br><br>
+
+            Es posible que tengas que
+            moverlo, girarlo, orientarlo...
+
+            <br>
+
+            y llegar físicamente
+            a algunos lugares.
+
+            <br><br>
+
+            Vamos a preparar todo.
+
+        </div>
+
+
+        <div class="permission-list">
+
+
+            <div class="permission-item">
+
+                <span>
+                    Movimiento
+                </span>
+
+                <span
+                    id="motionStatus"
+                    class="permission-status">
+
+                    PENDIENTE
+
+                </span>
+
+            </div>
+
+
+            <div class="permission-item">
+
+                <span>
+                    Orientación
+                </span>
+
+                <span
+                    id="orientationStatus"
+                    class="permission-status">
+
+                    PENDIENTE
+
+                </span>
+
+            </div>
+
+
+            <div class="permission-item">
+
+                <span>
+                    Brújula
+                </span>
+
+                <span
+                    id="compassStatus"
+                    class="permission-status">
+
+                    PENDIENTE
+
+                </span>
+
+            </div>
+
+
+            <div class="permission-item">
+
+                <span>
+                    Ubicación
+                </span>
+
+                <span
+                    id="locationStatus"
+                    class="permission-status">
+
+                    PENDIENTE
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            id="permissionMessage"
+            class="permission-message">
+
+            Preparando el recorrido...
+
+        </div>
+
+
+        <button
+            id="continueButton"
+            class="button continue-button"
+            type="button"
+            onclick="continuar4B()">
+
+            CONTINUAR
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =========================================
+       PREPARAR TODO
+    ========================================== */
+
+    async function prepararRecorrido() {
+
+
+        /*
+         * Ocultamos el botón inicial.
+         */
+
+        const sidraButton =
+            document.getElementById(
+                "sidraButton"
+            );
+
+
+        sidraButton.style.display =
+            "none";
+
+
+        /*
+         * Mostramos la sección
+         * de preparación.
+         */
+
+        const permissions =
+            document.getElementById(
+                "permissions"
+            );
+
+
+        permissions.style.display =
+            "block";
+
+
+        /*
+         * Bajamos hasta la sección.
+         */
+
+        setTimeout(function() {
+
+            permissions.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 250);
+
+
+        /*
+         * Pedimos MOVIMIENTO y ORIENTACIÓN
+         * dentro de la misma interacción.
+         *
+         * En navegadores como Safari/iPhone
+         * estas llamadas necesitan activarse
+         * por una acción del usuario.
+         */
+
+        const motionPromise =
+            solicitarMovimiento();
+
+
+        const orientationPromise =
+            solicitarOrientacion();
+
+
+        /*
+         * Geolocalización es independiente.
+         */
+
+        const locationPromise =
+            solicitarUbicacion();
+
+
+        /*
+         * Esperamos todas las solicitudes.
+         */
+
+        const resultados =
+            await Promise.all([
+                motionPromise,
+                orientationPromise,
+                locationPromise
+            ]);
+
+
+        const motion =
+            resultados[0];
+
+
+        const orientation =
+            resultados[1];
+
+
+        const location =
+            resultados[2];
+
+
+        /*
+         * Movimiento
+         */
+
+        actualizarEstado(
+            "motionStatus",
+            motion
+        );
+
+
+        /*
+         * Orientación
+         */
+
+        actualizarEstado(
+            "orientationStatus",
+            orientation
+        );
+
+
+        /*
+         * Brújula
+         *
+         * Si la orientación absoluta
+         * se pudo habilitar, consideramos
+         * la brújula disponible.
+         */
+
+        actualizarEstado(
+            "compassStatus",
+            orientation
+        );
+
+
+        /*
+         * Ubicación
+         */
+
+        actualizarEstado(
+            "locationStatus",
+            location
+        );
+
+
+        /*
+         * Mensaje final.
+         */
+
+        const message =
+            document.getElementById(
+                "permissionMessage"
+            );
+
+
+        const continueButton =
+            document.getElementById(
+                "continueButton"
+            );
+
+
+        /*
+         * Aunque algún permiso sea rechazado,
+         * no bloqueamos el recorrido entero.
+         *
+         * Las funciones que sí estén
+         * disponibles podrán utilizarse.
+         */
+
+        if (
+            motion === "LISTO" &&
+            orientation === "LISTO" &&
+            location === "LISTO"
+        ) {
+
+            message.innerHTML =
+                "Todo listo. 🥂" +
+                "<br><br>" +
+                "Ahora sí podemos empezar " +
+                "a hacer cosas un poquito " +
+                "menos normales con este teléfono.";
+
+        } else {
+
+            message.innerHTML =
+                "Casi todo listo. ❤️" +
+                "<br><br>" +
+                "Alguna función no pudo habilitarse, " +
+                "pero podemos continuar con las " +
+                "que estén disponibles.";
+
+        }
+
+
+        continueButton.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            continueButton.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 300);
+
+    }
+
+
+    /* =========================================
+       MOVIMIENTO
+    ========================================== */
+
+    async function solicitarMovimiento() {
+
+
+        try {
+
+
+            /*
+             * Safari/iPhone:
+             * requiere permiso explícito.
+             */
+
+            if (
+                typeof DeviceMotionEvent !==
+                "undefined" &&
+                typeof DeviceMotionEvent
+                    .requestPermission ===
+                "function"
+            ) {
+
+
+                const permission =
+                    await DeviceMotionEvent
+                        .requestPermission();
+
+
+                return (
+                    permission ===
+                    "granted"
+                )
+                    ? "LISTO"
+                    : "NO";
+
+
+            }
+
+
+            /*
+             * Android y navegadores
+             * que no requieren
+             * requestPermission().
+             */
+
+            if (
+                "ondevicemotion" in window
+            ) {
+
+                return "LISTO";
+
+            }
+
+
+            return "NO";
+
+
+        } catch (error) {
+
+            return "NO";
+
+        }
+
+    }
+
+
+    /* =========================================
+       ORIENTACIÓN + BRÚJULA
+    ========================================== */
+
+    async function solicitarOrientacion() {
+
+
+        try {
+
+
+            /*
+             * En navegadores que soportan
+             * requestPermission(), usamos TRUE
+             * para pedir orientación absoluta,
+             * incluyendo magnetómetro/brújula.
+             */
+
+            if (
+                typeof DeviceOrientationEvent !==
+                "undefined" &&
+                typeof DeviceOrientationEvent
+                    .requestPermission ===
+                "function"
+            ) {
+
+
+                const permission =
+                    await DeviceOrientationEvent
+                        .requestPermission(
+                            true
+                        );
+
+
+                return (
+                    permission ===
+                    "granted"
+                )
+                    ? "LISTO"
+                    : "NO";
+
+
+            }
+
+
+            /*
+             * Navegadores que no requieren
+             * permiso explícito.
+             */
+
+            if (
+                "ondeviceorientationabsolute"
+                    in window ||
+                "ondeviceorientation"
+                    in window
+            ) {
+
+                return "LISTO";
+
+            }
+
+
+            return "NO";
+
+
+        } catch (error) {
+
+            return "NO";
+
+        }
+
+    }
+
+
+    /* =========================================
+       GEOLOCALIZACIÓN
+    ========================================== */
+
+    function solicitarUbicacion() {
+
+
+        return new Promise(
+            function(resolve) {
+
+
+                if (
+                    !navigator.geolocation
+                ) {
+
+                    resolve("NO");
+
+                    return;
+
+                }
+
+
+                navigator
+                    .geolocation
+                    .getCurrentPosition(
+
+                        function(position) {
+
+                            /*
+                             * Ubicación concedida.
+                             */
+
+                            resolve("LISTO");
+
+                        },
+
+
+                        function(error) {
+
+                            /*
+                             * Permiso rechazado,
+                             * timeout o ubicación
+                             * no disponible.
+                             */
+
+                            resolve("NO");
+
+                        },
+
+
+                        {
+
+                            enableHighAccuracy:
+                                true,
+
+                            timeout:
+                                10000,
+
+                            maximumAge:
+                                0
+
+                        }
+
+                    );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       ACTUALIZAR ESTADO
+    ========================================== */
+
+    function actualizarEstado(
+        id,
+        estado
+    ) {
+
+
+        const element =
+            document.getElementById(id);
+
+
+        element.textContent =
+            estado;
+
+
+        element.classList.remove(
+            "ok",
+            "no"
+        );
+
+
+        if (
+            estado === "LISTO"
+        ) {
+
+            element.classList.add(
+                "ok"
+            );
+
+        }
+
+
+        if (
+            estado === "NO"
+        ) {
+
+            element.classList.add(
+                "no"
+            );
+
+        }
+
+    }
+
+
+    /* =========================================
+       PASAR A 4B
+    ========================================== */
+
+    function continuar4B() {
+
+        window.location.href =
+            "pagina4b.html";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
