@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dani & Juan — Materia Prima</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #783846 0%,
+                    #4c242f 38%,
+                    #241017 72%,
+                    #0b0608 100%
+                );
+
+            color: #eeeeee;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 20px 15px 50px;
+
+            transition:
+                background 2s ease;
+        }
+
+
+        .document {
+
+            width: 100%;
+
+            max-width: 540px;
+
+            text-align: center;
+
+            padding: 18px 20px 40px;
+        }
+
+
+        /* =========================================
+           ENCABEZADO
+        ========================================= */
+
+        .place-label {
+
+            color: #cdaab3;
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .big-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 64px;
+
+            line-height: 1;
+
+            margin: 10px 0 22px;
+
+            animation:
+                flotar 2.5s ease-in-out infinite;
+        }
+
+
+        .title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 31px;
+
+            line-height: 1.35;
+
+            color: #ffffff;
+
+            margin-bottom: 22px;
+        }
+
+
+        .title strong {
+
+            color: #ffffff;
+        }
+
+
+        .intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.7;
+
+            color: #eadcdf;
+
+            margin-bottom: 30px;
+        }
+
+
+        .emotional {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.7;
+
+            color: #f0dfe3;
+
+            margin: 30px 4px;
+        }
+
+
+        /* =========================================
+           RASPADITA
+        ========================================= */
+
+        .scratch-section {
+
+            margin-top: 42px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .scratch-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 27px;
+
+            line-height: 1.5;
+
+            color: #ffffff;
+
+            margin-bottom: 12px;
+        }
+
+
+        .scratch-subtitle {
+
+            color: #e0c8ce;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 28px;
+        }
+
+
+        .kiss-instruction {
+
+            margin: 25px 5px;
+
+            padding: 20px 14px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.15);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.15);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.7;
+
+            color: #f0e1e5;
+        }
+
+
+        .kiss-instruction strong {
+
+            color: #ffffff;
+        }
+
+
+        .kiss-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 72px;
+
+            line-height: 1;
+
+            margin: 10px 0 18px;
+
+            animation:
+                beso 1.4s ease-in-out infinite;
+        }
+
+
+        /* =========================================
+           ÁREA RASPADITA
+        ========================================= */
+
+        .scratch-area {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 360px;
+
+            aspect-ratio: 1 / 1;
+
+            margin: 0 auto;
+
+            overflow: hidden;
+
+            border:
+                2px solid #93626d;
+
+            background: #111111;
+
+            box-shadow:
+                0 16px 40px rgba(0,0,0,0.5);
+
+            touch-action: none;
+
+            user-select: none;
+        }
+
+
+        .scratch-image {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            user-select: none;
+
+            pointer-events: none;
+        }
+
+
+        #scratchCanvas {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            touch-action: none;
+
+            cursor: crosshair;
+        }
+
+
+        /* =========================================
+           CONTADOR DE BESOS
+        ========================================= */
+
+        .kiss-counter {
+
+            margin-top: 20px;
+
+            color: #e1c9ce;
+
+            font-size: 17px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .kiss-number {
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        .progress-text {
+
+            margin-top: 8px;
+
+            color: #aa8c94;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           BOTÓN BESOS SUFICIENTES
+        ========================================= */
+
+        #enoughKissesButton {
+
+            display: none;
+
+            margin-top: 28px;
+
+            background: #efdde1;
+
+            color: #321820;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        /* =========================================
+           CLAVE COORDINAMOS
+        ========================================= */
+
+        .key-section {
+
+            display: none;
+
+            margin-top: 45px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .key-intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 24px;
+
+            line-height: 1.65;
+
+            color: #ffffff;
+
+            margin-bottom: 23px;
+        }
+
+
+        .key-hint {
+
+            color: #d6bec4;
+
+            font-size: 16px;
+
+            line-height: 1.65;
+
+            margin-bottom: 22px;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 64px;
+
+            background:
+                rgba(0,0,0,0.42);
+
+            border:
+                2px solid #855965;
+
+            color: #ffffff;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 22px;
+
+            text-align: center;
+
+            padding: 10px 14px;
+
+            outline: none;
+
+            border-radius: 0;
+        }
+
+
+        input:focus {
+
+            border-color: #c39aa5;
+
+            box-shadow:
+                0 0 12px rgba(195,154,165,0.15);
+        }
+
+
+        .key-button {
+
+            width: 100%;
+
+            height: 68px;
+
+            margin-top: 18px;
+
+            border: none;
+
+            background: #e5d3d7;
+
+            color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+        }
+
+
+        .key-error {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 14px;
+
+            border:
+                1px solid #8a4e5c;
+
+            color: #efc3cb;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================
+           VIDEO
+        ========================================= */
+
+        .video-section {
+
+            display: none;
+
+            margin-top: 45px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .video-title {
+
+            color: #d0afb7;
+
+            font-size: 14px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .video-wrapper {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 360px;
+
+            margin: 0 auto;
+
+            aspect-ratio: 9 / 16;
+
+            overflow: hidden;
+
+            background: #000000;
+
+            border:
+                1px solid #8b5e68;
+
+            box-shadow:
+                0 16px 40px rgba(0,0,0,0.5);
+        }
+
+
+        .video-wrapper iframe {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 0;
+        }
+
+
+        /* =========================================
+           CLAVE MP2
+        ========================================= */
+
+        .window-clue {
+
+            margin-top: 32px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.7;
+
+            color: #eadbdf;
+        }
+
+
+        .window-clue strong {
+
+            color: #ffffff;
+        }
+
+
+        .mp2-section {
+
+            margin-top: 28px;
+        }
+
+
+        .mp2-button {
+
+            margin-top: 18px;
+        }
+
+
+        /* =========================================
+           ANIMACIONES
+        ========================================= */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes beso {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1)
+                    rotate(-3deg);
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.1)
+                    rotate(3deg);
+
+            }
+        }
+
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-7px);
+
+            }
+        }
+
+
+        /* =========================================
+           CELULARES PEQUEÑOS
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .title {
+
+                font-size: 27px;
+            }
+
+
+            .intro {
+
+                font-size: 20px;
+            }
+
+
+            .emotional {
+
+                font-size: 20px;
+            }
+
+
+            .scratch-title {
+
+                font-size: 24px;
+            }
+
+
+            .kiss-instruction {
+
+                font-size: 19px;
+            }
+
+
+            .big-emoji {
+
+                font-size: 58px;
+            }
+
+
+            .kiss-emoji {
+
+                font-size: 64px;
+            }
+
+
+            .key-intro {
+
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="document">
+
+
+    <!-- =====================================
+         ENCABEZADO
+    ====================================== -->
+
+    <div class="place-label">
+
+        MATERIA PRIMA · POSTA 04B
+
+    </div>
+
+
+    <div class="big-emoji">
+
+        🥂❤️
+
+    </div>
+
+
+    <div class="title">
+
+        Y ahora estamos
+        <br>
+        <strong>acá.</strong>
+
+    </div>
+
+
+    <div class="intro">
+
+        En Materia Prima.
+
+        <br><br>
+
+        El lugar donde aquella noche
+        pasó algo que todavía recuerdo
+        con una sonrisa.
+
+    </div>
+
+
+    <!-- =====================================
+         RASPADITA
+    ====================================== -->
+
+    <section class="scratch-section">
+
+
+        <div class="scratch-title">
+
+            Hay un recuerdo
+            que quiero que descubras.
+
+        </div>
+
+
+        <div class="kiss-emoji">
+
+            💋
+
+        </div>
+
+
+        <div class="kiss-instruction">
+
+            Esa noche hubo un primer beso.
+
+            <br><br>
+
+            Y si queremos recuperar
+            lo que vino después...
+
+            <br><br>
+
+            <strong>
+                vas a tener que besar
+                esta imagen.
+            </strong>
+
+            <br><br>
+
+            Como aquella noche.
+
+        </div>
+
+
+        <div class="scratch-subtitle">
+
+            Apoyá los labios sobre la pantalla
+            y recorré la imagen.
+
+            <br><br>
+
+            Cada beso va a descubrir
+            un pedacito del recuerdo.
+
+        </div>
+
+
+        <div class="scratch-area">
+
+
+            <img
+                class="scratch-image"
+                src="MP2.jpg"
+                alt="Recuerdo de Materia Prima"
+            >
+
+
+            <canvas
+                id="scratchCanvas">
+            </canvas>
+
+
+        </div>
+
+
+        <div class="kiss-counter">
+
+            BESOS DADOS:
+
+            <span
+                id="kissNumber"
+                class="kiss-number">
+
+                0
+
+            </span>
+
+        </div>
+
+
+        <div
+            id="progressText"
+            class="progress-text">
+
+            El recuerdo todavía está escondido...
+
+        </div>
+
+
+        <button
+            id="enoughKissesButton"
+            class="key-button"
+            onclick="mostrarClave()">
+
+            YA DI LOS SUFICIENTES BESOS
+
+        </button>
+
+
+    </section>
+
+
+    <!-- =====================================
+         CLAVE COORDINAMOS
+    ====================================== -->
+
+    <section
+        id="keySection"
+        class="key-section">
+
+
+        <div class="key-intro">
+
+            Y después del beso...
+
+            <br><br>
+
+            nos dijimos algo.
+
+        </div>
+
+
+        <div class="key-hint">
+
+            Sin ese beso,
+            probablemente no se habría dicho.
+
+            <br><br>
+
+            Y sin eso que se dijo...
+
+            <br>
+
+            <strong>
+                esta historia no habría seguido igual.
+            </strong>
+
+        </div>
+
+
+        <div class="key-hint">
+
+            La palabra está escondida
+            en la imagen que acabás de descubrir.
+
+        </div>
+
+
+        <input
+            type="text"
+            id="coordinamosInput"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="Ingresá la palabra..."
+        >
+
+
+        <button
+            class="key-button"
+            onclick="verificarCoordinamos()">
+
+            CONTINUAR
+
+        </button>
+
+
+        <div
+            id="coordinamosError"
+            class="key-error">
+
+            Mmm...
+
+            <br><br>
+
+            Estuviste bastante cerca.
+
+            <br>
+
+            Mirá otra vez la imagen.
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         VIDEO FINAL
+    ====================================== -->
+
+    <section
+        id="videoSection"
+        class="video-section">
+
+
+        <div class="video-title">
+
+            RECUERDO RECUPERADO
+
+        </div>
+
+
+        <div class="video-wrapper">
+
+
+            <iframe
+                src="https://www.youtube.com/embed/N6PzoUk9TaI"
+                title="Recuerdo de Materia Prima"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+
+        </div>
+
+
+        <div class="window-clue">
+
+            Bien.
+
+            <br><br>
+
+            Ahora tengo una última cosa
+            que decirte desde acá.
+
+            <br><br>
+
+            Y después...
+
+            <strong>
+                vas a tener que venir
+                personalmente a Materia Prima.
+            </strong>
+
+            <br><br>
+
+            Mirá por la ventana.
+
+            <br>
+
+            Hay una clave esperándote ahí.
+
+        </div>
+
+
+        <!-- =================================
+             CLAVE MP2
+        ================================== -->
+
+        <div class="mp2-section">
+
+
+            <input
+                type="text"
+                id="mp2Input"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                placeholder="Ingresá la clave..."
+            >
+
+
+            <button
+                class="key-button mp2-button"
+                onclick="verificarMP2()">
+
+                ABRIR SIGUIENTE ETAPA
+
+            </button>
+
+
+            <div
+                id="mp2Error"
+                class="key-error">
+
+                Esa no es la clave.
+
+                <br><br>
+
+                Mirá bien por la ventana...
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =================================================
+       RASPADITA
+    ================================================= */
+
+
+    const canvas =
+        document.getElementById(
+            "scratchCanvas"
+        );
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    const scratchArea =
+        document.querySelector(
+            ".scratch-area"
+        );
+
+
+    let isScratching = false;
+
+
+    let scratchCount = 0;
+
+
+    let kissCount = 0;
+
+
+    let enough = false;
+
+
+    let lastX = null;
+
+
+    let lastY = null;
+
+
+    function prepararCanvas() {
+
+
+        const rect =
+            scratchArea.getBoundingClientRect();
+
+
+        const ratio =
+            window.devicePixelRatio || 1;
+
+
+        canvas.width =
+            rect.width * ratio;
+
+
+        canvas.height =
+            rect.height * ratio;
+
+
+        canvas.style.width =
+            rect.width + "px";
+
+
+        canvas.style.height =
+            rect.height + "px";
+
+
+        ctx.setTransform(
+            ratio,
+            0,
+            0,
+            ratio,
+            0,
+            0
+        );
+
+
+        /*
+         * Superficie metálica
+         * de la raspadita.
+         */
+
+        const gradient =
+            ctx.createLinearGradient(
+                0,
+                0,
+                rect.width,
+                rect.height
+            );
+
+
+        gradient.addColorStop(
+            0,
+            "#8f8a8b"
+        );
+
+
+        gradient.addColorStop(
+            0.25,
+            "#c9c5c5"
+        );
+
+
+        gradient.addColorStop(
+            0.5,
+            "#aaa6a7"
+        );
+
+
+        gradient.addColorStop(
+            0.75,
+            "#d1cece"
+        );
+
+
+        gradient.addColorStop(
+            1,
+            "#8b8788"
+        );
+
+
+        ctx.fillStyle =
+            gradient;
+
+
+        ctx.fillRect(
+            0,
+            0,
+            rect.width,
+            rect.height
+        );
+
+
+        /*
+         * Texto de la raspadita.
+         */
+
+        ctx.fillStyle =
+            "rgba(60,55,57,0.72)";
+
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.textBaseline =
+            "middle";
+
+
+        ctx.font =
+            "bold 20px Courier New";
+
+
+        ctx.fillText(
+            "BESAME",
+            rect.width / 2,
+            rect.height / 2 - 18
+        );
+
+
+        ctx.font =
+            "16px Courier New";
+
+
+        ctx.fillText(
+            "PARA DESCUBRIR",
+            rect.width / 2,
+            rect.height / 2 + 16
+        );
+
+
+        /*
+         * Rayitas de textura.
+         */
+
+        ctx.strokeStyle =
+            "rgba(70,70,70,0.18)";
+
+
+        ctx.lineWidth =
+            1;
+
+
+        for (
+            let y = 4;
+            y < rect.height;
+            y += 10
+        ) {
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                0,
+                y
+            );
+
+            ctx.lineTo(
+                rect.width,
+                y
+            );
+
+            ctx.stroke();
+
+        }
+
+    }
+
+
+    function obtenerPosicion(event) {
+
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+
+        let clientX;
+        let clientY;
+
+
+        if (
+            event.touches &&
+            event.touches.length > 0
+        ) {
+
+            clientX =
+                event.touches[0].clientX;
+
+            clientY =
+                event.touches[0].clientY;
+
+        } else {
+
+            clientX =
+                event.clientX;
+
+            clientY =
+                event.clientY;
+
+        }
+
+
+        return {
+
+            x:
+                clientX - rect.left,
+
+            y:
+                clientY - rect.top
+
+        };
+
+    }
+
+
+    function descubrir(x, y) {
+
+
+        /*
+         * Descubrimos un círculo
+         * relativamente grande.
+         */
+
+        ctx.save();
+
+
+        ctx.globalCompositeOperation =
+            "destination-out";
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            x,
+            y,
+            27,
+            0,
+            Math.PI * 2
+        );
+
+
+        ctx.fill();
+
+
+        /*
+         * La "besada" sigue un poco
+         * la dirección del movimiento.
+         */
+
+        ctx.restore();
+
+
+        scratchCount++;
+
+
+        /*
+         * Cada nueva interacción
+         * significativa cuenta como
+         * un beso.
+         */
+
+        if (
+            scratchCount % 18 === 0
+        ) {
+
+            kissCount++;
+
+
+            document
+                .getElementById(
+                    "kissNumber"
+                )
+                .textContent =
+                kissCount;
+
+        }
+
+
+        /*
+         * El umbral se alcanza
+         * deliberadamente después
+         * de varias pasadas.
+         */
+
+        if (
+            scratchCount >= 110 &&
+            !enough
+        ) {
+
+            enough = true;
+
+            revelarBotonBesos();
+
+        }
+
+
+        actualizarProgreso();
+
+    }
+
+
+    function actualizarProgreso() {
+
+
+        const porcentaje =
+            Math.min(
+                100,
+                Math.round(
+                    (scratchCount / 110) * 100
+                )
+            );
+
+
+        const texto =
+            document.getElementById(
+                "progressText"
+            );
+
+
+        if (
+            porcentaje < 25
+        ) {
+
+            texto.textContent =
+                "Apenas empezamos...";
+
+        } else if (
+            porcentaje < 50
+        ) {
+
+            texto.textContent =
+                "Se empieza a descubrir algo...";
+
+        } else if (
+            porcentaje < 65
+        ) {
+
+            texto.textContent =
+                "Ya estamos bastante cerca...";
+
+        } else if (
+            porcentaje < 100
+        ) {
+
+            texto.textContent =
+                "Creo que ya fueron suficientes besos...";
+
+        } else {
+
+            texto.textContent =
+                "RECUERDO COMPLETAMENTE DESCUBIERTO";
+
+        }
+
+    }
+
+
+    function iniciarRaspadita(event) {
+
+
+        isScratching = true;
+
+
+        const posicion =
+            obtenerPosicion(event);
+
+
+        lastX =
+            posicion.x;
+
+
+        lastY =
+            posicion.y;
+
+
+        descubrir(
+            posicion.x,
+            posicion.y
+        );
+
+
+        event.preventDefault();
+
+    }
+
+
+    function continuarRaspadita(event) {
+
+
+        if (
+            !isScratching
+        ) {
+
+            return;
+
+        }
+
+
+        const posicion =
+            obtenerPosicion(event);
+
+
+        /*
+         * Creamos pequeños pasos
+         * entre el punto anterior
+         * y el actual para que no
+         * queden huecos.
+         */
+
+        if (
+            lastX !== null &&
+            lastY !== null
+        ) {
+
+
+            const dx =
+                posicion.x - lastX;
+
+
+            const dy =
+                posicion.y - lastY;
+
+
+            const distancia =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            const pasos =
+                Math.max(
+                    1,
+                    Math.ceil(
+                        distancia / 12
+                    )
+                );
+
+
+            for (
+                let i = 1;
+                i <= pasos;
+                i++
+            ) {
+
+
+                const x =
+                    lastX +
+                    (dx * i / pasos);
+
+
+                const y =
+                    lastY +
+                    (dy * i / pasos);
+
+
+                descubrir(
+                    x,
+                    y
+                );
+
+            }
+
+        }
+
+
+        lastX =
+            posicion.x;
+
+
+        lastY =
+            posicion.y;
+
+
+        event.preventDefault();
+
+    }
+
+
+    function terminarRaspadita() {
+
+
+        isScratching =
+            false;
+
+
+        lastX =
+            null;
+
+
+        lastY =
+            null;
+
+    }
+
+
+    canvas.addEventListener(
+        "touchstart",
+        iniciarRaspadita,
+        { passive: false }
+    );
+
+
+    canvas.addEventListener(
+        "touchmove",
+        continuarRaspadita,
+        { passive: false }
+    );
+
+
+    canvas.addEventListener(
+        "touchend",
+        terminarRaspadita
+    );
+
+
+    canvas.addEventListener(
+        "mousedown",
+        iniciarRaspadita
+    );
+
+
+    canvas.addEventListener(
+        "mousemove",
+        continuarRaspadita
+    );
+
+
+    canvas.addEventListener(
+        "mouseup",
+        terminarRaspadita
+    );
+
+
+    canvas.addEventListener(
+        "mouseleave",
+        terminarRaspadita
+    );
+
+
+    function revelarBotonBesos() {
+
+
+        const boton =
+            document.getElementById(
+                "enoughKissesButton"
+            );
+
+
+        boton.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            boton.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+        }, 300);
+
+    }
+
+
+    /* =================================================
+       MOSTRAR CLAVE
+    ================================================= */
+
+
+    function mostrarClave() {
+
+
+        const section =
+            document.getElementById(
+                "keySection"
+            );
+
+
+        section.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            section.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+        }, 250);
+
+    }
+
+
+    /* =================================================
+       VERIFICAR COORDINAMOS
+    ================================================= */
+
+
+    function verificarCoordinamos() {
+
+
+        const campo =
+            document.getElementById(
+                "coordinamosInput"
+            );
+
+
+        const error =
+            document.getElementById(
+                "coordinamosError"
+            );
+
+
+        /*
+         * Permitimos:
+         *
+         * coordinamos
+         * coordinamos.
+         * coordinamos...
+         *
+         * y cualquier combinación
+         * de mayúsculas/minúsculas.
+         */
+
+        let respuesta =
+            campo.value
+                .toLowerCase()
+                .trim();
+
+
+        respuesta =
+            respuesta.replace(
+                /\.+$/g,
+                ""
+            );
+
+
+        if (
+            respuesta ===
+            "coordinamos"
+        ) {
+
+
+            error.style.display =
+                "none";
+
+
+            const video =
+                document.getElementById(
+                    "videoSection"
+                );
+
+
+            video.style.display =
+                "block";
+
+
+            setTimeout(function() {
+
+                video.scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+
+                });
+
+            }, 250);
+
+
+        } else {
+
+
+            error.style.display =
+                "block";
+
+
+            campo.focus();
+
+        }
+
+    }
+
+
+    /* =================================================
+       VERIFICAR MP2
+    ================================================= */
+
+
+    function verificarMP2() {
+
+
+        const campo =
+            document.getElementById(
+                "mp2Input"
+            );
+
+
+        const error =
+            document.getElementById(
+                "mp2Error"
+            );
+
+
+        const respuesta =
+            campo.value
+                .toLowerCase()
+                .trim();
+
+
+        if (
+            respuesta === "mp2"
+        ) {
+
+
+            error.style.display =
+                "none";
+
+
+            window.location.href =
+                "pagina5.html";
+
+
+        } else {
+
+
+            error.style.display =
+                "block";
+
+
+            campo.focus();
+
+        }
+
+    }
+
+
+    /* =================================================
+       ENTER EN COORDINAMOS
+    ================================================= */
+
+
+    document
+        .getElementById(
+            "coordinamosInput"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    verificarCoordinamos();
+
+                }
+
+            }
+        );
+
+
+    /* =================================================
+       ENTER EN MP2
+    ================================================= */
+
+
+    document
+        .getElementById(
+            "mp2Input"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    verificarMP2();
+
+                }
+
+            }
+        );
+
+
+    /* =================================================
+       PREPARAR RASPADITA
+    ================================================= */
+
+
+    window.addEventListener(
+        "load",
+        function() {
+
+            prepararCanvas();
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function() {
+
+            /*
+             * No reiniciamos la capa si
+             * ya empezó a raspar para no
+             * borrar el progreso.
+             */
+
+            if (
+                scratchCount === 0
+            ) {
+
+                prepararCanvas();
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
