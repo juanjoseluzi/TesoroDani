@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dani & Juan — El árbol</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #824552 0%,
+                    #542832 40%,
+                    #29131b 73%,
+                    #0d080b 100%
+                );
+
+            color: #eeeeee;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 22px 15px 55px;
+
+            transition:
+                background 3s ease;
+        }
+
+
+        .document {
+
+            width: 100%;
+
+            max-width: 540px;
+
+            text-align: center;
+
+            padding: 18px 20px 45px;
+        }
+
+
+        /* ==========================================
+           ENCABEZADO
+        ========================================== */
+
+        .place-label {
+
+            color: #d1b1b9;
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .tree-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 88px;
+
+            line-height: 1;
+
+            margin: 8px 0 27px;
+
+            animation:
+                flotar 3s ease-in-out infinite;
+        }
+
+
+        .title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 31px;
+
+            line-height: 1.4;
+
+            color: #ffffff;
+
+            margin-bottom: 28px;
+        }
+
+
+        .title strong {
+
+            color: #ffffff;
+        }
+
+
+        /* ==========================================
+           INTRO
+        ========================================== */
+
+        .intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.8;
+
+            color: #eadcdf;
+
+            margin-bottom: 30px;
+        }
+
+
+        .mystery {
+
+            margin: 32px 0;
+
+            padding: 25px 15px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.14);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.14);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 23px;
+
+            line-height: 1.75;
+
+            color: #f1e3e6;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .mystery strong {
+
+            color: #ffffff;
+        }
+
+
+        .mystery-small {
+
+            margin-top: 22px;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            color: #b99ba3;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* ==========================================
+           SECCIÓN DE UBICACIÓN
+        ========================================== */
+
+        .location-section {
+
+            margin-top: 35px;
+
+            padding: 24px 14px;
+
+            border:
+                1px solid rgba(255,255,255,0.10);
+
+            background:
+                rgba(0,0,0,0.13);
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .location-status {
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            color: #d0b8be;
+
+            margin-bottom: 20px;
+        }
+
+
+        .location-spinner {
+
+            display: inline-block;
+
+            width: 28px;
+
+            height: 28px;
+
+            border:
+                3px solid rgba(255,255,255,0.18);
+
+            border-top-color:
+                #c86a7b;
+
+            border-radius: 50%;
+
+            animation:
+                girar 1s linear infinite;
+
+            margin-bottom: 15px;
+        }
+
+
+        .location-found {
+
+            display: none;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .location-found-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 82px;
+
+            line-height: 1;
+
+            margin: 5px 0 20px;
+        }
+
+
+        .location-found-title {
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            color: #ffffff;
+
+            margin-bottom: 24px;
+        }
+
+
+        .location-found-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.75;
+
+            color: #eadcdf;
+
+        }
+
+
+        .location-found-text strong {
+
+            color: #ffffff;
+        }
+
+
+        /* ==========================================
+           BOTONES
+        ========================================== */
+
+        .button {
+
+            width: 100%;
+
+            min-height: 68px;
+
+            margin-top: 28px;
+
+            padding: 12px 18px;
+
+            border: none;
+
+            background: #e5d3d7;
+
+            color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                background .3s ease;
+        }
+
+
+        .button:active {
+
+            transform:
+                scale(0.98);
+        }
+
+
+        .button:hover {
+
+            background: #f0e2e5;
+        }
+
+
+        /* ==========================================
+           CÓDIGO DEL ÁRBOL
+        ========================================== */
+
+        .tree-code-section {
+
+            display: none;
+
+            margin-top: 43px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .tree-code-intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 23px;
+
+            line-height: 1.75;
+
+            color: #ffffff;
+
+            margin-bottom: 24px;
+        }
+
+
+        .tree-code-small {
+
+            color: #c9afb6;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            margin-bottom: 22px;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 64px;
+
+            background:
+                rgba(0,0,0,0.40);
+
+            border:
+                2px solid #865a66;
+
+            color: #ffffff;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 23px;
+
+            text-align: center;
+
+            padding: 10px 14px;
+
+            outline: none;
+
+            border-radius: 0;
+        }
+
+
+        input:focus {
+
+            border-color: #c79eaa;
+
+            box-shadow:
+                0 0 12px rgba(199,158,170,0.15);
+        }
+
+
+        .code-error {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 13px;
+
+            border:
+                1px solid #8d4f5c;
+
+            color: #edc0c8;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ==========================================
+           FINAL
+        ========================================== */
+
+        .final-section {
+
+            display: none;
+
+            margin-top: 48px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .final-warning {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 23px;
+
+            line-height: 1.7;
+
+            color: #eadcdf;
+
+            margin-bottom: 25px;
+        }
+
+
+        .final-warning strong {
+
+            color: #ffffff;
+        }
+
+
+        /* ==========================================
+           BOTÓN FINAL DESLIZABLE
+        ========================================== */
+
+        .final-button-wrap {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 76px;
+
+            margin-top: 25px;
+
+            overflow: hidden;
+        }
+
+
+        .final-button {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 76px;
+
+            margin: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #d6c0c5,
+                    #eadde0
+                );
+
+            color: #321820;
+
+            transition:
+                background 0.4s ease,
+                color 0.4s ease;
+        }
+
+
+        .final-button.changed {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #9f4657,
+                    #c66b7b
+                );
+
+            color: #ffffff;
+        }
+
+
+        .swipe-message {
+
+            margin-top: 12px;
+
+            color: #ac929a;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ==========================================
+           HISTORIA NO TERMINA
+        ========================================== */
+
+        .love-section {
+
+            display: none;
+
+            margin-top: 48px;
+
+            animation:
+                aparecer 1.2s ease;
+        }
+
+
+        .love-heart {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 105px;
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+
+            animation:
+                latir 1.5s ease-in-out infinite;
+        }
+
+
+        .love-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            color: #ffffff;
+
+            margin-bottom: 30px;
+        }
+
+
+        .love-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.85;
+
+            color: #eedfe3;
+
+        }
+
+
+        .love-text strong {
+
+            color: #ffffff;
+        }
+
+
+        .love-signature {
+
+            margin-top: 35px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 24px;
+
+            line-height: 1.6;
+
+            color: #ffffff;
+
+            font-style: italic;
+        }
+
+
+        /* ==========================================
+           CUMPLEAÑOS
+        ========================================== */
+
+        .birthday-section {
+
+            display: none;
+
+            margin-top: 55px;
+
+            padding-top: 35px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.14);
+
+            animation:
+                aparecer 1.3s ease;
+        }
+
+
+        .party {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 62px;
+
+            line-height: 1;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .birthday-heart {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 105px;
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+
+            animation:
+                latir 1.5s ease-in-out infinite;
+        }
+
+
+        .birthday-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            line-height: 1.35;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 14px rgba(255,255,255,0.08);
+        }
+
+
+        .birthday-subtitle {
+
+            margin-top: 20px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.6;
+
+            color: #eadcdf;
+        }
+
+
+        /* ==========================================
+           ATAJO DISCRETO
+        ========================================== */
+
+        .shortcut {
+
+            margin-top: 65px;
+
+            font-size: 11px;
+
+            color: rgba(255,255,255,0.18);
+
+        }
+
+
+        .shortcut-button {
+
+            background: transparent;
+
+            border: none;
+
+            color: inherit;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            padding: 5px;
+
+        }
+
+
+        .shortcut-input {
+
+            display: none;
+
+            margin-top: 8px;
+
+        }
+
+
+        .shortcut-input input {
+
+            height: 44px;
+
+            font-size: 16px;
+
+            opacity: 0.7;
+        }
+
+
+        .shortcut-error {
+
+            display: none;
+
+            color: #9d6c76;
+
+            font-size: 11px;
+
+            margin-top: 6px;
+
+        }
+
+
+        /* ==========================================
+           ANIMACIONES
+        ========================================== */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-8px);
+
+            }
+        }
+
+
+        @keyframes latir {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.09);
+
+            }
+        }
+
+
+        @keyframes girar {
+
+            from {
+
+                transform:
+                    rotate(0deg);
+
+            }
+
+            to {
+
+                transform:
+                    rotate(360deg);
+
+            }
+        }
+
+
+        /* ==========================================
+           CELULARES PEQUEÑOS
+        ========================================== */
+
+        @media (max-width: 380px) {
+
+            .title {
+
+                font-size: 27px;
+            }
+
+
+            .intro {
+
+                font-size: 20px;
+            }
+
+
+            .mystery {
+
+                font-size: 21px;
+            }
+
+
+            .location-found-title {
+
+                font-size: 25px;
+            }
+
+
+            .location-found-text {
+
+                font-size: 19px;
+            }
+
+
+            .love-title {
+
+                font-size: 27px;
+            }
+
+
+            .love-text {
+
+                font-size: 20px;
+            }
+
+
+            .birthday-title {
+
+                font-size: 30px;
+            }
+
+
+            .button {
+
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="document">
+
+
+    <!-- =====================================
+         PRESENTACIÓN
+    ====================================== -->
+
+    <div class="place-label">
+        POSTA 06
+    </div>
+
+
+    <div class="tree-emoji">
+        🌳
+    </div>
+
+
+    <div class="title">
+
+        Hay un lugar
+        que está esperando.
+
+    </div>
+
+
+    <div class="intro">
+
+        No te voy a decir dónde.
+
+        <br><br>
+
+        Solamente voy a darte
+        una pequeña pista.
+
+    </div>
+
+
+    <div class="mystery">
+
+        Es un árbol.
+
+        <br><br>
+
+        Pero no cualquier árbol.
+
+        <br><br>
+
+        <strong>
+            Hay uno solo como éste
+            en Rosario.
+        </strong>
+
+        <div class="mystery-small">
+
+            Y vos sabés por qué
+            es importante.
+
+        </div>
+
+    </div>
+
+
+    <div class="intro">
+
+        Andá hasta él.
+
+        <br><br>
+
+        <strong>
+            Nada más.
+        </strong>
+
+    </div>
+
+
+    <!-- =====================================
+         UBICACIÓN
+    ====================================== -->
+
+    <section class="location-section">
+
+
+        <div
+            id="locationWaiting">
+
+            <div class="location-spinner"></div>
+
+            <div class="location-status">
+
+                Buscando tu ubicación...
+
+                <br><br>
+
+                Cuando estés cerca,
+                esta historia va a saberlo.
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="locationFound"
+            class="location-found">
+
+
+            <div class="location-found-emoji">
+
+                🌳❤️
+
+            </div>
+
+
+            <div class="location-found-title">
+
+                ¡LO ENCONTRASTE!
+
+            </div>
+
+
+            <div class="location-found-text">
+
+                Supiste cuál era.
+
+                <br><br>
+
+                El árbol que te estaba buscando
+                era el
+
+                <strong>
+                    alcornoque del Parque
+                    Independencia.
+                </strong>
+
+                <br><br>
+
+                El mismo árbol del que alguna vez
+                sacamos un pedacito de corcho
+                para llevarnos a casa.
+
+                <br><br>
+
+                Qué increíble que algunos objetos
+                tan pequeños puedan guardar
+                recuerdos tan grandes.
+
+            </div>
+
+
+            <button
+                class="button"
+                type="button"
+                onclick="mostrarCodigoArbol()">
+
+                CONTINUAR
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CÓDIGO DEL ÁRBOL
+    ====================================== -->
+
+    <section
+        id="treeCodeSection"
+        class="tree-code-section">
+
+
+        <div class="tree-code-intro">
+
+            Ahora buscá bien.
+
+            <br><br>
+
+            <strong>
+                Muy bien.
+            </strong>
+
+            Porque en algún lugar de este árbol
+            hay una última pista.
+
+        </div>
+
+
+        <div class="tree-code-small">
+
+            Encontrá el código
+            y escribilo acá.
+
+        </div>
+
+
+        <input
+            type="text"
+            id="treeCode"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="INGRESÁ EL CÓDIGO"
+        >
+
+
+        <button
+            class="button"
+            type="button"
+            onclick="verificarCodigoArbol()">
+
+            VERIFICAR CÓDIGO
+
+        </button>
+
+
+        <div
+            id="treeCodeError"
+            class="code-error">
+
+            Mmm...
+
+            <br><br>
+
+            Ese no parece ser el código.
+
+            <br>
+
+            Mirá un poquito mejor.
+
+        </div>
+
+
+        <!-- =================================
+             FINAL
+        ================================== -->
+
+        <div
+            id="finalSection"
+            class="final-section">
+
+
+            <div class="final-warning">
+
+                Llegaste hasta acá.
+
+                <br><br>
+
+                Y ahora aparece
+                la última instrucción.
+
+                <br><br>
+
+                <strong>
+                    FINALIZAR HISTORIA
+                </strong>
+
+            </div>
+
+
+            <div class="final-button-wrap">
+
+                <button
+                    id="finalButton"
+                    class="button final-button"
+                    type="button">
+
+                    FINALIZAR HISTORIA
+
+                </button>
+
+            </div>
+
+
+            <div class="swipe-message">
+
+                Deslizá el dedo sobre el botón
+                para continuar.
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         HISTORIA
+    ====================================== -->
+
+    <section
+        id="loveSection"
+        class="love-section">
+
+
+        <div class="love-heart">
+
+            ❤️
+
+        </div>
+
+
+        <div class="love-title">
+
+            Claro que no.
+
+        </div>
+
+
+        <div class="love-text">
+
+            ¿Cómo va a finalizar nuestra historia?
+
+            <br><br>
+
+            Esta historia hermosa de amor
+            que estamos construyendo
+            no tiene por qué finalizar.
+
+            <br><br>
+
+            Al contrario.
+
+            <br><br>
+
+            Cada día ponemos un nuevo ladrillo,
+            uno sobre otro,
+            para seguir construyendo
+            algo cada vez más sólido,
+            más nuestro,
+            más lindo.
+
+            <br><br>
+
+            <strong>
+                Te quiero con todo mi corazón.
+            </strong>
+
+            <br><br>
+
+            Y espero que podamos seguir agregando
+            muchísimas páginas,
+            muchísimos capítulos,
+            muchísimas historias
+            a todo esto hermoso
+            que sucede entre nosotros.
+
+            <br><br>
+
+            Porque hay historias que terminan
+            cuando llega la última página.
+
+            <br><br>
+
+            Y hay otras que simplemente
+            quedan inconclusas.
+
+            <br><br>
+
+            No porque falte algo.
+
+            <br><br>
+
+            Sino porque
+
+            <strong>
+                continúan.
+            </strong>
+
+        </div>
+
+
+        <div class="love-signature">
+
+            Y ésta es una de esas.
+
+            <br><br>
+
+            Te quiero, Dani.
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         CUMPLEAÑOS
+    ====================================== -->
+
+    <section
+        id="birthdaySection"
+        class="birthday-section">
+
+
+        <div class="party">
+
+            🎉🎉🎉
+
+        </div>
+
+
+        <div class="birthday-heart">
+
+            ❤️
+
+        </div>
+
+
+        <div class="birthday-title">
+
+            FELIZ CUMPLEAÑOS DANI
+
+        </div>
+
+
+        <div class="party">
+
+            🥂🎂🎈✨🎊
+
+        </div>
+
+
+        <div class="birthday-subtitle">
+
+            Que sigamos escribiendo
+            esta historia juntos.
+
+        </div>
+
+
+        <div class="party">
+
+            ❤️🥂❤️
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         ATAJO DISCRETO PARA PRUEBAS
+    ====================================== -->
+
+    <div class="shortcut">
+
+        <button
+            class="shortcut-button"
+            type="button"
+            onclick="mostrarAtajo()">
+
+            •
+
+        </button>
+
+
+        <div
+            id="shortcutInput"
+            class="shortcut-input">
+
+            <input
+                type="text"
+                id="shortcutCode"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                placeholder="Código"
+            >
+
+        </div>
+
+
+        <div
+            id="shortcutError"
+            class="shortcut-error">
+
+            Código no válido.
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* ==================================================
+       COORDENADAS DEL ÁRBOL
+    ================================================== */
+
+    const ARBOL_LAT =
+        -32.9635385678906;
+
+
+    const ARBOL_LON =
+        -60.65647651917097;
+
+
+    /*
+     * Radio de detección en metros.
+     *
+     * 80 m permite compensar
+     * razonablemente el error del GPS.
+     */
+
+    const RADIO_ARBOl_METROS =
+        80;
+
+
+    let ubicacionComprobada =
+        false;
+
+
+    /* ==================================================
+       DISTANCIA ENTRE DOS COORDENADAS
+       Fórmula de Haversine
+    ================================================== */
+
+    function distanciaMetros(
+        lat1,
+        lon1,
+        lat2,
+        lon2
+    ) {
+
+
+        const R =
+            6371000;
+
+
+        const rad =
+            Math.PI / 180;
+
+
+        const dLat =
+            (lat2 - lat1) * rad;
+
+
+        const dLon =
+            (lon2 - lon1) * rad;
+
+
+        const a =
+            Math.sin(dLat / 2) *
+            Math.sin(dLat / 2) +
+
+            Math.cos(
+                lat1 * rad
+            ) *
+
+            Math.cos(
+                lat2 * rad
+            ) *
+
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+
+
+        const c =
+            2 *
+            Math.atan2(
+                Math.sqrt(a),
+                Math.sqrt(1 - a)
+            );
+
+
+        return R * c;
+
+    }
+
+
+    /* ==================================================
+       INICIAR GEOLOCALIZACIÓN
+    ================================================== */
+
+    function iniciarGeolocalizacion() {
+
+
+        if (
+            !navigator.geolocation
+        ) {
+
+            mostrarErrorUbicacion(
+                "Este navegador no permite obtener la ubicación."
+            );
+
+            return;
+
+        }
+
+
+        navigator
+            .geolocation
+            .watchPosition(
+
+                comprobarUbicacion,
+
+                manejarErrorUbicacion,
+
+                {
+
+                    enableHighAccuracy:
+                        true,
+
+                    maximumAge:
+                        0,
+
+                    timeout:
+                        10000
+
+                }
+
+            );
+
+    }
+
+
+    /* ==================================================
+       COMPROBAR UBICACIÓN
+    ================================================== */
+
+    function comprobarUbicacion(
+        position
+    ) {
+
+
+        if (
+            ubicacionComprobada
+        ) {
+
+            return;
+
+        }
+
+
+        const lat =
+            position.coords.latitude;
+
+
+        const lon =
+            position.coords.longitude;
+
+
+        const distancia =
+            distanciaMetros(
+                lat,
+                lon,
+                ARBOL_LAT,
+                ARBOL_LON
+            );
+
+
+        console.log(
+            "Distancia al árbol:",
+            Math.round(distancia),
+            "metros"
+        );
+
+
+        if (
+            distancia <=
+            RADIO_ARBOl_METROS
+        ) {
+
+
+            ubicacionComprobada =
+                true;
+
+
+            mostrarArbolEncontrado();
+
+        }
+
+    }
+
+
+    /* ==================================================
+       ÁRBOL ENCONTRADO
+    ================================================== */
+
+    function mostrarArbolEncontrado() {
+
+
+        const waiting =
+            document.getElementById(
+                "locationWaiting"
+            );
+
+
+        const found =
+            document.getElementById(
+                "locationFound"
+            );
+
+
+        waiting.style.display =
+            "none";
+
+
+        found.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            found.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+        }, 200);
+
+    }
+
+
+    /* ==================================================
+       ERRORES GEO
+    ================================================== */
+
+    function manejarErrorUbicacion(
+        error
+    ) {
+
+
+        let mensaje =
+            "No pudimos comprobar la ubicación.";
+
+
+        if (
+            error.code ===
+            1
+        ) {
+
+            mensaje =
+                "Necesitamos permiso para comprobar dónde estás.";
+
+        }
+
+
+        if (
+            error.code ===
+            2
+        ) {
+
+            mensaje =
+                "No pudimos obtener una ubicación precisa todavía.";
+
+        }
+
+
+        if (
+            error.code ===
+            3
+        ) {
+
+            mensaje =
+                "La búsqueda de ubicación tardó demasiado. Intentá nuevamente.";
+
+        }
+
+
+        mostrarErrorUbicacion(
+            mensaje
+        );
+
+    }
+
+
+    function mostrarErrorUbicacion(
+        mensaje
+    ) {
+
+
+        const waiting =
+            document.getElementById(
+                "locationWaiting"
+            );
+
+
+        waiting.innerHTML = `
+
+            <div class="location-status">
+
+                ${mensaje}
+
+                <br><br>
+
+                Verificá que la ubicación
+                esté habilitada en el navegador.
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* ==================================================
+       MOSTRAR CÓDIGO DEL ÁRBOL
+    ================================================== */
+
+    function mostrarCodigoArbol() {
+
+
+        const section =
+            document.getElementById(
+                "treeCodeSection"
+            );
+
+
+        section.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            section.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        }, 200);
+
+    }
+
+
+    /* ==================================================
+       VERIFICAR CÓDIGO DEL ÁRBOL
+       
+       IMPORTANTE:
+       NO existe realmente una clave final.
+       
+       Cualquier texto distinto del atajo
+       no desbloquea nada.
+       
+       El atajo "arbol" sólo sirve
+       para las pruebas.
+    ================================================== */
+
+    function verificarCodigoArbol() {
+
+
+        const campo =
+            document.getElementById(
+                "treeCode"
+            );
+
+
+        const error =
+            document.getElementById(
+                "treeCodeError"
+            );
+
+
+        /*
+         * El código "arbol" sirve
+         * también como atajo de prueba.
+         */
+
+        const respuesta =
+            campo.value
+                .toLowerCase()
+                .trim();
+
+
+        if (
+            respuesta ===
+            "arbol"
+        ) {
+
+            error.style.display =
+                "none";
+
+
+            mostrarFinal();
+
+            return;
+
+        }
+
+
+        /*
+         * Para la historia real,
+         * no hay código válido.
+         */
+
+        error.innerHTML = `
+
+            Mmm...
+
+            <br><br>
+
+            Ese no parece ser el código.
+
+            <br><br>
+
+            ¿De verdad pensabas que
+            esto iba a terminar con
+            una contraseña?
+
+        `;
+
+
+        error.style.display =
+            "block";
+
+
+        /*
+         * Después del intento, mostramos
+         * igualmente la pantalla final:
+         * la verdadera "clave" no es una
+         * palabra.
+         */
+
+        setTimeout(function() {
+
+            mostrarFinal();
+
+        }, 1300);
+
+    }
+
+
+    /* ==================================================
+       MOSTRAR FINALIZAR HISTORIA
+    ================================================== */
+
+    function mostrarFinal() {
+
+
+        const section =
+            document.getElementById(
+                "finalSection"
+            );
+
+
+        section.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            section.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+        }, 200);
+
+    }
+
+
+    /* ==================================================
+       BOTÓN FINAL
+       
+       Se activa con un DESLIZAMIENTO
+       horizontal sobre el botón.
+    ================================================== */
+
+    const finalButton =
+        document.getElementById(
+            "finalButton"
+        );
+
+
+    let deslizando =
+        false;
+
+
+    let inicioX =
+        0;
+
+
+    const DISTANCIA_MINIMA =
+        80;
+
+
+    function empezarDeslizamiento(
+        event
+    ) {
+
+
+        deslizando =
+            true;
+
+
+        if (
+            event.touches &&
+            event.touches.length
+        ) {
+
+            inicioX =
+                event.touches[0].clientX;
+
+        } else {
+
+            inicioX =
+                event.clientX;
+
+        }
+
+
+        event.preventDefault();
+
+    }
+
+
+    function moverDeslizamiento(
+        event
+    ) {
+
+
+        if (
+            !deslizando
+        ) {
+
+            return;
+
+        }
+
+
+        let actualX;
+
+
+        if (
+            event.touches &&
+            event.touches.length
+        ) {
+
+            actualX =
+                event.touches[0].clientX;
+
+        } else {
+
+            actualX =
+                event.clientX;
+
+        }
+
+
+        const distancia =
+            Math.abs(
+                actualX -
+                inicioX
+            );
+
+
+        if (
+            distancia >=
+            DISTANCIA_MINIMA
+        ) {
+
+
+            deslizando =
+                false;
+
+
+            convertirBoton();
+
+
+        }
+
+
+        event.preventDefault();
+
+    }
+
+
+    function terminarDeslizamiento() {
+
+        deslizando =
+            false;
+
+    }
+
+
+    finalButton.addEventListener(
+        "touchstart",
+        empezarDeslizamiento,
+        { passive: false }
+    );
+
+
+    finalButton.addEventListener(
+        "touchmove",
+        moverDeslizamiento,
+        { passive: false }
+    );
+
+
+    finalButton.addEventListener(
+        "touchend",
+        terminarDeslizamiento
+    );
+
+
+    finalButton.addEventListener(
+        "mousedown",
+        empezarDeslizamiento
+    );
+
+
+    finalButton.addEventListener(
+        "mousemove",
+        moverDeslizamiento
+    );
+
+
+    finalButton.addEventListener(
+        "mouseup",
+        terminarDeslizamiento
+    );
+
+
+    finalButton.addEventListener(
+        "mouseleave",
+        terminarDeslizamiento
+    );
+
+
+    /* ==================================================
+       BOTÓN SE TRANSFORMA
+    ================================================== */
+
+    function convertirBoton() {
+
+
+        finalButton.classList.add(
+            "changed"
+        );
+
+
+        finalButton.textContent =
+            "NO FINALIZAR HISTORIA";
+
+
+        document.querySelector(
+            ".swipe-message"
+        ).textContent =
+            "Así está mucho mejor.";
+
+
+        setTimeout(function() {
+
+            mostrarHistoriaFinal();
+
+        }, 900);
+
+    }
+
+
+    /* ==================================================
+       HISTORIA FINAL
+    ================================================== */
+
+    function mostrarHistoriaFinal() {
+
+
+        const love =
+            document.getElementById(
+                "loveSection"
+            );
+
+
+        const birthday =
+            document.getElementById(
+                "birthdaySection"
+            );
+
+
+        love.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            love.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        }, 200);
+
+
+        setTimeout(function() {
+
+            birthday.style.display =
+                "block";
+
+        }, 3200);
+
+    }
+
+
+    /* ==================================================
+       ATAJO DISCRETO "ARBOL"
+       
+       Está pensado para las pruebas
+       desde casa.
+    ================================================== */
+
+    function mostrarAtajo() {
+
+
+        document
+            .getElementById(
+                "shortcutInput"
+            )
+            .style.display =
+            "block";
+
+    }
+
+
+    document
+        .getElementById(
+            "shortcutCode"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+
+                    const value =
+                        event.target.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    if (
+                        value ===
+                        "arbol"
+                    ) {
+
+
+                        document
+                            .getElementById(
+                                "shortcutError"
+                            )
+                            .style.display =
+                            "none";
+
+
+                        ubicacionComprobada =
+                            true;
+
+
+                        mostrarArbolEncontrado();
+
+
+                    } else {
+
+
+                        document
+                            .getElementById(
+                                "shortcutError"
+                            )
+                            .style.display =
+                            "block";
+
+                    }
+
+                }
+
+            }
+        );
+
+
+    /* ==================================================
+       ENTER EN CÓDIGO
+    ================================================== */
+
+    document
+        .getElementById(
+            "treeCode"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    verificarCodigoArbol();
+
+                }
+
+            }
+        );
+
+
+    /* ==================================================
+       ARRANCAR UBICACIÓN
+    ================================================== */
+
+    iniciarGeolocalizacion();
+
+
+</script>
+
+
+</body>
+
+</html>
