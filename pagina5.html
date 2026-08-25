@@ -392,16 +392,16 @@
 
 
         /* =================================
-           BARRA DE AGITACIÓN
+           BARRA ROJA
         ================================= */
 
         .progress-bar {
 
             width: 100%;
 
-            height: 30px;
+            height: 34px;
 
-            margin: 32px auto 14px;
+            margin: 34px auto 0;
 
             background:
                 rgba(0,0,0,0.48);
@@ -434,54 +434,19 @@
                 width 0.18s ease;
 
             box-shadow:
-                0 0 14px rgba(190,34,58,0.25);
-        }
-
-
-        .shake-help {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 18px;
-
-            line-height: 1.7;
-
-            color: #d9c2c8;
-
-            margin-top: 20px;
-        }
-
-
-        .shake-help strong {
-
-            color: #ffffff;
-        }
-
-
-        .shake-hint {
-
-            margin-top: 16px;
-
-            color: #af969d;
-
-            font-size: 14px;
-
-            line-height: 1.6;
+                0 0 16px rgba(190,34,58,0.30);
         }
 
 
         /* =================================
-           FIN DE AGITACIÓN
+           MENSAJE DESPUÉS DE LA BARRA
         ================================= */
 
         .shake-complete {
 
             display: none;
 
-            margin-top: 30px;
+            margin-top: 28px;
 
             animation:
                 aparecer 1s ease;
@@ -503,6 +468,47 @@
         }
 
 
+        .shake-complete-title strong {
+
+            color: #ffffff;
+        }
+
+
+        .shake-help {
+
+            margin-top: 20px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #d9c2c8;
+        }
+
+
+        .shake-help strong {
+
+            color: #ffffff;
+        }
+
+
+        .shake-hint {
+
+            margin-top: 16px;
+
+            color: #af969d;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
         .return-help {
 
             margin-top: 20px;
@@ -516,7 +522,7 @@
 
 
         /* =================================
-           BOTÓN
+           BOTONES
         ================================= */
 
         .button {
@@ -685,6 +691,12 @@
         }
 
 
+        .table-text strong {
+
+            color: #ffffff;
+        }
+
+
         input {
 
             width: 100%;
@@ -741,6 +753,77 @@
             font-size: 16px;
 
             line-height: 1.5;
+        }
+
+
+        /* =================================
+           ÉXITO AL ENCONTRAR LA MESA
+        ================================= */
+
+        .table-success {
+
+            display: none;
+
+            margin-top: 30px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .success-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 76px;
+
+            line-height: 1;
+
+            margin-bottom: 15px;
+        }
+
+
+        .success-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            color: #ffffff;
+
+            margin-bottom: 22px;
+        }
+
+
+        .success-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.75;
+
+            color: #eadcdf;
+
+        }
+
+
+        .success-text strong {
+
+            color: #ffffff;
         }
 
 
@@ -864,6 +947,16 @@
 
             .button {
                 font-size: 17px;
+            }
+
+
+            .success-title {
+                font-size: 24px;
+            }
+
+
+            .success-text {
+                font-size: 19px;
             }
 
         }
@@ -1033,6 +1126,8 @@
         class="tension-section">
 
 
+        <!-- LOS FUEGUITOS APARECEN PRIMERO -->
+
         <div class="fire">
             🔥🔥🔥
         </div>
@@ -1121,36 +1216,8 @@
         </div>
 
 
-        <div class="shake-help">
-
-            Agitá el teléfono con decisión.
-
-            <br><br>
-
-            <strong>
-                Un poco de ritmo,
-                un poco de movimiento,
-                y vamos bajando la tensión.
-            </strong>
-
-        </div>
-
-
-        <div class="shake-hint">
-
-            La barra se completa después
-            de aproximadamente 15 movimientos.
-
-            <br>
-
-            No hace falta romper el teléfono.
-            Todavía lo necesitamos.
-
-        </div>
-
-
         <!-- =================================
-             COMPLETADO
+             MENSAJE INMEDIATAMENTE DESPUÉS
         ================================== -->
 
         <div
@@ -1161,11 +1228,12 @@
             <div class="shake-complete-title">
 
                 <strong>
-                    Bueno...
+                    Bueno... bueno...
                 </strong>
 
-                creo que ya entendimos
-                bastante bien el concepto.
+                creo que ya entendimos bien
+                el concepto de cómo se alivian
+                las tensiones... ;P
 
                 <br><br>
 
@@ -1177,8 +1245,8 @@
             <div class="return-help">
 
                 Parece que aquella tensión
-                finalmente encontró su manera
-                de descargarse.
+                finalmente encontró
+                su manera de descargarse.
 
                 <br><br>
 
@@ -1194,6 +1262,37 @@
 
             </div>
 
+
+        </div>
+
+
+        <!-- =================================
+             INSTRUCCIÓN MIENTRAS AGITA
+        ================================== -->
+
+        <div
+            id="shakeHelp"
+            class="shake-help">
+
+            Agitá el teléfono con decisión.
+
+            <br><br>
+
+            <strong>
+                Un poco de ritmo,
+                un poco de movimiento,
+                y vamos bajando la tensión.
+            </strong>
+
+        </div>
+
+
+        <div
+            id="shakeHint"
+            class="shake-hint">
+
+            No hace falta romper el teléfono.
+            Todavía lo necesitamos.
 
         </div>
 
@@ -1320,6 +1419,74 @@
         </div>
 
 
+        <!-- =================================
+             ÉXITO
+        ================================== -->
+
+        <div
+            id="tableSuccess"
+            class="table-success">
+
+
+            <div class="success-emoji">
+
+                🎉👏🥂
+
+            </div>
+
+
+            <div class="success-title">
+
+                ¡LO HICISTE!
+
+            </div>
+
+
+            <div class="success-text">
+
+                <strong>
+                    ¡Qué bueno que hayas ido hasta ahí
+                    y que hayas tenido el coraje
+                    de preguntar!
+                </strong>
+
+                <br><br>
+
+                No cualquiera se anima a entrar
+                a un lugar de nuestra historia,
+                acercarse, preguntar
+                y buscar una respuesta.
+
+                <br><br>
+
+                Y justamente de eso se trata
+                este recorrido.
+
+                <br><br>
+
+                De volver, aunque sea por un rato,
+                a esos primeros encuentros,
+                a esos lugares pequeños
+                que terminaron siendo enormes
+                en nuestra historia.
+
+                <br><br>
+
+                <strong>
+                    Qué lindo poder recorrer
+                    juntos cómo empezó todo.
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================
+             CONTINUAR
+        ================================== -->
+
         <button
             id="storyButton"
             class="button story-button"
@@ -1370,14 +1537,14 @@
 
 
     /* ==================================================
-       ORIENTACIÓN
+       DETECTAR ORIENTACIÓN
     ================================================== */
 
     function estaEnHorizontal() {
 
 
         /*
-         * Primero intentamos utilizar
+         * Intentamos utilizar
          * Screen Orientation.
          */
 
@@ -1416,8 +1583,7 @@
 
 
         /*
-         * Respaldo:
-         * ancho mayor que alto.
+         * Respaldo por proporción.
          */
 
         return (
@@ -1490,6 +1656,10 @@
     }
 
 
+    /*
+     * Evento moderno.
+     */
+
     if (
         screen.orientation
     ) {
@@ -1501,6 +1671,11 @@
 
     }
 
+
+    /*
+     * Respaldos para iPhone
+     * y navegadores diversos.
+     */
 
     window.addEventListener(
         "resize",
@@ -1534,6 +1709,14 @@
         iniciarDetectorMovimiento();
 
 
+        /*
+         * IMPORTANTE:
+         * llevamos la pantalla exactamente
+         * al comienzo de la nueva escena,
+         * donde aparecen primero
+         * los tres fueguitos.
+         */
+
         setTimeout(function() {
 
             section.scrollIntoView({
@@ -1542,17 +1725,17 @@
                     "smooth",
 
                 block:
-                    "center"
+                    "start"
 
             });
 
-        }, 350);
+        }, 120);
 
     }
 
 
     /* ==================================================
-       MOVIMIENTO
+       ACELERÓMETRO
     ================================================== */
 
     function iniciarDetectorMovimiento() {
@@ -1593,8 +1776,8 @@
 
 
         /*
-         * Sólo contamos movimientos
-         * mientras está horizontal.
+         * Solamente contamos movimiento
+         * cuando el teléfono está horizontal.
          */
 
         if (
@@ -1640,7 +1823,8 @@
 
 
         /*
-         * Umbral de una sacudida clara.
+         * Umbral para reconocer
+         * una sacudida clara.
          */
 
         if (
@@ -1653,8 +1837,8 @@
 
 
             /*
-             * Evitamos contar
-             * demasiados eventos seguidos.
+             * Evitamos contar múltiples
+             * eventos del mismo movimiento.
              */
 
             if (
@@ -1720,11 +1904,51 @@
 
 
     /* ==================================================
-       COMPLETAR
+       COMPLETAR AGITACIÓN
     ================================================== */
 
     function completarAgitacion() {
 
+
+        /*
+         * Llenamos completamente
+         * la barra.
+         */
+
+        document
+            .getElementById(
+                "progressFill"
+            )
+            .style.width =
+            "100%";
+
+
+        /*
+         * Ocultamos las instrucciones
+         * de agitación.
+         */
+
+        document
+            .getElementById(
+                "shakeHelp"
+            )
+            .style.display =
+            "none";
+
+
+        document
+            .getElementById(
+                "shakeHint"
+            )
+            .style.display =
+            "none";
+
+
+        /*
+         * Aparece inmediatamente
+         * el mensaje de "Bueno..."
+         * debajo de la barra.
+         */
 
         const complete =
             document.getElementById(
@@ -1736,6 +1960,11 @@
             "block";
 
 
+        /*
+         * A partir de acá esperamos
+         * el regreso a vertical.
+         */
+
         returningToPortrait =
             true;
 
@@ -1745,6 +1974,11 @@
             detectarAgitacion
         );
 
+
+        /*
+         * Llevamos la pantalla
+         * al mensaje recién aparecido.
+         */
 
         setTimeout(function() {
 
@@ -1758,13 +1992,13 @@
 
             });
 
-        }, 300);
+        }, 250);
 
     }
 
 
     /* ==================================================
-       MOSTRAR VIDEO + MESA
+       VIDEO + MESA
     ================================================== */
 
     function mostrarVideoYGuia() {
@@ -1784,6 +2018,10 @@
             "#57d66a";
 
 
+        /*
+         * Mostrar video.
+         */
+
         const video =
             document.getElementById(
                 "videoSection"
@@ -1793,6 +2031,10 @@
         video.style.display =
             "block";
 
+
+        /*
+         * Mostrar misión presencial.
+         */
 
         const table =
             document.getElementById(
@@ -1840,6 +2082,12 @@
             );
 
 
+        const success =
+            document.getElementById(
+                "tableSuccess"
+            );
+
+
         const boton =
             document.getElementById(
                 "storyButton"
@@ -1860,13 +2108,27 @@
                 "none";
 
 
+            success.style.display =
+                "block";
+
+
             boton.style.display =
                 "block";
 
 
+            /*
+             * Desactivamos el campo
+             * después de encontrar
+             * la respuesta correcta.
+             */
+
+            campo.disabled =
+                true;
+
+
             setTimeout(function() {
 
-                boton.scrollIntoView({
+                success.scrollIntoView({
 
                     behavior:
                         "smooth",
@@ -1876,7 +2138,7 @@
 
                 });
 
-            }, 200);
+            }, 250);
 
 
         } else {
@@ -1884,6 +2146,10 @@
 
             error.style.display =
                 "block";
+
+
+            success.style.display =
+                "none";
 
 
             boton.style.display =
@@ -1898,7 +2164,7 @@
 
 
     /* ==================================================
-       CONTINUAR
+       CONTINUAR HISTORIA
     ================================================== */
 
     function continuarHistoria() {
