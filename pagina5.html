@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dani & Juan — Growler Café</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #783846 0%,
+                    #4b232e 38%,
+                    #210f16 72%,
+                    #0a0608 100%
+                );
+
+            color: #eeeeee;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 20px 15px 50px;
+
+            transition:
+                background 2s ease;
+        }
+
+
+        .document {
+
+            width: 100%;
+
+            max-width: 540px;
+
+            text-align: center;
+
+            padding: 18px 20px 40px;
+        }
+
+
+        /* =================================
+           ENCABEZADO
+        ================================= */
+
+        .place-label {
+
+            color: #c9aab2;
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .big-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 72px;
+
+            line-height: 1;
+
+            margin: 8px 0 24px;
+
+            animation:
+                flotar 2.5s ease-in-out infinite;
+        }
+
+
+        .title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 31px;
+
+            line-height: 1.35;
+
+            color: #ffffff;
+
+            margin-bottom: 24px;
+        }
+
+
+        .title strong {
+            color: #ffffff;
+        }
+
+
+        .intro {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.75;
+
+            color: #eadcdf;
+
+            margin-bottom: 28px;
+        }
+
+
+        .subtle {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+
+            line-height: 1.7;
+
+            color: #d6bec4;
+
+            margin: 25px 0 32px;
+        }
+
+
+        /* =================================
+           BLOQUE DE CAMBIO
+        ================================= */
+
+        .change-block {
+
+            margin: 32px 0;
+
+            padding: 24px 14px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.14);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.14);
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .change-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 23px;
+
+            line-height: 1.7;
+
+            color: #f1e2e5;
+        }
+
+
+        .change-text strong {
+
+            color: #ffffff;
+        }
+
+
+        .position-note {
+
+            margin-top: 22px;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            color: #b99da5;
+
+        }
+
+
+        /* =================================
+           INSTRUCCIÓN HORIZONTAL
+        ================================= */
+
+        .orientation-section {
+
+            margin-top: 36px;
+
+            padding: 25px 12px;
+
+            border:
+                1px solid rgba(255,255,255,0.10);
+
+            background:
+                rgba(0,0,0,0.12);
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .orientation-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 68px;
+
+            line-height: 1;
+
+            margin-bottom: 16px;
+        }
+
+
+        .orientation-title {
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            color: #ffffff;
+
+            line-height: 1.45;
+
+            margin-bottom: 15px;
+        }
+
+
+        .orientation-help {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 19px;
+
+            line-height: 1.65;
+
+            color: #dec8cd;
+        }
+
+
+        .orientation-status {
+
+            margin-top: 20px;
+
+            color: #ad949b;
+
+            font-size: 14px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =================================
+           PARTE DIVERTIDA
+        ================================= */
+
+        .tension-section {
+
+            display: none;
+
+            margin-top: 35px;
+
+            animation:
+                aparecer 0.9s ease;
+        }
+
+
+        .fire {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 78px;
+
+            line-height: 1;
+
+            margin-bottom: 15px;
+
+            animation:
+                fuego 0.75s ease-in-out infinite alternate;
+        }
+
+
+        .tension-title {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #ffffff;
+
+            line-height: 1.35;
+
+            margin-bottom: 20px;
+        }
+
+
+        .tension-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.7;
+
+            color: #e9d7dc;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =================================
+           BARRA DE AGITACIÓN
+        ================================= */
+
+        .shake-counter {
+
+            margin-top: 20px;
+
+            color: #d2b8be;
+
+            font-size: 16px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .shake-number {
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            max-width: 390px;
+
+            height: 18px;
+
+            margin: 14px auto 8px;
+
+            background:
+                rgba(0,0,0,0.35);
+
+            border:
+                1px solid #795560;
+
+            overflow: hidden;
+        }
+
+
+        .progress-fill {
+
+            width: 0%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7f3547,
+                    #ca7383
+                );
+
+            transition:
+                width 0.18s ease;
+        }
+
+
+        .shake-help {
+
+            font-size: 14px;
+
+            color: #a99198;
+
+            line-height: 1.5;
+        }
+
+
+        /* =================================
+           FIN DE AGITACIÓN
+        ================================= */
+
+        .shake-complete {
+
+            display: none;
+
+            margin-top: 28px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .shake-complete-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+
+            line-height: 1.6;
+
+            color: #ffffff;
+        }
+
+
+        .shake-complete-title strong {
+
+            color: #ffffff;
+        }
+
+
+        .return-help {
+
+            margin-top: 18px;
+
+            color: #d4bcc2;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================
+           BOTÓN
+        ================================= */
+
+        .button {
+
+            width: 100%;
+
+            min-height: 68px;
+
+            margin-top: 25px;
+
+            padding: 12px 18px;
+
+            border: none;
+
+            background: #e5d3d7;
+
+            color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                background .3s ease;
+        }
+
+
+        .button:active {
+
+            transform:
+                scale(0.98);
+        }
+
+
+        /* =================================
+           VIDEO
+        ================================= */
+
+        .video-section {
+
+            display: none;
+
+            margin-top: 42px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .video-title {
+
+            color: #cfafb7;
+
+            font-size: 14px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .video-wrapper {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 360px;
+
+            margin: 0 auto;
+
+            aspect-ratio: 9 / 16;
+
+            overflow: hidden;
+
+            background: #000000;
+
+            border:
+                1px solid #8a5d68;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.5);
+        }
+
+
+        .video-wrapper iframe {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 0;
+        }
+
+
+        /* =================================
+           CLAVE DE MESA
+        ================================= */
+
+        .table-section {
+
+            display: none;
+
+            margin-top: 38px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .table-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 66px;
+
+            line-height: 1;
+
+            margin-bottom: 15px;
+        }
+
+
+        .table-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 24px;
+
+            line-height: 1.6;
+
+            color: #ffffff;
+
+            margin-bottom: 22px;
+        }
+
+
+        .table-text {
+
+            color: #dcc5ca;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 22px;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 64px;
+
+            background:
+                rgba(0,0,0,0.42);
+
+            border:
+                2px solid #855965;
+
+            color: #ffffff;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 24px;
+
+            text-align: center;
+
+            padding: 10px 14px;
+
+            outline: none;
+
+            border-radius: 0;
+        }
+
+
+        input:focus {
+
+            border-color: #c49da8;
+
+            box-shadow:
+                0 0 12px rgba(196,157,168,0.15);
+        }
+
+
+        .table-error {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 13px;
+
+            border:
+                1px solid #8d4f5c;
+
+            color: #edc0c8;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =================================
+           CONTINUAR HISTORIA
+        ================================= */
+
+        .story-button {
+
+            display: none;
+
+            margin-top: 30px;
+
+            background: #d9bdc4;
+        }
+
+
+        /* =================================
+           ANIMACIONES
+        ================================= */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes fuego {
+
+            from {
+
+                transform:
+                    scale(1)
+                    rotate(-3deg);
+
+            }
+
+            to {
+
+                transform:
+                    scale(1.08)
+                    rotate(3deg);
+
+            }
+        }
+
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-7px);
+
+            }
+        }
+
+
+        /* =================================
+           CELULAR PEQUEÑO
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            .title {
+                font-size: 27px;
+            }
+
+
+            .intro {
+                font-size: 20px;
+            }
+
+
+            .change-text {
+                font-size: 21px;
+            }
+
+
+            .tension-title {
+                font-size: 25px;
+            }
+
+
+            .tension-text {
+                font-size: 19px;
+            }
+
+
+            .button {
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="document">
+
+
+    <!-- =====================================
+         INICIO
+    ====================================== -->
+
+    <div class="place-label">
+        POSTA 05
+    </div>
+
+
+    <div class="big-emoji">
+        ☕🔥
+    </div>
+
+
+    <div class="title">
+
+        Después de aquella noche
+        en Materia Prima...
+
+    </div>
+
+
+    <div class="intro">
+
+        quedó algo latente.
+
+        <br><br>
+
+        Habíamos quedado en
+
+        <strong>
+            coordinar.
+        </strong>
+
+    </div>
+
+
+    <div class="change-block">
+
+        <div class="change-text">
+
+            Hasta ese momento,
+            casi todo había sucedido
+            de una determinada manera.
+
+            <br><br>
+
+            Nos encontrábamos,
+            hablábamos,
+            caminábamos...
+
+            <br><br>
+
+            <strong>
+                siempre de pie.
+            </strong>
+
+        </div>
+
+
+        <div class="position-note">
+
+            Pero ese domingo iba a haber
+            un pequeño cambio de posición.
+
+        </div>
+
+    </div>
+
+
+    <div class="subtle">
+
+        Primero, un café.
+
+        <br><br>
+
+        Después...
+
+        <strong>
+            bueno.
+        </strong>
+
+        <br><br>
+
+        Mejor no adelantemos
+        demasiado la historia.
+
+    </div>
+
+
+    <!-- =====================================
+         ORIENTACIÓN
+    ====================================== -->
+
+    <section class="orientation-section">
+
+
+        <div class="orientation-emoji">
+            ↔️
+        </div>
+
+
+        <div class="orientation-title">
+
+            Hay un cambio de posición
+            que tenés que hacer vos también.
+
+        </div>
+
+
+        <div class="orientation-help">
+
+            Hasta acá venimos recorriendo
+            la historia en vertical.
+
+            <br><br>
+
+            <strong>
+                Ahora poné el teléfono
+                en horizontal.
+            </strong>
+
+        </div>
+
+
+        <div
+            id="orientationStatus"
+            class="orientation-status">
+
+            ESPERANDO CAMBIO DE POSICIÓN...
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         PARTE PICANTE
+    ====================================== -->
+
+    <section
+        id="tensionSection"
+        class="tension-section">
+
+
+        <div class="fire">
+            🔥🔥🔥
+        </div>
+
+
+        <div class="tension-title">
+
+            Ah, bueno.
+
+            <br>
+
+            Ahora sí.
+
+        </div>
+
+
+        <div class="tension-text">
+
+            Ese domingo había
+            <strong>
+                nervios.
+            </strong>
+
+            <br><br>
+
+            Había expectativa.
+
+            <br><br>
+
+            Y había una tensión
+            que ya era bastante difícil
+            de disimular.
+
+        </div>
+
+
+        <div class="shake-counter">
+
+            NIVEL DE TENSIÓN:
+
+            <span
+                id="shakeNumber"
+                class="shake-number">
+
+                0
+
+            </span>
+
+            / 15
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+
+        <div class="shake-help">
+
+            Parece que este recuerdo
+            todavía tiene bastante energía.
+
+            <br><br>
+
+            Agitá el teléfono.
+
+        </div>
+
+
+        <!-- =================================
+             FINAL DE AGITACIÓN
+        ================================== -->
+
+        <div
+            id="shakeComplete"
+            class="shake-complete">
+
+
+            <div class="shake-complete-title">
+
+                <strong>
+                    Bueno...
+                </strong>
+
+                parece que ya entendimos
+                el concepto.
+
+                <br><br>
+
+                😏🔥
+
+            </div>
+
+
+            <div class="return-help">
+
+                Ahora volvió a cambiar
+                la posición de la historia.
+
+                <br><br>
+
+                Poné nuevamente
+                el teléfono en vertical.
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         VIDEO GROWLER
+    ====================================== -->
+
+    <section
+        id="videoSection"
+        class="video-section">
+
+
+        <div class="video-title">
+
+            ARCHIVO · GROWLER CAFÉ
+
+        </div>
+
+
+        <div class="video-wrapper">
+
+            <iframe
+                src="https://www.youtube.com/embed/w1PFdZFT4u4"
+                title="Growler Café"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         MESA
+    ====================================== -->
+
+    <section
+        id="tableSection"
+        class="table-section">
+
+
+        <div class="table-emoji">
+            ☕🪑🔎
+        </div>
+
+
+        <div class="table-title">
+
+            Ahora hay que hacer
+            algo de manera presencial.
+
+        </div>
+
+
+        <div class="table-text">
+
+            Andá hasta
+
+            <strong>
+                Growler Café.
+            </strong>
+
+            <br><br>
+
+            Averiguá en qué mesa
+            estuvimos sentados.
+
+            <br><br>
+
+            Podés preguntarle a los mozos,
+            en la admisión...
+
+            <br><br>
+
+            <strong>
+                donde sea necesario.
+            </strong>
+
+            <br><br>
+
+            Cuando encuentres el número,
+            ingresalo acá.
+
+        </div>
+
+
+        <input
+            type="text"
+            id="tableInput"
+            inputmode="numeric"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="NÚMERO DE MESA"
+        >
+
+
+        <button
+            class="button"
+            type="button"
+            onclick="verificarMesa()">
+
+            VERIFICAR MESA
+
+        </button>
+
+
+        <div
+            id="tableError"
+            class="table-error">
+
+            Esa no es la mesa.
+
+            <br><br>
+
+            Seguí investigando.
+
+        </div>
+
+
+        <button
+            id="storyButton"
+            class="button story-button"
+            type="button"
+            onclick="continuarHistoria()">
+
+            CONTINUAR HISTORIA
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* ==================================================
+       ESTADO
+    ================================================== */
+
+    let horizontalDetectado = false;
+
+    let shakeCount = 0;
+
+    let lastShakeTime = 0;
+
+    let shakeReady = false;
+
+    let returningToPortrait = false;
+
+
+    const SHAKE_TARGET = 15;
+
+
+    /* ==================================================
+       DETECTAR ORIENTACIÓN
+    ================================================== */
+
+    function estaEnHorizontal() {
+
+
+        /*
+         * Primero intentamos utilizar
+         * Screen Orientation.
+         */
+
+        if (
+            screen.orientation &&
+            screen.orientation.type
+        ) {
+
+            const type =
+                screen.orientation.type;
+
+            if (
+                type.includes("landscape")
+            ) {
+
+                return true;
+
+            }
+
+            if (
+                type.includes("portrait")
+            ) {
+
+                return false;
+
+            }
+
+        }
+
+
+        /*
+         * Respaldo compatible:
+         * ancho mayor que alto.
+         */
+
+        return (
+            window.innerWidth >
+            window.innerHeight
+        );
+
+    }
+
+
+    function comprobarOrientacion() {
+
+
+        const status =
+            document.getElementById(
+                "orientationStatus"
+            );
+
+
+        if (
+            !horizontalDetectado &&
+            estaEnHorizontal()
+        ) {
+
+
+            horizontalDetectado =
+                true;
+
+
+            status.textContent =
+                "CAMBIO DE POSICIÓN DETECTADO";
+
+
+            status.style.color =
+                "#d56f82";
+
+
+            mostrarTension();
+
+
+            return;
+
+        }
+
+
+        /*
+         * Después de completar
+         * las sacudidas, necesitamos
+         * volver a vertical.
+         */
+
+        if (
+            returningToPortrait &&
+            !estaEnHorizontal()
+        ) {
+
+
+            returningToPortrait =
+                false;
+
+
+            mostrarVideoYGuia();
+
+        }
+
+    }
+
+
+    /*
+     * Evento moderno.
+     */
+
+    if (
+        screen.orientation
+    ) {
+
+        screen.orientation.addEventListener(
+            "change",
+            comprobarOrientacion
+        );
+
+    }
+
+
+    /*
+     * Respaldo para navegadores
+     * que no expongan el evento moderno.
+     */
+
+    window.addEventListener(
+        "resize",
+        comprobarOrientacion
+    );
+
+
+    window.addEventListener(
+        "orientationchange",
+        comprobarOrientacion
+    );
+
+
+    /* ==================================================
+       MOSTRAR TENSIÓN
+    ================================================== */
+
+    function mostrarTension() {
+
+
+        const section =
+            document.getElementById(
+                "tensionSection"
+            );
+
+
+        section.style.display =
+            "block";
+
+
+        /*
+         * Activamos la detección
+         * del movimiento.
+         */
+
+        iniciarDetectorMovimiento();
+
+
+        setTimeout(function() {
+
+            section.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 350);
+
+    }
+
+
+    /* ==================================================
+       ACELERÓMETRO / AGITACIÓN
+    ================================================== */
+
+    function iniciarDetectorMovimiento() {
+
+
+        if (
+            shakeReady
+        ) {
+
+            return;
+
+        }
+
+
+        shakeReady =
+            true;
+
+
+        window.addEventListener(
+            "devicemotion",
+            detectarAgitacion
+        );
+
+    }
+
+
+    function detectarAgitacion(event) {
+
+
+        if (
+            shakeCount >= SHAKE_TARGET
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Nos aseguramos de que
+         * todavía esté horizontal.
+         */
+
+        if (
+            !estaEnHorizontal()
+        ) {
+
+            return;
+
+        }
+
+
+        const acceleration =
+            event.accelerationIncludingGravity;
+
+
+        if (
+            !acceleration
+        ) {
+
+            return;
+
+        }
+
+
+        const x =
+            acceleration.x || 0;
+
+
+        const y =
+            acceleration.y || 0;
+
+
+        const z =
+            acceleration.z || 0;
+
+
+        /*
+         * Magnitud aproximada
+         * del movimiento.
+         */
+
+        const magnitud =
+            Math.sqrt(
+                x * x +
+                y * y +
+                z * z
+            );
+
+
+        /*
+         * Umbral deliberadamente moderado:
+         * queremos que funcione con una
+         * sacudida clara, no con cada
+         * mínimo movimiento.
+         */
+
+        if (
+            magnitud > 17
+        ) {
+
+
+            const ahora =
+                Date.now();
+
+
+            /*
+             * Evitamos contar decenas
+             * de eventos consecutivos
+             * como una sola sacudida.
+             */
+
+            if (
+                ahora -
+                lastShakeTime <
+                350
+            ) {
+
+                return;
+
+            }
+
+
+            lastShakeTime =
+                ahora;
+
+
+            shakeCount++;
+
+
+            actualizarBarra();
+
+
+            if (
+                shakeCount >=
+                SHAKE_TARGET
+            ) {
+
+                completarAgitacion();
+
+            }
+
+        }
+
+    }
+
+
+    /* ==================================================
+       BARRA
+    ================================================== */
+
+    function actualizarBarra() {
+
+
+        const porcentaje =
+            Math.min(
+                100,
+                (shakeCount /
+                SHAKE_TARGET) *
+                100
+            );
+
+
+        document
+            .getElementById(
+                "shakeNumber"
+            )
+            .textContent =
+            shakeCount;
+
+
+        document
+            .getElementById(
+                "progressFill"
+            )
+            .style.width =
+            porcentaje + "%";
+
+    }
+
+
+    /* ==================================================
+       COMPLETAR AGITACIÓN
+    ================================================== */
+
+    function completarAgitacion() {
+
+
+        const complete =
+            document.getElementById(
+                "shakeComplete"
+            );
+
+
+        complete.style.display =
+            "block";
+
+
+        returningToPortrait =
+            true;
+
+
+        /*
+         * Ya no necesitamos seguir
+         * contando movimientos.
+         */
+
+        window.removeEventListener(
+            "devicemotion",
+            detectarAgitacion
+        );
+
+
+        setTimeout(function() {
+
+            complete.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }, 300);
+
+    }
+
+
+    /* ==================================================
+       MOSTRAR VIDEO Y GUÍA
+    ================================================== */
+
+    function mostrarVideoYGuia() {
+
+
+        const status =
+            document.getElementById(
+                "orientationStatus"
+            );
+
+
+        status.textContent =
+            "TODO LISTO · HISTORIA RECUPERADA";
+
+
+        status.style.color =
+            "#57d66a";
+
+
+        const video =
+            document.getElementById(
+                "videoSection"
+            );
+
+
+        video.style.display =
+            "block";
+
+
+        const table =
+            document.getElementById(
+                "tableSection"
+            );
+
+
+        table.style.display =
+            "block";
+
+
+        setTimeout(function() {
+
+            video.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+        }, 300);
+
+    }
+
+
+    /* ==================================================
+       VERIFICAR MESA
+    ================================================== */
+
+    function verificarMesa() {
+
+
+        const campo =
+            document.getElementById(
+                "tableInput"
+            );
+
+
+        const error =
+            document.getElementById(
+                "tableError"
+            );
+
+
+        const boton =
+            document.getElementById(
+                "storyButton"
+            );
+
+
+        const respuesta =
+            campo.value
+                .trim();
+
+
+        if (
+            respuesta === "111"
+        ) {
+
+
+            error.style.display =
+                "none";
+
+
+            boton.style.display =
+                "block";
+
+
+            setTimeout(function() {
+
+                boton.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "center"
+
+                });
+
+            }, 200);
+
+
+        } else {
+
+
+            error.style.display =
+                "block";
+
+
+            boton.style.display =
+                "none";
+
+
+            campo.focus();
+
+        }
+
+    }
+
+
+    /* ==================================================
+       CONTINUAR HISTORIA
+    ================================================== */
+
+    function continuarHistoria() {
+
+        window.location.href =
+            "pagina6.html";
+
+    }
+
+
+    /* ==================================================
+       ENTER EN CLAVE DE MESA
+    ================================================== */
+
+    document
+        .getElementById(
+            "tableInput"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    verificarMesa();
+
+                }
+
+            }
+        );
+
+
+</script>
+
+
+</body>
+
+</html>
