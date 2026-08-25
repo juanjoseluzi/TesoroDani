@@ -216,7 +216,6 @@
             line-height: 1.6;
 
             color: #b99da5;
-
         }
 
 
@@ -298,7 +297,7 @@
 
 
         /* =================================
-           PARTE DIVERTIDA
+           PARTE DE TENSIÓN
         ================================= */
 
         .tension-section {
@@ -319,11 +318,11 @@
                 "Apple Color Emoji",
                 sans-serif;
 
-            font-size: 78px;
+            font-size: 84px;
 
             line-height: 1;
 
-            margin-bottom: 15px;
+            margin-bottom: 18px;
 
             animation:
                 fuego 0.75s ease-in-out infinite alternate;
@@ -332,15 +331,15 @@
 
         .tension-title {
 
-            font-size: 28px;
+            font-size: 29px;
 
             font-weight: bold;
 
             color: #ffffff;
 
-            line-height: 1.35;
+            line-height: 1.4;
 
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
 
@@ -353,11 +352,42 @@
 
             font-size: 21px;
 
-            line-height: 1.7;
+            line-height: 1.75;
 
             color: #e9d7dc;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
+        }
+
+
+        .tension-text strong {
+
+            color: #ffffff;
+        }
+
+
+        .movement-note {
+
+            margin-top: 24px;
+
+            padding: 20px 14px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.12);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.12);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+
+            line-height: 1.7;
+
+            color: #e7d2d7;
         }
 
 
@@ -365,45 +395,24 @@
            BARRA DE AGITACIÓN
         ================================= */
 
-        .shake-counter {
-
-            margin-top: 20px;
-
-            color: #d2b8be;
-
-            font-size: 16px;
-
-            letter-spacing: 1px;
-        }
-
-
-        .shake-number {
-
-            color: #ffffff;
-
-            font-size: 25px;
-
-            font-weight: bold;
-        }
-
-
         .progress-bar {
 
             width: 100%;
 
-            max-width: 390px;
+            height: 30px;
 
-            height: 18px;
-
-            margin: 14px auto 8px;
+            margin: 32px auto 14px;
 
             background:
-                rgba(0,0,0,0.35);
+                rgba(0,0,0,0.48);
 
             border:
-                1px solid #795560;
+                1px solid #6e323e;
 
             overflow: hidden;
+
+            box-shadow:
+                inset 0 0 10px rgba(0,0,0,0.4);
         }
 
 
@@ -416,22 +425,51 @@
             background:
                 linear-gradient(
                     90deg,
-                    #7f3547,
-                    #ca7383
+                    #6b1727,
+                    #9e2237,
+                    #d03a50
                 );
 
             transition:
                 width 0.18s ease;
+
+            box-shadow:
+                0 0 14px rgba(190,34,58,0.25);
         }
 
 
         .shake-help {
 
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #d9c2c8;
+
+            margin-top: 20px;
+        }
+
+
+        .shake-help strong {
+
+            color: #ffffff;
+        }
+
+
+        .shake-hint {
+
+            margin-top: 16px;
+
+            color: #af969d;
+
             font-size: 14px;
 
-            color: #a99198;
-
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
 
@@ -443,7 +481,7 @@
 
             display: none;
 
-            margin-top: 28px;
+            margin-top: 30px;
 
             animation:
                 aparecer 1s ease;
@@ -459,13 +497,7 @@
 
             font-size: 25px;
 
-            line-height: 1.6;
-
-            color: #ffffff;
-        }
-
-
-        .shake-complete-title strong {
+            line-height: 1.65;
 
             color: #ffffff;
         }
@@ -473,13 +505,13 @@
 
         .return-help {
 
-            margin-top: 18px;
+            margin-top: 20px;
 
             color: #d4bcc2;
 
             font-size: 17px;
 
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
 
@@ -616,11 +648,11 @@
                 "Apple Color Emoji",
                 sans-serif;
 
-            font-size: 66px;
+            font-size: 70px;
 
             line-height: 1;
 
-            margin-bottom: 15px;
+            margin-bottom: 17px;
         }
 
 
@@ -820,6 +852,16 @@
             }
 
 
+            .movement-note {
+                font-size: 18px;
+            }
+
+
+            .shake-help {
+                font-size: 17px;
+            }
+
+
             .button {
                 font-size: 17px;
             }
@@ -838,7 +880,7 @@
 
 
     <!-- =====================================
-         INICIO
+         ENCABEZADO
     ====================================== -->
 
     <div class="place-label">
@@ -873,6 +915,10 @@
 
     </div>
 
+
+    <!-- =====================================
+         CAMBIO DE POSICIÓN
+    ====================================== -->
 
     <div class="change-block">
 
@@ -941,8 +987,8 @@
 
         <div class="orientation-title">
 
-            Hay un cambio de posición
-            que tenés que hacer vos también.
+            Ahora sí hay cosas
+            que requieren otra posición.
 
         </div>
 
@@ -954,9 +1000,13 @@
 
             <br><br>
 
+            Hay una parte de aquella historia
+            que merece otro punto de vista.
+
+            <br><br>
+
             <strong>
-                Ahora poné el teléfono
-                en horizontal.
+                Poné el teléfono en horizontal.
             </strong>
 
         </div>
@@ -975,7 +1025,7 @@
 
 
     <!-- =====================================
-         PARTE PICANTE
+         TENSIÓN
     ====================================== -->
 
     <section
@@ -990,11 +1040,12 @@
 
         <div class="tension-title">
 
-            Ah, bueno.
+            Ahora sí.
 
             <br>
 
-            Ahora sí.
+            Hay otra posición
+            que tenía sentido.
 
         </div>
 
@@ -1002,39 +1053,63 @@
         <div class="tension-text">
 
             Ese domingo había
+
             <strong>
                 nervios.
             </strong>
 
             <br><br>
 
-            Había expectativa.
+            Había expectativa,
+            miradas que duraban un poquito más
+            de lo necesario...
 
             <br><br>
 
-            Y había una tensión
-            que ya era bastante difícil
+            y una tensión que empezaba
+            a ser bastante difícil
             de disimular.
 
+            <br><br>
+
+            Cuando la tensión aumenta,
+            el cuerpo también encuentra
+            su propia manera de descargarla:
+
+            <strong>
+                movimiento,
+                ritmo,
+                un pequeño vaivén...
+            </strong>
+
+            <br><br>
+
+            y esa inquietud que no termina
+            de dejarte quieto.
+
         </div>
 
 
-        <div class="shake-counter">
+        <div class="movement-note">
 
-            NIVEL DE TENSIÓN:
+            Parece que tenemos
+            un pequeño exceso de energía
+            acumulada.
 
-            <span
-                id="shakeNumber"
-                class="shake-number">
+            <br><br>
 
-                0
-
-            </span>
-
-            / 15
+            <strong>
+                Habrá que mover un poco
+                el teléfono para aliviar
+                esa tensión.
+            </strong>
 
         </div>
 
+
+        <!-- =================================
+             BARRA ROJA
+        ================================== -->
 
         <div class="progress-bar">
 
@@ -1048,18 +1123,34 @@
 
         <div class="shake-help">
 
-            Parece que este recuerdo
-            todavía tiene bastante energía.
+            Agitá el teléfono con decisión.
 
             <br><br>
 
-            Agitá el teléfono.
+            <strong>
+                Un poco de ritmo,
+                un poco de movimiento,
+                y vamos bajando la tensión.
+            </strong>
+
+        </div>
+
+
+        <div class="shake-hint">
+
+            La barra se completa después
+            de aproximadamente 15 movimientos.
+
+            <br>
+
+            No hace falta romper el teléfono.
+            Todavía lo necesitamos.
 
         </div>
 
 
         <!-- =================================
-             FINAL DE AGITACIÓN
+             COMPLETADO
         ================================== -->
 
         <div
@@ -1073,25 +1164,33 @@
                     Bueno...
                 </strong>
 
-                parece que ya entendimos
-                el concepto.
+                creo que ya entendimos
+                bastante bien el concepto.
 
                 <br><br>
 
-                😏🔥
+                🔥😏🔥
 
             </div>
 
 
             <div class="return-help">
 
-                Ahora volvió a cambiar
-                la posición de la historia.
+                Parece que aquella tensión
+                finalmente encontró su manera
+                de descargarse.
 
                 <br><br>
 
-                Poné nuevamente
-                el teléfono en vertical.
+                Ahora la historia vuelve
+                a ponerse de pie.
+
+                <br><br>
+
+                <strong>
+                    Volvé a poner el teléfono
+                    en vertical.
+                </strong>
 
             </div>
 
@@ -1246,22 +1345,32 @@
        ESTADO
     ================================================== */
 
-    let horizontalDetectado = false;
-
-    let shakeCount = 0;
-
-    let lastShakeTime = 0;
-
-    let shakeReady = false;
-
-    let returningToPortrait = false;
+    let horizontalDetectado =
+        false;
 
 
-    const SHAKE_TARGET = 15;
+    let shakeCount =
+        0;
+
+
+    let lastShakeTime =
+        0;
+
+
+    let shakeReady =
+        false;
+
+
+    let returningToPortrait =
+        false;
+
+
+    const SHAKE_TARGET =
+        15;
 
 
     /* ==================================================
-       DETECTAR ORIENTACIÓN
+       ORIENTACIÓN
     ================================================== */
 
     function estaEnHorizontal() {
@@ -1277,19 +1386,26 @@
             screen.orientation.type
         ) {
 
+
             const type =
                 screen.orientation.type;
 
+
             if (
-                type.includes("landscape")
+                type.includes(
+                    "landscape"
+                )
             ) {
 
                 return true;
 
             }
 
+
             if (
-                type.includes("portrait")
+                type.includes(
+                    "portrait"
+                )
             ) {
 
                 return false;
@@ -1300,7 +1416,7 @@
 
 
         /*
-         * Respaldo compatible:
+         * Respaldo:
          * ancho mayor que alto.
          */
 
@@ -1320,6 +1436,11 @@
                 "orientationStatus"
             );
 
+
+        /*
+         * Primera transición:
+         * vertical -> horizontal.
+         */
 
         if (
             !horizontalDetectado &&
@@ -1348,9 +1469,8 @@
 
 
         /*
-         * Después de completar
-         * las sacudidas, necesitamos
-         * volver a vertical.
+         * Segunda transición:
+         * horizontal -> vertical.
          */
 
         if (
@@ -1370,10 +1490,6 @@
     }
 
 
-    /*
-     * Evento moderno.
-     */
-
     if (
         screen.orientation
     ) {
@@ -1385,11 +1501,6 @@
 
     }
 
-
-    /*
-     * Respaldo para navegadores
-     * que no expongan el evento moderno.
-     */
 
     window.addEventListener(
         "resize",
@@ -1420,11 +1531,6 @@
             "block";
 
 
-        /*
-         * Activamos la detección
-         * del movimiento.
-         */
-
         iniciarDetectorMovimiento();
 
 
@@ -1432,9 +1538,11 @@
 
             section.scrollIntoView({
 
-                behavior: "smooth",
+                behavior:
+                    "smooth",
 
-                block: "center"
+                block:
+                    "center"
 
             });
 
@@ -1444,7 +1552,7 @@
 
 
     /* ==================================================
-       ACELERÓMETRO / AGITACIÓN
+       MOVIMIENTO
     ================================================== */
 
     function iniciarDetectorMovimiento() {
@@ -1475,7 +1583,8 @@
 
 
         if (
-            shakeCount >= SHAKE_TARGET
+            shakeCount >=
+            SHAKE_TARGET
         ) {
 
             return;
@@ -1484,8 +1593,8 @@
 
 
         /*
-         * Nos aseguramos de que
-         * todavía esté horizontal.
+         * Sólo contamos movimientos
+         * mientras está horizontal.
          */
 
         if (
@@ -1522,11 +1631,6 @@
             acceleration.z || 0;
 
 
-        /*
-         * Magnitud aproximada
-         * del movimiento.
-         */
-
         const magnitud =
             Math.sqrt(
                 x * x +
@@ -1536,10 +1640,7 @@
 
 
         /*
-         * Umbral deliberadamente moderado:
-         * queremos que funcione con una
-         * sacudida clara, no con cada
-         * mínimo movimiento.
+         * Umbral de una sacudida clara.
          */
 
         if (
@@ -1552,9 +1653,8 @@
 
 
             /*
-             * Evitamos contar decenas
-             * de eventos consecutivos
-             * como una sola sacudida.
+             * Evitamos contar
+             * demasiados eventos seguidos.
              */
 
             if (
@@ -1593,7 +1693,7 @@
 
 
     /* ==================================================
-       BARRA
+       ACTUALIZAR BARRA
     ================================================== */
 
     function actualizarBarra() {
@@ -1602,18 +1702,11 @@
         const porcentaje =
             Math.min(
                 100,
-                (shakeCount /
-                SHAKE_TARGET) *
-                100
+                (
+                    shakeCount /
+                    SHAKE_TARGET
+                ) * 100
             );
-
-
-        document
-            .getElementById(
-                "shakeNumber"
-            )
-            .textContent =
-            shakeCount;
 
 
         document
@@ -1627,7 +1720,7 @@
 
 
     /* ==================================================
-       COMPLETAR AGITACIÓN
+       COMPLETAR
     ================================================== */
 
     function completarAgitacion() {
@@ -1647,11 +1740,6 @@
             true;
 
 
-        /*
-         * Ya no necesitamos seguir
-         * contando movimientos.
-         */
-
         window.removeEventListener(
             "devicemotion",
             detectarAgitacion
@@ -1662,9 +1750,11 @@
 
             complete.scrollIntoView({
 
-                behavior: "smooth",
+                behavior:
+                    "smooth",
 
-                block: "center"
+                block:
+                    "center"
 
             });
 
@@ -1674,7 +1764,7 @@
 
 
     /* ==================================================
-       MOSTRAR VIDEO Y GUÍA
+       MOSTRAR VIDEO + MESA
     ================================================== */
 
     function mostrarVideoYGuia() {
@@ -1718,9 +1808,11 @@
 
             video.scrollIntoView({
 
-                behavior: "smooth",
+                behavior:
+                    "smooth",
 
-                block: "start"
+                block:
+                    "start"
 
             });
 
@@ -1755,12 +1847,12 @@
 
 
         const respuesta =
-            campo.value
-                .trim();
+            campo.value.trim();
 
 
         if (
-            respuesta === "111"
+            respuesta ===
+            "111"
         ) {
 
 
@@ -1776,9 +1868,11 @@
 
                 boton.scrollIntoView({
 
-                    behavior: "smooth",
+                    behavior:
+                        "smooth",
 
-                    block: "center"
+                    block:
+                        "center"
 
                 });
 
@@ -1804,7 +1898,7 @@
 
 
     /* ==================================================
-       CONTINUAR HISTORIA
+       CONTINUAR
     ================================================== */
 
     function continuarHistoria() {
@@ -1816,7 +1910,7 @@
 
 
     /* ==================================================
-       ENTER EN CLAVE DE MESA
+       ENTER
     ================================================== */
 
     document
