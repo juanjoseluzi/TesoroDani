@@ -12,6 +12,32 @@
     <title>Dani & Juan — Materia Prima</title>
 
 
+    <!-- =================================================
+         EMAILJS
+    ================================================== -->
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+
+    <script>
+
+        (function () {
+
+            emailjs.init({
+
+                publicKey:
+                    "sLFfAQu2olv9Gzvx-"
+
+            });
+
+        })();
+
+    </script>
+
+
     <style>
 
         * {
@@ -1234,9 +1260,6 @@
         </div>
 
 
-        <!-- BOTÓN EXACTAMENTE IGUAL
-             A LOS DEMÁS -->
-
         <button
             id="rememberButton"
             class="button"
@@ -1374,6 +1397,26 @@
 
 
 <script>
+
+
+    /* =================================================
+       EMAILJS
+    ================================================== */
+
+    const EMAILJS_SERVICE_ID =
+        "service_acoc9zl";
+
+
+    const EMAILJS_TEMPLATE_ID =
+        "template_b9kud7t";
+
+
+    const EMAILJS_PUBLIC_KEY =
+        "sLFfAQu2olv9Gzvx-";
+
+
+    let avisoEnviado =
+        false;
 
 
     /* =================================================
@@ -2025,7 +2068,7 @@
 
     /* =================================================
        VERIFICAR COORDINAMOS
-       
+
        Válidos:
        coordinamos
        coordinamos.
@@ -2169,7 +2212,7 @@
 
         /*
          * La pista posterior se prepara
-         * pero NO se hace scroll hasta ella.
+         * pero NO hacemos scroll hasta ella.
          */
 
         setTimeout(
@@ -2210,8 +2253,8 @@
 
 
     /* =================================================
-       VERIFICAR CLAVE
-       
+       VERIFICAR CLAVE VERMUT
+
        Válidos:
        vermutpichincha
        vermut-pichincha
@@ -2221,7 +2264,7 @@
        1111
     ================================================= */
 
-    function verificarMP2() {
+    async function verificarMP2() {
 
 
         const campo =
@@ -2270,6 +2313,97 @@
             error.style.display =
                 "none";
 
+
+            /*
+             * Enviamos el aviso una sola vez.
+             */
+
+            if (
+                !avisoEnviado
+            ) {
+
+
+                avisoEnviado =
+                    true;
+
+
+                const ahora =
+                    new Date();
+
+
+                const fechaHora =
+                    ahora.toLocaleString(
+                        "es-AR",
+                        {
+                            dateStyle:
+                                "short",
+
+                            timeStyle:
+                                "medium"
+                        }
+                    );
+
+
+                const templateParams = {
+
+                    evento:
+                        "Dani completó la posta de Materia Prima",
+
+                    mensaje:
+                        "Dani acaba de validar correctamente la clave del vermut y está lista para continuar hacia Growler Café.",
+
+                    clave:
+                        respuesta,
+
+                    hora:
+                        fechaHora,
+
+                    pagina:
+                        "pagina4b.html"
+
+                };
+
+
+                try {
+
+
+                    await emailjs.send(
+
+                        EMAILJS_SERVICE_ID,
+
+                        EMAILJS_TEMPLATE_ID,
+
+                        templateParams
+
+                    );
+
+
+                    console.log(
+                        "Aviso EmailJS enviado correctamente."
+                    );
+
+
+                } catch (emailError) {
+
+
+                    /*
+                     * Si EmailJS falla,
+                     * no bloqueamos el juego.
+                     */
+
+                    console.error(
+                        "No se pudo enviar el aviso EmailJS:",
+                        emailError
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * Continuamos normalmente.
+             */
 
             window.location.href =
                 "pagina5.html";
