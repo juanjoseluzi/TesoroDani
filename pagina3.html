@@ -5,9 +5,8 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Dani & Juan — El recorrido</title>
 
@@ -402,8 +401,7 @@
 
             height: 62px;
 
-            background:
-                rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.4);
 
             border:
                 2px solid #80606a;
@@ -490,48 +488,51 @@
         }
 
 
-        /* MATERIA PRIMA DESTACADA */
+        /* Materia Prima destacada */
 
         .materia-prima {
 
             display: inline-block;
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
             font-size: 29px;
 
             font-weight: bold;
 
-            color: #e4b4bf;
+            color: #b85c73;
 
             text-shadow:
-                0 0 8px rgba(190,80,105,0.14);
+                0 0 8px rgba(184,92,115,0.12);
+
+            line-height: 1.25;
 
         }
 
 
-        .gym-emoji {
+        /* =========================================
+           EMOJI GIMNASIO
+        ========================================= */
 
-            display: block;
+        .gym-emoji {
 
             font-family:
                 "Segoe UI Emoji",
                 "Apple Color Emoji",
                 sans-serif;
 
-            font-size: 62px;
+            font-size: 68px;
 
             line-height: 1;
 
-            margin: 18px 0 8px;
+            margin: 14px 0 10px;
 
             animation:
-                aparecer 0.8s ease;
+                aparecer 0.9s ease;
         }
 
+
+        /* =========================================
+           BOTONES SI / NO
+        ========================================= */
 
         .proposal-buttons {
 
@@ -608,7 +609,7 @@
 
             line-height: 1;
 
-            margin-bottom: 8px;
+            margin-bottom: 10px;
 
             animation:
                 festejo 0.8s ease;
@@ -632,31 +633,37 @@
         }
 
 
-        .success-message {
+        /* =========================================
+           SIDRA CORRECTA
+        ========================================= */
+
+        .sidra-success {
 
             display: none;
 
-            margin-top: 25px;
+            margin-top: 22px;
 
-            color: #ffffff;
+            animation:
+                festejoSidra 0.9s ease;
+        }
+
+
+        .sidra-success-title {
 
             font-family:
                 Georgia,
                 "Times New Roman",
                 serif;
 
-            font-size: 23px;
+            font-size: 28px;
 
-            line-height: 1.7;
-
-            animation:
-                revelar 1s ease;
-        }
-
-
-        .success-message strong {
+            font-weight: bold;
 
             color: #ffffff;
+
+            line-height: 1.4;
+
+            margin-bottom: 14px;
         }
 
 
@@ -673,10 +680,31 @@
 
             line-height: 1;
 
-            margin: 18px 0 8px;
+            margin: 8px 0 18px;
 
             animation:
-                festejo 0.8s ease;
+                brindar 1.2s ease-in-out infinite alternate;
+        }
+
+
+        .sidra-success-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.7;
+
+            color: #eadcdf;
+        }
+
+
+        .sidra-success-text strong {
+
+            color: #ffffff;
         }
 
 
@@ -750,7 +778,7 @@
                 opacity: 0;
 
                 transform:
-                    scale(0.6)
+                    scale(0.65)
                     rotate(-8deg);
             }
 
@@ -770,6 +798,55 @@
                 transform:
                     scale(1)
                     rotate(0deg);
+            }
+        }
+
+
+        @keyframes festejoSidra {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px)
+                    scale(0.85);
+            }
+
+            60% {
+
+                opacity: 1;
+
+                transform:
+                    translateY(-5px)
+                    scale(1.05);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        @keyframes brindar {
+
+            from {
+
+                transform:
+                    rotate(-5deg)
+                    scale(1);
+            }
+
+            to {
+
+                transform:
+                    rotate(5deg)
+                    scale(1.08);
             }
 
         }
@@ -817,15 +894,21 @@
             }
 
 
-            .gym-emoji {
-
-                font-size: 56px;
-            }
-
-
             .drink-question {
 
                 font-size: 21px;
+            }
+
+
+            .sidra-success-title {
+
+                font-size: 25px;
+            }
+
+
+            .sidra-success-text {
+
+                font-size: 20px;
             }
 
 
@@ -942,7 +1025,7 @@
             class="video-wrapper">
 
             <iframe
-                src="https://www.youtube.com/embed/y_jdW-yCff0"
+                src="https://www.youtube.com/embed/lDSov3n-bSg"
                 title="Recuerdo del gimnasio"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
@@ -976,7 +1059,7 @@
 
 
     <!-- =====================================
-         CLAVE VIDEO 3
+         CLAVE PARA VIDEO 3
     ====================================== -->
 
     <section
@@ -1079,7 +1162,7 @@
             class="video-wrapper">
 
             <iframe
-                src="https://www.youtube.com/embed/ANuGH9qfzu0"
+                src="https://www.youtube.com/embed/f_OQG-ktJ7U"
                 title="Recuerdo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
@@ -1127,9 +1210,11 @@
 
         <div class="invitation">
 
-            Te invito a tomar algo en
+            Te invito a tomar algo
 
             <br>
+
+            en
 
             <span class="materia-prima">
                 Materia Prima
@@ -1147,17 +1232,27 @@
                 ¡Así como estamos!
             </strong>
 
-            <br><br>
-
-            Con ropa de gimnasio.
-
-            <span class="gym-emoji">
-                💪
-            </span>
-
             <br>
 
-            ¿Aceptás?
+            con ropa de gimnasio.
+
+        </div>
+
+
+        <div class="gym-emoji">
+            💪
+        </div>
+
+
+        <div class="invitation">
+
+            Como aquella vez.
+
+            <br><br>
+
+            <strong>
+                ¿Aceptás?
+            </strong>
 
         </div>
 
@@ -1187,7 +1282,7 @@
 
 
         <!-- =================================
-             BEBIDA
+             ELECCIÓN DE BEBIDA
         ================================== -->
 
         <div
@@ -1250,27 +1345,41 @@
             </div>
 
 
+            <!-- =================================
+                 RESPUESTA CORRECTA
+            ================================== -->
+
             <div
                 id="bebidaCorrecta"
-                class="success-message">
+                class="sidra-success">
 
-                <strong>
+
+                <div class="sidra-success-title">
+
                     ¡Perfecto!
-                </strong>
+
+                </div>
 
 
                 <span class="sidra-emoji">
+
                     🥂
+
                 </span>
 
 
-                Además de buen gusto,
+                <div class="sidra-success-text">
 
-                <br>
+                    Además de buen gusto,
 
-                <strong>
-                    tenés buena memoria.
-                </strong>
+                    <br>
+
+                    <strong>
+                        tenés buena memoria.
+                    </strong>
+
+                </div>
+
 
             </div>
 
@@ -1299,15 +1408,38 @@
 
 
     /* ==================================================
-       CLAVE PARA VIDEO 3
+       VIDEOS
     ================================================== */
 
+    const VIDEO_GIMNASIO_ID =
+        "y_jdW-yCff0";
 
-    const CLAVES_VIDEO = [
+
+    const VIDEO_RECUERDOS_ID =
+        "ANuGH9qfzu0";
+
+
+    /* ==================================================
+       CLAVES VÁLIDAS PARA EL SEGUNDO VIDEO
+    ================================================== */
+
+    const CLAVES_SEGUNDO_VIDEO = [
 
         "recuerdo",
         "te-coso",
         "tecoso",
+        "1111"
+
+    ];
+
+
+    /* ==================================================
+       RESPUESTAS DE BEBIDA
+    ================================================== */
+
+    const RESPUESTAS_BEBIDA = [
+
+        "sidra",
         "1111"
 
     ];
@@ -1320,7 +1452,9 @@
     function normalizar(texto) {
 
         return texto
+
             .toLowerCase()
+
             .trim();
 
     }
@@ -1401,7 +1535,7 @@
 
 
     /* ==================================================
-       VERIFICAR CLAVE
+       VERIFICAR CLAVE VIDEO 3
     ================================================== */
 
     function verificarClaveVideo() {
@@ -1425,14 +1559,23 @@
             );
 
 
-        const correcta =
-            CLAVES_VIDEO.includes(
-                respuesta
-            );
+        const esCorrecta =
+            CLAVES_SEGUNDO_VIDEO
+                .some(
+                    function(clave) {
+
+                        return (
+                            normalizar(clave)
+                            ===
+                            respuesta
+                        );
+
+                    }
+                );
 
 
         if (
-            correcta
+            esCorrecta
         ) {
 
 
@@ -1510,7 +1653,7 @@
 
 
     /* ==================================================
-       ACEPTAR MATERIA PRIMA
+       ACEPTAR PROPUESTA
     ================================================== */
 
     function aceptarPropuesta() {
@@ -1554,18 +1697,6 @@
 
 
     /* ==================================================
-       CLAVES PARA BEBIDA
-    ================================================== */
-
-    const CLAVES_BEBIDA = [
-
-        "sidra",
-        "1111"
-
-    ];
-
-
-    /* ==================================================
        VERIFICAR BEBIDA
     ================================================== */
 
@@ -1602,14 +1733,23 @@
             );
 
 
-        const valida =
-            CLAVES_BEBIDA.includes(
-                respuesta
-            );
+        const esCorrecta =
+            RESPUESTAS_BEBIDA
+                .some(
+                    function(opcion) {
+
+                        return (
+                            normalizar(opcion)
+                            ===
+                            respuesta
+                        );
+
+                    }
+                );
 
 
         if (
-            valida
+            esCorrecta
         ) {
 
 
@@ -1673,7 +1813,7 @@
 
 
     /* ==================================================
-       ENTER - CLAVE VIDEO
+       ENTER EN CLAVE
     ================================================== */
 
     document
@@ -1698,7 +1838,7 @@
 
 
     /* ==================================================
-       ENTER - BEBIDA
+       ENTER EN BEBIDA
     ================================================== */
 
     document
