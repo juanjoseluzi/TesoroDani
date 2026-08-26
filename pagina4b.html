@@ -5,8 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Dani & Juan — Materia Prima</title>
 
@@ -322,7 +323,7 @@
 
 
         /* =========================================
-           CONTADOR DE BESOS
+           CONTADOR
         ========================================= */
 
         .kiss-counter {
@@ -384,10 +385,14 @@
 
             display: none;
 
-            margin-top: 45px;
+            margin-top: 55px;
+
+            padding-top: 30px;
 
             animation:
                 aparecer 1s ease;
+
+            scroll-margin-top: 28px;
         }
 
 
@@ -509,6 +514,80 @@
 
 
         /* =========================================
+           RECUERDOS
+        ========================================= */
+
+        .memory-section {
+
+            display: none;
+
+            margin-top: 55px;
+
+            padding-top: 32px;
+
+            animation:
+                aparecer 1s ease;
+
+            scroll-margin-top: 28px;
+        }
+
+
+        .memory-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 72px;
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+        }
+
+
+        .memory-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 27px;
+
+            line-height: 1.5;
+
+            color: #ffffff;
+
+            margin-bottom: 24px;
+        }
+
+
+        .memory-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.75;
+
+            color: #eadcdf;
+
+            margin-bottom: 28px;
+        }
+
+
+        .memory-text strong {
+
+            color: #ffffff;
+        }
+
+
+        /* =========================================
            VIDEO
         ========================================= */
 
@@ -516,10 +595,14 @@
 
             display: none;
 
-            margin-top: 45px;
+            margin-top: 55px;
+
+            padding-top: 32px;
 
             animation:
                 aparecer 1s ease;
+
+            scroll-margin-top: 28px;
         }
 
 
@@ -574,12 +657,21 @@
 
 
         /* =========================================
-           CLAVE MP2
+           CLAVE FINAL
         ========================================= */
 
         .window-clue {
 
-            margin-top: 32px;
+            display: none;
+
+            margin-top: 36px;
+
+            padding-top: 28px;
+
+            animation:
+                aparecer 1s ease;
+
+            scroll-margin-top: 28px;
 
             font-family:
                 Georgia,
@@ -602,7 +694,12 @@
 
         .mp2-section {
 
-            margin-top: 28px;
+            display: none;
+
+            margin-top: 30px;
+
+            animation:
+                aparecer 1s ease;
         }
 
 
@@ -673,6 +770,7 @@
                     translateY(-7px);
 
             }
+
         }
 
 
@@ -727,6 +825,18 @@
             .key-intro {
 
                 font-size: 21px;
+            }
+
+
+            .memory-title {
+
+                font-size: 24px;
+            }
+
+
+            .memory-text {
+
+                font-size: 19px;
             }
 
         }
@@ -981,8 +1091,71 @@
 
 
     <!-- =====================================
-         VIDEO FINAL
+         RECUERDOS
     ====================================== -->
+
+    <section
+        id="memorySection"
+        class="memory-section">
+
+
+        <div class="memory-emoji">
+
+            🥂❤️✨
+
+        </div>
+
+
+        <div class="memory-title">
+
+            Esperá... sí, sí.
+
+            <br>
+
+            Vamos a coordinar lo que hablamos.
+
+        </div>
+
+
+        <div class="memory-text">
+
+            Pero antes...
+
+            <br><br>
+
+            ¿qué recuerdos tenés de aquella
+            noche en Materia Prima?
+
+            <br><br>
+
+            <strong>
+                Seguro que te acordás
+                de más de una cosa...
+            </strong>
+
+            <br><br>
+
+            Hay cosas que vale la pena
+            volver a mirar antes de seguir.
+
+        </div>
+
+
+        <button
+            class="button"
+            onclick="mostrarVideo()">
+
+            SEGUIR RECORDANDO 🥂
+
+        </button>
+
+
+    </section>
+
+
+    <!-- =====================================
+         VIDEO
+    ===================================== -->
 
     <section
         id="videoSection"
@@ -991,92 +1164,95 @@
 
         <div class="video-title">
 
-            RECUERDO RECUPERADO
+            RECUERDOS RECUPERADOS
 
         </div>
 
 
         <div class="video-wrapper">
 
-
             <iframe
-                src="https://www.youtube.com/embed/N6PzoUk9TaI"
-                title="Recuerdo de Materia Prima"
+                src="https://www.youtube.com/embed/jo3LQ9UsOSs"
+                title="Recuerdos de Materia Prima"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
             </iframe>
 
-
         </div>
 
 
-        <div class="window-clue">
+    </section>
 
-            Bien.
+
+    <!-- =====================================
+         PISTA PARA MATERIA PRIMA
+    ====================================== -->
+
+    <section
+        id="windowClue"
+        class="window-clue">
+
+
+        <strong>
+
+            Y ahora sí...
+
+        </strong>
+
+        <br><br>
+
+        Es momento de volver
+        a Materia Prima.
+
+        <br><br>
+
+        Mirá por la ventana.
+
+        <br>
+
+        Hay una última pista
+        esperando por vos.
+
+    </section>
+
+
+    <!-- =====================================
+         CLAVE
+    ====================================== -->
+
+    <section
+        id="mp2Section"
+        class="mp2-section">
+
+
+        <input
+            type="text"
+            id="mp2Input"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="Ingresá la clave..."
+        >
+
+
+        <button
+            class="key-button mp2-button"
+            onclick="verificarMP2()">
+
+            ABRIR SIGUIENTE ETAPA
+
+        </button>
+
+
+        <div
+            id="mp2Error"
+            class="key-error">
+
+            Esa no parece ser la clave.
 
             <br><br>
 
-            Ahora tengo una última cosa
-            que decirte desde acá.
-
-            <br><br>
-
-            Y después...
-
-            <strong>
-                vas a tener que venir
-                personalmente a Materia Prima.
-            </strong>
-
-            <br><br>
-
-            Mirá por la ventana.
-
-            <br>
-
-            Hay una clave esperándote ahí.
-
-        </div>
-
-
-        <!-- =================================
-             CLAVE MP2
-        ================================== -->
-
-        <div class="mp2-section">
-
-
-            <input
-                type="text"
-                id="mp2Input"
-                autocomplete="off"
-                autocapitalize="none"
-                spellcheck="false"
-                placeholder="Ingresá la clave..."
-            >
-
-
-            <button
-                class="key-button mp2-button"
-                onclick="verificarMP2()">
-
-                ABRIR SIGUIENTE ETAPA
-
-            </button>
-
-
-            <div
-                id="mp2Error"
-                class="key-error">
-
-                Esa no es la clave.
-
-                <br><br>
-
-                Mirá bien por la ventana...
-
-            </div>
-
+            Pensá en aquella noche...
 
         </div>
 
@@ -1092,6 +1268,35 @@
 
 
     /* =================================================
+       VARIABLES
+    ================================================= */
+
+
+    let isScratching =
+        false;
+
+
+    let scratchCount =
+        0;
+
+
+    let kissCount =
+        0;
+
+
+    let enough =
+        false;
+
+
+    let lastX =
+        null;
+
+
+    let lastY =
+        null;
+
+
+    /* =================================================
        RASPADITA
     ================================================= */
 
@@ -1103,31 +1308,15 @@
 
 
     const ctx =
-        canvas.getContext("2d");
+        canvas.getContext(
+            "2d"
+        );
 
 
     const scratchArea =
         document.querySelector(
             ".scratch-area"
         );
-
-
-    let isScratching = false;
-
-
-    let scratchCount = 0;
-
-
-    let kissCount = 0;
-
-
-    let enough = false;
-
-
-    let lastX = null;
-
-
-    let lastY = null;
 
 
     function prepararCanvas() {
@@ -1138,7 +1327,8 @@
 
 
         const ratio =
-            window.devicePixelRatio || 1;
+            window.devicePixelRatio ||
+            1;
 
 
         canvas.width =
@@ -1166,11 +1356,6 @@
             0
         );
 
-
-        /*
-         * Superficie metálica
-         * de la raspadita.
-         */
 
         const gradient =
             ctx.createLinearGradient(
@@ -1223,10 +1408,6 @@
         );
 
 
-        /*
-         * Texto de la raspadita.
-         */
-
         ctx.fillStyle =
             "rgba(60,55,57,0.72)";
 
@@ -1260,10 +1441,6 @@
             rect.height / 2 + 16
         );
 
-
-        /*
-         * Rayitas de textura.
-         */
 
         ctx.strokeStyle =
             "rgba(70,70,70,0.18)";
@@ -1347,11 +1524,6 @@
     function descubrir(x, y) {
 
 
-        /*
-         * Descubrimos un círculo
-         * relativamente grande.
-         */
-
         ctx.save();
 
 
@@ -1374,22 +1546,11 @@
         ctx.fill();
 
 
-        /*
-         * La "besada" sigue un poco
-         * la dirección del movimiento.
-         */
-
         ctx.restore();
 
 
         scratchCount++;
 
-
-        /*
-         * Cada nueva interacción
-         * significativa cuenta como
-         * un beso.
-         */
 
         if (
             scratchCount % 18 === 0
@@ -1408,18 +1569,13 @@
         }
 
 
-        /*
-         * El umbral se alcanza
-         * deliberadamente después
-         * de varias pasadas.
-         */
-
         if (
             scratchCount >= 110 &&
             !enough
         ) {
 
-            enough = true;
+            enough =
+                true;
 
             revelarBotonBesos();
 
@@ -1438,7 +1594,10 @@
             Math.min(
                 100,
                 Math.round(
-                    (scratchCount / 110) * 100
+                    (
+                        scratchCount /
+                        110
+                    ) * 100
                 )
             );
 
@@ -1490,11 +1649,14 @@
     function iniciarRaspadita(event) {
 
 
-        isScratching = true;
+        isScratching =
+            true;
 
 
         const posicion =
-            obtenerPosicion(event);
+            obtenerPosicion(
+                event
+            );
 
 
         lastX =
@@ -1529,15 +1691,10 @@
 
 
         const posicion =
-            obtenerPosicion(event);
+            obtenerPosicion(
+                event
+            );
 
-
-        /*
-         * Creamos pequeños pasos
-         * entre el punto anterior
-         * y el actual para que no
-         * queden huecos.
-         */
 
         if (
             lastX !== null &&
@@ -1546,11 +1703,13 @@
 
 
             const dx =
-                posicion.x - lastX;
+                posicion.x -
+                lastX;
 
 
             const dy =
-                posicion.y - lastY;
+                posicion.y -
+                lastY;
 
 
             const distancia =
@@ -1578,12 +1737,20 @@
 
                 const x =
                     lastX +
-                    (dx * i / pasos);
+                    (
+                        dx *
+                        i /
+                        pasos
+                    );
 
 
                 const y =
                     lastY +
-                    (dy * i / pasos);
+                    (
+                        dy *
+                        i /
+                        pasos
+                    );
 
 
                 descubrir(
@@ -1683,25 +1850,16 @@
             "block";
 
 
-        setTimeout(function() {
-
-            boton.scrollIntoView({
-
-                behavior:
-                    "smooth",
-
-                block:
-                    "center"
-
-            });
-
-        }, 300);
+        desplazarASeccion(
+            boton,
+            110
+        );
 
     }
 
 
     /* =================================================
-       MOSTRAR CLAVE
+       CLAVE
     ================================================= */
 
 
@@ -1718,25 +1876,22 @@
             "block";
 
 
-        setTimeout(function() {
-
-            section.scrollIntoView({
-
-                behavior:
-                    "smooth",
-
-                block:
-                    "center"
-
-            });
-
-        }, 250);
+        desplazarASeccion(
+            section,
+            110
+        );
 
     }
 
 
     /* =================================================
-       VERIFICAR COORDINAMOS
+       COORDINAMOS
+       
+       Válidos:
+       coordinamos
+       coordinamos.
+       coordinamos...
+       1111
     ================================================= */
 
 
@@ -1755,33 +1910,41 @@
             );
 
 
-        /*
-         * Permitimos:
-         *
-         * coordinamos
-         * coordinamos.
-         * coordinamos...
-         *
-         * y cualquier combinación
-         * de mayúsculas/minúsculas.
-         */
-
         let respuesta =
             campo.value
                 .toLowerCase()
                 .trim();
 
 
-        respuesta =
+        /*
+         * Eliminamos todos los puntos finales
+         * para aceptar:
+         *
+         * coordinamos
+         * coordinamos.
+         * coordinamos...
+         */
+
+        const respuestaSinPuntos =
             respuesta.replace(
                 /\.+$/g,
                 ""
             );
 
 
+        const correcta =
+            (
+                respuestaSinPuntos ===
+                "coordinamos"
+            ) ||
+            (
+                respuestaSinPuntos ===
+                "1111"
+            );
+
+
         if (
-            respuesta ===
-            "coordinamos"
+            correcta
         ) {
 
 
@@ -1789,29 +1952,28 @@
                 "none";
 
 
-            const video =
+            const memory =
                 document.getElementById(
-                    "videoSection"
+                    "memorySection"
                 );
 
 
-            video.style.display =
+            memory.style.display =
                 "block";
 
 
-            setTimeout(function() {
+            /*
+             * La nueva sección se coloca
+             * suficientemente abajo para
+             * que el nuevo contenido no
+             * quede tapado por el estado
+             * anterior del scroll.
+             */
 
-                video.scrollIntoView({
-
-                    behavior:
-                        "smooth",
-
-                    block:
-                        "center"
-
-                });
-
-            }, 250);
+            desplazarASeccion(
+                memory,
+                110
+            );
 
 
         } else {
@@ -1829,7 +1991,130 @@
 
 
     /* =================================================
-       VERIFICAR MP2
+       MOSTRAR VIDEO
+    ================================================= */
+
+
+    function mostrarVideo() {
+
+
+        const video =
+            document.getElementById(
+                "videoSection"
+            );
+
+
+        video.style.display =
+            "block";
+
+
+        desplazarASeccion(
+            video,
+            110
+        );
+
+    }
+
+
+    /* =================================================
+       DESPUÉS DEL VIDEO
+    ================================================= */
+
+
+    function mostrarPistaVentana() {
+
+
+        const clue =
+            document.getElementById(
+                "windowClue"
+            );
+
+
+        clue.style.display =
+            "block";
+
+
+        const mp2 =
+            document.getElementById(
+                "mp2Section"
+            );
+
+
+        mp2.style.display =
+            "block";
+
+
+        desplazarASeccion(
+            clue,
+            110
+        );
+
+    }
+
+
+    /* =================================================
+       NUEVO CONTROL:
+       cuando el video ya aparece,
+       mostramos la pista después
+       de una pequeña pausa.
+    ================================================= */
+
+
+    const videoSection =
+        document.getElementById(
+            "videoSection"
+        );
+
+
+    /*
+     * Observamos cuándo se hace visible.
+     */
+
+    const videoObserver =
+        new MutationObserver(
+            function(mutations) {
+
+                mutations.forEach(
+                    function(mutation) {
+
+                        if (
+                            mutation.type ===
+                            "attributes" &&
+                            videoSection.style.display ===
+                            "block"
+                        ) {
+
+                            setTimeout(
+                                mostrarPistaVentana,
+                                1000
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+    videoObserver.observe(
+        videoSection,
+        {
+            attributes: true
+        }
+    );
+
+
+    /* =================================================
+       MP2 / VERMUT PICHINCHA
+       
+       Válidos:
+       vermutpichincha
+       vermut-pichincha
+       vermut
+       pichincha
+       1111
     ================================================= */
 
 
@@ -1848,20 +2133,58 @@
             );
 
 
-        const respuesta =
+        let respuesta =
             campo.value
                 .toLowerCase()
                 .trim();
 
 
+        /*
+         * Permitimos tanto
+         * "vermut-pichincha"
+         * como "vermut pichincha",
+         * aunque el último no fue
+         * pedido explícitamente.
+         */
+
+        respuesta =
+            respuesta
+                .replace(
+                    /\s+/g,
+                    " "
+                );
+
+
+        const valida =
+            respuesta ===
+                "vermutpichincha" ||
+
+            respuesta ===
+                "vermut-pichincha" ||
+
+            respuesta ===
+                "vermut" ||
+
+            respuesta ===
+                "pichincha" ||
+
+            respuesta ===
+                "1111";
+
+
         if (
-            respuesta === "mp2"
+            valida
         ) {
 
 
             error.style.display =
                 "none";
 
+
+            /*
+             * La siguiente etapa
+             * es pagina5.html.
+             */
 
             window.location.href =
                 "pagina5.html";
@@ -1882,7 +2205,7 @@
 
 
     /* =================================================
-       ENTER EN COORDINAMOS
+       ENTER
     ================================================= */
 
 
@@ -1907,11 +2230,6 @@
         );
 
 
-    /* =================================================
-       ENTER EN MP2
-    ================================================= */
-
-
     document
         .getElementById(
             "mp2Input"
@@ -1934,7 +2252,57 @@
 
 
     /* =================================================
-       PREPARAR RASPADITA
+       SCROLL CONTROLADO
+       
+       Siempre dejamos espacio arriba
+       para que la nueva sección quede
+       completamente visible.
+    ================================================= */
+
+
+    function desplazarASeccion(
+        elemento,
+        margenSuperior
+    ) {
+
+
+        setTimeout(
+            function() {
+
+
+                const rect =
+                    elemento.getBoundingClientRect();
+
+
+                const posicion =
+                    window.scrollY +
+                    rect.top -
+                    margenSuperior;
+
+
+                window.scrollTo({
+
+                    top:
+                        Math.max(
+                            0,
+                            posicion
+                        ),
+
+                    behavior:
+                        "smooth"
+
+                });
+
+
+            },
+            120
+        );
+
+    }
+
+
+    /* =================================================
+       PREPARAR CANVAS
     ================================================= */
 
 
@@ -1951,12 +2319,6 @@
     window.addEventListener(
         "resize",
         function() {
-
-            /*
-             * No reiniciamos la capa si
-             * ya empezó a raspar para no
-             * borrar el progreso.
-             */
 
             if (
                 scratchCount === 0
