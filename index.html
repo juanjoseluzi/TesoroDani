@@ -21,6 +21,7 @@
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
 
+
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -1073,6 +1074,7 @@
 
 
     <button
+        id="secondButton"
         type="button"
         onclick="verificarSegundaRespuesta()">
 
@@ -1210,8 +1212,6 @@
 
             "gimnasio",
 
-            "thebaseperformance",
-
             "gimnasiothebase",
 
             "gimnasiothebaseperformance",
@@ -1244,8 +1244,7 @@
 
 
         /*
-         * Evita que el correo se mande varias veces
-         * si se pulsa repetidamente el botón.
+         * Evita que el correo se mande varias veces.
          */
 
         const boton =
@@ -1291,13 +1290,6 @@
     ================================================== */
 
     function enviarCorreoPrimeraClave(respuesta) {
-
-
-        /*
-         * Estos nombres de variables deben coincidir
-         * con los nombres que tengas configurados
-         * dentro de tu Template de EmailJS.
-         */
 
         const templateParams = {
 
@@ -1360,11 +1352,6 @@
                 );
 
 
-            /*
-             * Permite volver a intentar si EmailJS
-             * devuelve un error.
-             */
-
             boton.dataset.emailSent = "false";
 
         });
@@ -1386,6 +1373,9 @@
 
         const acceso =
             document.getElementById("accessGranted");
+
+        const boton =
+            document.getElementById("secondButton");
 
 
         const respuesta =
@@ -1415,6 +1405,10 @@
         ];
 
 
+        /*
+         * Si la respuesta es incorrecta.
+         */
+
         if (!respuestasValidas.includes(respuesta)) {
 
             error.style.display = "block";
@@ -1423,6 +1417,21 @@
 
             return;
         }
+
+
+        /*
+         * Si ya comenzó la redirección,
+         * no volver a iniciar el contador.
+         */
+
+        if (boton.dataset.redirecting === "true") {
+
+            return;
+
+        }
+
+
+        boton.dataset.redirecting = "true";
 
 
         /*
@@ -1435,8 +1444,19 @@
 
 
         /*
-         * Reiniciar la animación de titilación
-         * por si se vuelve a verificar.
+         * Deshabilitar el botón para evitar
+         * múltiples activaciones.
+         */
+
+        boton.disabled = true;
+
+        boton.style.opacity = "0.5";
+
+        boton.style.cursor = "default";
+
+
+        /*
+         * Reiniciar la animación de titilación.
          */
 
         acceso.classList.remove("blink");
@@ -1444,6 +1464,24 @@
         void acceso.offsetWidth;
 
         acceso.classList.add("blink");
+
+
+        /*
+         * =================================================
+         * REDIRECCIÓN AUTOMÁTICA
+         * =================================================
+         *
+         * Espera exactamente 5 segundos después
+         * de mostrar "ACCESO AUTORIZADO".
+         *
+         * Luego abre pagina2.html.
+         */
+
+        setTimeout(function () {
+
+            window.location.href = "pagina2.html";
+
+        }, 5000);
 
     }
 
