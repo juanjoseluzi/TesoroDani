@@ -359,18 +359,37 @@
 
 
         /* =========================================
-           BOTÓN BESOS SUFICIENTES
+           BOTÓN BESOS
         ========================================= */
 
         #enoughKissesButton {
 
             display: none;
 
+            width: 100%;
+
+            height: 68px;
+
             margin-top: 28px;
+
+            border: none;
 
             background: #efdde1;
 
             color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
 
             animation:
                 aparecer 1s ease;
@@ -509,7 +528,7 @@
 
             font-size: 16px;
 
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
 
@@ -577,7 +596,7 @@
 
             color: #eadcdf;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
         }
 
 
@@ -657,16 +676,16 @@
 
 
         /* =========================================
-           CLAVE FINAL
+           PISTA DESPUÉS DEL VIDEO
         ========================================= */
 
         .window-clue {
 
             display: none;
 
-            margin-top: 36px;
+            margin-top: 38px;
 
-            padding-top: 28px;
+            padding-top: 30px;
 
             animation:
                 aparecer 1s ease;
@@ -994,7 +1013,6 @@
 
         <button
             id="enoughKissesButton"
-            class="key-button"
             onclick="mostrarClave()">
 
             YA DI LOS SUFICIENTES BESOS
@@ -1142,10 +1160,11 @@
 
 
         <button
+            id="rememberButton"
             class="button"
             onclick="mostrarVideo()">
 
-            SEGUIR RECORDANDO 🥂
+            SEGUIR RECORDANDO
 
         </button>
 
@@ -1155,7 +1174,7 @@
 
     <!-- =====================================
          VIDEO
-    ===================================== -->
+    ====================================== -->
 
     <section
         id="videoSection"
@@ -1194,9 +1213,7 @@
 
 
         <strong>
-
             Y ahora sí...
-
         </strong>
 
         <br><br>
@@ -1208,7 +1225,7 @@
 
         Mirá por la ventana.
 
-        <br>
+        <br><br>
 
         Hay una última pista
         esperando por vos.
@@ -1217,7 +1234,7 @@
 
 
     <!-- =====================================
-         CLAVE
+         CLAVE DEL VERMUT
     ====================================== -->
 
     <section
@@ -1248,11 +1265,22 @@
             id="mp2Error"
             class="key-error">
 
-            Esa no parece ser la clave.
+            La clave ingresada es incorrecta.
 
             <br><br>
 
-            Pensá en aquella noche...
+            Mirá bien los carteles que están
+            en la pared.
+
+            <br><br>
+
+            Pensá en el punto de vista
+            que tenías aquella noche:
+
+            <strong>
+                estabas de espaldas
+                a la ventana que daba a la calle.
+            </strong>
 
         </div>
 
@@ -1268,9 +1296,8 @@
 
 
     /* =================================================
-       VARIABLES
+       ESTADO DE RASPADITA
     ================================================= */
-
 
     let isScratching =
         false;
@@ -1297,9 +1324,8 @@
 
 
     /* =================================================
-       RASPADITA
+       CANVAS
     ================================================= */
-
 
     const canvas =
         document.getElementById(
@@ -1475,7 +1501,13 @@
     }
 
 
-    function obtenerPosicion(event) {
+    /* =================================================
+       POSICIÓN DEL DEDO
+    ================================================= */
+
+    function obtenerPosicion(
+        event
+    ) {
 
 
         const rect =
@@ -1521,7 +1553,14 @@
     }
 
 
-    function descubrir(x, y) {
+    /* =================================================
+       DESCUBRIR
+    ================================================= */
+
+    function descubrir(
+        x,
+        y
+    ) {
 
 
         ctx.save();
@@ -1587,6 +1626,10 @@
     }
 
 
+    /* =================================================
+       PROGRESO
+    ================================================= */
+
     function actualizarProgreso() {
 
 
@@ -1646,7 +1689,13 @@
     }
 
 
-    function iniciarRaspadita(event) {
+    /* =================================================
+       INICIAR RASPADO
+    ================================================= */
+
+    function iniciarRaspadita(
+        event
+    ) {
 
 
         isScratching =
@@ -1678,7 +1727,13 @@
     }
 
 
-    function continuarRaspadita(event) {
+    /* =================================================
+       CONTINUAR RASPADO
+    ================================================= */
+
+    function continuarRaspadita(
+        event
+    ) {
 
 
         if (
@@ -1837,6 +1892,10 @@
     );
 
 
+    /* =================================================
+       BOTÓN DE BESOS
+    ================================================= */
+
     function revelarBotonBesos() {
 
 
@@ -1859,9 +1918,8 @@
 
 
     /* =================================================
-       CLAVE
+       MOSTRAR CLAVE
     ================================================= */
-
 
     function mostrarClave() {
 
@@ -1885,15 +1943,14 @@
 
 
     /* =================================================
-       COORDINAMOS
-       
+       VERIFICAR COORDINAMOS
+
        Válidos:
        coordinamos
        coordinamos.
        coordinamos...
        1111
     ================================================= */
-
 
     function verificarCoordinamos() {
 
@@ -1915,15 +1972,6 @@
                 .toLowerCase()
                 .trim();
 
-
-        /*
-         * Eliminamos todos los puntos finales
-         * para aceptar:
-         *
-         * coordinamos
-         * coordinamos.
-         * coordinamos...
-         */
 
         const respuestaSinPuntos =
             respuesta.replace(
@@ -1962,14 +2010,6 @@
                 "block";
 
 
-            /*
-             * La nueva sección se coloca
-             * suficientemente abajo para
-             * que el nuevo contenido no
-             * quede tapado por el estado
-             * anterior del scroll.
-             */
-
             desplazarASeccion(
                 memory,
                 110
@@ -1994,7 +2034,6 @@
        MOSTRAR VIDEO
     ================================================= */
 
-
     function mostrarVideo() {
 
 
@@ -2008,18 +2047,62 @@
             "block";
 
 
-        desplazarASeccion(
-            video,
-            110
+        /*
+         * El video es la nueva escena.
+         * La página se desplaza hasta el
+         * COMIENZO del video y deja un
+         * margen generoso arriba.
+         */
+
+        setTimeout(
+            function() {
+
+                const rect =
+                    video.getBoundingClientRect();
+
+
+                const posicion =
+                    window.scrollY +
+                    rect.top -
+                    60;
+
+
+                window.scrollTo({
+
+                    top:
+                        Math.max(
+                            0,
+                            posicion
+                        ),
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            },
+            150
+        );
+
+
+        /*
+         * La pista posterior NO aparece
+         * inmediatamente. Se desbloquea
+         * sólo después de que el video
+         * ya haya quedado visible.
+         */
+
+        setTimeout(
+            mostrarPistaVentana,
+            1200
         );
 
     }
 
 
     /* =================================================
-       DESPUÉS DEL VIDEO
+       PISTA DESPUÉS DEL VIDEO
     ================================================= */
-
 
     function mostrarPistaVentana() {
 
@@ -2030,93 +2113,43 @@
             );
 
 
-        clue.style.display =
-            "block";
-
-
         const mp2 =
             document.getElementById(
                 "mp2Section"
             );
 
 
+        clue.style.display =
+            "block";
+
+
         mp2.style.display =
             "block";
 
 
-        desplazarASeccion(
-            clue,
-            110
-        );
+        /*
+         * NO hacemos scroll automáticamente
+         * hasta esta sección.
+         *
+         * Así el video permanece visible.
+         * La usuaria deberá desplazarse
+         * hacia abajo cuando termine.
+         */
 
     }
 
 
     /* =================================================
-       NUEVO CONTROL:
-       cuando el video ya aparece,
-       mostramos la pista después
-       de una pequeña pausa.
-    ================================================= */
+       CLAVE FINAL
 
-
-    const videoSection =
-        document.getElementById(
-            "videoSection"
-        );
-
-
-    /*
-     * Observamos cuándo se hace visible.
-     */
-
-    const videoObserver =
-        new MutationObserver(
-            function(mutations) {
-
-                mutations.forEach(
-                    function(mutation) {
-
-                        if (
-                            mutation.type ===
-                            "attributes" &&
-                            videoSection.style.display ===
-                            "block"
-                        ) {
-
-                            setTimeout(
-                                mostrarPistaVentana,
-                                1000
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-
-    videoObserver.observe(
-        videoSection,
-        {
-            attributes: true
-        }
-    );
-
-
-    /* =================================================
-       MP2 / VERMUT PICHINCHA
-       
        Válidos:
        vermutpichincha
        vermut-pichincha
+       vermut pichincha
        vermut
        pichincha
        1111
     ================================================= */
-
 
     function verificarMP2() {
 
@@ -2133,26 +2166,10 @@
             );
 
 
-        let respuesta =
+        const respuesta =
             campo.value
                 .toLowerCase()
                 .trim();
-
-
-        /*
-         * Permitimos tanto
-         * "vermut-pichincha"
-         * como "vermut pichincha",
-         * aunque el último no fue
-         * pedido explícitamente.
-         */
-
-        respuesta =
-            respuesta
-                .replace(
-                    /\s+/g,
-                    " "
-                );
 
 
         const valida =
@@ -2161,6 +2178,9 @@
 
             respuesta ===
                 "vermut-pichincha" ||
+
+            respuesta ===
+                "vermut pichincha" ||
 
             respuesta ===
                 "vermut" ||
@@ -2181,11 +2201,6 @@
                 "none";
 
 
-            /*
-             * La siguiente etapa
-             * es pagina5.html.
-             */
-
             window.location.href =
                 "pagina5.html";
 
@@ -2195,6 +2210,18 @@
 
             error.style.display =
                 "block";
+
+
+            /*
+             * Dejamos visible el error
+             * y llevamos la pantalla hasta
+             * él, pero sin esconderlo.
+             */
+
+            desplazarASeccion(
+                error,
+                80
+            );
 
 
             campo.focus();
@@ -2207,7 +2234,6 @@
     /* =================================================
        ENTER
     ================================================= */
-
 
     document
         .getElementById(
@@ -2253,12 +2279,7 @@
 
     /* =================================================
        SCROLL CONTROLADO
-       
-       Siempre dejamos espacio arriba
-       para que la nueva sección quede
-       completamente visible.
     ================================================= */
-
 
     function desplazarASeccion(
         elemento,
@@ -2302,9 +2323,8 @@
 
 
     /* =================================================
-       PREPARAR CANVAS
+       CANVAS
     ================================================= */
-
 
     window.addEventListener(
         "load",
