@@ -31,7 +31,6 @@
 
 
         html {
-
             scroll-behavior: smooth;
         }
 
@@ -215,7 +214,6 @@
 
 
         .mystery strong {
-
             color: #ffffff;
         }
 
@@ -269,7 +267,6 @@
 
 
         .soul-note strong {
-
             color: #ffffff;
         }
 
@@ -598,7 +595,6 @@
 
 
         .location-found-text strong {
-
             color: #ffffff;
         }
 
@@ -648,14 +644,11 @@
 
 
         .button:active {
-
-            transform:
-                scale(0.98);
+            transform: scale(0.98);
         }
 
 
         .button:hover {
-
             background: #f0e2e5;
         }
 
@@ -699,7 +692,6 @@
 
 
         .final-intro strong {
-
             color: #ffffff;
         }
 
@@ -780,8 +772,15 @@
 
             -webkit-user-select: none;
 
-            touch-action:
-                pan-y;
+            /*
+             * Importante:
+             * permite detectar el gesto horizontal
+             * sin que Safari/Chrome interpreten
+             * el gesto como scroll.
+             */
+            touch-action: pan-y;
+
+            -webkit-tap-highlight-color: transparent;
 
             transition:
                 background .5s ease,
@@ -940,7 +939,6 @@
 
 
         .countdown-attention strong {
-
             color: #ffffff;
         }
 
@@ -1038,7 +1036,6 @@
 
 
         .love-text strong {
-
             color: #ffffff;
         }
 
@@ -1207,15 +1204,11 @@
         @keyframes radarSweep {
 
             from {
-
-                transform:
-                    rotate(0deg);
+                transform: rotate(0deg);
             }
 
             to {
-
-                transform:
-                    rotate(360deg);
+                transform: rotate(360deg);
             }
 
         }
@@ -1345,9 +1338,6 @@
 
         /* ==================================================
            ATAJO DE EMERGENCIA
-           
-           Invisible pero táctil.
-           Zona: esquina inferior derecha.
         ================================================== */
 
         #hiddenShortcut {
@@ -1440,31 +1430,26 @@
         @media (max-width: 380px) {
 
             .tree-emoji {
-
                 font-size: 125px;
             }
 
 
             .title {
-
                 font-size: 27px;
             }
 
 
             .intro {
-
                 font-size: 20px;
             }
 
 
             .mystery {
-
                 font-size: 21px;
             }
 
 
             .soul-note {
-
                 font-size: 19px;
             }
 
@@ -1478,50 +1463,42 @@
 
 
             .location-found-title {
-
                 font-size: 26px;
             }
 
 
             .location-found-text {
-
                 font-size: 19px;
             }
 
 
             .final-intro {
-
                 font-size: 21px;
             }
 
 
             .love-title {
-
                 font-size: 28px;
             }
 
 
             .love-text {
-
                 font-size: 20px;
             }
 
 
             .countdown-number {
-
                 font-size: 105px;
             }
 
 
             .birthday-title {
-
                 font-size: 30px;
             }
 
 
             .button,
             .final-button {
-
                 font-size: 18px;
             }
 
@@ -1540,15 +1517,12 @@
 
     <!-- ==================================================
          PRIMERA PANTALLA
-         SOLO EL ÁRBOL
     ================================================== -->
 
     <section class="tree-hero">
 
         <div class="tree-emoji">
-
             🌳
-
         </div>
 
     </section>
@@ -1562,9 +1536,7 @@
 
 
         <div class="place-label">
-
             POSTA 06
-
         </div>
 
 
@@ -1696,16 +1668,12 @@
 
 
                 <div class="location-found-emoji">
-
                     🌳❤️
-
                 </div>
 
 
                 <div class="location-found-title">
-
                     ¡LO ENCONTRASTE!
-
                 </div>
 
 
@@ -1774,7 +1742,6 @@
 
                 <br><br>
 
-
                 <span class="final-emoji">
                     ❤️
                 </span>
@@ -1793,7 +1760,6 @@
                 a lo largo del recorrido.
 
                 <br><br>
-
 
                 <span class="final-emoji">
                     🚗❤️
@@ -1818,7 +1784,6 @@
 
                 <br><br>
 
-
                 <span class="final-emoji">
                     🥹
                 </span>
@@ -1836,7 +1801,6 @@
 
                 <br><br>
 
-
                 <span class="final-emoji">
                     ✨
                 </span>
@@ -1848,7 +1812,6 @@
                 hayas sentido algo muy sencillo:
 
                 <br><br>
-
 
                 <span class="final-emoji">
                     💞
@@ -1910,7 +1873,6 @@
 
             <div class="final-button-area">
 
-
                 <button
                     id="finalButton"
                     class="final-button"
@@ -1919,7 +1881,6 @@
                     FINALIZAR HISTORIA
 
                 </button>
-
 
             </div>
 
@@ -1995,16 +1956,12 @@
 
 
                 <div class="love-heart">
-
                     ❤️
-
                 </div>
 
 
                 <div class="love-title">
-
                     Claro que no.
-
                 </div>
 
 
@@ -2095,30 +2052,22 @@
 
 
                 <div class="party">
-
                     🎉🎉🎉
-
                 </div>
 
 
                 <div class="birthday-heart">
-
                     ❤️
-
                 </div>
 
 
                 <div class="birthday-title">
-
                     FELIZ CUMPLEAÑOS DANI
-
                 </div>
 
 
                 <div class="party">
-
                     🥂🎂🎈✨🎊
-
                 </div>
 
 
@@ -2131,9 +2080,7 @@
 
 
                 <div class="party">
-
                     ❤️🥂❤️
-
                 </div>
 
 
@@ -2157,14 +2104,11 @@
        COORDENADAS
     ================================================== */
 
-
     const ARBOL_LAT =
         -32.9635385678906;
 
-
     const ARBOL_LON =
         -60.65647651917097;
-
 
     const RADIO_METROS =
         50;
@@ -2172,7 +2116,6 @@
 
     let arbolEncontrado =
         false;
-
 
     let watchID =
         null;
@@ -2189,22 +2132,17 @@
         lon2
     ) {
 
-
         const R =
             6371000;
-
 
         const rad =
             Math.PI / 180;
 
-
         const dLat =
             (lat2 - lat1) * rad;
 
-
         const dLon =
             (lon2 - lon1) * rad;
-
 
         const a =
             Math.sin(dLat / 2) *
@@ -2216,7 +2154,6 @@
             Math.sin(dLon / 2) *
             Math.sin(dLon / 2);
 
-
         const c =
             2 *
             Math.atan2(
@@ -2224,9 +2161,7 @@
                 Math.sqrt(1 - a)
             );
 
-
         return R * c;
-
     }
 
 
@@ -2234,27 +2169,17 @@
        COMPROBAR UBICACIÓN
     ================================================== */
 
-    function comprobarUbicacion(
-        position
-    ) {
+    function comprobarUbicacion(position) {
 
-
-        if (
-            arbolEncontrado
-        ) {
-
+        if (arbolEncontrado) {
             return;
-
         }
-
 
         const lat =
             position.coords.latitude;
 
-
         const lon =
             position.coords.longitude;
-
 
         const distancia =
             distanciaMetros(
@@ -2264,31 +2189,24 @@
                 ARBOL_LON
             );
 
-
         console.log(
             "Distancia al árbol:",
             Math.round(distancia),
             "metros"
         );
 
-
         if (
             distancia <=
             RADIO_METROS
         ) {
 
-
             arbolEncontrado =
                 true;
 
-
             detenerGeolocalizacion();
 
-
             mostrarArbolEncontrado();
-
         }
-
     }
 
 
@@ -2298,11 +2216,7 @@
 
     function detenerGeolocalizacion() {
 
-
-        if (
-            watchID !== null
-        ) {
-
+        if (watchID !== null) {
 
             navigator
                 .geolocation
@@ -2310,12 +2224,9 @@
                     watchID
                 );
 
-
             watchID =
                 null;
-
         }
-
     }
 
 
@@ -2325,16 +2236,13 @@
 
     function mostrarArbolEncontrado() {
 
-
         const found =
             document.getElementById(
                 "locationFound"
             );
 
-
         found.style.display =
             "block";
-
 
         setTimeout(
             function() {
@@ -2347,52 +2255,39 @@
             },
             100
         );
-
     }
 
 
     /* ==================================================
-       GEO
+       GEOLOCALIZACIÓN
     ================================================== */
 
     async function iniciarControlGeografico() {
 
-
-        if (
-            !navigator.geolocation
-        ) {
-
+        if (!navigator.geolocation) {
             return;
-
         }
-
 
         let permissionState =
             "prompt";
 
-
         try {
-
 
             if (
                 navigator.permissions &&
                 navigator.permissions.query
             ) {
 
-
                 const permission =
                     await navigator.permissions.query({
                         name: "geolocation"
                     });
 
-
                 permissionState =
                     permission.state;
 
-
                 permission.onchange =
                     function() {
-
 
                         if (
                             permission.state ===
@@ -2400,49 +2295,32 @@
                         ) {
 
                             iniciarWatch();
-
                         }
-
                     };
-
             }
 
         } catch (error) {
 
             permissionState =
                 "prompt";
-
         }
 
-
-        /*
-         * Ya autorizado:
-         * completamente silencioso.
-         */
 
         if (
             permissionState ===
             "granted"
         ) {
 
-
             iniciarWatch();
 
-
             return;
-
         }
 
-
-        /*
-         * Primera autorización.
-         */
 
         if (
             permissionState ===
             "prompt"
         ) {
-
 
             navigator
                 .geolocation
@@ -2454,22 +2332,18 @@
                             position
                         );
 
-
                         if (
                             !arbolEncontrado
                         ) {
 
                             iniciarWatch();
-
                         }
-
                     },
 
                     function() {
 
                         /*
-                         * No mostramos
-                         * ningún mensaje.
+                         * Silencioso.
                          */
 
                     },
@@ -2484,22 +2358,17 @@
 
                         maximumAge:
                             0
-
                     }
-
                 );
-
         }
-
     }
 
 
     /* ==================================================
-       WATCH
+       WATCH GPS
     ================================================== */
 
     function iniciarWatch() {
-
 
         if (
             watchID !== null ||
@@ -2507,9 +2376,7 @@
         ) {
 
             return;
-
         }
-
 
         watchID =
             navigator
@@ -2536,11 +2403,8 @@
 
                         timeout:
                             15000
-
                     }
-
                 );
-
     }
 
 
@@ -2550,22 +2414,18 @@
 
     function mostrarFinal() {
 
-
         const finalSection =
             document.getElementById(
                 "finalSection"
             );
 
-
         finalSection.style.display =
             "block";
-
 
         desplazarAElemento(
             finalSection,
             30
         );
-
     }
 
 
@@ -2579,28 +2439,16 @@
         );
 
 
-    let swipeCount =
-        0;
-
-
-    let swiping =
-        false;
-
-
-    let startX =
-        0;
-
-
-    let startY =
-        0;
-
-
     const REQUIRED_SWIPES =
         3;
 
 
     const SWIPE_DISTANCE =
         75;
+
+
+    let swipeCount =
+        0;
 
 
     let finalButtonUnlocked =
@@ -2611,135 +2459,245 @@
         false;
 
 
+    /*
+     * Variables del gesto.
+     */
+
+    let pointerActive =
+        false;
+
+
+    let pointerStartX =
+        0;
+
+
+    let pointerStartY =
+        0;
+
+
+    let pointerMoved =
+        false;
+
+
+    let pointerId =
+        null;
+
+
     /* ==================================================
-       SWIPE
+       POINTER DOWN
+       
+       Unifica:
+       - iPhone
+       - Android
+       - mouse
+       - tablet
     ================================================== */
 
-    function iniciarSwipe(event) {
+    finalButton.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            if (
+                finalButtonUnlocked
+            ) {
+
+                return;
+            }
 
 
-        if (
-            finalButtonUnlocked
-        ) {
-
-            return;
-
-        }
+            pointerActive =
+                true;
 
 
-        swiping =
-            true;
+            pointerMoved =
+                false;
 
 
-        if (
-            event.touches &&
-            event.touches.length
-        ) {
+            pointerId =
+                event.pointerId;
 
-            startX =
-                event.touches[0].clientX;
 
-            startY =
-                event.touches[0].clientY;
-
-        } else {
-
-            startX =
+            pointerStartX =
                 event.clientX;
 
-            startY =
+
+            pointerStartY =
                 event.clientY;
 
-        }
 
+            /*
+             * Capturamos el puntero para que
+             * el gesto no se pierda.
+             */
 
-        event.preventDefault();
+            try {
 
-    }
+                finalButton.setPointerCapture(
+                    pointerId
+                );
 
-
-    function moverSwipe(event) {
-
-
-        if (
-            !swiping ||
-            finalButtonUnlocked
-        ) {
-
-            return;
+            } catch (error) {}
 
         }
+    );
 
 
-        let currentX;
-        let currentY;
+    /* ==================================================
+       POINTER MOVE
+    ================================================== */
+
+    finalButton.addEventListener(
+        "pointermove",
+        function(event) {
+
+            if (
+                !pointerActive ||
+                finalButtonUnlocked
+            ) {
+
+                return;
+            }
 
 
-        if (
-            event.touches &&
-            event.touches.length
-        ) {
-
-            currentX =
-                event.touches[0].clientX;
-
-            currentY =
-                event.touches[0].clientY;
-
-        } else {
-
-            currentX =
-                event.clientX;
-
-            currentY =
-                event.clientY;
-
-        }
+            const dx =
+                event.clientX -
+                pointerStartX;
 
 
-        const dx =
-            currentX - startX;
+            const dy =
+                event.clientY -
+                pointerStartY;
 
 
-        const dy =
-            currentY - startY;
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
 
 
-        const distance =
-            Math.sqrt(
-                dx * dx +
-                dy * dy
-            );
+            /*
+             * Todavía no sabemos si es un toque
+             * o un deslizamiento.
+             */
+
+            if (
+                distance <
+                SWIPE_DISTANCE
+            ) {
+
+                return;
+            }
 
 
-        if (
-            distance >=
-            SWIPE_DISTANCE &&
-            Math.abs(dx) >
-            Math.abs(dy) * 1.2
-        ) {
+            /*
+             * Debe ser claramente horizontal.
+             */
+
+            if (
+                Math.abs(dx) <=
+                Math.abs(dy) * 1.2
+            ) {
+
+                return;
+            }
 
 
-            swiping =
+            pointerMoved =
+                true;
+
+
+            pointerActive =
                 false;
 
 
             registrarSwipe();
 
+
+            /*
+             * Evitamos que el navegador
+             * convierta el gesto en otra acción.
+             */
+
+            event.preventDefault();
+
+        },
+        {
+            passive: false
         }
+    );
 
 
-        event.preventDefault();
+    /* ==================================================
+       POINTER UP
+       
+       Si no hubo desplazamiento:
+       es un TAP.
+       
+       Si el botón ya está desbloqueado:
+       inicia la cuenta regresiva.
+    ================================================== */
 
-    }
+    finalButton.addEventListener(
+        "pointerup",
+        function(event) {
+
+            if (
+                !pointerActive
+            ) {
+
+                return;
+            }
 
 
-    function terminarSwipe() {
+            pointerActive =
+                false;
 
-        swiping =
-            false;
 
-    }
+            /*
+             * Si el botón ya fue transformado,
+             * cualquier toque normal inicia
+             * la cuenta regresiva.
+             */
+
+            if (
+                finalButtonUnlocked &&
+                !pointerMoved
+            ) {
+
+                iniciarFinal();
+
+                return;
+            }
+
+
+            /*
+             * Si todavía no está desbloqueado,
+             * un toque simple NO hace nada.
+             *
+             * Solamente los deslizamientos
+             * cuentan.
+             */
+
+        }
+    );
+
+
+    /* ==================================================
+       POINTER CANCEL
+    ================================================== */
+
+    finalButton.addEventListener(
+        "pointercancel",
+        function() {
+
+            pointerActive =
+                false;
+
+            pointerMoved =
+                false;
+        }
+    );
 
 
     /* ==================================================
@@ -2748,19 +2706,21 @@
 
     function registrarSwipe() {
 
-
         if (
-            swipeCount >=
-            REQUIRED_SWIPES
+            finalButtonUnlocked
         ) {
 
             return;
-
         }
 
 
         swipeCount++;
 
+
+        /*
+         * Cuando completa los 3 deslizamientos,
+         * transformamos el botón.
+         */
 
         if (
             swipeCount >=
@@ -2775,63 +2735,10 @@
 
 
     /* ==================================================
-       EVENTOS
-    ================================================== */
-
-    finalButton.addEventListener(
-        "touchstart",
-        iniciarSwipe,
-        {
-            passive: false
-        }
-    );
-
-
-    finalButton.addEventListener(
-        "touchmove",
-        moverSwipe,
-        {
-            passive: false
-        }
-    );
-
-
-    finalButton.addEventListener(
-        "touchend",
-        terminarSwipe
-    );
-
-
-    finalButton.addEventListener(
-        "mousedown",
-        iniciarSwipe
-    );
-
-
-    finalButton.addEventListener(
-        "mousemove",
-        moverSwipe
-    );
-
-
-    finalButton.addEventListener(
-        "mouseup",
-        terminarSwipe
-    );
-
-
-    finalButton.addEventListener(
-        "mouseleave",
-        terminarSwipe
-    );
-
-
-    /* ==================================================
        TRANSFORMAR BOTÓN
     ================================================== */
 
     function transformarBoton() {
-
 
         finalButtonUnlocked =
             true;
@@ -2846,19 +2753,13 @@
             "NO FINALIZAR HISTORIA";
 
 
+        /*
+         * Ahora un toque normal
+         * sí tiene función.
+         */
+
         finalButton.style.touchAction =
             "manipulation";
-
-
-        finalButton.onclick =
-            function(event) {
-
-                event.preventDefault();
-
-                iniciarFinal();
-
-            };
-
     }
 
 
@@ -2868,13 +2769,16 @@
 
     function iniciarFinal() {
 
+        /*
+         * Evita iniciar varias cuentas
+         * regresivas simultáneamente.
+         */
 
         if (
             countdownStarted
         ) {
 
             return;
-
         }
 
 
@@ -2926,7 +2830,6 @@
 
 
         iniciarCuentaRegresiva();
-
     }
 
 
@@ -2943,7 +2846,6 @@
 
 
     function iniciarCuentaRegresiva() {
-
 
         const numberElement =
             document.getElementById(
@@ -2978,14 +2880,12 @@
             clearInterval(
                 countdownTimer
             );
-
         }
 
 
         countdownTimer =
             setInterval(
                 function() {
-
 
                     countdownValue--;
 
@@ -2994,7 +2894,6 @@
                         countdownValue <=
                         0
                     ) {
-
 
                         clearInterval(
                             countdownTimer
@@ -3016,7 +2915,6 @@
 
 
                         return;
-
                     }
 
 
@@ -3025,11 +2923,9 @@
                         countdownValue
                     );
 
-
                 },
                 1000
             );
-
     }
 
 
@@ -3041,7 +2937,6 @@
         element,
         number
     ) {
-
 
         element.classList.remove(
             "impact"
@@ -3055,6 +2950,11 @@
         element.textContent =
             number;
 
+
+        /*
+         * Dos frames garantizan que Safari
+         * detecte nuevamente la animación.
+         */
 
         requestAnimationFrame(
             function() {
@@ -3071,7 +2971,6 @@
 
             }
         );
-
     }
 
 
@@ -3148,14 +3047,6 @@
     );
 
 
-    /*
-     * Primer toque:
-     * aparece el campo de emergencia.
-     *
-     * La zona que lo activa sigue
-     * siendo completamente invisible.
-     */
-
     hiddenShortcut.addEventListener(
         "click",
         function(event) {
@@ -3173,15 +3064,9 @@
     );
 
 
-    /*
-     * Enter:
-     * comprueba el código.
-     */
-
     hiddenShortcutInput.addEventListener(
         "keydown",
         function(event) {
-
 
             if (
                 event.key !==
@@ -3189,7 +3074,6 @@
             ) {
 
                 return;
-
             }
 
 
@@ -3204,52 +3088,22 @@
                 value === "1111"
             ) {
 
-
-                /*
-                 * Se considera encontrada
-                 * la ubicación sin GPS.
-                 */
-
                 arbolEncontrado =
                     true;
 
 
-                /*
-                 * Detenemos completamente
-                 * el seguimiento GPS.
-                 */
-
                 detenerGeolocalizacion();
 
 
-                /*
-                 * Eliminamos el atajo
-                 * y su campo.
-                 */
-
                 hiddenShortcut.remove();
 
-
-                /*
-                 * Mostramos exactamente
-                 * la misma pantalla que
-                 * mostraría una llegada GPS.
-                 */
 
                 mostrarArbolEncontrado();
 
             } else {
 
-
-                /*
-                 * Código incorrecto:
-                 * limpiamos el campo pero
-                 * dejamos disponible el atajo.
-                 */
-
                 hiddenShortcutInput.value =
                     "";
-
             }
 
         }
@@ -3265,10 +3119,8 @@
         margenSuperior
     ) {
 
-
         setTimeout(
             function() {
-
 
                 const rect =
                     elemento.getBoundingClientRect();
@@ -3293,11 +3145,9 @@
 
                 });
 
-
             },
             120
         );
-
     }
 
 
