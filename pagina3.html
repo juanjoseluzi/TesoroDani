@@ -5,8 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Dani & Juan — El recorrido</title>
 
@@ -176,6 +177,29 @@
 
             animation:
                 aparecer 1s ease;
+        }
+
+
+        /* DANI MUCHO MÁS GRANDE Y ROSA */
+
+        .dani {
+
+            display: inline-block;
+
+            font-size: 56px;
+
+            line-height: 1;
+
+            color: #e99aaa;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+
+            text-shadow:
+                0 0 10px rgba(233,154,170,0.18);
         }
 
 
@@ -378,6 +402,50 @@
         }
 
 
+        /* EMOJI CELULAR */
+
+        .phone-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 72px;
+
+            line-height: 1;
+
+            margin: 10px auto 22px;
+
+            animation:
+                aparecer 0.9s ease;
+        }
+
+
+        /* EMOJI LUPA */
+
+        .search-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 72px;
+
+            line-height: 1;
+
+            margin: 12px auto 22px;
+
+            animation:
+                aparecer 0.9s ease;
+        }
+
+
         .key-location {
 
             color: #ffffff;
@@ -487,8 +555,6 @@
             color: #ffffff;
         }
 
-
-        /* Materia Prima destacada */
 
         .materia-prima {
 
@@ -864,6 +930,12 @@
             }
 
 
+            .dani {
+
+                font-size: 48px;
+            }
+
+
             .intro {
 
                 font-size: 21px;
@@ -923,6 +995,13 @@
                 font-size: 16px;
             }
 
+
+            .phone-emoji,
+            .search-emoji {
+
+                font-size: 64px;
+            }
+
         }
 
     </style>
@@ -963,7 +1042,9 @@
 
     <div class="intro">
 
-        Dani...
+        <span class="dani">
+            Dani...
+        </span>
 
         <br><br>
 
@@ -1083,7 +1164,11 @@
             Las historias no se pueden recorrer
             fríamente desde una pantalla.
 
-            <br><br>
+            <br>
+
+            <span class="phone-emoji">
+                📱
+            </span>
 
             Las historias son para revivirlas
             con el cuerpo y con el corazón.
@@ -1097,7 +1182,9 @@
             donde empezó todo. Vas a tener que
             buscarla en la puerta del gym, buscá bien!
 
-            <br><br>
+            <span class="search-emoji">
+                🔎
+            </span>
 
             <strong>
                 Ingresá la clave que encontraste
@@ -1167,6 +1254,7 @@
                 title="Recuerdo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
+
             </iframe>
 
         </div>
@@ -1505,6 +1593,10 @@
 
     /* ==================================================
        MOSTRAR CLAVE
+       
+       Al pulsar "SEGUIR DESCUBRIENDO":
+       la sección comienza arriba de la pantalla,
+       dejando visible "Hay mas recuerdos esperando."
     ================================================== */
 
     function mostrarClave() {
@@ -1522,15 +1614,23 @@
 
         setTimeout(function() {
 
-            seccion.scrollIntoView({
+            const posicion =
+                seccion.getBoundingClientRect().top
+                +
+                window.pageYOffset
+                -
+                18;
 
-                behavior: "smooth",
 
-                block: "center"
+            window.scrollTo({
+
+                top: posicion,
+
+                behavior: "smooth"
 
             });
 
-        }, 200);
+        }, 100);
 
     }
 
