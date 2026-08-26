@@ -484,11 +484,73 @@
         }
 
 
+        /* =========================================
+           BOTONES GENERALES
+        ========================================= */
+
+        .button {
+
+            display: block;
+
+            width: 100%;
+
+            height: 68px;
+
+            min-height: 68px;
+
+            margin-top: 20px;
+
+            padding: 12px 16px;
+
+            border: none;
+
+            background: #e5d3d7;
+
+            color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            line-height: normal;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.3s ease;
+        }
+
+
+        .button:active {
+
+            transform:
+                scale(0.98);
+        }
+
+
+        .button:hover {
+
+            background: #f0e2e5;
+        }
+
+
         .key-button {
 
             width: 100%;
 
             height: 68px;
+
+            min-height: 68px;
 
             margin-top: 18px;
 
@@ -509,9 +571,15 @@
 
             letter-spacing: 2px;
 
+            line-height: normal;
+
             cursor: pointer;
         }
 
+
+        /* =========================================
+           ERROR
+        ========================================= */
 
         .key-error {
 
@@ -858,6 +926,13 @@
                 font-size: 19px;
             }
 
+
+            .button,
+            .key-button {
+
+                font-size: 18px;
+            }
+
         }
 
     </style>
@@ -1159,9 +1234,13 @@
         </div>
 
 
+        <!-- BOTÓN EXACTAMENTE IGUAL
+             A LOS DEMÁS -->
+
         <button
             id="rememberButton"
             class="button"
+            type="button"
             onclick="mostrarVideo()">
 
             SEGUIR RECORDANDO
@@ -1276,6 +1355,8 @@
 
             Pensá en el punto de vista
             que tenías aquella noche:
+
+            <br><br>
 
             <strong>
                 estabas de espaldas
@@ -1502,7 +1583,7 @@
 
 
     /* =================================================
-       POSICIÓN DEL DEDO
+       POSICIÓN
     ================================================= */
 
     function obtenerPosicion(
@@ -1690,7 +1771,7 @@
 
 
     /* =================================================
-       INICIAR RASPADO
+       INICIAR
     ================================================= */
 
     function iniciarRaspadita(
@@ -1728,7 +1809,7 @@
 
 
     /* =================================================
-       CONTINUAR RASPADO
+       CONTINUAR
     ================================================= */
 
     function continuarRaspadita(
@@ -1893,7 +1974,7 @@
 
 
     /* =================================================
-       BOTÓN DE BESOS
+       BOTÓN BESOS
     ================================================= */
 
     function revelarBotonBesos() {
@@ -1944,7 +2025,7 @@
 
     /* =================================================
        VERIFICAR COORDINAMOS
-
+       
        Válidos:
        coordinamos
        coordinamos.
@@ -2049,9 +2130,10 @@
 
         /*
          * El video es la nueva escena.
-         * La página se desplaza hasta el
-         * COMIENZO del video y deja un
-         * margen generoso arriba.
+         *
+         * La pantalla se posiciona
+         * arriba del video y NO
+         * sigue bajando automáticamente.
          */
 
         setTimeout(
@@ -2086,10 +2168,8 @@
 
 
         /*
-         * La pista posterior NO aparece
-         * inmediatamente. Se desbloquea
-         * sólo después de que el video
-         * ya haya quedado visible.
+         * La pista posterior se prepara
+         * pero NO se hace scroll hasta ella.
          */
 
         setTimeout(
@@ -2126,22 +2206,12 @@
         mp2.style.display =
             "block";
 
-
-        /*
-         * NO hacemos scroll automáticamente
-         * hasta esta sección.
-         *
-         * Así el video permanece visible.
-         * La usuaria deberá desplazarse
-         * hacia abajo cuando termine.
-         */
-
     }
 
 
     /* =================================================
-       CLAVE FINAL
-
+       VERIFICAR CLAVE
+       
        Válidos:
        vermutpichincha
        vermut-pichincha
@@ -2212,12 +2282,6 @@
                 "block";
 
 
-            /*
-             * Dejamos visible el error
-             * y llevamos la pantalla hasta
-             * él, pero sin esconderlo.
-             */
-
             desplazarASeccion(
                 error,
                 80
@@ -2232,7 +2296,7 @@
 
 
     /* =================================================
-       ENTER
+       ENTER COORDINAMOS
     ================================================= */
 
     document
@@ -2255,6 +2319,10 @@
             }
         );
 
+
+    /* =================================================
+       ENTER VERMUT
+    ================================================= */
 
     document
         .getElementById(
@@ -2323,7 +2391,7 @@
 
 
     /* =================================================
-       CANVAS
+       PREPARAR CANVAS
     ================================================= */
 
     window.addEventListener(
