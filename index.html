@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,6 +11,28 @@
         content="width=device-width, initial-scale=1.0">
 
     <title>EXPEDIENTE DANI & JUAN</title>
+
+
+    <!-- =================================================
+         EMAILJS
+    ================================================== -->
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            emailjs.init({
+                publicKey: "sLFfAQu2olv9Gzvx-"
+            });
+
+        });
+
+    </script>
 
 
     <style>
@@ -499,13 +522,6 @@
 
             display: none;
 
-            /*
-             * Mucho espacio arriba:
-             * evita que el nuevo contenido quede
-             * pegado al borde superior o debajo
-             * del teclado.
-             */
-
             margin-top: 42px;
 
             padding-top: 34px;
@@ -540,10 +556,6 @@
                 aparecer 0.8s ease;
         }
 
-
-        /*
-         * TÍTULO GRANDE
-         */
 
         .second-title {
 
@@ -644,11 +656,6 @@
                 0 0 9px rgba(57,211,83,0.30);
         }
 
-
-        /*
-         * Titilación:
-         * 5 pulsos completos.
-         */
 
         .access-granted.blink {
 
@@ -809,690 +816,675 @@
 <body>
 
 
-<main class="document">
+<div class="document">
 
 
-    <!-- =====================================
-         ENCABEZADO
-    ====================================== -->
+<!-- =====================================
+     ENCABEZADO
+====================================== -->
 
-    <div class="file-number">
-        EXP. D&amp;J - 001
-    </div>
-
-
-    <div class="top-line"></div>
+<div class="file-number">
+    EXP. D&amp;J - 001
+</div>
 
 
-    <div class="classification">
-
-        DOCUMENTO CLASIFICADO
-
-    </div>
+<div class="top-line"></div>
 
 
-    <!-- =====================================
-         SELLO CONFIDENCIAL
-    ====================================== -->
+<div class="classification">
 
-    <div class="stamp-container">
+    DOCUMENTO CLASIFICADO
 
-        <div class="stamp">
+</div>
 
-            CONFIDENCIAL
 
-        </div>
+<!-- =====================================
+     SELLO CONFIDENCIAL
+====================================== -->
+
+<div class="stamp-container">
+
+    <div class="stamp">
+
+        CONFIDENCIAL
 
     </div>
 
+</div>
 
-    <!-- =====================================
-         TITULO
-    ====================================== -->
 
-    <h1>
+<!-- =====================================
+     TITULO
+====================================== -->
 
-        EXPEDIENTE
+<h1>
+
+    EXPEDIENTE
+
+    <br>
+
+    DANI &amp; JUAN
+
+</h1>
+
+
+<!-- =====================================
+     ADVERTENCIA
+====================================== -->
+
+<div class="warning">
+
+    <span class="warning-title">
+
+        ACCESO RESTRINGIDO
+
+    </span>
+
+
+    Este expediente contiene información
+    confidencial sobre una historia real.
+
+
+    <br><br>
+
+
+    El acceso a este archivo
+    ha sido autorizado para una sola persona.
+
+</div>
+
+
+<!-- =====================================
+     MENSAJE
+====================================== -->
+
+<div class="classified">
+
+    <strong>
+        ADVERTENCIA DE SEGURIDAD
+    </strong>
+
+
+    <br><br>
+
+
+    No existen contraseñas convencionales
+    para acceder a este expediente.
+
+
+    <br><br>
+
+
+    La primera clave solamente puede ser conocida
+    por alguien que estuvo allí.
+
+
+    <br><br>
+
+
+    <strong>
+        Si usted es la persona indicada,
+        sabrá qué responder.
+    </strong>
+
+</div>
+
+
+<div class="separator"></div>
+
+
+<!-- =====================================
+     PRIMERA VERIFICACION
+====================================== -->
+
+<section
+    id="firstVerification"
+    class="verification-section">
+
+
+    <div class="verification-label">
+
+        PRIMER PROTOCOLO DE VERIFICACIÓN
+
+    </div>
+
+
+    <div class="question">
+
+        ¿DÓNDE COMENZÓ TODO?
+
+    </div>
+
+
+    <label
+        class="input-label"
+        for="firstAnswer">
+
+        INGRESE LA CLAVE DE ACCESO:
+
+    </label>
+
+
+    <input
+        type="text"
+        id="firstAnswer"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Escriba aquí..."
+    >
+
+
+    <button
+        type="button"
+        onclick="verificarPrimeraRespuesta()">
+
+        CONFIRMAR IDENTIDAD
+
+    </button>
+
+
+    <div
+        id="firstError"
+        class="error">
+
+        IDENTIDAD NO VERIFICADA
 
         <br>
 
-        DANI &amp; JUAN
-
-    </h1>
-
-
-    <!-- =====================================
-         ADVERTENCIA
-    ====================================== -->
-
-    <div class="warning">
-
-        <span class="warning-title">
-
-            ACCESO RESTRINGIDO
-
-        </span>
-
-
-        Este expediente contiene información
-        confidencial sobre una historia real.
-
-
-        <br><br>
-
-
-        El acceso a este archivo
-        ha sido autorizado para una sola persona.
+        La respuesta ingresada no coincide
+        con los registros del expediente.
 
     </div>
 
 
-    <!-- =====================================
-         MENSAJE
-    ====================================== -->
+</section>
 
-    <div class="classified">
+
+<!-- =====================================
+     SEGUNDA VERIFICACION
+====================================== -->
+
+<section
+    id="secondVerification"
+    class="verification-section">
+
+
+    <div
+        id="secondIntro"
+        class="second-intro">
+
+        <div class="second-title">
+
+            SÍ, SÍ, CLARO...
+
+        </div>
+
+
+        Pero eso lo sabe mucha gente.
+
+        <br><br>
+
+        Por lo tanto,
 
         <strong>
-            ADVERTENCIA DE SEGURIDAD
+            no es suficiente
         </strong>
 
-
-        <br><br>
-
-
-        No existen contraseñas convencionales
-        para acceder a este expediente.
-
-
-        <br><br>
-
-
-        La primera clave solamente puede ser conocida
-        por alguien que estuvo allí.
-
-
-        <br><br>
-
-
-        <strong>
-            Si usted es la persona indicada,
-            sabrá qué responder.
-        </strong>
+        para confirmar la identidad
+        de la persona única e indicada
+        que podrá acceder
+        a este expediente secreto.
 
     </div>
 
 
-    <div class="separator"></div>
+    <div class="verification-label">
 
-
-    <!-- =====================================
-         PRIMERA VERIFICACION
-    ====================================== -->
-
-    <section
-        id="firstVerification"
-        class="verification-section">
-
-
-        <div class="verification-label">
-
-            PRIMER PROTOCOLO DE VERIFICACIÓN
-
-        </div>
-
-
-        <div class="question">
-
-            ¿DÓNDE COMENZÓ TODO?
-
-        </div>
-
-
-        <label
-            class="input-label"
-            for="firstAnswer">
-
-            INGRESE LA CLAVE DE ACCESO:
-
-        </label>
-
-
-        <input
-            type="text"
-            id="firstAnswer"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="Escriba aquí..."
-        >
-
-
-        <button
-            type="button"
-            onclick="verificarPrimeraRespuesta()">
-
-            CONFIRMAR IDENTIDAD
-
-        </button>
-
-
-        <div
-            id="firstError"
-            class="error">
-
-            IDENTIDAD NO VERIFICADA
-
-            <br>
-
-            La respuesta ingresada no coincide
-            con los registros del expediente.
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================
-         SEGUNDA VERIFICACION
-    ====================================== -->
-
-    <section
-        id="secondVerification"
-        class="verification-section">
-
-
-        <div
-            id="secondIntro"
-            class="second-intro">
-
-            <div class="second-title">
-
-                SÍ, SÍ, CLARO...
-
-            </div>
-
-
-            Pero eso lo sabe mucha gente.
-
-            <br><br>
-
-            Por lo tanto,
-
-            <strong>
-                no es suficiente
-            </strong>
-
-            para confirmar la identidad
-            de la persona única e indicada
-            que podrá acceder
-            a este expediente secreto.
-
-        </div>
-
-
-        <div class="verification-label">
-
-            SEGUNDO PROTOCOLO DE VERIFICACIÓN
-
-        </div>
-
-
-        <div class="second-question">
-
-            ¿CÓMO SE LLAMA EL ENTRENADOR
-            QUE AHORA ESTÁ A LA TARDE?
-
-        </div>
-
-
-        <label
-            class="input-label"
-            for="secondAnswer">
-
-            INGRESE LA SEGUNDA CLAVE:
-
-        </label>
-
-
-        <input
-            type="text"
-            id="secondAnswer"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="Escriba aquí..."
-        >
-
-
-        <button
-            type="button"
-            onclick="verificarSegundaRespuesta()">
-
-            VERIFICAR IDENTIDAD
-
-        </button>
-
-
-        <div
-            id="secondError"
-            class="error">
-
-            IDENTIDAD NO VERIFICADA
-
-            <br>
-
-            Esa respuesta tampoco es suficiente.
-
-        </div>
-
-
-        <div
-            id="accessGranted"
-            class="access-granted">
-
-            IDENTIDAD CONFIRMADA
-
-            <br>
-
-            ACCESO AUTORIZADO
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================
-         PIE
-    ====================================== -->
-
-    <div class="footer">
-
-        ARCHIVO RESERVADO - D&amp;J - 001
-
-        <br>
-
-        ACCESO PERSONAL E INTRANSFERIBLE
-
-        <br>
-
-        TODA TENTATIVA DE ACCESO NO AUTORIZADO
-        SERÁ REGISTRADA.
+        SEGUNDO PROTOCOLO DE VERIFICACIÓN
 
     </div>
 
 
-</main>
+    <div class="second-question">
+
+        ¿CÓMO SE LLAMA EL ENTRENADOR
+        QUE AHORA ESTÁ A LA TARDE?
+
+    </div>
 
 
+    <label
+        class="input-label"
+        for="secondAnswer">
+
+        INGRESE LA SEGUNDA CLAVE:
+
+    </label>
+
+
+    <input
+        type="text"
+        id="secondAnswer"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Escriba aquí..."
+    >
+
+
+    <button
+        type="button"
+        onclick="verificarSegundaRespuesta()">
+
+        VERIFICAR IDENTIDAD
+
+    </button>
+
+
+    <div
+        id="secondError"
+        class="error">
+
+        IDENTIDAD NO VERIFICADA
+
+        <br>
+
+        Esa respuesta tampoco es suficiente.
+
+    </div>
+
+
+    <div
+        id="accessGranted"
+        class="access-granted">
+
+        IDENTIDAD CONFIRMADA
+
+        <br>
+
+        ACCESO AUTORIZADO
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     PIE
+====================================== -->
+
+<div class="footer">
+
+    ARCHIVO RESERVADO - D&amp;J - 001
+
+    <br>
+
+    ACCESO PERSONAL E INTRANSFERIBLE
+
+    <br>
+
+    TODA TENTATIVA DE ACCESO NO AUTORIZADO
+    SERÁ REGISTRADA.
+
+</div>
+
+
+</div>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
 
 <script>
 
 
-    /* =================================================
-       RESPUESTAS VÁLIDAS
-    ================================================= */
+    /* ==================================================
+       CONFIGURACIÓN EMAILJS
+    ================================================== */
+
+    const EMAILJS_SERVICE_ID =
+        "service_acoc9zl";
+
+    const EMAILJS_TEMPLATE_ID =
+        "template_b9kud7t";
+
+    const EMAILJS_PUBLIC_KEY =
+        "sLFfAQu2olv9Gzvx-";
 
 
-    const respuestasPrimera = [
-
-        "thebase",
-        "the base",
-        "thebaseperformance",
-        "the base performance",
-        "baseperformance",
-        "gym",
-        "gimnasio",
-        "the baseperformance",
-        "base performance",
-        "gimnasio thebase",
-        "gimnasio the base",
-        "gimnasiothebase",
-        "gimnasio thebaseperformance",
-        "gimnasio the base performance",
-        "gimnasio baseperformance",
-
-        /* ATajo de prueba */
-
-        "1111"
-
-    ];
-
-
-    const respuestasSegunda = [
-
-        "andy",
-        "andi",
-        "juani",
-        "juanchi",
-        "juan",
-        "juan manuel",
-        "juanmanuel",
-
-        /* ATajo de prueba */
-
-        "1111"
-
-    ];
-
-
-    /* =================================================
-       NORMALIZAR
-    ================================================= */
+    /* ==================================================
+       NORMALIZAR RESPUESTAS
+    ================================================== */
 
     function normalizar(texto) {
 
         return texto
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
-            .trim();
 
+            .toLowerCase()
+
+            .normalize("NFD")
+
+            .replace(/[\u0300-\u036f]/g, "")
+
+            .replace(/\s+/g, "")
+
+            .trim();
     }
 
 
-    /* =================================================
-       PRIMERA VERIFICACION
-    ================================================= */
+    /* ==================================================
+       PRIMERA VERIFICACIÓN
+    ================================================== */
 
     function verificarPrimeraRespuesta() {
 
-
-        const campo =
-            document.getElementById(
-                "firstAnswer"
-            );
-
+        const input =
+            document.getElementById("firstAnswer");
 
         const error =
-            document.getElementById(
-                "firstError"
-            );
+            document.getElementById("firstError");
+
+        const segunda =
+            document.getElementById("secondVerification");
 
 
         const respuesta =
-            normalizar(
-                campo.value
+            normalizar(input.value);
+
+
+        /*
+         * Claves válidas de la primera verificación.
+         */
+
+        const respuestasValidas = [
+
+            "thebase",
+
+            "thebaseperformance",
+
+            "baseperformance",
+
+            "gym",
+
+            "gimnasio",
+
+            "thebaseperformance",
+
+            "gimnasiothebase",
+
+            "gimnasiothebaseperformance",
+
+            "gimnasiobaseperformance",
+
+            "1111"
+
+        ];
+
+
+        /*
+         * Si la respuesta NO es válida:
+         * no se envía ningún correo.
+         */
+
+        if (!respuestasValidas.includes(respuesta)) {
+
+            error.style.display = "block";
+
+            return;
+        }
+
+
+        /*
+         * Respuesta correcta.
+         */
+
+        error.style.display = "none";
+
+
+        /*
+         * Evita que el correo se mande varias veces
+         * si se pulsa repetidamente el botón.
+         */
+
+        const boton =
+            document.querySelector(
+                '#firstVerification button'
             );
 
 
-        const correcta =
-            respuestasPrimera.includes(
-                respuesta
+        if (boton.dataset.emailSent !== "true") {
+
+            boton.dataset.emailSent = "sending";
+
+            enviarCorreoPrimeraClave(respuesta);
+
+        }
+
+
+        /*
+         * Mostrar segunda verificación.
+         */
+
+        segunda.style.display = "block";
+
+
+        /*
+         * Llevar suavemente hacia la segunda pregunta.
+         */
+
+        setTimeout(function () {
+
+            segunda.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 250);
+
+    }
+
+
+    /* ==================================================
+       ENVIAR CORREO EMAILJS
+    ================================================== */
+
+    function enviarCorreoPrimeraClave(respuesta) {
+
+
+        /*
+         * Estos nombres de variables deben coincidir
+         * con los nombres que tengas configurados
+         * dentro de tu Template de EmailJS.
+         */
+
+        const templateParams = {
+
+            primera_clave:
+                document.getElementById("firstAnswer").value,
+
+            respuesta_normalizada:
+                respuesta,
+
+            fecha:
+                new Date().toLocaleString("es-AR"),
+
+            pagina:
+                window.location.href,
+
+            expediente:
+                "EXP. D&J - 001",
+
+            mensaje:
+                "Se ingresó correctamente la primera clave del expediente."
+        };
+
+
+        emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        )
+
+        .then(function (response) {
+
+            console.log(
+                "EMAILJS OK:",
+                response.status,
+                response.text
             );
 
 
-        if (
-            correcta
-        ) {
-
-
-            error.style.display =
-                "none";
-
-
-            /*
-             * Ocultar primera sección.
-             */
-
-            document
-                .getElementById(
-                    "firstVerification"
-                )
-                .style.display =
-                "none";
-
-
-            /*
-             * Mostrar segunda sección.
-             */
-
-            const second =
-                document.getElementById(
-                    "secondVerification"
+            const boton =
+                document.querySelector(
+                    '#firstVerification button'
                 );
 
 
-            second.style.display =
-                "block";
+            boton.dataset.emailSent = "true";
+
+        })
+
+        .catch(function (error) {
+
+            console.error(
+                "EMAILJS ERROR:",
+                error
+            );
+
+
+            const boton =
+                document.querySelector(
+                    '#firstVerification button'
+                );
 
 
             /*
-             * IMPORTANTE:
-             *
-             * Usamos una posición
-             * de scroll CONTROLADA.
-             *
-             * No usamos solamente
-             * scrollIntoView porque,
-             * con el teclado de iPhone,
-             * puede dejar el contenido
-             * demasiado arriba.
+             * Permite volver a intentar si EmailJS
+             * devuelve un error.
              */
 
-            setTimeout(function() {
+            boton.dataset.emailSent = "false";
 
-                const documentTop =
-                    second.getBoundingClientRect()
-                        .top
-                    +
-                    window.scrollY;
-
-
-                const offset =
-                    12;
-
-
-                window.scrollTo({
-
-                    top:
-                        Math.max(
-                            0,
-                            documentTop
-                            - offset
-                        ),
-
-                    behavior:
-                        "smooth"
-
-                });
-
-
-            }, 80);
-
-
-            /*
-             * No abrimos automáticamente
-             * el teclado.
-             *
-             * Eso evita que Safari vuelva
-             * a modificar el viewport.
-             *
-             * El título queda visible
-             * antes de que la usuaria
-             * empiece a escribir.
-             */
-
-        } else {
-
-
-            error.style.display =
-                "block";
-
-
-            campo.focus();
-
-        }
+        });
 
     }
 
 
-    /* =================================================
-       SEGUNDA VERIFICACION
-    ================================================= */
+    /* ==================================================
+       SEGUNDA VERIFICACIÓN
+    ================================================== */
 
     function verificarSegundaRespuesta() {
 
-
-        const campo =
-            document.getElementById(
-                "secondAnswer"
-            );
-
+        const input =
+            document.getElementById("secondAnswer");
 
         const error =
-            document.getElementById(
-                "secondError"
-            );
+            document.getElementById("secondError");
 
-
-        const access =
-            document.getElementById(
-                "accessGranted"
-            );
+        const acceso =
+            document.getElementById("accessGranted");
 
 
         const respuesta =
-            normalizar(
-                campo.value
-            );
+            normalizar(input.value);
 
 
-        const correcta =
-            respuestasSegunda.includes(
-                respuesta
-            );
+        /*
+         * Claves válidas de la segunda verificación.
+         */
+
+        const respuestasValidas = [
+
+            "andy",
+
+            "andi",
+
+            "juani",
+
+            "juanchi",
+
+            "juan",
+
+            "juanmanuel",
+
+            "1111"
+
+        ];
 
 
-        if (
-            correcta
-        ) {
+        if (!respuestasValidas.includes(respuesta)) {
 
+            error.style.display = "block";
 
-            error.style.display =
-                "none";
+            acceso.style.display = "none";
 
-
-            /*
-             * Mostramos el acceso.
-             */
-
-            access.style.display =
-                "block";
-
-
-            /*
-             * Forzamos la animación
-             * de 5 titilaciones.
-             */
-
-            access.classList.remove(
-                "blink"
-            );
-
-
-            /*
-             * requestAnimationFrame permite
-             * reiniciar la animación incluso
-             * si el elemento ya la tuvo.
-             */
-
-            requestAnimationFrame(
-                function() {
-
-                    access.classList.add(
-                        "blink"
-                    );
-
-                }
-            );
-
-
-            /*
-             * 0.5 segundos x 5 ciclos = 2.5 s.
-             * Dejamos un pequeño margen antes
-             * de abrir la página siguiente.
-             */
-
-            setTimeout(function() {
-
-                window.location.href =
-                    "pagina2.html";
-
-            }, 2700);
-
-
-        } else {
-
-
-            error.style.display =
-                "block";
-
-
-            campo.focus();
-
+            return;
         }
+
+
+        /*
+         * Respuesta correcta.
+         */
+
+        error.style.display = "none";
+
+        acceso.style.display = "block";
+
+
+        /*
+         * Reiniciar la animación de titilación
+         * por si se vuelve a verificar.
+         */
+
+        acceso.classList.remove("blink");
+
+        void acceso.offsetWidth;
+
+        acceso.classList.add("blink");
 
     }
 
 
-    /* =================================================
-       ENTER - PRIMERA
-    ================================================= */
+    /* ==================================================
+       ENTER EN PRIMERA CLAVE
+    ================================================== */
 
     document
-        .getElementById(
-            "firstAnswer"
-        )
-        .addEventListener(
-            "keydown",
-            function(event) {
+        .getElementById("firstAnswer")
+        .addEventListener("keydown", function(event) {
 
-                if (
-                    event.key ===
-                    "Enter"
-                ) {
+            if (event.key === "Enter") {
 
-                    verificarPrimeraRespuesta();
+                event.preventDefault();
 
-                }
+                verificarPrimeraRespuesta();
 
             }
-        );
+
+        });
 
 
-    /* =================================================
-       ENTER - SEGUNDA
-    ================================================= */
+    /* ==================================================
+       ENTER EN SEGUNDA CLAVE
+    ================================================== */
 
     document
-        .getElementById(
-            "secondAnswer"
-        )
-        .addEventListener(
-            "keydown",
-            function(event) {
+        .getElementById("secondAnswer")
+        .addEventListener("keydown", function(event) {
 
-                if (
-                    event.key ===
-                    "Enter"
-                ) {
+            if (event.key === "Enter") {
 
-                    verificarSegundaRespuesta();
+                event.preventDefault();
 
-                }
+                verificarSegundaRespuesta();
 
             }
-        );
+
+        });
 
 
 </script>
@@ -1501,3 +1493,4 @@
 </body>
 
 </html>
+```
