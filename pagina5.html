@@ -207,6 +207,24 @@
         }
 
 
+        .couple-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 68px;
+
+            line-height: 1;
+
+            margin: 22px 0 12px;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
         .position-note {
 
             margin-top: 22px;
@@ -266,6 +284,8 @@
             line-height: 1.45;
 
             margin-bottom: 15px;
+
+            padding: 18px 0;
         }
 
 
@@ -306,8 +326,12 @@
 
             margin-top: 35px;
 
+            padding-top: 80px;
+
             animation:
                 aparecer 0.9s ease;
+
+            scroll-margin-top: 20px;
         }
 
 
@@ -448,8 +472,23 @@
 
             margin-top: 28px;
 
+            padding: 26px 10px 30px;
+
+            border:
+                1px solid rgba(208,58,80,0.0);
+
+            transform-origin: center;
+
+        }
+
+
+        .shake-complete.impacto {
+
             animation:
-                aparecer 1s ease;
+                impactoMensaje 1.25s
+                cubic-bezier(.17,.89,.32,1.28)
+                both;
+
         }
 
 
@@ -766,6 +805,10 @@
 
             margin-top: 30px;
 
+            padding-top: 35px;
+
+            scroll-margin-top: 70px;
+
             animation:
                 aparecer 1s ease;
         }
@@ -844,6 +887,70 @@
         /* =================================
            ANIMACIONES
         ================================= */
+
+        @keyframes impactoMensaje {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.55)
+                    translateY(35px);
+
+                border-color:
+                    rgba(208,58,80,0);
+
+                box-shadow:
+                    0 0 0 rgba(208,58,80,0);
+            }
+
+            35% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.14)
+                    translateY(-8px);
+
+                border-color:
+                    rgba(208,58,80,0.65);
+
+                box-shadow:
+                    0 0 32px rgba(208,58,80,0.30),
+                    0 0 70px rgba(208,58,80,0.12);
+            }
+
+            60% {
+
+                transform:
+                    scale(0.97)
+                    translateY(2px);
+
+                border-color:
+                    rgba(208,58,80,0.40);
+
+                box-shadow:
+                    0 0 18px rgba(208,58,80,0.22);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+
+                border-color:
+                    rgba(208,58,80,0.18);
+
+                box-shadow:
+                    0 0 10px rgba(208,58,80,0.10);
+            }
+
+        }
+
 
         @keyframes aparecer {
 
@@ -963,6 +1070,28 @@
 
     </style>
 
+
+    <!-- =========================================
+         EMAILJS
+    ========================================== -->
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <script type="text/javascript">
+
+        (function() {
+
+            emailjs.init({
+                publicKey: "sLFfAQu2olv9Gzvx-"
+            });
+
+        })();
+
+    </script>
+
 </head>
 
 
@@ -1032,6 +1161,11 @@
             <strong>
                 siempre de pie, siempre en vertical.
             </strong>
+
+
+            <div class="couple-emoji">
+                
+            </div>
 
         </div>
 
@@ -1557,6 +1691,10 @@
         15;
 
 
+    let growlerAvisoEnviado =
+        false;
+
+
     /* ==================================================
        DETECTAR ORIENTACIÓN
     ================================================== */
@@ -1740,15 +1878,13 @@
 
         setTimeout(function() {
 
-            section.scrollIntoView({
+            desplazarASeccion(
 
-                behavior:
-                    "smooth",
+                section,
 
-                block:
-                    "start"
+                20
 
-            });
+            );
 
         }, 120);
 
@@ -1982,6 +2118,26 @@
 
 
         /*
+         * Impacto visual inmediato.
+         */
+
+        complete.classList.remove(
+            "impacto"
+        );
+
+
+        requestAnimationFrame(
+            function() {
+
+                complete.classList.add(
+                    "impacto"
+                );
+
+            }
+        );
+
+
+        /*
          * A partir de acá esperamos
          * el regreso a vertical.
          */
@@ -2003,17 +2159,15 @@
 
         setTimeout(function() {
 
-            complete.scrollIntoView({
+            desplazarASeccion(
 
-                behavior:
-                    "smooth",
+                complete,
 
-                block:
-                    "center"
+                80
 
-            });
+            );
 
-        }, 250);
+        }, 120);
 
     }
 
@@ -2085,6 +2239,123 @@
 
 
     /* ==================================================
+       AVISO POR EMAIL
+    ================================================== */
+
+    function enviarAvisoGrowler() {
+
+        /*
+         * Evitamos enviar más de un aviso
+         * aunque se pulse varias veces.
+         */
+
+        if (
+            growlerAvisoEnviado
+        ) {
+
+            return;
+
+        }
+
+
+        growlerAvisoEnviado =
+            true;
+
+
+        /*
+         * Si EmailJS no cargó, no interrumpimos
+         * el recorrido: la página continúa.
+         */
+
+        if (
+            typeof emailjs ===
+            "undefined"
+        ) {
+
+            console.error(
+                "EmailJS no está disponible."
+            );
+
+            return;
+
+        }
+
+
+        const ahora =
+            new Date();
+
+        const hora =
+            ahora.toLocaleString(
+                "es-AR",
+                {
+                    dateStyle: "short",
+                    timeStyle: "medium"
+                }
+            );
+
+        /*
+         * Estos nombres corresponden a variables
+         * que pueden utilizarse en la plantilla
+         * de EmailJS:
+         *
+         * {{mesa}}
+         * {{hora}}
+         * {{evento}}
+         * {{mensaje}}
+         */
+
+        const templateParams = {
+
+            mesa: "111",
+
+            hora: hora,
+
+            evento:
+                "Dani completó la posta de Growler",
+
+            mensaje:
+                "Dani encontró la mesa correcta " +
+                "en Growler Café y acaba de completar " +
+                "esta etapa del recorrido."
+
+        };
+
+
+        emailjs.send(
+
+            "service_acoc9zl",
+
+            "template_uwseogg",
+
+            templateParams
+
+        ).then(
+
+            function(response) {
+
+                console.log(
+                    "Aviso enviado correctamente.",
+                    response.status,
+                    response.text
+                );
+
+            },
+
+            function(error) {
+
+                console.error(
+                    "No se pudo enviar el aviso:",
+                    error
+                );
+
+            }
+
+        );
+
+    }
+
+
+    /* ==================================================
        VERIFICAR MESA
     ================================================== */
 
@@ -2147,19 +2418,25 @@
                 true;
 
 
+            /*
+             * Enviamos el aviso en cuanto
+             * la clave correcta es validada.
+             */
+
+            enviarAvisoGrowler();
+
+
             setTimeout(function() {
 
-                success.scrollIntoView({
+                desplazarASeccion(
 
-                    behavior:
-                        "smooth",
+                    success,
 
-                    block:
-                        "center"
+                    90
 
-                });
+                );
 
-            }, 250);
+            }, 180);
 
 
         } else {
