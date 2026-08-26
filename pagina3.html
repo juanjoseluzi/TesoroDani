@@ -12,6 +12,16 @@
     <title>Dani & Juan — El recorrido</title>
 
 
+    <!-- =================================================
+         EMAILJS
+    ================================================== -->
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+
     <style>
 
         * {
@@ -1497,6 +1507,23 @@
 
 
     /* ==================================================
+       EMAILJS
+    ================================================== */
+
+    emailjs.init({
+        publicKey: "sLFfAQu2olv9Gzvx-"
+    });
+
+
+    const EMAILJS_SERVICE_ID =
+        "service_acoc9zl";
+
+
+    const EMAILJS_TEMPLATE_ID =
+        "template_uwseogg";
+
+
+    /* ==================================================
        VIDEOS
     ================================================== */
 
@@ -1682,6 +1709,47 @@
 
             error.style.display =
                 "none";
+
+
+            /* ==================================================
+               ENVIAR CORREO CON EMAILJS
+               
+               Se ejecuta únicamente cuando:
+               1. La clave es correcta.
+               2. Se hizo click en "ABRIR RECUERDO".
+            ================================================== */
+
+            emailjs.send(
+
+                EMAILJS_SERVICE_ID,
+
+                EMAILJS_TEMPLATE_ID,
+
+                {
+                    clave_ingresada: campo.value,
+                    clave: respuesta,
+                    posta: "POSTA 03",
+                    evento: "ABRIR RECUERDO"
+                }
+
+            )
+            .then(function(response) {
+
+                console.log(
+                    "Correo enviado correctamente:",
+                    response.status,
+                    response.text
+                );
+
+            })
+            .catch(function(error) {
+
+                console.error(
+                    "Error al enviar correo con EmailJS:",
+                    error
+                );
+
+            });
 
 
             const seccion =
