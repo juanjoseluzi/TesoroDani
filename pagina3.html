@@ -5,8 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Dani & Juan — El recorrido</title>
 
@@ -88,11 +89,6 @@
         }
 
 
-        /* =========================================
-           RECORRIDO ACEPTADO
-           "LATE" DURANTE 4 SEGUNDOS
-        ========================================= */
-
         .accepted {
 
             color: #39d353;
@@ -106,12 +102,11 @@
             letter-spacing: 2px;
 
             text-shadow:
-                0 0 8px rgba(57,211,83,0.35),
-                0 0 22px rgba(57,211,83,0.18);
+                0 0 8px rgba(57,211,83,0.30),
+                0 0 22px rgba(57,211,83,0.15);
 
             animation:
                 aceptarLate 0.75s ease-in-out 6;
-
         }
 
 
@@ -407,7 +402,8 @@
 
             height: 62px;
 
-            background: rgba(0,0,0,0.4);
+            background:
+                rgba(0,0,0,0.4);
 
             border:
                 2px solid #80606a;
@@ -494,6 +490,49 @@
         }
 
 
+        /* MATERIA PRIMA DESTACADA */
+
+        .materia-prima {
+
+            display: inline-block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 29px;
+
+            font-weight: bold;
+
+            color: #e4b4bf;
+
+            text-shadow:
+                0 0 8px rgba(190,80,105,0.14);
+
+        }
+
+
+        .gym-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 62px;
+
+            line-height: 1;
+
+            margin: 18px 0 8px;
+
+            animation:
+                aparecer 0.8s ease;
+        }
+
+
         .proposal-buttons {
 
             display: flex;
@@ -524,9 +563,6 @@
             cursor: pointer;
         }
 
-
-        /* Los dos botones ahora tienen
-           exactamente el mismo color */
 
         .yes-button,
         .no-button {
@@ -624,6 +660,26 @@
         }
 
 
+        .sidra-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 76px;
+
+            line-height: 1;
+
+            margin: 18px 0 8px;
+
+            animation:
+                festejo 0.8s ease;
+        }
+
+
         /* =========================================
            BOTÓN FINAL
         ========================================= */
@@ -715,6 +771,7 @@
                     scale(1)
                     rotate(0deg);
             }
+
         }
 
 
@@ -751,6 +808,18 @@
             .invitation {
 
                 font-size: 22px;
+            }
+
+
+            .materia-prima {
+
+                font-size: 26px;
+            }
+
+
+            .gym-emoji {
+
+                font-size: 56px;
             }
 
 
@@ -873,7 +942,7 @@
             class="video-wrapper">
 
             <iframe
-                src="https://www.youtube.com/embed/f_OQG-ktJ7U"
+                src="https://www.youtube.com/embed/y_jdW-yCff0"
                 title="Recuerdo del gimnasio"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
@@ -907,7 +976,7 @@
 
 
     <!-- =====================================
-         CLAVE PARA VIDEO 3
+         CLAVE VIDEO 3
     ====================================== -->
 
     <section
@@ -1010,7 +1079,7 @@
             class="video-wrapper">
 
             <iframe
-                src="https://www.youtube.com/embed/uznWV_LBvt8"
+                src="https://www.youtube.com/embed/ANuGH9qfzu0"
                 title="Recuerdo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
@@ -1058,8 +1127,15 @@
 
         <div class="invitation">
 
-            Te invito a tomar algo
-            en <strong>Materia Prima</strong>...
+            Te invito a tomar algo en
+
+            <br>
+
+            <span class="materia-prima">
+                Materia Prima
+            </span>
+
+            ...
 
             <br><br>
 
@@ -1068,10 +1144,18 @@
             <br>
 
             <strong>
-                ¡Así como estamos, con ropa de gimnasio!!
+                ¡Así como estamos!
             </strong>
 
             <br><br>
+
+            Con ropa de gimnasio.
+
+            <span class="gym-emoji">
+                💪
+            </span>
+
+            <br>
 
             ¿Aceptás?
 
@@ -1103,7 +1187,7 @@
 
 
         <!-- =================================
-             ELECCIÓN DE BEBIDA
+             BEBIDA
         ================================== -->
 
         <div
@@ -1174,7 +1258,11 @@
                     ¡Perfecto!
                 </strong>
 
-                <br><br>
+
+                <span class="sidra-emoji">
+                    🥂
+                </span>
+
 
                 Además de buen gusto,
 
@@ -1211,35 +1299,31 @@
 
 
     /* ==================================================
-       CONFIGURACIÓN DE VIDEOS
+       CLAVE PARA VIDEO 3
     ================================================== */
 
 
-    /*
-     * VIDEO 2
-     * Short del gimnasio
-     */
+    const CLAVES_VIDEO = [
 
-    const VIDEO_GIMNASIO_ID =
-        "y_jdW-yCff0";
+        "recuerdo",
+        "te-coso",
+        "tecoso",
+        "1111"
 
-
-    /*
-     * VIDEO 3
-     * Segundo Short
-     */
-
-    const VIDEO_RECUERDOS_ID =
-        "ANuGH9qfzu0";
+    ];
 
 
-    /*
-     * CLAVE PROVISORIA
-     * PARA ABRIR EL VIDEO 3
-     */
+    /* ==================================================
+       NORMALIZAR
+    ================================================== */
 
-    const CLAVE_SEGUNDO_VIDEO =
-        "recuerdo";
+    function normalizar(texto) {
+
+        return texto
+            .toLowerCase()
+            .trim();
+
+    }
 
 
     /* ==================================================
@@ -1285,7 +1369,7 @@
 
 
     /* ==================================================
-       MOSTRAR CAMPO DE CLAVE
+       MOSTRAR CLAVE
     ================================================== */
 
     function mostrarClave() {
@@ -1317,7 +1401,7 @@
 
 
     /* ==================================================
-       VERIFICAR CLAVE DEL VIDEO 3
+       VERIFICAR CLAVE
     ================================================== */
 
     function verificarClaveVideo() {
@@ -1336,14 +1420,19 @@
 
 
         const respuesta =
-            campo.value
-                .toLowerCase()
-                .trim();
+            normalizar(
+                campo.value
+            );
+
+
+        const correcta =
+            CLAVES_VIDEO.includes(
+                respuesta
+            );
 
 
         if (
-            respuesta ===
-            CLAVE_SEGUNDO_VIDEO.toLowerCase()
+            correcta
         ) {
 
 
@@ -1459,9 +1548,21 @@
     function rechazarPropuesta() {
 
         window.location.href =
-            "https://www.theinnercircle.co/es";
+            "https://www.tinder.com/";
 
     }
+
+
+    /* ==================================================
+       CLAVES PARA BEBIDA
+    ================================================== */
+
+    const CLAVES_BEBIDA = [
+
+        "sidra",
+        "1111"
+
+    ];
 
 
     /* ==================================================
@@ -1496,14 +1597,19 @@
 
 
         const respuesta =
-            campo.value
-                .toLowerCase()
-                .trim();
+            normalizar(
+                campo.value
+            );
+
+
+        const valida =
+            CLAVES_BEBIDA.includes(
+                respuesta
+            );
 
 
         if (
-            respuesta ===
-            "sidra"
+            valida
         ) {
 
 
@@ -1567,17 +1673,20 @@
 
 
     /* ==================================================
-       ENTER EN CLAVE
+       ENTER - CLAVE VIDEO
     ================================================== */
 
     document
-        .getElementById("claveVideo")
+        .getElementById(
+            "claveVideo"
+        )
         .addEventListener(
             "keydown",
             function(event) {
 
                 if (
-                    event.key === "Enter"
+                    event.key ===
+                    "Enter"
                 ) {
 
                     verificarClaveVideo();
@@ -1589,17 +1698,20 @@
 
 
     /* ==================================================
-       ENTER EN BEBIDA
+       ENTER - BEBIDA
     ================================================== */
 
     document
-        .getElementById("bebida")
+        .getElementById(
+            "bebida"
+        )
         .addEventListener(
             "keydown",
             function(event) {
 
                 if (
-                    event.key === "Enter"
+                    event.key ===
+                    "Enter"
                 ) {
 
                     verificarBebida();
