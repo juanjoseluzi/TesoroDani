@@ -47,24 +47,20 @@
                 Courier,
                 monospace;
 
+            min-height: 100vh;
+
+            padding: 18px;
+
             display: flex;
 
             justify-content: center;
 
             align-items: flex-start;
 
-            min-height: 100vh;
-
-            padding: 18px;
-
             transition:
                 background 2s ease;
         }
 
-
-        /* =================================
-           DOCUMENTO
-        ================================= */
 
         .document {
 
@@ -78,7 +74,7 @@
 
             border: 2px solid #626262;
 
-            padding: 34px 24px 32px;
+            padding: 34px 24px 36px;
 
             box-shadow:
                 0 0 35px rgba(0,0,0,0.9),
@@ -88,9 +84,9 @@
         }
 
 
-        /* =================================
-           NUMERO EXPEDIENTE
-        ================================= */
+        /* ==================================================
+           ENCABEZADO
+        ================================================== */
 
         .file-number {
 
@@ -115,10 +111,6 @@
         }
 
 
-        /* =================================
-           CLASIFICACION
-        ================================= */
-
         .classification {
 
             text-align: center;
@@ -129,13 +121,13 @@
 
             color: #cccccc;
 
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
 
-        /* =================================
-           SELLO CONFIDENCIAL
-        ================================= */
+        /* ==================================================
+           SELLO
+        ================================================== */
 
         .stamp-container {
 
@@ -145,9 +137,9 @@
 
             align-items: center;
 
-            min-height: 72px;
+            min-height: 80px;
 
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
 
@@ -167,11 +159,13 @@
 
             letter-spacing: 4px;
 
-            transform: rotate(-5deg) scale(0.55);
+            transform:
+                rotate(-5deg)
+                scale(0.55);
 
             opacity: 0;
 
-            transform-origin: center center;
+            transform-origin: center;
 
             animation:
                 selloConfidencial
@@ -184,81 +178,52 @@
         }
 
 
-        /*
-         * El sello:
-         *
-         * - aparece con impacto
-         * - se mantiene
-         * - desaparece
-         * - vuelve a aparecer
-         */
-
         @keyframes selloConfidencial {
 
             0% {
-
                 opacity: 0;
-
                 transform:
                     rotate(-5deg)
                     scale(0.55);
             }
 
-
             8% {
-
                 opacity: 1;
-
                 transform:
                     rotate(-5deg)
                     scale(1.12);
             }
 
-
             14% {
-
                 opacity: 1;
-
                 transform:
                     rotate(-5deg)
                     scale(0.98);
             }
 
-
             25% {
-
                 opacity: 1;
-
                 transform:
                     rotate(-5deg)
                     scale(1);
             }
-
 
             48% {
-
                 opacity: 1;
-
                 transform:
                     rotate(-5deg)
                     scale(1);
             }
 
-
             62% {
-
                 opacity: 0;
-
                 transform:
                     rotate(-5deg)
                     scale(0.92);
             }
 
-
             100% {
-
                 opacity: 0;
-
                 transform:
                     rotate(-5deg)
                     scale(0.92);
@@ -267,9 +232,9 @@
         }
 
 
-        /* =================================
+        /* ==================================================
            TITULO
-        ================================= */
+        ================================================== */
 
         h1 {
 
@@ -287,9 +252,9 @@
         }
 
 
-        /* =================================
-           ADVERTENCIA
-        ================================= */
+        /* ==================================================
+           AVISO
+        ================================================== */
 
         .warning {
 
@@ -321,9 +286,9 @@
         }
 
 
-        /* =================================
+        /* ==================================================
            MENSAJE CLASIFICADO
-        ================================= */
+        ================================================== */
 
         .classified {
 
@@ -355,10 +320,6 @@
         }
 
 
-        /* =================================
-           SEPARADOR
-        ================================= */
-
         .separator {
 
             border-top:
@@ -368,15 +329,17 @@
         }
 
 
-        /* =================================
-           BLOQUES DE VERIFICACION
-        ================================= */
+        /* ==================================================
+           PRIMERA VERIFICACION
+        ================================================== */
 
         .verification-section {
 
+            width: 100%;
+
             margin-top: 30px;
 
-            padding: 25px 12px;
+            padding: 26px 14px 30px;
 
             background:
                 #151515;
@@ -423,44 +386,6 @@
         }
 
 
-        /* =================================
-           MENSAJE SEGUNDA VERIFICACION
-        ================================= */
-
-        .second-intro {
-
-            display: none;
-
-            text-align: left;
-
-            margin-bottom: 30px;
-
-            padding: 20px 15px;
-
-            border-left:
-                3px solid #7d7d7d;
-
-            color: #d7d7d7;
-
-            font-size: 19px;
-
-            line-height: 1.7;
-
-            animation:
-                aparecer 0.8s ease;
-        }
-
-
-        .second-intro strong {
-
-            color: #ffffff;
-        }
-
-
-        /* =================================
-           INPUT
-        ================================= */
-
         .input-label {
 
             display: block;
@@ -471,7 +396,7 @@
 
             letter-spacing: 1px;
 
-            margin-top: 20px;
+            margin-top: 22px;
 
             margin-bottom: 10px;
 
@@ -489,8 +414,7 @@
 
             padding: 10px 14px;
 
-            background:
-                #050505;
+            background: #050505;
 
             border:
                 2px solid #707070;
@@ -517,14 +441,9 @@
             border-color: #dddddd;
 
             box-shadow:
-                0 0 10px
-                rgba(255,255,255,0.08);
+                0 0 10px rgba(255,255,255,0.08);
         }
 
-
-        /* =================================
-           BOTON
-        ================================= */
 
         button {
 
@@ -532,9 +451,11 @@
 
             width: 100%;
 
-            height: 70px;
+            min-height: 70px;
 
             margin-top: 20px;
+
+            padding: 12px 16px;
 
             border: none;
 
@@ -570,9 +491,105 @@
         }
 
 
-        /* =================================
+        /* ==================================================
+           SEGUNDA VERIFICACION
+        ================================================== */
+
+        #secondVerification {
+
+            display: none;
+
+            /*
+             * Mucho espacio arriba:
+             * evita que el nuevo contenido quede
+             * pegado al borde superior o debajo
+             * del teclado.
+             */
+
+            margin-top: 42px;
+
+            padding-top: 34px;
+
+            scroll-margin-top: 28px;
+        }
+
+
+        .second-intro {
+
+            display: block;
+
+            margin: 0 0 34px;
+
+            padding: 22px 16px 24px;
+
+            border-left:
+                3px solid #808080;
+
+            background:
+                rgba(255,255,255,0.02);
+
+            color: #d7d7d7;
+
+            text-align: left;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            animation:
+                aparecer 0.8s ease;
+        }
+
+
+        /*
+         * TÍTULO GRANDE
+         */
+
+        .second-title {
+
+            margin-bottom: 28px;
+
+            color: #ffffff;
+
+            font-size: 34px;
+
+            line-height: 1.2;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            letter-spacing: 1px;
+        }
+
+
+        .second-title-line {
+
+            display: block;
+
+            margin-top: 5px;
+        }
+
+
+        .second-question {
+
+            margin-top: 10px;
+
+            margin-bottom: 8px;
+
+            font-size: 25px;
+
+            line-height: 1.45;
+
+            font-weight: bold;
+
+            color: #ffffff;
+        }
+
+
+        /* ==================================================
            ERROR
-        ================================= */
+        ================================================== */
 
         .error {
 
@@ -595,38 +612,83 @@
         }
 
 
-        /* =================================
-           MENSAJE DE ACCESO CONCEDIDO
-        ================================= */
+        /* ==================================================
+           ACCESO AUTORIZADO
+        ================================================== */
 
         .access-granted {
 
             display: none;
 
-            margin-top: 25px;
+            margin-top: 28px;
 
-            color: #56d36b;
+            padding: 22px 12px;
 
-            font-size: 18px;
+            color: #39d353;
 
-            font-weight: bold;
+            font-size: 22px;
+
+            font-weight: 900;
 
             letter-spacing: 2px;
 
-            line-height: 1.5;
+            line-height: 1.55;
 
-            animation:
-                aparecer 0.8s ease;
+            border:
+                1px solid rgba(57,211,83,0.30);
+
+            background:
+                rgba(57,211,83,0.04);
+
+            text-shadow:
+                0 0 9px rgba(57,211,83,0.30);
         }
 
 
-        /* =================================
+        /*
+         * Titilación:
+         * 5 pulsos completos.
+         */
+
+        .access-granted.blink {
+
+            animation:
+                accesoTitila
+                0.5s
+                ease-in-out
+                5;
+        }
+
+
+        @keyframes accesoTitila {
+
+            0%,
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+
+            50% {
+
+                opacity: 0.05;
+
+                transform:
+                    scale(0.98);
+            }
+
+        }
+
+
+        /* ==================================================
            PIE
-        ================================= */
+        ================================================== */
 
         .footer {
 
-            margin-top: 34px;
+            margin-top: 38px;
 
             padding-top: 18px;
 
@@ -645,9 +707,9 @@
         }
 
 
-        /* =================================
-           ANIMACIONES
-        ================================= */
+        /* ==================================================
+           ANIMACIONES GENERALES
+        ================================================== */
 
         @keyframes aparecer {
 
@@ -670,9 +732,9 @@
         }
 
 
-        /* =================================
+        /* ==================================================
            CELULARES PEQUEÑOS
-        ================================= */
+        ================================================== */
 
         @media (max-width: 380px) {
 
@@ -702,6 +764,18 @@
             }
 
 
+            .second-title {
+
+                font-size: 30px;
+            }
+
+
+            .second-question {
+
+                font-size: 23px;
+            }
+
+
             .second-intro {
 
                 font-size: 18px;
@@ -717,6 +791,12 @@
             button {
 
                 font-size: 18px;
+            }
+
+
+            .access-granted {
+
+                font-size: 19px;
             }
 
         }
@@ -752,7 +832,7 @@
 
 
     <!-- =====================================
-         SELLO
+         SELLO CONFIDENCIAL
     ====================================== -->
 
     <div class="stamp-container">
@@ -808,7 +888,7 @@
 
 
     <!-- =====================================
-         MENSAJE CLASIFICADO
+         MENSAJE
     ====================================== -->
 
     <div class="classified">
@@ -920,17 +1000,19 @@
 
     <section
         id="secondVerification"
-        class="verification-section"
-        style="display:none;">
+        class="verification-section">
 
 
         <div
             id="secondIntro"
             class="second-intro">
 
-            Sí, sí... claro.
+            <div class="second-title">
 
-            <br><br>
+                SÍ, SÍ, CLARO...
+
+            </div>
+
 
             Pero eso lo sabe mucha gente.
 
@@ -957,7 +1039,7 @@
         </div>
 
 
-        <div class="question">
+        <div class="second-question">
 
             ¿CÓMO SE LLAMA EL ENTRENADOR
             QUE AHORA ESTÁ A LA TARDE?
@@ -1050,7 +1132,7 @@
 
 
     /* =================================================
-       PRIMERAS RESPUESTAS VÁLIDAS
+       RESPUESTAS VÁLIDAS
     ================================================= */
 
 
@@ -1072,18 +1154,11 @@
         "gimnasio the base performance",
         "gimnasio baseperformance",
 
-        /*
-         * ATAJO DE PRUEBA
-         */
+        /* ATajo de prueba */
 
         "1111"
 
     ];
-
-
-    /* =================================================
-       SEGUNDAS RESPUESTAS VÁLIDAS
-    ================================================= */
 
 
     const respuestasSegunda = [
@@ -1096,9 +1171,7 @@
         "juan manuel",
         "juanmanuel",
 
-        /*
-         * ATAJO DE PRUEBA
-         */
+        /* ATajo de prueba */
 
         "1111"
 
@@ -1112,21 +1185,16 @@
     function normalizar(texto) {
 
         return texto
-
             .toLowerCase()
-
             .normalize("NFD")
-
             .replace(
                 /[\u0300-\u036f]/g,
                 ""
             )
-
             .replace(
                 /\s+/g,
                 " "
             )
-
             .trim();
 
     }
@@ -1173,9 +1241,7 @@
 
 
             /*
-             * Ocultamos la primera
-             * verificación para que
-             * la segunda tome el lugar.
+             * Ocultar primera sección.
              */
 
             document
@@ -1187,7 +1253,7 @@
 
 
             /*
-             * Mostramos la segunda.
+             * Mostrar segunda sección.
              */
 
             const second =
@@ -1201,60 +1267,60 @@
 
 
             /*
-             * Mostramos el mensaje
-             * sorpresa primero.
-             */
-
-            document
-                .getElementById(
-                    "secondIntro"
-                )
-                .style.display =
-                "block";
-
-
-            /*
-             * MUY IMPORTANTE:
+             * IMPORTANTE:
              *
-             * llevamos la pantalla
-             * directamente al comienzo
-             * de la segunda etapa.
+             * Usamos una posición
+             * de scroll CONTROLADA.
              *
-             * Así nunca queda el mensaje
-             * perdido arriba de la pantalla.
+             * No usamos solamente
+             * scrollIntoView porque,
+             * con el teclado de iPhone,
+             * puede dejar el contenido
+             * demasiado arriba.
              */
 
             setTimeout(function() {
 
-                second.scrollIntoView({
+                const documentTop =
+                    second.getBoundingClientRect()
+                        .top
+                    +
+                    window.scrollY;
+
+
+                const offset =
+                    12;
+
+
+                window.scrollTo({
+
+                    top:
+                        Math.max(
+                            0,
+                            documentTop
+                            - offset
+                        ),
 
                     behavior:
-                        "smooth",
-
-                    block:
-                        "start"
+                        "smooth"
 
                 });
 
 
-                /*
-                 * Después ponemos
-                 * el cursor en el segundo
-                 * campo.
-                 */
+            }, 80);
 
-                setTimeout(function() {
 
-                    document
-                        .getElementById(
-                            "secondAnswer"
-                        )
-                        .focus();
-
-                }, 650);
-
-            }, 120);
-
+            /*
+             * No abrimos automáticamente
+             * el teclado.
+             *
+             * Eso evita que Safari vuelva
+             * a modificar el viewport.
+             *
+             * El título queda visible
+             * antes de que la usuaria
+             * empiece a escribir.
+             */
 
         } else {
 
@@ -1316,13 +1382,45 @@
                 "none";
 
 
+            /*
+             * Mostramos el acceso.
+             */
+
             access.style.display =
                 "block";
 
 
             /*
-             * Pequeña pausa dramática
-             * antes de pasar.
+             * Forzamos la animación
+             * de 5 titilaciones.
+             */
+
+            access.classList.remove(
+                "blink"
+            );
+
+
+            /*
+             * requestAnimationFrame permite
+             * reiniciar la animación incluso
+             * si el elemento ya la tuvo.
+             */
+
+            requestAnimationFrame(
+                function() {
+
+                    access.classList.add(
+                        "blink"
+                    );
+
+                }
+            );
+
+
+            /*
+             * 0.5 segundos x 5 ciclos = 2.5 s.
+             * Dejamos un pequeño margen antes
+             * de abrir la página siguiente.
              */
 
             setTimeout(function() {
@@ -1330,7 +1428,7 @@
                 window.location.href =
                     "pagina2.html";
 
-            }, 900);
+            }, 2700);
 
 
         } else {
@@ -1348,7 +1446,7 @@
 
 
     /* =================================================
-       ENTER - PRIMERA CLAVE
+       ENTER - PRIMERA
     ================================================= */
 
     document
@@ -1373,7 +1471,7 @@
 
 
     /* =================================================
-       ENTER - SEGUNDA CLAVE
+       ENTER - SEGUNDA
     ================================================= */
 
     document
