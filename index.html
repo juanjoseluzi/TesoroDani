@@ -5,8 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>EXPEDIENTE DANI & JUAN</title>
 
@@ -44,21 +45,23 @@
                 Courier,
                 monospace;
 
+            min-height: 100vh;
+
             display: flex;
 
             justify-content: center;
-
-            align-items: center;
-
-            min-height: 100vh;
+            align-items: flex-start;
 
             padding: 18px;
+
+            transition:
+                background 2s ease;
         }
 
 
-        /* ================================
-           EXPEDIENTE
-        ================================= */
+        /* =========================================
+           DOCUMENTO
+        ========================================= */
 
         .document {
 
@@ -77,8 +80,14 @@
             box-shadow:
                 0 0 35px rgba(0,0,0,0.9),
                 inset 0 0 50px rgba(255,255,255,0.02);
+
+            text-align: center;
         }
 
+
+        /* =========================================
+           NUMERO
+        ========================================= */
 
         .file-number {
 
@@ -103,9 +112,9 @@
         }
 
 
-        /* ================================
+        /* =========================================
            CLASIFICACION
-        ================================= */
+        ========================================= */
 
         .classification {
 
@@ -121,17 +130,21 @@
         }
 
 
-        /* ================================
+        /* =========================================
            SELLO CONFIDENCIAL
-        ================================= */
+        ========================================= */
 
         .stamp-container {
+
+            height: 78px;
 
             display: flex;
 
             justify-content: center;
 
-            margin-bottom: 32px;
+            align-items: center;
+
+            margin-bottom: 28px;
         }
 
 
@@ -151,22 +164,168 @@
 
             letter-spacing: 4px;
 
-            transform: rotate(-5deg);
+            transform:
+                rotate(-5deg)
+                scale(0.2);
 
-            opacity: 0.95;
+            opacity: 0;
 
-            box-shadow:
-                0 0 5px rgba(165,31,31,0.15);
+            text-shadow:
+                0 0 5px rgba(210,43,43,0.15);
         }
 
 
-        /* ================================
+        /*
+         * Aparición inicial tipo
+         * "golpe de sello".
+         */
+
+        .stamp.appear {
+
+            animation:
+                stampGolpe 0.65s
+                cubic-bezier(
+                    0.175,
+                    0.885,
+                    0.32,
+                    1.275
+                )
+                forwards;
+        }
+
+
+        /*
+         * Ciclo posterior:
+         * aparece / destaca / desaparece.
+         */
+
+        .stamp.pulse {
+
+            animation:
+                stampPulso 3.8s
+                ease-in-out
+                infinite;
+        }
+
+
+        @keyframes stampGolpe {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    rotate(-10deg)
+                    scale(2.1);
+            }
+
+
+            55% {
+
+                opacity: 1;
+
+                transform:
+                    rotate(-4deg)
+                    scale(0.95);
+            }
+
+
+            75% {
+
+                transform:
+                    rotate(-6deg)
+                    scale(1.05);
+            }
+
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    rotate(-5deg)
+                    scale(1);
+            }
+
+        }
+
+
+        @keyframes stampPulso {
+
+            0% {
+
+                opacity: 0.18;
+
+                transform:
+                    rotate(-5deg)
+                    scale(0.92);
+
+                text-shadow:
+                    0 0 0 rgba(210,43,43,0);
+            }
+
+
+            15% {
+
+                opacity: 1;
+
+                transform:
+                    rotate(-5deg)
+                    scale(1.06);
+
+                text-shadow:
+                    0 0 14px rgba(210,43,43,0.35);
+            }
+
+
+            32% {
+
+                opacity: 1;
+
+                transform:
+                    rotate(-5deg)
+                    scale(1);
+
+            }
+
+
+            63% {
+
+                opacity: 0.95;
+
+            }
+
+
+            82% {
+
+                opacity: 0.15;
+
+                transform:
+                    rotate(-5deg)
+                    scale(0.94);
+            }
+
+
+            100% {
+
+                opacity: 0.18;
+
+                transform:
+                    rotate(-5deg)
+                    scale(0.92);
+            }
+
+        }
+
+
+        /* =========================================
            TITULO
-        ================================= */
+        ========================================= */
 
         h1 {
 
-            margin: 0 0 34px;
+            margin:
+                0 0 34px;
 
             text-align: center;
 
@@ -180,9 +339,9 @@
         }
 
 
-        /* ================================
+        /* =========================================
            AVISO
-        ================================= */
+        ========================================= */
 
         .warning {
 
@@ -214,19 +373,23 @@
         }
 
 
-        /* ================================
+        /* =========================================
            MENSAJE CLASIFICADO
-        ================================= */
+        ========================================= */
 
         .classified {
 
-            margin: 30px 0 34px;
+            margin:
+                30px 0 34px;
 
-            padding: 19px 14px;
+            padding:
+                19px 14px;
 
-            border-left: 2px solid #666666;
+            border-left:
+                2px solid #666666;
 
-            border-right: 2px solid #666666;
+            border-right:
+                2px solid #666666;
 
             text-align: center;
 
@@ -246,38 +409,44 @@
         }
 
 
-        /* ================================
+        /* =========================================
            SEPARADOR
-        ================================= */
+        ========================================= */
 
         .separator {
 
-            border-top: 1px dashed #555555;
+            border-top:
+                1px dashed #555555;
 
-            margin: 30px 0;
+            margin:
+                30px 0;
         }
 
 
-        /* ================================
-           PREGUNTA
-        ================================= */
+        /* =========================================
+           VERIFICACION 1
+        ========================================= */
+
+        .verification-section {
+
+            margin-top: 30px;
+        }
+
 
         .question-box {
 
             text-align: center;
 
-            margin: 32px 0;
-
-            padding: 26px 12px;
+            padding:
+                26px 12px;
 
             background: #151515;
 
-            border-top: 1px solid #555555;
+            border-top:
+                1px solid #555555;
 
-            border-bottom: 1px solid #555555;
-
-            box-shadow:
-                inset 0 0 20px rgba(255,255,255,0.015);
+            border-bottom:
+                1px solid #555555;
         }
 
 
@@ -304,15 +473,8 @@
             font-weight: bold;
 
             letter-spacing: 1px;
-
-            text-shadow:
-                0 0 10px rgba(255,255,255,0.08);
         }
 
-
-        /* ================================
-           CAMPO
-        ================================= */
 
         .input-label {
 
@@ -324,7 +486,10 @@
 
             letter-spacing: 1px;
 
-            margin-bottom: 10px;
+            margin:
+                25px 0 10px;
+
+            text-align: left;
         }
 
 
@@ -336,11 +501,13 @@
 
             height: 66px;
 
-            padding: 10px 14px;
+            padding:
+                10px 14px;
 
             background: #050505;
 
-            border: 2px solid #707070;
+            border:
+                2px solid #707070;
 
             border-radius: 0;
 
@@ -364,21 +531,22 @@
             border-color: #dddddd;
 
             box-shadow:
-                0 0 10px rgba(255,255,255,0.08);
+                0 0 10px
+                rgba(255,255,255,0.08);
         }
 
 
-        /* ================================
-           BOTON
-        ================================= */
+        /* =========================================
+           BOTONES
+        ========================================= */
 
-        button {
+        .button {
 
             display: block;
 
             width: 100%;
 
-            height: 70px;
+            min-height: 70px;
 
             margin-top: 20px;
 
@@ -402,18 +570,23 @@
             letter-spacing: 2px;
 
             cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.3s ease;
         }
 
 
-        button:active {
+        .button:active {
 
-            transform: scale(0.98);
+            transform:
+                scale(0.98);
         }
 
 
-        /* ================================
+        /* =========================================
            ERROR
-        ================================= */
+        ========================================= */
 
         .error {
 
@@ -423,29 +596,144 @@
 
             padding: 13px;
 
-            border: 1px solid #7a2525;
+            border:
+                1px solid #7a2525;
 
             color: #d63a3a;
 
             text-align: center;
 
-            font-size: 18px;
+            font-size: 17px;
 
             line-height: 1.5;
         }
 
 
-        /* ================================
+        /* =========================================
+           SEGUNDA VERIFICACION
+        ========================================= */
+
+        #verificationTwo {
+
+            display: none;
+
+            margin-top: 38px;
+
+            animation:
+                aparecer 0.9s ease;
+        }
+
+
+        .second-message {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+
+            line-height: 1.7;
+
+            color: #d7d7d7;
+
+            margin-bottom: 28px;
+        }
+
+
+        .second-message strong {
+
+            color: #ffffff;
+        }
+
+
+        .second-question-box {
+
+            margin-top: 30px;
+
+            padding:
+                25px 14px;
+
+            border-top:
+                1px dashed #555555;
+
+            border-bottom:
+                1px dashed #555555;
+
+            background:
+                rgba(255,255,255,0.015);
+        }
+
+
+        .second-label {
+
+            color: #999999;
+
+            font-size: 15px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .second-question {
+
+            color: #ffffff;
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+        }
+
+
+        /* =========================================
+           IDENTIDAD FINALMENTE CONFIRMADA
+        ========================================= */
+
+        #identityComplete {
+
+            display: none;
+
+            margin-top: 28px;
+
+            padding:
+                18px 12px;
+
+            color: #72d77d;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            line-height: 1.5;
+
+            border:
+                1px solid
+                rgba(78,190,91,0.3);
+
+            background:
+                rgba(35,80,40,0.10);
+
+            animation:
+                aparecer 0.9s ease;
+        }
+
+
+        /* =========================================
            PIE
-        ================================= */
+        ========================================= */
 
         .footer {
 
-            margin-top: 34px;
+            margin-top: 38px;
 
             padding-top: 18px;
 
-            border-top: 1px solid #444444;
+            border-top:
+                1px solid #444444;
 
             color: #666666;
 
@@ -459,49 +747,84 @@
         }
 
 
-        /* ================================
+        /* =========================================
+           ANIMACION GENERICA
+        ========================================= */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+        /* =========================================
            CELULARES PEQUEÑOS
-        ================================= */
+        ========================================= */
 
         @media (max-width: 380px) {
 
-            body {
-                padding: 12px;
-            }
-
-
             .document {
-                padding: 28px 18px 26px;
+
+                padding:
+                    28px 18px 26px;
             }
 
 
             .classification {
+
                 font-size: 15px;
+
                 letter-spacing: 4px;
             }
 
 
             h1 {
+
                 font-size: 29px;
             }
 
 
             .warning {
+
                 font-size: 19px;
             }
 
 
             .question {
+
                 font-size: 27px;
             }
 
 
+            .second-question {
+
+                font-size: 24px;
+            }
+
+
             input {
+
                 font-size: 21px;
             }
 
 
-            button {
+            .button {
+
                 font-size: 18px;
             }
 
@@ -515,102 +838,132 @@
 <body>
 
 
-    <main class="document">
+<main class="document">
 
 
-        <div class="file-number">
-            EXP. D&amp;J - 001
-        </div>
+    <div class="file-number">
+        EXP. D&amp;J - 001
+    </div>
 
 
-        <div class="top-line"></div>
+    <div class="top-line"></div>
 
 
-        <div class="classification">
-            DOCUMENTO CLASIFICADO
-        </div>
+    <div class="classification">
+        DOCUMENTO CLASIFICADO
+    </div>
 
 
-        <div class="stamp-container">
+    <!-- =====================================
+         SELLO
+    ====================================== -->
 
-            <div class="stamp">
-                CONFIDENCIAL
-            </div>
+    <div class="stamp-container">
 
-        </div>
+        <div
+            id="stamp"
+            class="stamp">
 
-
-        <h1>
-            EXPEDIENTE<br>
-            DANI &amp; JUAN
-        </h1>
-
-
-        <div class="warning">
-
-            <span class="warning-title">
-                ACCESO RESTRINGIDO
-            </span>
-
-
-            Este expediente contiene información
-            confidencial sobre una historia real.
-
-
-            <br><br>
-
-
-            El acceso a este archivo
-            ha sido autorizado para una sola persona.
+            CONFIDENCIAL
 
         </div>
 
-
-        <div class="classified">
-
-            <strong>
-                ADVERTENCIA DE SEGURIDAD
-            </strong>
+    </div>
 
 
-            <br><br>
+    <h1>
+
+        EXPEDIENTE<br>
+
+        DANI &amp; JUAN
+
+    </h1>
 
 
-            No existen contraseñas convencionales
-            para acceder a este expediente.
+    <!-- =====================================
+         ADVERTENCIA
+    ====================================== -->
+
+    <div class="warning">
+
+        <span class="warning-title">
+
+            ACCESO RESTRINGIDO
+
+        </span>
 
 
-            <br><br>
+        Este expediente contiene información
+        confidencial sobre una historia real.
 
 
-            La primera clave solamente puede ser conocida
-            por alguien que estuvo allí.
+        <br><br>
 
 
-            <br><br>
+        El acceso a este archivo
+        ha sido autorizado para una sola persona.
+
+    </div>
 
 
-            <strong>
-                Si usted es la persona indicada,
-                sabrá qué responder.
-            </strong>
+    <div class="classified">
 
-        </div>
+        <strong>
+            ADVERTENCIA DE SEGURIDAD
+        </strong>
 
 
-        <div class="separator"></div>
+        <br><br>
+
+
+        No existen contraseñas convencionales
+        para acceder a este expediente.
+
+
+        <br><br>
+
+
+        La primera clave solamente puede ser conocida
+        por alguien que estuvo allí.
+
+
+        <br><br>
+
+
+        <strong>
+            Si usted es la persona indicada,
+            sabrá qué responder.
+        </strong>
+
+    </div>
+
+
+    <div class="separator"></div>
+
+
+    <!-- =====================================
+         VERIFICACION 1
+    ====================================== -->
+
+    <section
+        id="verificationOne"
+        class="verification-section">
 
 
         <div class="question-box">
 
 
             <div class="question-label">
-                PRIMER PROTOCOLO DE VERIFICACION
+
+                PRIMER PROTOCOLO DE VERIFICACIÓN
+
             </div>
 
 
             <div class="question">
+
                 ¿DÓNDE COMENZÓ TODO?
+
             </div>
 
 
@@ -619,16 +972,16 @@
 
         <label
             class="input-label"
-            for="respuesta">
+            for="respuestaUno">
 
-            INGRESE LA CLAVE DE ACCESO:
+            INGRESE LA PRIMERA CLAVE:
 
         </label>
 
 
         <input
             type="text"
-            id="respuesta"
+            id="respuestaUno"
             autocomplete="off"
             autocapitalize="none"
             spellcheck="false"
@@ -637,8 +990,10 @@
 
 
         <button
+            id="buttonOne"
+            class="button"
             type="button"
-            onclick="verificarIdentidad()">
+            onclick="verificarPrimeraClave()">
 
             CONFIRMAR IDENTIDAD
 
@@ -646,131 +1001,530 @@
 
 
         <div
-            id="error"
+            id="errorOne"
             class="error">
 
             IDENTIDAD NO VERIFICADA
 
             <br>
 
-            La clave ingresada no coincide
+            La respuesta ingresada no coincide
             con los registros del expediente.
 
         </div>
 
 
-        <div class="footer">
+    </section>
 
-            ARCHIVO RESERVADO - D&amp;J - 001
 
-            <br>
+    <!-- =====================================
+         VERIFICACION 2
+    ====================================== -->
 
-            ACCESO PERSONAL E INTRANSFERIBLE
+    <section
+        id="verificationTwo">
 
-            <br>
 
-            TODA TENTATIVA DE ACCESO NO AUTORIZADO
-            SERA REGISTRADA.
+        <div class="second-message">
+
+            <strong>
+                Sí, sí, claro...
+            </strong>
+
+            <br><br>
+
+            Eso lo sabe mucha gente.
+
+            <br><br>
+
+            Por lo tanto, esa respuesta
+            no es suficiente para confirmar
+            la identidad de la persona única
+            e indicada que podrá acceder
+            a este expediente secreto.
 
         </div>
 
 
-    </main>
+        <div class="second-question-box">
 
 
-    <script>
+            <div class="second-label">
+
+                SEGUNDO PROTOCOLO DE VERIFICACIÓN
+
+            </div>
 
 
-        const respuestasCorrectas = [
+            <div class="second-question">
 
-            "thebase",
-            "the base",
-            "thebaseperformance",
-            "the base performance",
-            "baseperformance",
-            "gym",
-            "gimnasio",
-            "the baseperformance",
-            "base performance",
-            "gimnasio thebase",
-            "gimnasio the base",
-            "gimnasiothebase",
-            "gimnasio thebaseperformance",
-            "gimnasio the base performance",
-            "gimnasio baseperformance"
+                ¿Cómo se llama el entrenador
+                que ahora está a la tarde?
 
-        ];
+            </div>
 
 
-        function normalizar(texto) {
-
-            return texto
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/\s+/g, " ")
-                .trim();
-
-        }
+        </div>
 
 
-        function verificarIdentidad() {
+        <label
+            class="input-label"
+            for="respuestaDos">
 
-            const campo =
-                document.getElementById("respuesta");
+            INGRESE LA SEGUNDA CLAVE:
 
-            const error =
-                document.getElementById("error");
-
-
-            const respuesta =
-                normalizar(campo.value);
+        </label>
 
 
-            const esCorrecta =
-                respuestasCorrectas.some(
-                    function(clave) {
+        <input
+            type="text"
+            id="respuestaDos"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="Escriba aquí..."
+        >
 
-                        return normalizar(clave)
-                            === respuesta;
 
-                    }
+        <button
+            class="button"
+            type="button"
+            onclick="verificarSegundaClave()">
+
+            VERIFICAR IDENTIDAD
+
+        </button>
+
+
+        <div
+            id="errorTwo"
+            class="error">
+
+            RESPUESTA INCORRECTA
+
+            <br>
+
+            Parece que todavía no podemos
+            confirmar quién sos.
+
+        </div>
+
+
+        <div
+            id="identityComplete">
+
+            IDENTIDAD CONFIRMADA
+
+            <br>
+
+            ACCESO AL EXPEDIENTE CONCEDIDO
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         PIE
+    ====================================== -->
+
+    <div class="footer">
+
+        ARCHIVO RESERVADO - D&amp;J - 001
+
+        <br>
+
+        ACCESO PERSONAL E INTRANSFERIBLE
+
+        <br>
+
+        TODA TENTATIVA DE ACCESO NO AUTORIZADO
+        SERÁ REGISTRADA.
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+    /* =========================================
+       SELLO CONFIDENCIAL
+    ========================================= */
+
+    window.addEventListener(
+        "load",
+        function() {
+
+
+            const stamp =
+                document.getElementById(
+                    "stamp"
                 );
 
 
-            if (esCorrecta) {
+            /*
+             * Primero aparece de golpe
+             * como un sello físico.
+             */
 
-                window.location.href =
-                    "pagina2.html";
+            stamp.classList.add(
+                "appear"
+            );
 
-            } else {
 
-                error.style.display =
-                    "block";
+            /*
+             * Una vez terminada
+             * la estampada inicial,
+             * comienza el ciclo de destaque.
+             */
 
-                campo.focus();
+            setTimeout(
+                function() {
 
-            }
+                    stamp.classList.remove(
+                        "appear"
+                    );
+
+
+                    stamp.classList.add(
+                        "pulse"
+                    );
+
+                },
+                1200
+            );
 
         }
+    );
 
 
-        document
-            .getElementById("respuesta")
-            .addEventListener(
-                "keydown",
-                function(event) {
+    /* =========================================
+       RESPUESTAS PRIMERA VERIFICACION
+    ========================================= */
 
-                    if (event.key === "Enter") {
+    const respuestasPrimeraClave = [
 
-                        verificarIdentidad();
+        "thebase",
+        "the base",
+        "thebaseperformance",
+        "the base performance",
+        "baseperformance",
+        "gym",
+        "gimnasio",
+        "the baseperformance",
+        "base performance",
+        "gimnasio thebase",
+        "gimnasio the base",
+        "gimnasiothebase",
+        "gimnasio thebaseperformance",
+        "gimnasio the base performance",
+        "gimnasio baseperformance",
 
-                    }
+        /*
+         * ATajo de pruebas
+         */
+        "1111"
+
+    ];
+
+
+    /* =========================================
+       RESPUESTAS SEGUNDA VERIFICACION
+    ========================================= */
+
+    const respuestasSegundaClave = [
+
+        "andy",
+        "andi",
+        "juani",
+        "juanchi",
+        "juan",
+        "juan manuel",
+        "juanmanuel",
+
+        /*
+         * ATajo de pruebas
+         */
+        "1111"
+
+    ];
+
+
+    /* =========================================
+       NORMALIZAR
+    ========================================= */
+
+    function normalizar(texto) {
+
+        return texto
+
+            .toLowerCase()
+
+            .normalize("NFD")
+
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            )
+
+            .replace(
+                /\s+/g,
+                " "
+            )
+
+            .trim();
+
+    }
+
+
+    /* =========================================
+       VERIFICAR PRIMERA CLAVE
+    ========================================= */
+
+    function verificarPrimeraClave() {
+
+
+        const campo =
+            document.getElementById(
+                "respuestaUno"
+            );
+
+
+        const error =
+            document.getElementById(
+                "errorOne"
+            );
+
+
+        const respuesta =
+            normalizar(
+                campo.value
+            );
+
+
+        const correcta =
+            respuestasPrimeraClave.some(
+                function(clave) {
+
+                    return (
+                        normalizar(clave)
+                        === respuesta
+                    );
 
                 }
             );
 
-    </script>
+
+        if (correcta) {
+
+
+            error.style.display =
+                "none";
+
+
+            /*
+             * Ocultamos primera etapa.
+             */
+
+            document
+                .getElementById(
+                    "verificationOne"
+                )
+                .style.display =
+                "none";
+
+
+            /*
+             * Mostramos segunda etapa.
+             */
+
+            const segunda =
+                document.getElementById(
+                    "verificationTwo"
+                );
+
+
+            segunda.style.display =
+                "block";
+
+
+            /*
+             * Bajamos suavemente
+             * hacia la nueva pregunta.
+             */
+
+            setTimeout(
+                function() {
+
+                    segunda.scrollIntoView({
+
+                        behavior:
+                            "smooth",
+
+                        block:
+                            "start"
+
+                    });
+
+                },
+                150
+            );
+
+
+        } else {
+
+
+            error.style.display =
+                "block";
+
+
+            campo.focus();
+
+        }
+
+    }
+
+
+    /* =========================================
+       VERIFICAR SEGUNDA CLAVE
+    ========================================= */
+
+    function verificarSegundaClave() {
+
+
+        const campo =
+            document.getElementById(
+                "respuestaDos"
+            );
+
+
+        const error =
+            document.getElementById(
+                "errorTwo"
+            );
+
+
+        const identidad =
+            document.getElementById(
+                "identityComplete"
+            );
+
+
+        const respuesta =
+            normalizar(
+                campo.value
+            );
+
+
+        const correcta =
+            respuestasSegundaClave.some(
+                function(clave) {
+
+                    return (
+                        normalizar(clave)
+                        === respuesta
+                    );
+
+                }
+            );
+
+
+        if (correcta) {
+
+
+            error.style.display =
+                "none";
+
+
+            identidad.style.display =
+                "block";
+
+
+            /*
+             * Pequeña pausa para dar
+             * sensación de acceso concedido.
+             */
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "pagina2.html";
+
+                },
+                1100
+            );
+
+
+        } else {
+
+
+            error.style.display =
+                "block";
+
+
+            campo.focus();
+
+        }
+
+    }
+
+
+    /* =========================================
+       ENTER PRIMERA CLAVE
+    ========================================= */
+
+    document
+        .getElementById(
+            "respuestaUno"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    verificarPrimeraClave();
+
+                }
+
+            }
+        );
+
+
+    /* =========================================
+       ENTER SEGUNDA CLAVE
+    ========================================= */
+
+    document
+        .getElementById(
+            "respuestaDos"
+        )
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    verificarSegundaClave();
+
+                }
+
+            }
+        );
+
+</script>
 
 
 </body>
