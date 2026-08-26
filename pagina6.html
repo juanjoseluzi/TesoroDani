@@ -772,14 +772,13 @@
 
             -webkit-user-select: none;
 
-            touch-action: pan-y;
-
             -webkit-tap-highlight-color: transparent;
 
-            transition:
-                background .5s ease,
-                color .5s ease,
-                box-shadow .5s ease;
+            /*
+             * Permitimos el desplazamiento vertical de la página,
+             * pero el gesto horizontal será procesado por JavaScript.
+             */
+            touch-action: pan-y;
         }
 
 
@@ -800,8 +799,45 @@
 
             touch-action:
                 manipulation;
+        }
 
-            cursor: pointer;
+
+        /* ==================================================
+           MENSAJE DEL NO FINALIZAR
+        ================================================== */
+
+        .no-finalize-message {
+
+            display: none;
+
+            margin-top: 30px;
+
+            padding:
+                25px
+                16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.8;
+
+            color: #eadcdf;
+
+            animation:
+                aparecer 1s ease;
+        }
+
+
+        .no-finalize-message strong {
+            color: #ffffff;
         }
 
 
@@ -1509,9 +1545,7 @@
 <main class="document">
 
 
-    <!-- ==================================================
-         PRIMERA PANTALLA
-    ================================================== -->
+    <!-- PRIMERA PANTALLA -->
 
     <section class="tree-hero">
 
@@ -1522,9 +1556,7 @@
     </section>
 
 
-    <!-- ==================================================
-         HISTORIA
-    ================================================== -->
+    <!-- HISTORIA -->
 
     <div class="story-content">
 
@@ -1593,6 +1625,8 @@
         </div>
 
 
+        <!-- ALMA + RADAR -->
+
         <div class="soul-note">
 
             <strong>
@@ -1644,6 +1678,8 @@
 
         </div>
 
+
+        <!-- UBICACIÓN -->
 
         <div class="location-zone">
 
@@ -1706,6 +1742,8 @@
 
         </div>
 
+
+        <!-- TEXTO FINAL -->
 
         <section
             id="finalSection"
@@ -1849,6 +1887,8 @@
             </div>
 
 
+            <!-- BOTÓN FINAL -->
+
             <div class="final-button-area">
 
                 <button
@@ -1860,8 +1900,36 @@
 
                 </button>
 
+
+                <!-- TEXTO QUE APARECE AL DESLIZAR -->
+
+                <div
+                    id="noFinalizeMessage"
+                    class="no-finalize-message">
+
+                    <strong>
+                        No.
+                    </strong>
+
+                    <br><br>
+
+                    Nuestra historia no se puede
+                    finalizar así.
+
+                    <br><br>
+
+                    Hay cosas que terminan.
+
+                    <br><br>
+
+                    Pero esto no.
+
+                </div>
+
             </div>
 
+
+            <!-- CUENTA REGRESIVA -->
 
             <section
                 id="countdownSection"
@@ -1919,6 +1987,8 @@
 
             </section>
 
+
+            <!-- HISTORIA NO TERMINA -->
 
             <section
                 id="loveSection"
@@ -2012,6 +2082,8 @@
             </section>
 
 
+            <!-- CUMPLEAÑOS -->
+
             <section
                 id="birthdaySection"
                 class="birthday-section">
@@ -2063,7 +2135,6 @@
 
 
 <script>
-
 
     /* ==================================================
        COORDENADAS
@@ -2140,11 +2211,13 @@
             return;
         }
 
+
         const lat =
             position.coords.latitude;
 
         const lon =
             position.coords.longitude;
+
 
         const distancia =
             distanciaMetros(
@@ -2154,11 +2227,13 @@
                 ARBOL_LON
             );
 
+
         console.log(
             "Distancia al árbol:",
             Math.round(distancia),
             "metros"
         );
+
 
         if (
             distancia <=
@@ -2206,8 +2281,10 @@
                 "locationFound"
             );
 
+
         found.style.display =
             "block";
+
 
         setTimeout(
             function() {
@@ -2233,8 +2310,10 @@
             return;
         }
 
+
         let permissionState =
             "prompt";
+
 
         try {
 
@@ -2248,8 +2327,10 @@
                         name: "geolocation"
                     });
 
+
                 permissionState =
                     permission.state;
+
 
                 permission.onchange =
                     function() {
@@ -2297,6 +2378,7 @@
                             position
                         );
 
+
                         if (
                             !arbolEncontrado
                         ) {
@@ -2305,7 +2387,11 @@
                         }
                     },
 
-                    function() {},
+                    function() {
+
+                        /* Silencioso */
+
+                    },
 
                     {
 
@@ -2337,6 +2423,7 @@
             return;
         }
 
+
         watchID =
             navigator
                 .geolocation
@@ -2344,7 +2431,11 @@
 
                     comprobarUbicacion,
 
-                    function() {},
+                    function() {
+
+                        /* Silencioso */
+
+                    },
 
                     {
 
@@ -2372,8 +2463,10 @@
                 "finalSection"
             );
 
+
         finalSection.style.display =
             "block";
+
 
         desplazarAElemento(
             finalSection,
@@ -2384,15 +2477,6 @@
 
     /* ==================================================
        BOTÓN FINAL
-       
-       IMPORTANTE:
-       
-       Los SWIPES se controlan con Pointer Events.
-
-       El TAP FINAL se controla con CLICK.
-
-       Esto evita depender de pointerup para iniciar
-       la cuenta regresiva en Safari/iPhone.
     ================================================== */
 
     const finalButton =
@@ -2401,12 +2485,38 @@
         );
 
 
+    const noFinalizeMessage =
+        document.getElementById(
+            "noFinalizeMessage"
+        );
+
+
+    /*
+     * Cantidad de deslizamientos necesarios.
+     */
+
     const REQUIRED_SWIPES =
         3;
 
 
+    /*
+     * Distancia mínima para considerar
+     * que realmente hubo un swipe.
+     */
+
     const SWIPE_DISTANCE =
-        75;
+        60;
+
+
+    /*
+     * Inclinación máxima permitida.
+     *
+     * Esto evita contar un movimiento
+     * predominantemente vertical.
+     */
+
+    const MAX_VERTICAL_RATIO =
+        1.25;
 
 
     let swipeCount =
@@ -2422,7 +2532,7 @@
 
 
     /*
-     * Variables del gesto.
+     * Estado del puntero.
      */
 
     let pointerActive =
@@ -2446,12 +2556,17 @@
 
 
     /*
-     * Esta variable evita que el click generado
-     * después del tercer swipe inicie accidentalmente
-     * la cuenta regresiva.
+     * Esta variable es importante:
+     *
+     * Safari/Chrome pueden generar un "click"
+     * después de un gesto.
+     *
+     * Si acabamos de registrar un swipe,
+     * impedimos que ese click accidental
+     * inicie la cuenta regresiva.
      */
 
-    let suppressNextClick =
+    let ignoreNextClick =
         false;
 
 
@@ -2462,16 +2577,6 @@
     finalButton.addEventListener(
         "pointerdown",
         function(event) {
-
-            /*
-             * Incluso cuando el botón ya está
-             * transformado debemos registrar el
-             * pointerdown.
-             *
-             * La versión anterior hacía return
-             * cuando finalButtonUnlocked era true,
-             * dejando pointerActive en false.
-             */
 
             pointerActive =
                 true;
@@ -2494,13 +2599,23 @@
 
 
             /*
-             * No usamos setPointerCapture.
+             * Capturamos el puntero.
              *
-             * Para este botón no es necesario y así
-             * evitamos depender de diferencias de
-             * implementación entre navegadores.
+             * Funciona en navegadores modernos
+             * de iPhone y Android.
              */
 
+            try {
+
+                finalButton.setPointerCapture(
+                    pointerId
+                );
+
+            } catch (error) {}
+
+        },
+        {
+            passive: true
         }
     );
 
@@ -2514,8 +2629,7 @@
         function(event) {
 
             if (
-                !pointerActive ||
-                finalButtonUnlocked
+                !pointerActive
             ) {
 
                 return;
@@ -2532,15 +2646,13 @@
                 pointerStartY;
 
 
-            const distance =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
+            /*
+             * Todavía no hay suficiente
+             * movimiento para decidir.
+             */
 
             if (
-                distance <
+                Math.abs(dx) <
                 SWIPE_DISTANCE
             ) {
 
@@ -2549,17 +2661,22 @@
 
 
             /*
-             * Debe ser claramente horizontal.
+             * Tiene que ser claramente horizontal.
              */
 
             if (
-                Math.abs(dx) <=
-                Math.abs(dy) * 1.2
+                Math.abs(dx) <
+                Math.abs(dy) *
+                MAX_VERTICAL_RATIO
             ) {
 
                 return;
             }
 
+
+            /*
+             * Ya tenemos un swipe válido.
+             */
 
             pointerMoved =
                 true;
@@ -2569,24 +2686,24 @@
                 false;
 
 
+            /*
+             * Impedimos que un click posterior
+             * sea interpretado como toque.
+             */
+
+            ignoreNextClick =
+                true;
+
+
             registrarSwipe();
 
 
             /*
-             * El swipe no debe generar una acción
-             * de click posterior.
+             * En este punto sí evitamos que Safari
+             * interprete el movimiento como scroll.
              */
 
-            suppressNextClick =
-                true;
-
-
-            if (
-                event.cancelable
-            ) {
-
-                event.preventDefault();
-            }
+            event.preventDefault();
 
         },
         {
@@ -2601,10 +2718,41 @@
 
     finalButton.addEventListener(
         "pointerup",
-        function() {
+        function(event) {
+
+            const wasMoved =
+                pointerMoved;
+
 
             pointerActive =
                 false;
+
+
+            pointerMoved =
+                false;
+
+
+            /*
+             * Si fue un swipe, no hacemos nada aquí.
+             *
+             * El swipe ya fue procesado por pointermove.
+             */
+
+            if (
+                wasMoved
+            ) {
+
+                return;
+            }
+
+
+            /*
+             * El toque se procesa mediante
+             * el evento click.
+             *
+             * Esto es deliberado para tener
+             * máxima compatibilidad con Safari.
+             */
 
         }
     );
@@ -2630,13 +2778,14 @@
     /* ==================================================
        CLICK
        
-       ÉSTA ES LA CORRECCIÓN PRINCIPAL.
+       ESTA ES LA CORRECCIÓN PRINCIPAL.
        
-       Una vez que el botón dice:
+       Antes el código hacía que un toque
+       normal "no hiciera nada".
        
-       NO FINALIZAR HISTORIA
+       Ahora:
        
-       un toque normal inicia la cuenta regresiva.
+       TOQUE → INICIA CUENTA REGRESIVA.
     ================================================== */
 
     finalButton.addEventListener(
@@ -2644,39 +2793,24 @@
         function(event) {
 
             /*
-             * Si este click viene inmediatamente
+             * Si el click viene inmediatamente
              * después de un swipe, lo ignoramos.
              */
 
             if (
-                suppressNextClick
+                ignoreNextClick
             ) {
 
-                suppressNextClick =
+                ignoreNextClick =
                     false;
 
-                event.preventDefault();
-
                 return;
             }
 
 
             /*
-             * Antes de completar los 3 swipes,
-             * tocar el botón no hace nada.
-             */
-
-            if (
-                !finalButtonUnlocked
-            ) {
-
-                return;
-            }
-
-
-            /*
-             * Si ya empezó la cuenta, no hacemos
-             * absolutamente nada más.
+             * Si ya comenzó la cuenta regresiva,
+             * no hacemos nada.
              */
 
             if (
@@ -2686,6 +2820,12 @@
                 return;
             }
 
+
+            /*
+             * Cualquier toque real sobre
+             * FINALIZAR HISTORIA inicia
+             * la cuenta regresiva.
+             */
 
             iniciarFinal();
 
@@ -2698,6 +2838,11 @@
     ================================================== */
 
     function registrarSwipe() {
+
+        /*
+         * Si ya se transformó el botón,
+         * no contamos más gestos.
+         */
 
         if (
             finalButtonUnlocked
@@ -2718,15 +2863,18 @@
         );
 
 
+        /*
+         * Al tercer swipe:
+         * transformar botón.
+         */
+
         if (
             swipeCount >=
             REQUIRED_SWIPES
         ) {
 
             transformarBoton();
-
         }
-
     }
 
 
@@ -2735,6 +2883,14 @@
     ================================================== */
 
     function transformarBoton() {
+
+        if (
+            finalButtonUnlocked
+        ) {
+
+            return;
+        }
+
 
         finalButtonUnlocked =
             true;
@@ -2749,20 +2905,47 @@
             "NO FINALIZAR HISTORIA";
 
 
+        /*
+         * Aparece el texto correspondiente
+         * al gesto de deslizar.
+         */
+
+        noFinalizeMessage.style.display =
+            "block";
+
+
+        /*
+         * Ya no queremos que el botón
+         * vuelva a iniciar la cuenta regresiva
+         * al tocarlo después de transformarse.
+         */
+
         finalButton.setAttribute(
-            "aria-label",
-            "No finalizar historia"
+            "aria-disabled",
+            "true"
         );
 
 
         /*
-         * El próximo click puede ser un click
-         * normal sobre el botón transformado.
+         * Eliminamos el procesamiento
+         * del click posterior al tercer swipe.
          */
 
-        finalButton.style.touchAction =
-            "manipulation";
+        ignoreNextClick =
+            true;
 
+
+        setTimeout(
+            function() {
+
+                desplazarAElemento(
+                    noFinalizeMessage,
+                    25
+                );
+
+            },
+            100
+        );
     }
 
 
@@ -2771,6 +2954,23 @@
     ================================================== */
 
     function iniciarFinal() {
+
+        /*
+         * Si el botón fue transformado mediante
+         * los swipes, NO inicia la cuenta.
+         */
+
+        if (
+            finalButtonUnlocked
+        ) {
+
+            return;
+        }
+
+
+        /*
+         * Evita múltiples cuentas regresivas.
+         */
 
         if (
             countdownStarted
@@ -2784,15 +2984,6 @@
             true;
 
 
-        /*
-         * Deshabilitamos visualmente el botón
-         * para evitar múltiples interacciones.
-         */
-
-        finalButton.style.pointerEvents =
-            "none";
-
-
         const countdown =
             document.getElementById(
                 "countdownSection"
@@ -2803,25 +2994,13 @@
             "block";
 
 
-        const love =
-            document.getElementById(
-                "loveSection"
-            );
-
-
-        love.style.display =
-            "block";
-
-
-        const birthday =
-            document.getElementById(
-                "birthdaySection"
-            );
-
-
-        birthday.style.display =
-            "block";
-
+        /*
+         * Importante:
+         *
+         * La historia final y el cumpleaños
+         * se muestran después de que termine
+         * la cuenta regresiva, no inmediatamente.
+         */
 
         setTimeout(
             function() {
@@ -2837,7 +3016,6 @@
 
 
         iniciarCuentaRegresiva();
-
     }
 
 
@@ -2888,6 +3066,9 @@
             clearInterval(
                 countdownTimer
             );
+
+            countdownTimer =
+                null;
         }
 
 
@@ -2912,20 +3093,7 @@
                             null;
 
 
-                        /*
-                         * Mantiene el comportamiento
-                         * original: cuando llega a cero,
-                         * vuelve a comenzar.
-                         */
-
-                        setTimeout(
-                            function() {
-
-                                iniciarCuentaRegresiva();
-
-                            },
-                            900
-                        );
+                        finalizarCuenta();
 
 
                         return;
@@ -2940,7 +3108,78 @@
                 },
                 1000
             );
+    }
 
+
+    /* ==================================================
+       FINALIZAR CUENTA
+    ================================================== */
+
+    function finalizarCuenta() {
+
+        const numberElement =
+            document.getElementById(
+                "countdownNumber"
+            );
+
+
+        const status =
+            document.getElementById(
+                "countdownStatus"
+            );
+
+
+        numberElement.textContent =
+            "0";
+
+
+        status.textContent =
+            "HISTORIA FINALIZADA";
+
+
+        /*
+         * Después de la cuenta regresiva
+         * aparece el verdadero final.
+         */
+
+        setTimeout(
+            function() {
+
+                const love =
+                    document.getElementById(
+                        "loveSection"
+                    );
+
+
+                const birthday =
+                    document.getElementById(
+                        "birthdaySection"
+                    );
+
+
+                love.style.display =
+                    "block";
+
+
+                birthday.style.display =
+                    "block";
+
+
+                setTimeout(
+                    function() {
+
+                        desplazarAElemento(
+                            love,
+                            25
+                        );
+
+                    },
+                    100
+                );
+
+            },
+            900
+        );
     }
 
 
@@ -2966,6 +3205,12 @@
             number;
 
 
+        /*
+         * Dos frames obligan a Safari,
+         * Chrome y Android a reiniciar
+         * correctamente la animación.
+         */
+
         requestAnimationFrame(
             function() {
 
@@ -2981,12 +3226,11 @@
 
             }
         );
-
     }
 
 
     /* ==================================================
-       ATAJO OCULTO
+       ATAJO OCULTO DE EMERGENCIA
        
        Código:
        1111
@@ -3115,7 +3359,6 @@
 
                 hiddenShortcutInput.value =
                     "";
-
             }
 
         }
@@ -3160,7 +3403,6 @@
             },
             120
         );
-
     }
 
 
@@ -3169,7 +3411,6 @@
     ================================================== */
 
     iniciarControlGeografico();
-
 
 </script>
 
