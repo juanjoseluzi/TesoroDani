@@ -704,12 +704,6 @@
         }
 
 
-        /*
-         * Emojis individuales:
-         * se usan para reforzar
-         * la emoción del texto.
-         */
-
         .final-emoji {
 
             font-family:
@@ -785,12 +779,6 @@
             user-select: none;
 
             -webkit-user-select: none;
-
-            /*
-             * Permitimos el gesto vertical
-             * de la página, pero capturamos
-             * horizontalmente el swipe.
-             */
 
             touch-action:
                 pan-y;
@@ -1352,6 +1340,96 @@
                     scale(1.09);
             }
 
+        }
+
+
+        /* ==================================================
+           ATAJO DE EMERGENCIA
+           
+           Invisible pero táctil.
+           Zona: esquina inferior derecha.
+        ================================================== */
+
+        #hiddenShortcut {
+
+            position: fixed;
+
+            right: 0;
+
+            bottom: 0;
+
+            width: 60px;
+
+            height: 60px;
+
+            opacity: 0;
+
+            background: transparent;
+
+            z-index: 99999;
+
+            cursor: pointer;
+
+            -webkit-tap-highlight-color:
+                transparent;
+
+            user-select: none;
+
+            -webkit-user-select: none;
+        }
+
+
+        #hiddenShortcutBox {
+
+            display: none;
+
+            position: absolute;
+
+            right: 8px;
+
+            bottom: 62px;
+
+            width: 120px;
+
+            padding: 8px;
+
+            background:
+                rgba(20,10,14,0.96);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            border-radius: 4px;
+        }
+
+
+        #hiddenShortcutInput {
+
+            width: 100%;
+
+            height: 36px;
+
+            padding:
+                4px
+                6px;
+
+            border: none;
+
+            outline: none;
+
+            background: #ffffff;
+
+            color: #222222;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 14px;
+
+            text-align: center;
         }
 
 
@@ -2204,25 +2282,37 @@
                 true;
 
 
-            if (
-                watchID !== null
-            ) {
-
-
-                navigator
-                    .geolocation
-                    .clearWatch(
-                        watchID
-                    );
-
-
-                watchID =
-                    null;
-
-            }
+            detenerGeolocalizacion();
 
 
             mostrarArbolEncontrado();
+
+        }
+
+    }
+
+
+    /* ==================================================
+       DETENER GEOLOCALIZACIÓN
+    ================================================== */
+
+    function detenerGeolocalizacion() {
+
+
+        if (
+            watchID !== null
+        ) {
+
+
+            navigator
+                .geolocation
+                .clearWatch(
+                    watchID
+                );
+
+
+            watchID =
+                null;
 
         }
 
@@ -2528,11 +2618,6 @@
     function iniciarSwipe(event) {
 
 
-        /*
-         * Una vez desbloqueado,
-         * no capturamos más swipes.
-         */
-
         if (
             finalButtonUnlocked
         ) {
@@ -2567,11 +2652,6 @@
 
         }
 
-
-        /*
-         * Permitimos el movimiento
-         * horizontal dentro del botón.
-         */
 
         event.preventDefault();
 
@@ -2631,13 +2711,6 @@
                 dy * dy
             );
 
-
-        /*
-         * Exigimos:
-         *
-         * - suficiente distancia
-         * - gesto principalmente horizontal
-         */
 
         if (
             distance >=
@@ -2729,10 +2802,6 @@
     );
 
 
-    /*
-     * Mouse para pruebas en PC.
-     */
-
     finalButton.addEventListener(
         "mousedown",
         iniciarSwipe
@@ -2768,10 +2837,6 @@
             true;
 
 
-        /*
-         * Cambiar visual.
-         */
-
         finalButton.classList.add(
             "changed"
         );
@@ -2781,25 +2846,9 @@
             "NO FINALIZAR HISTORIA";
 
 
-        /*
-         * IMPORTANTE:
-         *
-         * Eliminamos la posibilidad
-         * de que el gesto vuelva a
-         * interferir.
-         */
-
         finalButton.style.touchAction =
             "manipulation";
 
-
-        /*
-         * Asignamos onclick directamente.
-         *
-         * Así el toque posterior
-         * funciona de forma independiente
-         * al sistema de swipes.
-         */
 
         finalButton.onclick =
             function(event) {
@@ -2833,10 +2882,6 @@
             true;
 
 
-        /*
-         * Mostrar cuenta regresiva.
-         */
-
         const countdown =
             document.getElementById(
                 "countdownSection"
@@ -2846,12 +2891,6 @@
         countdown.style.display =
             "block";
 
-
-        /*
-         * MUY IMPORTANTE:
-         * El texto emocional aparece
-         * al tocar NO FINALIZAR HISTORIA.
-         */
 
         const love =
             document.getElementById(
@@ -2863,11 +2902,6 @@
             "block";
 
 
-        /*
-         * También aparece el cierre
-         * de cumpleaños.
-         */
-
         const birthday =
             document.getElementById(
                 "birthdaySection"
@@ -2877,11 +2911,6 @@
         birthday.style.display =
             "block";
 
-
-        /*
-         * Llevamos la pantalla a la
-         * cuenta regresiva.
-         */
 
         setTimeout(
             function() {
@@ -2976,11 +3005,6 @@
                             null;
 
 
-                        /*
-                         * La cuenta vuelve
-                         * a comenzar en 30.
-                         */
-
                         setTimeout(
                             function() {
 
@@ -3019,10 +3043,6 @@
     ) {
 
 
-        /*
-         * Quitamos la animación anterior.
-         */
-
         element.classList.remove(
             "impact"
         );
@@ -3035,11 +3055,6 @@
         element.textContent =
             number;
 
-
-        /*
-         * Forzamos una nueva
-         * ejecución de la animación.
-         */
 
         requestAnimationFrame(
             function() {
@@ -3058,6 +3073,187 @@
         );
 
     }
+
+
+    /* ==================================================
+       ATAJO OCULTO DE EMERGENCIA
+       
+       Código:
+       1111
+       ARBOL
+    ================================================== */
+
+    const hiddenShortcut =
+        document.createElement(
+            "div"
+        );
+
+
+    hiddenShortcut.id =
+        "hiddenShortcut";
+
+
+    document.body.appendChild(
+        hiddenShortcut
+    );
+
+
+    const hiddenShortcutBox =
+        document.createElement(
+            "div"
+        );
+
+
+    hiddenShortcutBox.id =
+        "hiddenShortcutBox";
+
+
+    const hiddenShortcutInput =
+        document.createElement(
+            "input"
+        );
+
+
+    hiddenShortcutInput.id =
+        "hiddenShortcutInput";
+
+
+    hiddenShortcutInput.type =
+        "text";
+
+
+    hiddenShortcutInput.autocomplete =
+        "off";
+
+
+    hiddenShortcutInput.autocapitalize =
+        "none";
+
+
+    hiddenShortcutInput.spellcheck =
+        false;
+
+
+    hiddenShortcutInput.placeholder =
+        "Código";
+
+
+    hiddenShortcutBox.appendChild(
+        hiddenShortcutInput
+    );
+
+
+    hiddenShortcut.appendChild(
+        hiddenShortcutBox
+    );
+
+
+    /*
+     * Primer toque:
+     * aparece el campo de emergencia.
+     *
+     * La zona que lo activa sigue
+     * siendo completamente invisible.
+     */
+
+    hiddenShortcut.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+
+            hiddenShortcutBox.style.display =
+                "block";
+
+
+            hiddenShortcutInput.focus();
+
+        }
+    );
+
+
+    /*
+     * Enter:
+     * comprueba el código.
+     */
+
+    hiddenShortcutInput.addEventListener(
+        "keydown",
+        function(event) {
+
+
+            if (
+                event.key !==
+                "Enter"
+            ) {
+
+                return;
+
+            }
+
+
+            const value =
+                hiddenShortcutInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            if (
+                value === "arbol" ||
+                value === "1111"
+            ) {
+
+
+                /*
+                 * Se considera encontrada
+                 * la ubicación sin GPS.
+                 */
+
+                arbolEncontrado =
+                    true;
+
+
+                /*
+                 * Detenemos completamente
+                 * el seguimiento GPS.
+                 */
+
+                detenerGeolocalizacion();
+
+
+                /*
+                 * Eliminamos el atajo
+                 * y su campo.
+                 */
+
+                hiddenShortcut.remove();
+
+
+                /*
+                 * Mostramos exactamente
+                 * la misma pantalla que
+                 * mostraría una llegada GPS.
+                 */
+
+                mostrarArbolEncontrado();
+
+            } else {
+
+
+                /*
+                 * Código incorrecto:
+                 * limpiamos el campo pero
+                 * dejamos disponible el atajo.
+                 */
+
+                hiddenShortcutInput.value =
+                    "";
+
+            }
+
+        }
+    );
 
 
     /* ==================================================
