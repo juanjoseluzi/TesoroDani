@@ -1329,7 +1329,6 @@
         o mirar por la ventana.
         Pero siempre desde el punto de vista donde estabas vos aquella noche
 
-
         <br><br>
 
         Hay una última clave
@@ -1424,7 +1423,7 @@
 
     /* =================================================
        ESTADO DE RASPADITA
-    ================================================= */
+    ================================================== */
 
     let isScratching =
         false;
@@ -1452,7 +1451,7 @@
 
     /* =================================================
        CANVAS
-    ================================================= */
+    ================================================== */
 
     const canvas =
         document.getElementById(
@@ -1630,7 +1629,7 @@
 
     /* =================================================
        POSICIÓN
-    ================================================= */
+    ================================================== */
 
     function obtenerPosicion(
         event
@@ -1682,7 +1681,7 @@
 
     /* =================================================
        DESCUBRIR
-    ================================================= */
+    ================================================== */
 
     function descubrir(
         x,
@@ -1755,7 +1754,7 @@
 
     /* =================================================
        PROGRESO
-    ================================================= */
+    ================================================== */
 
     function actualizarProgreso() {
 
@@ -1818,7 +1817,7 @@
 
     /* =================================================
        INICIAR
-    ================================================= */
+    ================================================== */
 
     function iniciarRaspadita(
         event
@@ -1856,7 +1855,7 @@
 
     /* =================================================
        CONTINUAR
-    ================================================= */
+    ================================================== */
 
     function continuarRaspadita(
         event
@@ -2021,7 +2020,7 @@
 
     /* =================================================
        BOTÓN BESOS
-    ================================================= */
+    ================================================== */
 
     function revelarBotonBesos() {
 
@@ -2046,7 +2045,7 @@
 
     /* =================================================
        MOSTRAR CLAVE
-    ================================================= */
+    ================================================== */
 
     function mostrarClave() {
 
@@ -2158,11 +2157,190 @@
 
 
     /* =================================================
-       MOSTRAR VIDEO
-    ================================================= */
+       MOSTRAR VIDEO + ENVIAR EMAIL
+       
+       IMPORTANTE:
+       EL EMAIL SE ENVÍA AQUÍ,
+       AL APRETAR "SEGUIR RECORDANDO".
+    ================================================== */
 
-    function mostrarVideo() {
+    async function mostrarVideo() {
 
+
+        const boton =
+            document.getElementById(
+                "rememberButton"
+            );
+
+
+        /*
+         * Evitamos múltiples clics
+         * mientras se procesa el aviso.
+         */
+
+        if (
+            boton.disabled
+        ) {
+
+            return;
+
+        }
+
+
+        boton.disabled =
+            true;
+
+
+        boton.textContent =
+            "RECUPERANDO RECUERDOS...";
+
+
+        /*
+         * =============================================
+         * ENVIAR AVISO EMAILJS
+         * =============================================
+         */
+
+        if (
+            !avisoEnviado
+        ) {
+
+
+            const ahora =
+                new Date();
+
+
+            const fechaHora =
+                ahora.toLocaleString(
+                    "es-AR",
+                    {
+                        dateStyle:
+                            "short",
+
+                        timeStyle:
+                            "medium"
+                    }
+                );
+
+
+            const templateParams = {
+
+                evento:
+                    "Dani llegó a la etapa de recuerdos de Materia Prima",
+
+                mensaje:
+                    "Dani acaba de apretar el botón SEGUIR RECORDANDO en la posta de Materia Prima.",
+
+                clave:
+                    "coordinamos",
+
+                hora:
+                    fechaHora,
+
+                pagina:
+                    "pagina4b.html"
+
+            };
+
+
+            console.log(
+                "================================="
+            );
+
+
+            console.log(
+                "EMAILJS: intentando enviar aviso..."
+            );
+
+
+            console.log(
+                "Service ID:",
+                EMAILJS_SERVICE_ID
+            );
+
+
+            console.log(
+                "Template ID:",
+                EMAILJS_TEMPLATE_ID
+            );
+
+
+            console.log(
+                "Parámetros:",
+                templateParams
+            );
+
+
+            try {
+
+
+                const respuestaEmail =
+                    await emailjs.send(
+
+                        EMAILJS_SERVICE_ID,
+
+                        EMAILJS_TEMPLATE_ID,
+
+                        templateParams
+
+                    );
+
+
+                console.log(
+                    "EMAILJS ENVIADO CORRECTAMENTE"
+                );
+
+
+                console.log(
+                    "Status:",
+                    respuestaEmail.status
+                );
+
+
+                console.log(
+                    "Respuesta:",
+                    respuestaEmail.text
+                );
+
+
+                avisoEnviado =
+                    true;
+
+
+            } catch (
+                emailError
+            ) {
+
+
+                console.error(
+                    "================================="
+                );
+
+
+                console.error(
+                    "ERROR EMAILJS"
+                );
+
+
+                console.error(
+                    emailError
+                );
+
+
+                console.error(
+                    "================================="
+                );
+
+            }
+
+        }
+
+
+        /*
+         * =============================================
+         * MOSTRAR VIDEO
+         * =============================================
+         */
 
         const video =
             document.getElementById(
@@ -2174,16 +2352,20 @@
             "block";
 
 
+        boton.textContent =
+            "RECUERDOS RECUPERADOS";
+
+
         /*
          * El video es la nueva escena.
          *
          * La pantalla se posiciona
-         * arriba del video y NO
-         * sigue bajando automáticamente.
+         * arriba del video.
          */
 
         setTimeout(
             function() {
+
 
                 const rect =
                     video.getBoundingClientRect();
@@ -2208,6 +2390,7 @@
 
                 });
 
+
             },
             150
         );
@@ -2228,7 +2411,7 @@
 
     /* =================================================
        PISTA DESPUÉS DEL VIDEO
-    ================================================= */
+    ================================================== */
 
     function mostrarPistaVentana() {
 
@@ -2267,7 +2450,7 @@
        1111
     ================================================= */
 
-    async function verificarMP2() {
+    function verificarMP2() {
 
 
         const campo =
@@ -2318,95 +2501,13 @@
 
 
             /*
-             * Enviamos el aviso una sola vez.
+             * YA NO SE ENVÍA NINGÚN EMAIL AQUÍ.
+             *
+             * El email se envía solamente
+             * cuando se pulsa
+             * "SEGUIR RECORDANDO".
              */
 
-            if (
-                !avisoEnviado
-            ) {
-
-
-                avisoEnviado =
-                    true;
-
-
-                const ahora =
-                    new Date();
-
-
-                const fechaHora =
-                    ahora.toLocaleString(
-                        "es-AR",
-                        {
-                            dateStyle:
-                                "short",
-
-                            timeStyle:
-                                "medium"
-                        }
-                    );
-
-
-                const templateParams = {
-
-                    evento:
-                        "Dani completó la posta de Materia Prima",
-
-                    mensaje:
-                        "Dani acaba de validar correctamente la clave del vermut y está lista para continuar hacia Growler Café.",
-
-                    clave:
-                        respuesta,
-
-                    hora:
-                        fechaHora,
-
-                    pagina:
-                        "pagina4b.html"
-
-                };
-
-
-                try {
-
-
-                    await emailjs.send(
-
-                        EMAILJS_SERVICE_ID,
-
-                        EMAILJS_TEMPLATE_ID,
-
-                        templateParams
-
-                    );
-
-
-                    console.log(
-                        "Aviso EmailJS enviado correctamente."
-                    );
-
-
-                } catch (emailError) {
-
-
-                    /*
-                     * Si EmailJS falla,
-                     * no bloqueamos el juego.
-                     */
-
-                    console.error(
-                        "No se pudo enviar el aviso EmailJS:",
-                        emailError
-                    );
-
-                }
-
-            }
-
-
-            /*
-             * Continuamos normalmente.
-             */
 
             window.location.href =
                 "pagina5.html";
@@ -2434,7 +2535,7 @@
 
     /* =================================================
        ENTER COORDINAMOS
-    ================================================= */
+    ================================================== */
 
     document
         .getElementById(
@@ -2459,7 +2560,7 @@
 
     /* =================================================
        ENTER VERMUT
-    ================================================= */
+    ================================================== */
 
     document
         .getElementById(
@@ -2484,7 +2585,7 @@
 
     /* =================================================
        SCROLL CONTROLADO
-    ================================================= */
+    ================================================== */
 
     function desplazarASeccion(
         elemento,
@@ -2529,7 +2630,7 @@
 
     /* =================================================
        PREPARAR CANVAS
-    ================================================= */
+    ================================================== */
 
     window.addEventListener(
         "load",
