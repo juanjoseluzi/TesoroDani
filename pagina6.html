@@ -772,51 +772,60 @@
 
             -webkit-user-select: none;
 
-            -webkit-tap-highlight-color:
-                transparent;
+            -webkit-tap-highlight-color: transparent;
 
             /*
-             * Necesario para que el navegador
-             * entregue correctamente los gestos
-             * horizontales al botón.
+             * Fundamental para iPhone y Android:
+             * el navegador no debe convertir el
+             * movimiento horizontal en scroll.
              */
-            touch-action: pan-y;
+            touch-action: none;
 
             transition:
-                background .5s ease,
-                color .5s ease,
-                box-shadow .5s ease;
+                background .4s ease,
+                color .4s ease,
+                box-shadow .4s ease,
+                transform .15s ease;
+        }
+
+
+        .final-button:active {
+
+            transform:
+                scale(0.985);
         }
 
 
         /*
-         * ESTADO DESBLOQUEADO
+         * BOTÓN DESBLOQUEADO:
+         * rojo bien rojo.
          */
 
         .final-button.changed {
 
             background:
-                linear-gradient(
-                    90deg,
-                    #a50018,
-                    #e0002a
-                );
+                #ff0000;
 
-            color: #ffffff;
+            color:
+                #ffffff;
 
             box-shadow:
-                0 0 25px
-                rgba(220,0,40,0.45);
+                0 0 30px
+                rgba(255,0,0,0.42);
 
             touch-action:
                 manipulation;
         }
 
 
-        .final-button.changed:active {
+        /* ==================================================
+           INDICADOR DE DESLIZAMIENTOS
+        ================================================== */
+
+        .final-button.swipe-feedback {
 
             transform:
-                scale(0.98);
+                scale(0.985);
         }
 
 
@@ -1524,7 +1533,9 @@
 <main class="document">
 
 
-    <!-- PRIMERA PANTALLA -->
+    <!-- ==================================================
+         PRIMERA PANTALLA
+    ================================================== -->
 
     <section class="tree-hero">
 
@@ -1535,7 +1546,9 @@
     </section>
 
 
-    <!-- HISTORIA -->
+    <!-- ==================================================
+         HISTORIA
+    ================================================== -->
 
     <div class="story-content">
 
@@ -1604,7 +1617,9 @@
         </div>
 
 
-        <!-- ALMA + RADAR -->
+        <!-- ==================================================
+             ALMA + RADAR
+        ================================================== -->
 
         <div class="soul-note">
 
@@ -1658,7 +1673,9 @@
         </div>
 
 
-        <!-- UBICACIÓN -->
+        <!-- ==================================================
+             UBICACIÓN
+        ================================================== -->
 
         <div class="location-zone">
 
@@ -1722,7 +1739,9 @@
         </div>
 
 
-        <!-- TEXTO FINAL -->
+        <!-- ==================================================
+             TEXTO FINAL
+        ================================================== -->
 
         <section
             id="finalSection"
@@ -1866,7 +1885,9 @@
             </div>
 
 
-            <!-- BOTÓN FINAL -->
+            <!-- ==================================================
+                 BOTÓN FINAL
+            ================================================== -->
 
             <div class="final-button-area">
 
@@ -1882,7 +1903,9 @@
             </div>
 
 
-            <!-- CUENTA REGRESIVA -->
+            <!-- ==================================================
+                 CUENTA REGRESIVA
+            ================================================== -->
 
             <section
                 id="countdownSection"
@@ -1941,7 +1964,9 @@
             </section>
 
 
-            <!-- HISTORIA NO TERMINA -->
+            <!-- ==================================================
+                 HISTORIA NO TERMINA
+            ================================================== -->
 
             <section
                 id="loveSection"
@@ -2035,7 +2060,9 @@
             </section>
 
 
-            <!-- CUMPLEAÑOS -->
+            <!-- ==================================================
+                 CUMPLEAÑOS
+            ================================================== -->
 
             <section
                 id="birthdaySection"
@@ -2166,13 +2193,11 @@
             return;
         }
 
-
         const lat =
             position.coords.latitude;
 
         const lon =
             position.coords.longitude;
-
 
         const distancia =
             distanciaMetros(
@@ -2182,13 +2207,11 @@
                 ARBOL_LON
             );
 
-
         console.log(
             "Distancia al árbol:",
             Math.round(distancia),
             "metros"
         );
-
 
         if (
             distancia <=
@@ -2211,9 +2234,7 @@
 
     function detenerGeolocalizacion() {
 
-        if (
-            watchID !== null
-        ) {
+        if (watchID !== null) {
 
             navigator
                 .geolocation
@@ -2238,10 +2259,8 @@
                 "locationFound"
             );
 
-
         found.style.display =
             "block";
-
 
         setTimeout(
             function() {
@@ -2263,17 +2282,12 @@
 
     async function iniciarControlGeografico() {
 
-        if (
-            !navigator.geolocation
-        ) {
-
+        if (!navigator.geolocation) {
             return;
         }
 
-
         let permissionState =
             "prompt";
-
 
         try {
 
@@ -2287,10 +2301,8 @@
                         name: "geolocation"
                     });
 
-
                 permissionState =
                     permission.state;
-
 
                 permission.onchange =
                     function() {
@@ -2338,7 +2350,6 @@
                             position
                         );
 
-
                         if (
                             !arbolEncontrado
                         ) {
@@ -2349,7 +2360,9 @@
 
                     function() {
 
-                        /* Silencioso */
+                        /*
+                         * Silencioso.
+                         */
 
                     },
 
@@ -2383,7 +2396,6 @@
             return;
         }
 
-
         watchID =
             navigator
                 .geolocation
@@ -2393,7 +2405,9 @@
 
                     function() {
 
-                        /* Silencioso */
+                        /*
+                         * Silencioso.
+                         */
 
                     },
 
@@ -2423,10 +2437,8 @@
                 "finalSection"
             );
 
-
         finalSection.style.display =
             "block";
-
 
         desplazarAElemento(
             finalSection,
@@ -2437,12 +2449,6 @@
 
     /* ==================================================
        BOTÓN FINAL
-       
-       IMPORTANTE:
-       El gesto y el click están separados.
-       
-       Esto evita el problema que ocurría
-       anteriormente en Safari/iPhone.
     ================================================== */
 
     const finalButton =
@@ -2456,7 +2462,7 @@
 
 
     const SWIPE_DISTANCE =
-        75;
+        60;
 
 
     let swipeCount =
@@ -2471,6 +2477,14 @@
         false;
 
 
+    let loveTriggered =
+        false;
+
+
+    /*
+     * Estado del gesto.
+     */
+
     let pointerActive =
         false;
 
@@ -2483,11 +2497,17 @@
         0;
 
 
-    let pointerId =
+    let currentPointerId =
         null;
 
 
-    let swipeAlreadyRegistered =
+    /*
+     * Evita que un gesto que comenzó
+     * como swipe termine siendo interpretado
+     * como click/tap.
+     */
+
+    let gestureWasSwipe =
         false;
 
 
@@ -2500,10 +2520,9 @@
         function(event) {
 
             /*
-             * Si ya está desbloqueado,
-             * no necesitamos detectar swipes.
-             * El click normal se ocupa de iniciar
-             * la cuenta regresiva.
+             * Si ya cambió a
+             * NO FINALIZAR HISTORIA,
+             * no hay ninguna acción de tap.
              */
 
             if (
@@ -2518,11 +2537,11 @@
                 true;
 
 
-            swipeAlreadyRegistered =
+            gestureWasSwipe =
                 false;
 
 
-            pointerId =
+            currentPointerId =
                 event.pointerId;
 
 
@@ -2537,11 +2556,14 @@
             try {
 
                 finalButton.setPointerCapture(
-                    pointerId
+                    event.pointerId
                 );
 
             } catch (error) {}
 
+        },
+        {
+            passive: true
         }
     );
 
@@ -2556,8 +2578,16 @@
 
             if (
                 !pointerActive ||
-                finalButtonUnlocked ||
-                swipeAlreadyRegistered
+                finalButtonUnlocked
+            ) {
+
+                return;
+            }
+
+
+            if (
+                event.pointerId !==
+                currentPointerId
             ) {
 
                 return;
@@ -2574,15 +2604,13 @@
                 pointerStartY;
 
 
-            const distance =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
+            /*
+             * Todavía es demasiado pequeño
+             * para considerarlo un swipe.
+             */
 
             if (
-                distance <
+                Math.abs(dx) <
                 SWIPE_DISTANCE
             ) {
 
@@ -2591,20 +2619,23 @@
 
 
             /*
-             * Tiene que ser claramente
-             * horizontal.
+             * Debe ser horizontal.
              */
 
             if (
                 Math.abs(dx) <=
-                Math.abs(dy) * 1.2
+                Math.abs(dy)
             ) {
 
                 return;
             }
 
 
-            swipeAlreadyRegistered =
+            /*
+             * Ya sabemos que es un swipe.
+             */
+
+            gestureWasSwipe =
                 true;
 
 
@@ -2616,8 +2647,29 @@
 
 
             /*
-             * Evita que el gesto horizontal
-             * se convierta en scroll.
+             * Feedback visual mínimo.
+             */
+
+            finalButton.classList.add(
+                "swipe-feedback"
+            );
+
+
+            setTimeout(
+                function() {
+
+                    finalButton.classList.remove(
+                        "swipe-feedback"
+                    );
+
+                },
+                150
+            );
+
+
+            /*
+             * Evita cualquier comportamiento
+             * adicional del navegador.
              */
 
             event.preventDefault();
@@ -2631,15 +2683,82 @@
 
     /* ==================================================
        POINTER UP
+       
+       TAP:
+       inicia cuenta regresiva.
+
+       SWIPE:
+       no inicia cuenta regresiva.
     ================================================== */
 
     finalButton.addEventListener(
         "pointerup",
-        function() {
+        function(event) {
+
+            if (
+                event.pointerId !==
+                currentPointerId
+            ) {
+
+                return;
+            }
+
+
+            const wasActive =
+                pointerActive;
+
 
             pointerActive =
                 false;
 
+
+            /*
+             * Si fue un swipe, termina acá.
+             */
+
+            if (
+                gestureWasSwipe
+            ) {
+
+                gestureWasSwipe =
+                    false;
+
+                return;
+            }
+
+
+            /*
+             * Si no hubo gesto activo,
+             * no hacemos nada.
+             */
+
+            if (
+                !wasActive
+            ) {
+
+                return;
+            }
+
+
+            /*
+             * TAP NORMAL:
+             *
+             * únicamente funciona cuando
+             * el botón todavía dice
+             * FINALIZAR HISTORIA.
+             */
+
+            if (
+                !finalButtonUnlocked
+            ) {
+
+                iniciarFinal();
+
+            }
+
+        },
+        {
+            passive: true
         }
     );
 
@@ -2650,45 +2769,16 @@
 
     finalButton.addEventListener(
         "pointercancel",
-        function() {
+        function(event) {
 
             pointerActive =
                 false;
 
-            swipeAlreadyRegistered =
+            gestureWasSwipe =
                 false;
-        }
-    );
 
-
-    /* ==================================================
-       CLICK
-       
-       ESTE ES EL PUNTO IMPORTANTE.
-       
-       Una vez que el botón cambió a
-       "NO FINALIZAR HISTORIA", un click
-       normal inicia la cuenta regresiva.
-       
-       Antes de eso, el click no hace nada.
-    ================================================== */
-
-    finalButton.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                !finalButtonUnlocked
-            ) {
-
-                event.preventDefault();
-
-                return;
-            }
-
-
-            iniciarFinal();
-
+            currentPointerId =
+                null;
         }
     );
 
@@ -2711,12 +2801,17 @@
 
 
         console.log(
-            "Deslizamientos:",
+            "Swipe:",
             swipeCount,
             "/",
             REQUIRED_SWIPES
         );
 
+
+        /*
+         * Al tercer swipe:
+         * cambia el botón.
+         */
 
         if (
             swipeCount >=
@@ -2758,38 +2853,108 @@
 
 
         /*
-         * A partir de ahora es un botón
-         * normal. El click está habilitado.
+         * Importante:
+         *
+         * El cambio de texto NO dispara
+         * inmediatamente "Claro que no".
+         *
+         * Esperamos exactamente 5 segundos.
          */
 
-        finalButton.style.touchAction =
-            "manipulation";
+        setTimeout(
+            function() {
+
+                mostrarHistoriaQueContinua();
+
+            },
+            5000
+        );
     }
 
 
     /* ==================================================
-       INICIAR FINAL
+       MOSTRAR "CLARO QUE NO"
        
-       Se ejecuta SOLAMENTE cuando:
-       
-       1. Se hicieron los 3 swipes.
-       2. El botón cambió.
-       3. Daniela toca/clickea
-          "NO FINALIZAR HISTORIA".
+       Se dispara exclusivamente después
+       del swipe que transforma el botón.
     ================================================== */
 
-    function iniciarFinal() {
+    function mostrarHistoriaQueContinua() {
 
         if (
-            !finalButtonUnlocked
+            loveTriggered
         ) {
 
             return;
         }
 
 
+        loveTriggered =
+            true;
+
+
+        const love =
+            document.getElementById(
+                "loveSection"
+            );
+
+
+        const birthday =
+            document.getElementById(
+                "birthdaySection"
+            );
+
+
+        love.style.display =
+            "block";
+
+
+        birthday.style.display =
+            "block";
+
+
+        setTimeout(
+            function() {
+
+                desplazarAElemento(
+                    love,
+                    25
+                );
+
+            },
+            100
+        );
+    }
+
+
+    /* ==================================================
+       INICIAR FINAL
+       
+       Esto ocurre ÚNICAMENTE al tocar
+       "FINALIZAR HISTORIA".
+       
+       La cuenta llega a 0 y queda en 0.
+       
+       NO dispara nada después.
+    ================================================== */
+
+    function iniciarFinal() {
+
         if (
             countdownStarted
+        ) {
+
+            return;
+        }
+
+
+        /*
+         * Si ya se transformó el botón,
+         * no hacemos absolutamente nada.
+         */
+
+        if (
+            finalButtonUnlocked
         ) {
 
             return;
@@ -2800,11 +2965,6 @@
             true;
 
 
-        /*
-         * Mostrar primero la sección
-         * de cuenta regresiva.
-         */
-
         const countdown =
             document.getElementById(
                 "countdownSection"
@@ -2813,45 +2973,6 @@
 
         countdown.style.display =
             "block";
-
-
-        /*
-         * AHORA, y solamente ahora,
-         * aparece "Claro que no".
-         */
-
-        const love =
-            document.getElementById(
-                "loveSection"
-            );
-
-
-        love.style.display =
-            "block";
-
-
-        /*
-         * También mostramos el cumpleaños
-         * después de haber activado el final.
-         */
-
-        const birthday =
-            document.getElementById(
-                "birthdaySection"
-            );
-
-
-        birthday.style.display =
-            "block";
-
-
-        /*
-         * El botón ya no debe volver a
-         * disparar la función.
-         */
-
-        finalButton.disabled =
-            true;
 
 
         setTimeout(
@@ -2872,7 +2993,7 @@
 
 
     /* ==================================================
-       CUENTA REGRESIVA INDEFINIDA
+       CUENTA REGRESIVA
     ================================================== */
 
     let countdownTimer =
@@ -2929,10 +3050,13 @@
 
 
                     /*
-                     * Cuando llega a cero,
-                     * NO termina.
+                     * CUANDO LLEGA A CERO:
                      *
-                     * Simplemente vuelve a 30.
+                     * se detiene.
+                     *
+                     * No reinicia.
+                     * No muestra nada.
+                     * No dispara "Claro que no".
                      */
 
                     if (
@@ -2941,13 +3065,26 @@
                     ) {
 
                         countdownValue =
-                            30;
+                            0;
+
+
+                        clearInterval(
+                            countdownTimer
+                        );
+
+
+                        countdownTimer =
+                            null;
 
 
                         mostrarNumero(
                             numberElement,
-                            countdownValue
+                            0
                         );
+
+
+                        status.textContent =
+                            "FINALIZADO";
 
 
                         return;
