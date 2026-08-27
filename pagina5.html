@@ -148,6 +148,32 @@
         }
 
 
+        /* =================================
+           FUEGO LATENTE
+        ================================= */
+
+        .fire-inline {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 78px;
+
+            line-height: 1;
+
+            margin: 16px auto 8px;
+
+            animation:
+                latidoFuego 0.9s ease-in-out infinite;
+
+            transform-origin: center center;
+        }
+
+
         .subtle {
 
             font-family:
@@ -207,33 +233,73 @@
         }
 
 
+        /* =================================
+           DOS PERSONAS GRANDES Y CENTRADAS
+        ================================= */
+
         .couple-emoji {
+
+            display: block;
 
             font-family:
                 "Segoe UI Emoji",
                 "Apple Color Emoji",
                 sans-serif;
 
-            font-size: 68px;
+            font-size: 105px;
 
             line-height: 1;
 
-            margin: 22px 0 12px;
+            text-align: center;
+
+            margin: 25px auto 12px;
 
             animation:
                 aparecer 1s ease;
         }
 
 
+        /* =================================
+           CAMBIO DE POSICIÓN
+        ================================= */
+
         .position-note {
 
             margin-top: 22px;
 
-            font-size: 16px;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
 
-            line-height: 1.6;
+            font-size: 20px;
 
-            color: #b99da5;
+            line-height: 1.7;
+
+            color: #d6bec4;
+        }
+
+
+        /* =================================
+           TAZA DE CAFÉ
+        ================================= */
+
+        .coffee-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 82px;
+
+            line-height: 1;
+
+            text-align: center;
+
+            margin: 18px auto 10px;
         }
 
 
@@ -301,6 +367,29 @@
             line-height: 1.65;
 
             color: #dec8cd;
+        }
+
+
+        /* =================================
+           GUIÑO GRANDE Y CENTRADO
+        ================================= */
+
+        .wink-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 82px;
+
+            line-height: 1;
+
+            text-align: center;
+
+            margin: 18px auto 12px;
         }
 
 
@@ -972,6 +1061,30 @@
         }
 
 
+        /* =================================
+           LATIDO DEL FUEGO
+        ================================= */
+
+        @keyframes latidoFuego {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.22);
+
+            }
+
+        }
+
+
         @keyframes fuego {
 
             from {
@@ -1008,6 +1121,7 @@
                     translateY(-7px);
 
             }
+
         }
 
 
@@ -1029,6 +1143,31 @@
 
             .change-text {
                 font-size: 21px;
+            }
+
+
+            .couple-emoji {
+                font-size: 92px;
+            }
+
+
+            .position-note {
+                font-size: 19px;
+            }
+
+
+            .fire-inline {
+                font-size: 70px;
+            }
+
+
+            .coffee-emoji {
+                font-size: 74px;
+            }
+
+
+            .wink-emoji {
+                font-size: 74px;
             }
 
 
@@ -1111,7 +1250,7 @@
 
 
     <div class="big-emoji">
-        ☕🔥
+        
     </div>
 
 
@@ -1127,7 +1266,9 @@
 
         ... quedó algo latente.
 
-        <br><br>
+        <span class="fire-inline">
+            🔥
+        </span>
 
         Habíamos quedado en
 
@@ -1164,7 +1305,7 @@
 
 
             <div class="couple-emoji">
-                
+                🧍🏻‍♂️🧍🏼‍♀️
             </div>
 
         </div>
@@ -1182,9 +1323,11 @@
 
     <div class="subtle">
 
-        Primero, un café.
+        Primero, un café en Growler
 
-        <br><br>
+        <div class="coffee-emoji">
+            ☕
+        </div>
 
         Después...
 
@@ -1214,9 +1357,10 @@
 
         <div class="orientation-title">
 
-            Ahora sí hay cosas
-            que requieren otra
-            posición.
+            Llegado este momento
+            hay cosas
+            que requieren una 
+            posición diferente
 
         </div>
 
@@ -1230,13 +1374,17 @@
             <br><br>
 
             Hay una parte de la historia
-            que merece otro punto de vista.
+            que necesita contarse en horizontal...
 
-            <br><br>
+            <div class="wink-emoji">
+                😉
+            </div>
+
+            <br>
 
             <strong>
 
-                Poné el teléfono en horizontal...
+                Girá el teléfono para continuar...
 
             </strong>
 
@@ -1279,7 +1427,7 @@
 
             <br>
 
-            Esta posición
+            Esta posición horizontal
             sí tiene sentido!
 
         </div>
@@ -1301,8 +1449,8 @@
 
             <br><br>
 
-            y una tensión que empezaba
-            a ser bastante difícil
+            y una tensión que venía siendo
+            bastante difícil
             de disimular.
 
             <br><br>
@@ -1385,7 +1533,7 @@
 
                 Parece que aquella tensión
                 finalmente encontró
-                su manera de descargarse.
+                una fantástica manera de descargarse.
 
                 <br><br>
 
@@ -1498,10 +1646,10 @@
 
         <div class="table-text">
 
-            Andá hasta
+            
 
             <strong>
-                Growler Café.
+            
             </strong>
 
             <br><br>
@@ -1509,7 +1657,8 @@
             Vas a tener que averiguar
             que número de mesa tiene
             la que estuvimos sentados
-            aquella tarde...
+            aquella tarde... si si... en 
+            Growler cafe!
 
             <br><br>
 
@@ -1593,9 +1742,7 @@
 
                 <strong>
                     ¡Qué hermoso que hayas ido hasta ahí,
-                    que hayas entrado, que
-                    hayas preguntado
-                    y que hayas revivido!
+                    y que hayas revivido aquel momento!
                 </strong>
 
                 <br><br>
