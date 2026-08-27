@@ -336,12 +336,6 @@
 
             line-height: 1;
 
-            /*
-             * Más espacio arriba y abajo
-             * para separar claramente
-             * el fuego del texto.
-             */
-
             margin: 28px auto 28px;
 
             animation:
@@ -779,11 +773,6 @@
         }
 
 
-        /*
-         * Texto de la tensión un poco más grande
-         * para mejorar la lectura.
-         */
-
         .shake-help {
 
             margin-top: 20px;
@@ -824,10 +813,6 @@
             margin-top: 20px;
 
             color: #d4bcc2;
-
-            /*
-             * Aumentado de 17px a 22px.
-             */
 
             font-size: 22px;
 
@@ -992,11 +977,6 @@
             margin-bottom: 22px;
         }
 
-
-        /*
-         * Texto de la misión aumentado
-         * de 17px a 20px.
-         */
 
         .table-text {
 
@@ -1521,10 +1501,6 @@
 <body>
 
 
-<!-- =========================================
-     CAPA DE EXPLOSIÓN
-========================================== -->
-
 <div
     id="explosionOverlay"
     class="explosion-overlay">
@@ -1533,10 +1509,6 @@
 
 <main class="document">
 
-
-    <!-- =====================================
-         ENCABEZADO
-    ====================================== -->
 
     <div class="place-label">
         POSTA 05
@@ -1572,10 +1544,6 @@
 
     </div>
 
-
-    <!-- =====================================
-         CAMBIO DE POSICIÓN
-    ====================================== -->
 
     <div class="change-block">
 
@@ -1637,10 +1605,6 @@
     </div>
 
 
-    <!-- =====================================
-         ORIENTACIÓN
-    ====================================== -->
-
     <section class="orientation-section">
 
 
@@ -1696,10 +1660,6 @@
 
     </section>
 
-
-    <!-- =====================================
-         TENSIÓN
-    ====================================== -->
 
     <section
         id="tensionSection"
@@ -1780,10 +1740,6 @@
         </div>
 
 
-        <!-- =================================
-             BARRA ROJA
-        ================================== -->
-
         <div class="progress-bar">
 
             <div
@@ -1793,10 +1749,6 @@
 
         </div>
 
-
-        <!-- =================================
-             MENSAJE DESPUÉS DE LA BARRA
-        ================================== -->
 
         <div
             id="shakeComplete"
@@ -1845,10 +1797,6 @@
         </div>
 
 
-        <!-- =================================
-             INSTRUCCIÓN MIENTRAS AGITA
-        ================================== -->
-
         <div
             id="shakeHelp"
             class="shake-help">
@@ -1881,10 +1829,6 @@
     </section>
 
 
-    <!-- =====================================
-         VIDEO GROWLER
-    ====================================== -->
-
     <section
         id="videoSection"
         class="video-section">
@@ -1912,10 +1856,6 @@
     </section>
 
 
-    <!-- =====================================
-         MESA
-    ====================================== -->
-
     <section
         id="tableSection"
         class="table-section">
@@ -1938,10 +1878,6 @@
 
         <div class="table-text">
 
-            <strong>
-            
-            </strong>
-
             <br><br>
 
             Vas a tener que averiguar
@@ -1950,7 +1886,6 @@
             aquella tarde... si si... en
             Growler cafe!
 
-            <!-- DETECTIVE -->
             <div class="detective-emoji">
                 🕵️‍♀️
             </div>
@@ -1958,18 +1893,14 @@
             Podés preguntarle a los mozos,
             en la admisión... O mejor todavía,
             pedir un café y seguir recordando
-            y reviviendo nuestra historia.
+            y reviviendo nuestra historia. Pero no te demores tanto que ésto sigue!
 
             <br><br>
-
-            <strong>
-                
-            </strong>
 
             <br><br>
 
             Cuando encuentres el número de aquella mesa,
-            ingresalo acá en letras.
+            ingresalo acá <strong><em>en letras</em></strong>.
 
         </div>
 
@@ -2007,10 +1938,6 @@
 
         </div>
 
-
-        <!-- =================================
-             ÉXITO
-        ================================== -->
 
         <div
             id="tableSuccess"
@@ -2066,10 +1993,6 @@
 
         </div>
 
-
-        <!-- =================================
-             CONTINUAR
-        ================================== -->
 
         <button
             id="storyButton"
@@ -2182,11 +2105,6 @@
             );
 
 
-        /*
-         * Primera transición:
-         * vertical -> horizontal.
-         */
-
         if (
             !horizontalDetectado &&
             estaEnHorizontal()
@@ -2212,11 +2130,6 @@
 
         }
 
-
-        /*
-         * Segunda transición:
-         * horizontal -> vertical.
-         */
 
         if (
             returningToPortrait &&
@@ -2455,10 +2368,6 @@
     function completarAgitacion() {
 
 
-        /*
-         * Barra completa.
-         */
-
         document
             .getElementById(
                 "progressFill"
@@ -2466,10 +2375,6 @@
             .style.width =
             "100%";
 
-
-        /*
-         * Ocultamos las instrucciones.
-         */
 
         document
             .getElementById(
@@ -2487,10 +2392,6 @@
             "none";
 
 
-        /*
-         * Aparece el mensaje.
-         */
-
         const complete =
             document.getElementById(
                 "shakeComplete"
@@ -2501,19 +2402,10 @@
             "block";
 
 
-        /*
-         * Reiniciamos la animación
-         * por si acaso.
-         */
-
         complete.classList.remove(
             "impacto"
         );
 
-
-        /*
-         * EXPLOSIÓN VISUAL
-         */
 
         const explosion =
             document.getElementById(
@@ -2531,24 +2423,8 @@
         );
 
 
-        /*
-         * Forzamos reflow para garantizar
-         * que la animación comience desde cero.
-         */
-
         void explosion.offsetWidth;
 
-
-        /*
-         * Activamos simultáneamente:
-         *
-         * 1. Flash amarillo muy intenso.
-         * 2. Paso progresivo hacia naranja/rojo.
-         * 3. Desaparición hasta volver
-         *    exactamente al aspecto original.
-         * 4. Sacudida violenta de pantalla.
-         * 5. Impacto del mensaje.
-         */
 
         explosion.classList.add(
             "explotando"
@@ -2571,11 +2447,6 @@
         );
 
 
-        /*
-         * Vibración breve si el dispositivo
-         * lo permite.
-         */
-
         if (
             "vibrate" in navigator
         ) {
@@ -2591,12 +2462,6 @@
         }
 
 
-        /*
-         * Después de la animación,
-         * eliminamos las clases para que
-         * todo quede completamente normal.
-         */
-
         setTimeout(function() {
 
             explosion.classList.remove(
@@ -2610,11 +2475,6 @@
         }, 2300);
 
 
-        /*
-         * A partir de acá esperamos
-         * el regreso a vertical.
-         */
-
         returningToPortrait =
             true;
 
@@ -2624,11 +2484,6 @@
             detectarAgitacion
         );
 
-
-        /*
-         * Llevamos la pantalla
-         * al mensaje recién aparecido.
-         */
 
         setTimeout(function() {
 
@@ -2666,10 +2521,6 @@
             "#57d66a";
 
 
-        /*
-         * Mostrar video.
-         */
-
         const video =
             document.getElementById(
                 "videoSection"
@@ -2679,10 +2530,6 @@
         video.style.display =
             "block";
 
-
-        /*
-         * Mostrar misión presencial.
-         */
 
         const table =
             document.getElementById(
@@ -2843,12 +2690,6 @@
         const respuesta =
             campo.value.trim().toLowerCase();
 
-
-        /*
-         * ÚNICOS CÓDIGOS VÁLIDOS:
-         * 1111
-         * veintinueve
-         */
 
         if (
             respuesta === "1111" ||
