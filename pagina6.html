@@ -13,16 +13,6 @@
     <title>Dani & Juan — El árbol</title>
 
 
-    <!-- =================================================
-         EMAILJS
-    ================================================== -->
-
-    <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-
-
     <style>
 
         * {
@@ -640,6 +630,329 @@
 
 
         .location-found-text strong {
+            color: #ffffff;
+        }
+
+
+        /* ==================================================
+           INSTANCIAS INTERMEDIAS
+        ================================================== */
+
+        .intermediate-section {
+
+            display: none;
+
+            margin-top: 65px;
+
+            padding-top: 42px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.13);
+
+            animation:
+                aparecer 1.2s ease;
+
+            scroll-margin-top: 30px;
+        }
+
+
+        .intermediate-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 82px;
+
+            line-height: 1;
+
+            margin-bottom: 28px;
+        }
+
+
+        .intermediate-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            color: #ffffff;
+
+            margin-bottom: 30px;
+        }
+
+
+        .intermediate-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.85;
+
+            color: #eadcdf;
+        }
+
+
+        .intermediate-text strong {
+            color: #ffffff;
+        }
+
+
+        .touch-instruction {
+
+            margin-top: 35px;
+
+            padding:
+                25px
+                16px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color: #d4b9c0;
+        }
+
+
+        .touch-button {
+
+            margin-top: 35px;
+
+            width: 100%;
+
+            min-height: 78px;
+
+            padding:
+                14px
+                18px;
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #d7c1c6,
+                    #ece0e3
+                );
+
+            color: #321820;
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            line-height: 1.3;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                background .3s ease;
+        }
+
+
+        .touch-button:active {
+            transform: scale(0.98);
+        }
+
+
+        .touch-button:disabled {
+
+            opacity: 0.45;
+
+            cursor: not-allowed;
+        }
+
+
+        .touch-status {
+
+            margin-top: 18px;
+
+            min-height: 20px;
+
+            font-size: 12px;
+
+            letter-spacing: 1.5px;
+
+            color: #b99ba3;
+        }
+
+
+        .contemplation-section {
+
+            display: none;
+
+            margin-top: 55px;
+
+            padding-top: 42px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            animation:
+                aparecer 1.2s ease;
+
+            scroll-margin-top: 30px;
+        }
+
+
+        .contemplation-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 85px;
+
+            line-height: 1;
+
+            margin-bottom: 30px;
+        }
+
+
+        .contemplation-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 29px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            color: #ffffff;
+
+            margin-bottom: 30px;
+        }
+
+
+        .contemplation-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.85;
+
+            color: #eadcdf;
+        }
+
+
+        .contemplation-text strong {
+            color: #ffffff;
+        }
+
+
+        .attention-section {
+
+            display: none;
+
+            margin-top: 65px;
+
+            padding-top: 42px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            animation:
+                aparecer 1.2s ease;
+
+            scroll-margin-top: 30px;
+        }
+
+
+        .attention-emoji {
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 80px;
+
+            line-height: 1;
+
+            margin-bottom: 30px;
+        }
+
+
+        .attention-title {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 29px;
+
+            font-weight: bold;
+
+            line-height: 1.5;
+
+            color: #ffffff;
+
+            margin-bottom: 30px;
+        }
+
+
+        .attention-text {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            line-height: 1.85;
+
+            color: #eadcdf;
+        }
+
+
+        .attention-text strong {
             color: #ffffff;
         }
 
@@ -1624,6 +1937,24 @@
             }
 
 
+            .intermediate-title {
+                font-size: 27px;
+            }
+
+
+            .intermediate-text,
+            .contemplation-text,
+            .attention-text {
+                font-size: 19px;
+            }
+
+
+            .contemplation-title,
+            .attention-title {
+                font-size: 26px;
+            }
+
+
             .final-intro {
                 font-size: 21px;
             }
@@ -1650,7 +1981,8 @@
 
 
             .button,
-            .final-button {
+            .final-button,
+            .touch-button {
                 font-size: 18px;
             }
 
@@ -1692,7 +2024,7 @@
 
             Sí sí...
             ya te lo imaginás...
-            
+
             hay un lugar
             que te está esperando.
 
@@ -1827,9 +2159,9 @@
                 <div class="location-found-title">
 
                     ¡LO ENCONTRASTE!
-                    
+
                     ¡ESTÁS EXACTAMENTE ACÁ!!!
-                    
+
                 </div>
 
 
@@ -1864,7 +2196,7 @@
                 <button
                     class="button"
                     type="button"
-                    onclick="mostrarFinal()">
+                    onclick="mostrarInstanciaSentidos()">
 
                     CONTINUAR
 
@@ -1876,6 +2208,508 @@
 
         </div>
 
+
+        <!-- ==================================================
+             NUEVA INSTANCIA:
+             LOS SENTIDOS
+        ================================================== -->
+
+        <section
+            id="sensesSection"
+            class="intermediate-section">
+
+
+            <div class="intermediate-emoji">
+                🌳🫶🏻❤️
+            </div>
+
+
+            <div class="intermediate-title">
+
+                Yo sé que estás cerca...
+
+            </div>
+
+
+            <div class="intermediate-text">
+
+                Y justamente por eso quiero pedirte
+                algo más.
+
+                <br><br>
+
+                Porque las historias no solamente
+                se leen.
+
+                <br><br>
+
+                <strong>
+                    Las historias hay que vivirlas
+                    con todos los sentidos.
+                </strong>
+
+                <br><br>
+
+                Quiero que te acerques un poquito más.
+
+                <br><br>
+
+                Quiero que mires ese árbol.
+                Que lo observes.
+                Que te tomes un momento para estar ahí.
+
+                <br><br>
+
+                Y después...
+
+                <br>
+
+                <strong>
+                    tocá su tronco.
+                </strong>
+
+                <br><br>
+
+                Sentí su textura.
+                Sentí que estás realmente ahí,
+                frente a ese árbol que tantas veces
+                estuvo presente en nuestras conversaciones
+                y que ahora forma parte de esta historia.
+
+                <br><br>
+
+                Quiero que estés realmente cerca.
+                No solamente en el mapa.
+                <strong>
+                    Cerca de verdad.
+                </strong>
+
+                <br><br>
+
+                Cuando estés ahí,
+                cuando lo hayas mirado,
+                cuando lo hayas tocado,
+                cuando hayas sentido que ese momento
+                es real...
+
+                <br><br>
+
+                entonces sí.
+
+                <br><br>
+
+                <strong>
+                    Se va a habilitar la siguiente
+                    parte de nuestra historia.
+                </strong>
+
+            </div>
+
+
+            <div class="touch-instruction">
+
+                🌳
+
+                <br><br>
+
+                No apures este momento.
+
+                <br>
+
+                Acercate al árbol físicamente
+                y tocá su tronco.
+
+                <br><br>
+
+                <strong>
+                    NO TOQUES EL BOTÓN
+                    HASTA ESTAR REALMENTE
+                    AL LADO DEL ÁRBOL.
+                </strong>
+
+            </div>
+
+
+            <button
+                id="touchTreeButton"
+                class="touch-button"
+                type="button"
+                onclick="confirmarArbolTocado()">
+
+                YA ESTOY AL LADO DEL ÁRBOL
+
+            </button>
+
+
+            <div
+                id="touchStatus"
+                class="touch-status">
+
+                VERIFICANDO TU UBICACIÓN...
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             NUEVA INSTANCIA:
+             CONTEMPLACIÓN
+        ================================================== -->
+
+        <section
+            id="contemplationSection"
+            class="contemplation-section">
+
+
+            <div class="contemplation-emoji">
+                🌳💚🥹
+            </div>
+
+
+            <div class="contemplation-title">
+
+                Qué lindo que seas así...
+
+            </div>
+
+
+            <div class="contemplation-text">
+
+                Qué lindo que seas tan cómplice.
+
+                <br><br>
+
+                Y qué lindo también que hayas llegado
+                hasta acá siendo exactamente como sos.
+
+                <br><br>
+
+                Hay algo que quiero que sepas.
+
+                <br><br>
+
+                Valoro muchísimo que hayas dedicado
+                todo este rato a recorrer momentos
+                de nuestra historia.
+
+                <br><br>
+
+                A volver a esos lugares,
+                a recordar situaciones,
+                a buscar pistas,
+                a moverte,
+                a preguntar,
+                a descubrir...
+
+                <br><br>
+
+                A volver a vivir,
+                aunque sea por un ratito,
+                algunas de las cosas que nos fueron
+                pasando.
+
+                <br><br>
+
+                Y espero que mientras hacías todo esto,
+                no solamente hayas estado siguiendo
+                instrucciones.
+
+                <br><br>
+
+                Espero que hayas estado
+
+                <strong>
+                    reviviendo con el alma y con el corazón
+                </strong>
+
+                cada uno de esos momentos.
+
+                <br><br>
+
+                Que estés llena de recuerdos,
+                de sensaciones,
+                de imágenes,
+                de pequeños detalles
+                que solamente vos y yo entendemos.
+
+                <br><br>
+
+                Y ahora quiero pedirte algo más.
+
+                <br><br>
+
+                Tomate un rato.
+
+                <br><br>
+
+                Mirá el parque.
+
+                <br>
+
+                Mirá los árboles.
+
+                <br>
+
+                Mirá todo lo que tenés alrededor.
+
+                <br><br>
+
+                Y por un momento,
+                dejá que todo lo demás desaparezca.
+
+                <br><br>
+
+                Pensá en nosotros.
+
+                <br><br>
+
+                Pero también pensá en vos.
+
+                <br><br>
+
+                En todo lo que fuiste construyendo
+                a lo largo de tu vida.
+
+                <br><br>
+
+                Pensá en tu crecimiento,
+                en tu desarrollo,
+                en todas las veces que tuviste que
+                aprender, cambiar, levantarte,
+                volver a empezar y seguir adelante.
+
+                <br><br>
+
+                Porque así como este árbol alguna vez
+                fue apenas una semilla,
+                vos también fuiste sembrando
+                pequeñas semillas dentro tuyo.
+
+                <br><br>
+
+                Semillas de experiencias.
+
+                <br>
+
+                De aprendizajes.
+
+                <br>
+
+                De decisiones.
+
+                <br>
+
+                De sueños.
+
+                <br>
+
+                De errores.
+
+                <br>
+
+                De aciertos.
+
+                <br>
+
+                De valentía.
+
+                <br>
+
+                De amor.
+
+                <br><br>
+
+                Y todas esas semillas que fuiste plantando
+                dentro tuyo, algunas veces sin darte cuenta,
+                fueron germinando.
+
+                <br><br>
+
+                Y hoy están ahí.
+
+                <br><br>
+
+                Formando parte de la mujer que sos.
+
+                <br><br>
+
+                <strong>
+                    La mujer que llegaste a ser.
+                </strong>
+
+                <br><br>
+
+                Y quizás nunca nos detenemos demasiado
+                a mirar todo lo que crecimos.
+
+                <br><br>
+
+                Por eso quiero que te quedes unos minutos
+                ahí, junto a ese árbol.
+
+                <br><br>
+
+                Miralo.
+
+                <br>
+
+                Tocá su tronco.
+
+                <br>
+
+                Respir&aacute;.
+
+                <br>
+
+                Mirá el parque.
+
+                <br>
+
+                Y pensá.
+
+                <br><br>
+
+                Pensá en todo lo que fuiste.
+
+                <br>
+
+                En todo lo que sos.
+
+                <br>
+
+                Y en todo lo que todavía podés llegar a ser.
+
+                <br><br>
+
+                Porque todavía quedan muchísimas
+                semillas por plantar.
+
+                <br><br>
+
+                Y muchísimas cosas hermosas
+                por hacer germinar.
+
+            </div>
+
+
+            <button
+                class="button"
+                type="button"
+                onclick="mostrarAtencion()">
+
+                CONTINUAR
+
+            </button>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             NUEVA INSTANCIA:
+             PREPARARSE
+        ================================================== -->
+
+        <section
+            id="attentionSection"
+            class="attention-section">
+
+
+            <div class="attention-emoji">
+                👀❤️
+            </div>
+
+
+            <div class="attention-title">
+
+                Ahora necesito que estés
+                muy atenta.
+
+            </div>
+
+
+            <div class="attention-text">
+
+                Porque hasta acá estuviste caminando,
+                buscando, descubriendo y recordando.
+
+                <br><br>
+
+                Pero ahora vamos a hacer algo diferente.
+
+                <br><br>
+
+                <strong>
+                    Vas a necesitar leer la pantalla
+                    con muchísima atención.
+                </strong>
+
+                <br><br>
+
+                Así que te voy a pedir que busques
+                un lugar cómodo.
+
+                <br><br>
+
+                Si querés, podés volver al auto
+                y sentarte tranquilamente.
+
+                <br><br>
+
+                Ponete cómoda.
+
+                <br>
+
+                Respir&aacute;.
+
+                <br>
+
+                Y prestá atención a la pantalla.
+
+                <br><br>
+
+                Porque lo que viene ahora
+                necesita que estés ahí,
+                tranquila y presente.
+
+                <br><br>
+
+                No quiero que te distraigas.
+
+                <br><br>
+
+                Quiero que estés atenta porque
+                <strong>
+                    va a suceder algo muy especial.
+                </strong>
+
+                <br><br>
+
+                Y después de todo este recorrido,
+                creo que te merecés disfrutarlo
+                con todos los sentidos.
+
+            </div>
+
+
+            <button
+                class="button"
+                type="button"
+                onclick="mostrarFinal()">
+
+                CONTINUAR
+
+            </button>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             SECCIÓN ORIGINAL
+        ================================================== -->
 
         <section
             id="finalSection"
@@ -2275,116 +3109,6 @@
 
 
     /* ==================================================
-       EMAILJS
-    ================================================== */
-
-    const EMAILJS_SERVICE_ID =
-        "service_acoc9zl";
-
-    const EMAILJS_TEMPLATE_ID =
-        "template_b9kud7t";
-
-    const EMAILJS_PUBLIC_KEY =
-        "sLFfAQu2olv9Gzvx-";
-
-
-    emailjs.init({
-        publicKey:
-            EMAILJS_PUBLIC_KEY
-    });
-
-
-    let emailEnviado =
-        false;
-
-
-    /* ==================================================
-       ENVIAR NOTIFICACIÓN EMAIL
-    ================================================== */
-
-    function enviarNotificacionEmail(
-        metodo,
-        latitud = "",
-        longitud = "",
-        distancia = ""
-    ) {
-
-        if (emailEnviado) {
-            return;
-        }
-
-
-        emailEnviado = true;
-
-
-        const fechaHora =
-            new Date().toLocaleString(
-                "es-AR",
-                {
-                    timeZone:
-                        "America/Argentina/Buenos_Aires"
-                }
-            );
-
-
-        const templateParams = {
-
-            metodo:
-                metodo,
-
-            fecha_hora:
-                fechaHora,
-
-            latitud:
-                latitud,
-
-            longitud:
-                longitud,
-
-            distancia:
-                distancia,
-
-            mensaje:
-                "Dani llegó a la Posta 06 — El árbol."
-        };
-
-
-        emailjs.send(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            templateParams
-        )
-        .then(
-            function(response) {
-
-                console.log(
-                    "EMAILJS: correo enviado correctamente.",
-                    response.status,
-                    response.text
-                );
-
-            },
-            function(error) {
-
-                /*
-                 * Si EmailJS falla, permitimos volver
-                 * a intentar el envío posteriormente.
-                 */
-
-                emailEnviado =
-                    false;
-
-                console.error(
-                    "EMAILJS: error al enviar el correo.",
-                    error
-                );
-
-            }
-        );
-    }
-
-
-    /* ==================================================
        ÁRBOL INICIAL
 
        Después de 2 segundos aparece de golpe.
@@ -2444,6 +3168,23 @@
 
 
     /* ==================================================
+       ESTADOS DE LAS NUEVAS INSTANCIAS
+    ================================================== */
+
+    let sensesShown =
+        false;
+
+    let treeTouchConfirmed =
+        false;
+
+    let contemplationShown =
+        false;
+
+    let attentionShown =
+        false;
+
+
+    /* ==================================================
        DISTANCIA HAVERSINE
     ================================================== */
 
@@ -2497,7 +3238,6 @@
             return;
         }
 
-
         const lat =
             position.coords.latitude;
 
@@ -2512,13 +3252,11 @@
                 ARBOL_LON
             );
 
-
         console.log(
             "Distancia al árbol:",
             Math.round(distancia),
             "metros"
         );
-
 
         if (
             distancia <=
@@ -2528,29 +3266,10 @@
             arbolEncontrado =
                 true;
 
-
             detenerGeolocalizacion();
 
-
-            /*
-             * CORREO:
-             * Se dispara inmediatamente cuando
-             * la ubicación es validada.
-             */
-
-            enviarNotificacionEmail(
-                "GEOLOCALIZACIÓN",
-                lat,
-                lon,
-                Math.round(distancia) +
-                " metros"
-            );
-
-
             mostrarArbolEncontrado();
-
         }
-
     }
 
 
@@ -2763,7 +3482,308 @@
 
 
     /* ==================================================
-       CONTINUAR
+       NUEVA INSTANCIA — SENTIDOS
+    ================================================== */
+
+    function mostrarInstanciaSentidos() {
+
+        if (sensesShown) {
+            return;
+        }
+
+        sensesShown =
+            true;
+
+        const senses =
+            document.getElementById(
+                "sensesSection"
+            );
+
+        senses.style.display =
+            "block";
+
+
+        const button =
+            document.querySelector(
+                "#locationFound .button"
+            );
+
+        button.style.display =
+            "none";
+
+
+        prepararBotonArbol();
+
+
+        setTimeout(
+            function() {
+
+                desplazarAElemento(
+                    senses,
+                    25
+                );
+
+            },
+            120
+        );
+    }
+
+
+    /* ==================================================
+       PREPARAR BOTÓN DEL ÁRBOL
+    ================================================== */
+
+    function prepararBotonArbol() {
+
+        const button =
+            document.getElementById(
+                "touchTreeButton"
+            );
+
+        const status =
+            document.getElementById(
+                "touchStatus"
+            );
+
+        button.disabled =
+            false;
+
+        status.textContent =
+            "ACERCATE AL ÁRBOL Y TOCÁ SU TRONCO";
+
+    }
+
+
+    /* ==================================================
+       CONFIRMAR QUE ESTÁ JUNTO AL ÁRBOL
+
+       La web no puede detectar físicamente el contacto
+       con el tronco. Se comprueba nuevamente el GPS
+       antes de permitir continuar.
+    ================================================== */
+
+    function confirmarArbolTocado() {
+
+        if (treeTouchConfirmed) {
+            return;
+        }
+
+
+        const button =
+            document.getElementById(
+                "touchTreeButton"
+            );
+
+        const status =
+            document.getElementById(
+                "touchStatus"
+            );
+
+
+        if (!navigator.geolocation) {
+
+            mostrarConfirmacionArbol();
+
+            return;
+        }
+
+
+        button.disabled =
+            true;
+
+        status.textContent =
+            "COMPROBANDO QUE ESTÉS REALMENTE AL LADO DEL ÁRBOL...";
+
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                const lat =
+                    position.coords.latitude;
+
+                const lon =
+                    position.coords.longitude;
+
+                const distancia =
+                    distanciaMetros(
+                        lat,
+                        lon,
+                        ARBOL_LAT,
+                        ARBOL_LON
+                    );
+
+
+                console.log(
+                    "Verificación del árbol:",
+                    Math.round(distancia),
+                    "metros"
+                );
+
+
+                if (
+                    distancia <=
+                    RADIO_METROS
+                ) {
+
+                    mostrarConfirmacionArbol();
+
+                } else {
+
+                    button.disabled =
+                        false;
+
+                    status.textContent =
+                        "TODAVÍA ESTÁS DEMASIADO LEJOS. ACERCATE AL ÁRBOL Y VOLVÉ A INTENTARLO.";
+
+                }
+
+            },
+
+            function() {
+
+                button.disabled =
+                    false;
+
+                status.textContent =
+                    "NO PUDE VERIFICAR TU UBICACIÓN. ACERCATE AL ÁRBOL Y VOLVÉ A INTENTARLO.";
+
+            },
+
+            {
+
+                enableHighAccuracy:
+                    true,
+
+                timeout:
+                    12000,
+
+                maximumAge:
+                    0
+            }
+        );
+    }
+
+
+    /* ==================================================
+       CONFIRMACIÓN POSITIVA
+    ================================================== */
+
+    function mostrarConfirmacionArbol() {
+
+        if (treeTouchConfirmed) {
+            return;
+        }
+
+
+        treeTouchConfirmed =
+            true;
+
+
+        const senses =
+            document.getElementById(
+                "sensesSection"
+            );
+
+
+        const contemplation =
+            document.getElementById(
+                "contemplationSection"
+            );
+
+
+        const button =
+            document.getElementById(
+                "touchTreeButton"
+            );
+
+
+        const status =
+            document.getElementById(
+                "touchStatus"
+            );
+
+
+        button.style.display =
+            "none";
+
+
+        status.textContent =
+            "UBICACIÓN CONFIRMADA";
+
+
+        contemplation.style.display =
+            "block";
+
+
+        setTimeout(
+            function() {
+
+                desplazarAElemento(
+                    contemplation,
+                    25
+                );
+
+            },
+            250
+        );
+    }
+
+
+    /* ==================================================
+       CONTEMPLACIÓN → ATENCIÓN
+    ================================================== */
+
+    function mostrarAtencion() {
+
+        if (attentionShown) {
+            return;
+        }
+
+
+        attentionShown =
+            true;
+
+
+        const attention =
+            document.getElementById(
+                "attentionSection"
+            );
+
+
+        const button =
+            document.querySelector(
+                "#contemplationSection .button"
+            );
+
+
+        if (button) {
+
+            button.style.display =
+                "none";
+        }
+
+
+        attention.style.display =
+            "block";
+
+
+        setTimeout(
+            function() {
+
+                desplazarAElemento(
+                    attention,
+                    25
+                );
+
+            },
+            120
+        );
+    }
+
+
+    /* ==================================================
+       CONTINUAR HACIA LA SECCIÓN ORIGINAL
     ================================================== */
 
     function mostrarFinal() {
@@ -2773,8 +3793,10 @@
                 "finalSection"
             );
 
+
         finalSection.style.display =
             "block";
+
 
         desplazarAElemento(
             finalSection,
@@ -3245,8 +4267,6 @@
 
        30 → 29 → 28 ... → 10
        10 → 9.9 → 9.8 ... → 0.1 → 0
-
-       No existen cambios de 100 ms ni de 1 ms.
     ================================================== */
 
     let countdownTimer =
@@ -3562,17 +4582,6 @@
 
 
                 detenerGeolocalizacion();
-
-
-                /*
-                 * CORREO:
-                 * Se dispara inmediatamente cuando
-                 * se utiliza el código de emergencia.
-                 */
-
-                enviarNotificacionEmail(
-                    "ATAJO - " + value
-                );
 
 
                 hiddenShortcut.remove();
