@@ -111,14 +111,29 @@
 
             line-height: 1;
 
-            animation:
-                treeFloat 3.5s ease-in-out infinite;
+            opacity: 0;
 
             filter:
                 drop-shadow(
                     0 12px 18px
                     rgba(0,0,0,0.28)
                 );
+
+            animation:
+                treeFloat 3.5s ease-in-out infinite;
+
+            transition:
+                opacity 2s ease;
+        }
+
+
+        .tree-emoji.appear {
+            opacity: 1;
+        }
+
+
+        .tree-emoji.disappear {
+            opacity: 0;
         }
 
 
@@ -218,6 +233,25 @@
         }
 
 
+        .mystery-tree {
+
+            display: inline-block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 75px;
+
+            line-height: 1;
+
+            margin:
+                12px
+                0;
+        }
+
+
         .mystery-small {
 
             margin-top: 22px;
@@ -227,7 +261,7 @@
                 Courier,
                 monospace;
 
-            font-size: 15px;
+            font-size: 18px;
 
             line-height: 1.6;
 
@@ -715,6 +749,18 @@
         }
 
 
+        /* Espaciado especial para la carita con ojos de corazón */
+
+        .love-eyes-emoji {
+
+            font-size: 60px;
+
+            margin:
+                28px
+                0;
+        }
+
+
         /* ==================================================
            BOTÓN FINAL
         ================================================== */
@@ -774,11 +820,6 @@
 
             -webkit-tap-highlight-color: transparent;
 
-            /*
-             * Fundamental para iPhone y Android:
-             * el navegador no debe convertir el
-             * movimiento horizontal en scroll.
-             */
             touch-action: none;
 
             transition:
@@ -796,11 +837,6 @@
         }
 
 
-        /*
-         * BOTÓN DESBLOQUEADO:
-         * rojo bien rojo.
-         */
-
         .final-button.changed {
 
             background:
@@ -817,10 +853,6 @@
                 manipulation;
         }
 
-
-        /* ==================================================
-           INDICADOR DE DESLIZAMIENTOS
-        ================================================== */
 
         .final-button.swipe-feedback {
 
@@ -1467,6 +1499,16 @@
             }
 
 
+            .mystery-tree {
+                font-size: 62px;
+            }
+
+
+            .mystery-small {
+                font-size: 17px;
+            }
+
+
             .soul-note {
                 font-size: 19px;
             }
@@ -1539,8 +1581,12 @@
 
     <section class="tree-hero">
 
-        <div class="tree-emoji">
+        <div
+            id="treeEmoji"
+            class="tree-emoji">
+
             🌳
+
         </div>
 
     </section>
@@ -1586,7 +1632,13 @@
 
             Es un árbol.
 
-            <br><br>
+            <br>
+
+            <span class="mystery-tree">
+                🌳
+            </span>
+
+            <br>
 
             Pero no cualquier árbol.
 
@@ -1601,7 +1653,7 @@
             <div class="mystery-small">
 
                 Y vos sabés por qué
-                es importante.
+                es importante para nosotros.
 
             </div>
 
@@ -1761,13 +1813,13 @@
                 <br><br>
 
                 Y antes de mostrarte
-                cualquier otra cosa,
+                cualquier otra cosa y seguir recordando nuestra historia,
                 quiero que sepas algo.
 
                 <br><br>
 
-                <span class="final-emoji">
-                    ❤️
+                <span class="final-emoji love-eyes-emoji">
+                    😍
                 </span>
 
                 <br>
@@ -1808,19 +1860,34 @@
 
                 Espero que te hayas sorprendido.
 
-                <br><br>
+                <br>
 
-                <span class="final-emoji">
-                    🥹
+                <span class="final-emoji surprise-emoji">
+                    😲
                 </span>
 
                 <br>
 
                 Espero que te hayas emocionado.
 
-                <br><br>
+                <br>
 
-                Espero que hayas sonreído,
+                <span class="final-emoji emotion-emoji">
+                    🥹
+                </span>
+
+                <br>
+
+                Espero que hayas sonreído.
+
+                <br>
+
+                <span class="final-emoji smile-emoji">
+                    😄
+                </span>
+
+                <br>
+
                 que hayas recordado,
                 que hayas disfrutado cada pequeño
                 paso de este recorrido.
@@ -2109,10 +2176,8 @@
 
                 <div class="party">
 
-                    
                     ❤️🥂❤️
 
-                    
                 </div>
 
 
@@ -2130,6 +2195,44 @@
 
 
 <script>
+
+
+    /* ==================================================
+       ÁRBOL INICIAL
+       
+       Después de 2 segundos aparece de golpe.
+       Luego permanece 2 segundos.
+       Después desaparece durante 2 segundos.
+    ================================================== */
+
+    const initialTree =
+        document.getElementById(
+            "treeEmoji"
+        );
+
+
+    setTimeout(
+        function() {
+
+            initialTree.classList.add(
+                "appear"
+            );
+
+
+            setTimeout(
+                function() {
+
+                    initialTree.classList.add(
+                        "disappear"
+                    );
+
+                },
+                2000
+            );
+
+        },
+        2000
+    );
 
 
     /* ==================================================
@@ -2495,10 +2598,6 @@
         false;
 
 
-    /*
-     * Estado del gesto.
-     */
-
     let pointerActive =
         false;
 
@@ -2515,12 +2614,6 @@
         null;
 
 
-    /*
-     * Evita que un gesto que comenzó
-     * como swipe termine siendo interpretado
-     * como click/tap.
-     */
-
     let gestureWasSwipe =
         false;
 
@@ -2532,12 +2625,6 @@
     finalButton.addEventListener(
         "pointerdown",
         function(event) {
-
-            /*
-             * Si ya cambió a
-             * NO FINALIZAR HISTORIA,
-             * no hay ninguna acción de tap.
-             */
 
             if (
                 finalButtonUnlocked
@@ -2618,11 +2705,6 @@
                 pointerStartY;
 
 
-            /*
-             * Todavía es demasiado pequeño
-             * para considerarlo un swipe.
-             */
-
             if (
                 Math.abs(dx) <
                 SWIPE_DISTANCE
@@ -2632,10 +2714,6 @@
             }
 
 
-            /*
-             * Debe ser horizontal.
-             */
-
             if (
                 Math.abs(dx) <=
                 Math.abs(dy)
@@ -2644,10 +2722,6 @@
                 return;
             }
 
-
-            /*
-             * Ya sabemos que es un swipe.
-             */
 
             gestureWasSwipe =
                 true;
@@ -2659,10 +2733,6 @@
 
             registrarSwipe();
 
-
-            /*
-             * Feedback visual mínimo.
-             */
 
             finalButton.classList.add(
                 "swipe-feedback"
@@ -2681,11 +2751,6 @@
             );
 
 
-            /*
-             * Evita cualquier comportamiento
-             * adicional del navegador.
-             */
-
             event.preventDefault();
 
         },
@@ -2697,12 +2762,6 @@
 
     /* ==================================================
        POINTER UP
-       
-       TAP:
-       inicia cuenta regresiva.
-
-       SWIPE:
-       no inicia cuenta regresiva.
     ================================================== */
 
     finalButton.addEventListener(
@@ -2726,10 +2785,6 @@
                 false;
 
 
-            /*
-             * Si fue un swipe, termina acá.
-             */
-
             if (
                 gestureWasSwipe
             ) {
@@ -2741,11 +2796,6 @@
             }
 
 
-            /*
-             * Si no hubo gesto activo,
-             * no hacemos nada.
-             */
-
             if (
                 !wasActive
             ) {
@@ -2753,14 +2803,6 @@
                 return;
             }
 
-
-            /*
-             * TAP NORMAL:
-             *
-             * únicamente funciona cuando
-             * el botón todavía dice
-             * FINALIZAR HISTORIA.
-             */
 
             if (
                 !finalButtonUnlocked
@@ -2822,11 +2864,6 @@
         );
 
 
-        /*
-         * Al tercer swipe:
-         * cambia el botón.
-         */
-
         if (
             swipeCount >=
             REQUIRED_SWIPES
@@ -2866,15 +2903,6 @@
             "NO FINALIZAR HISTORIA";
 
 
-        /*
-         * Importante:
-         *
-         * El cambio de texto NO dispara
-         * inmediatamente "Claro que no".
-         *
-         * Esperamos exactamente 5 segundos.
-         */
-
         setTimeout(
             function() {
 
@@ -2887,10 +2915,7 @@
 
 
     /* ==================================================
-       MOSTRAR "CLARO QUE NO"
-       
-       Se dispara exclusivamente después
-       del swipe que transforma el botón.
+       MOSTRAR HISTORIA QUE CONTINÚA
     ================================================== */
 
     function mostrarHistoriaQueContinua() {
@@ -2943,13 +2968,6 @@
 
     /* ==================================================
        INICIAR FINAL
-       
-       Esto ocurre ÚNICAMENTE al tocar
-       "FINALIZAR HISTORIA".
-       
-       La cuenta llega a 0 y queda en 0.
-       
-       NO dispara nada después.
     ================================================== */
 
     function iniciarFinal() {
@@ -2961,11 +2979,6 @@
             return;
         }
 
-
-        /*
-         * Si ya se transformó el botón,
-         * no hacemos absolutamente nada.
-         */
 
         if (
             finalButtonUnlocked
@@ -3008,10 +3021,27 @@
 
     /* ==================================================
        CUENTA REGRESIVA
+       
+       30 → 10:
+       exactamente igual que antes,
+       un número entero por segundo.
+
+       9.9 → 1.0:
+       un decimal, actualizado cada segundo.
+
+       0.99 → 0.10:
+       dos decimales, actualizado cada 100 ms.
+
+       0.0999 → 0:
+       cuatro decimales, actualizado cada 1 ms.
     ================================================== */
 
     let countdownTimer =
         null;
+
+
+    let countdownPhase =
+        "integer";
 
 
     let countdownValue =
@@ -3036,13 +3066,17 @@
             30;
 
 
+        countdownPhase =
+            "integer";
+
+
         status.textContent =
             "MIRÁ LA PANTALLA";
 
 
         mostrarNumero(
             numberElement,
-            countdownValue
+            "30"
         );
 
 
@@ -3053,8 +3087,18 @@
             clearInterval(
                 countdownTimer
             );
+
+            countdownTimer =
+                null;
         }
 
+
+        /*
+         * FASE 1
+         *
+         * 30, 29, 28...
+         * hasta 10.
+         */
 
         countdownTimer =
             setInterval(
@@ -3063,56 +3107,272 @@
                     countdownValue--;
 
 
-                    /*
-                     * CUANDO LLEGA A CERO:
-                     *
-                     * se detiene.
-                     *
-                     * No reinicia.
-                     * No muestra nada.
-                     * No dispara "Claro que no".
-                     */
-
                     if (
-                        countdownValue <=
-                        0
+                        countdownValue >=
+                        10
                     ) {
-
-                        countdownValue =
-                            0;
-
-
-                        clearInterval(
-                            countdownTimer
-                        );
-
-
-                        countdownTimer =
-                            null;
-
 
                         mostrarNumero(
                             numberElement,
-                            0
+                            String(
+                                countdownValue
+                            )
                         );
-
-
-                        status.textContent =
-                            "FINALIZADO (Si no sucede nada, tocá nuevamente el botón FINALIZAR HISTORIA";
-
 
                         return;
                     }
 
 
-                    mostrarNumero(
-                        numberElement,
-                        countdownValue
+                    /*
+                     * Cambiamos a la fase decimal.
+                     *
+                     * El próximo valor será 9.9.
+                     */
+
+                    clearInterval(
+                        countdownTimer
+                    );
+
+
+                    countdownTimer =
+                        null;
+
+
+                    countdownPhase =
+                        "decimal10";
+
+
+                    iniciarCuentaDecimalLenta(
+                        numberElement
                     );
 
                 },
                 1000
             );
+    }
+
+
+    /* ==================================================
+       9.9 → 1.0
+       
+       Un cambio cada segundo.
+    ================================================== */
+
+    function iniciarCuentaDecimalLenta(
+        element
+    ) {
+
+        let value =
+            9.9;
+
+
+        mostrarNumero(
+            element,
+            value.toFixed(1)
+        );
+
+
+        countdownTimer =
+            setInterval(
+                function() {
+
+                    value =
+                        Math.round(
+                            (value - 0.1) *
+                            10
+                        ) / 10;
+
+
+                    if (
+                        value >=
+                        1.0
+                    ) {
+
+                        mostrarNumero(
+                            element,
+                            value.toFixed(1)
+                        );
+
+                        return;
+                    }
+
+
+                    /*
+                     * Pasamos a 0.99.
+                     */
+
+                    clearInterval(
+                        countdownTimer
+                    );
+
+
+                    countdownTimer =
+                        null;
+
+
+                    iniciarCuentaCentimas(
+                        element
+                    );
+
+                },
+                1000
+            );
+    }
+
+
+    /* ==================================================
+       0.99 → 0.10
+       
+       Cada décima de segundo.
+    ================================================== */
+
+    function iniciarCuentaCentimas(
+        element
+    ) {
+
+        let value =
+            0.99;
+
+
+        mostrarNumero(
+            element,
+            value.toFixed(2)
+        );
+
+
+        countdownTimer =
+            setInterval(
+                function() {
+
+                    value =
+                        Math.round(
+                            (value - 0.01) *
+                            100
+                        ) / 100;
+
+
+                    if (
+                        value >=
+                        0.10
+                    ) {
+
+                        mostrarNumero(
+                            element,
+                            value.toFixed(2)
+                        );
+
+                        return;
+                    }
+
+
+                    /*
+                     * Pasamos a 0.0999.
+                     */
+
+                    clearInterval(
+                        countdownTimer
+                    );
+
+
+                    countdownTimer =
+                        null;
+
+
+                    iniciarCuentaFinal(
+                        element
+                    );
+
+                },
+                100
+            );
+    }
+
+
+    /* ==================================================
+       0.0999 → 0
+       
+       Última fase acelerada.
+    ================================================== */
+
+    function iniciarCuentaFinal(
+        element
+    ) {
+
+        let value =
+            0.0999;
+
+
+        mostrarNumero(
+            element,
+            value.toFixed(4)
+        );
+
+
+        countdownTimer =
+            setInterval(
+                function() {
+
+                    value =
+                        Math.round(
+                            (value - 0.0001) *
+                            10000
+                        ) / 10000;
+
+
+                    if (
+                        value > 0
+                    ) {
+
+                        mostrarNumero(
+                            element,
+                            value.toFixed(4)
+                        );
+
+                        return;
+                    }
+
+
+                    value =
+                        0;
+
+
+                    clearInterval(
+                        countdownTimer
+                    );
+
+
+                    countdownTimer =
+                        null;
+
+
+                    mostrarNumero(
+                        element,
+                        "0"
+                    );
+
+
+                    statusFinal();
+
+                },
+                1
+            );
+    }
+
+
+    /* ==================================================
+       ESTADO FINAL DEL CONTADOR
+    ================================================== */
+
+    function statusFinal() {
+
+        const status =
+            document.getElementById(
+                "countdownStatus"
+            );
+
+
+        status.textContent =
+            "FINALIZADO (Si no sucede nada, tocá nuevamente el botón FINALIZAR HISTORIA";
     }
 
 
@@ -3137,11 +3397,6 @@
         element.textContent =
             number;
 
-
-        /*
-         * Dos frames garantizan que Safari
-         * vuelva a detectar la animación.
-         */
 
         requestAnimationFrame(
             function() {
