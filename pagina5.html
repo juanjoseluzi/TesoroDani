@@ -63,6 +63,177 @@
         }
 
 
+        /* =================================
+           EXPLOSIÓN
+        ================================= */
+
+        .explosion-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #fff9a0 0%,
+                    #ffd21c 18%,
+                    #ff9d00 38%,
+                    #d52b20 68%,
+                    #7a1018 100%
+                );
+
+            mix-blend-mode: screen;
+        }
+
+
+        .explosion-overlay.explotando {
+
+            animation:
+                explosionFlash 2.2s
+                cubic-bezier(.15,.75,.25,1)
+                forwards;
+        }
+
+
+        body.explosion-shake {
+
+            animation:
+                screenExplosionShake 1.15s
+                cubic-bezier(.36,.07,.19,.97);
+        }
+
+
+        @keyframes explosionFlash {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(1);
+            }
+
+            6% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.06);
+            }
+
+            18% {
+
+                opacity: 0.98;
+
+                transform:
+                    scale(1.02);
+            }
+
+            35% {
+
+                opacity: 0.82;
+
+                background:
+                    radial-gradient(
+                        circle at center,
+                        #fff16b 0%,
+                        #ffb300 22%,
+                        #f04b20 52%,
+                        #a61c25 100%
+                    );
+            }
+
+            55% {
+
+                opacity: 0.62;
+
+                background:
+                    radial-gradient(
+                        circle at center,
+                        #ffbd2e 0%,
+                        #ef5725 30%,
+                        #a71d28 65%,
+                        #55111b 100%
+                    );
+            }
+
+            75% {
+
+                opacity: 0.32;
+
+                background:
+                    radial-gradient(
+                        circle at center,
+                        #e97832 0%,
+                        #a82b2f 45%,
+                        #54131c 100%
+                    );
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    scale(1);
+            }
+
+        }
+
+
+        @keyframes screenExplosionShake {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            8% {
+                transform: translate(-12px, 7px) rotate(-0.8deg);
+            }
+
+            16% {
+                transform: translate(14px, -8px) rotate(0.8deg);
+            }
+
+            24% {
+                transform: translate(-10px, -6px) rotate(-0.6deg);
+            }
+
+            32% {
+                transform: translate(11px, 7px) rotate(0.6deg);
+            }
+
+            40% {
+                transform: translate(-7px, 4px) rotate(-0.4deg);
+            }
+
+            50% {
+                transform: translate(7px, -4px) rotate(0.4deg);
+            }
+
+            65% {
+                transform: translate(-4px, 2px);
+            }
+
+            80% {
+                transform: translate(3px, -2px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+
+        }
+
+
         .document {
 
             width: 100%;
@@ -165,7 +336,13 @@
 
             line-height: 1;
 
-            margin: 16px auto 8px;
+            /*
+             * Más espacio arriba y abajo
+             * para separar claramente
+             * el fuego del texto.
+             */
+
+            margin: 28px auto 28px;
 
             animation:
                 latidoFuego 0.9s ease-in-out infinite;
@@ -574,8 +751,8 @@
         .shake-complete.impacto {
 
             animation:
-                impactoMensaje 1.25s
-                cubic-bezier(.17,.89,.32,1.28)
+                impactoMensaje 1.55s
+                cubic-bezier(.08,.92,.18,1.28)
                 both;
 
         }
@@ -601,6 +778,11 @@
             color: #ffffff;
         }
 
+
+        /*
+         * Texto de la tensión un poco más grande
+         * para mejorar la lectura.
+         */
 
         .shake-help {
 
@@ -643,9 +825,13 @@
 
             color: #d4bcc2;
 
-            font-size: 17px;
+            /*
+             * Aumentado de 17px a 22px.
+             */
 
-            line-height: 1.65;
+            font-size: 22px;
+
+            line-height: 1.7;
         }
 
 
@@ -807,11 +993,16 @@
         }
 
 
+        /*
+         * Texto de la misión aumentado
+         * de 17px a 20px.
+         */
+
         .table-text {
 
             color: #dcc5ca;
 
-            font-size: 17px;
+            font-size: 20px;
 
             line-height: 1.7;
 
@@ -822,6 +1013,29 @@
         .table-text strong {
 
             color: #ffffff;
+        }
+
+
+        /* =================================
+           DETECTIVE
+        ================================= */
+
+        .detective-emoji {
+
+            display: block;
+
+            font-family:
+                "Segoe UI Emoji",
+                "Apple Color Emoji",
+                sans-serif;
+
+            font-size: 78px;
+
+            line-height: 1;
+
+            text-align: center;
+
+            margin: 28px auto 30px;
         }
 
 
@@ -984,8 +1198,9 @@
                 opacity: 0;
 
                 transform:
-                    scale(0.55)
-                    translateY(35px);
+                    scale(0.20)
+                    translateY(100px)
+                    rotate(-5deg);
 
                 border-color:
                     rgba(208,58,80,0);
@@ -994,34 +1209,87 @@
                     0 0 0 rgba(208,58,80,0);
             }
 
-            35% {
+
+            12% {
 
                 opacity: 1;
 
                 transform:
-                    scale(1.14)
-                    translateY(-8px);
+                    scale(1.55)
+                    translateY(-25px)
+                    rotate(4deg);
 
                 border-color:
-                    rgba(208,58,80,0.65);
+                    rgba(255,225,80,0.95);
 
                 box-shadow:
-                    0 0 32px rgba(208,58,80,0.30),
-                    0 0 70px rgba(208,58,80,0.12);
+                    0 0 70px rgba(255,190,30,0.95),
+                    0 0 130px rgba(255,70,20,0.65),
+                    0 0 180px rgba(208,58,80,0.40);
             }
 
-            60% {
+
+            24% {
 
                 transform:
-                    scale(0.97)
-                    translateY(2px);
+                    scale(0.78)
+                    translateY(12px)
+                    rotate(-3deg);
 
                 border-color:
-                    rgba(208,58,80,0.40);
+                    rgba(255,120,40,0.80);
 
                 box-shadow:
-                    0 0 18px rgba(208,58,80,0.22);
+                    0 0 45px rgba(255,110,30,0.65),
+                    0 0 90px rgba(208,58,80,0.45);
             }
+
+
+            38% {
+
+                transform:
+                    scale(1.25)
+                    translateY(-12px)
+                    rotate(2deg);
+
+                border-color:
+                    rgba(235,70,55,0.65);
+
+                box-shadow:
+                    0 0 38px rgba(235,70,55,0.50),
+                    0 0 75px rgba(208,58,80,0.28);
+            }
+
+
+            52% {
+
+                transform:
+                    scale(0.94)
+                    translateY(4px)
+                    rotate(-1deg);
+
+                border-color:
+                    rgba(208,58,80,0.45);
+
+                box-shadow:
+                    0 0 25px rgba(208,58,80,0.30);
+            }
+
+
+            70% {
+
+                transform:
+                    scale(1.06)
+                    translateY(-2px)
+                    rotate(0.5deg);
+
+                border-color:
+                    rgba(208,58,80,0.30);
+
+                box-shadow:
+                    0 0 18px rgba(208,58,80,0.18);
+            }
+
 
             100% {
 
@@ -1029,7 +1297,8 @@
 
                 transform:
                     scale(1)
-                    translateY(0);
+                    translateY(0)
+                    rotate(0);
 
                 border-color:
                     rgba(208,58,80,0.18);
@@ -1187,7 +1456,22 @@
 
 
             .shake-help {
-                font-size: 17px;
+                font-size: 18px;
+            }
+
+
+            .return-help {
+                font-size: 20px;
+            }
+
+
+            .table-text {
+                font-size: 19px;
+            }
+
+
+            .detective-emoji {
+                font-size: 70px;
             }
 
 
@@ -1235,6 +1519,16 @@
 
 
 <body>
+
+
+<!-- =========================================
+     CAPA DE EXPLOSIÓN
+========================================== -->
+
+<div
+    id="explosionOverlay"
+    class="explosion-overlay">
+</div>
 
 
 <main class="document">
@@ -1412,8 +1706,6 @@
         class="tension-section">
 
 
-        <!-- LOS FUEGUITOS APARECEN PRIMERO -->
-
         <div class="fire">
 
             🔥🔥🔥
@@ -1503,7 +1795,7 @@
 
 
         <!-- =================================
-             MENSAJE INMEDIATAMENTE DESPUÉS
+             MENSAJE DESPUÉS DE LA BARRA
         ================================== -->
 
         <div
@@ -1646,8 +1938,6 @@
 
         <div class="table-text">
 
-            
-
             <strong>
             
             </strong>
@@ -1657,10 +1947,13 @@
             Vas a tener que averiguar
             que número de mesa tiene
             la que estuvimos sentados
-            aquella tarde... si si... en 
+            aquella tarde... si si... en
             Growler cafe!
 
-            <br><br>
+            <!-- DETECTIVE -->
+            <div class="detective-emoji">
+                🕵️‍♀️
+            </div>
 
             Podés preguntarle a los mozos,
             en la admisión... O mejor todavía,
@@ -1838,11 +2131,6 @@
     function estaEnHorizontal() {
 
 
-        /*
-         * Intentamos utilizar
-         * Screen Orientation.
-         */
-
         if (
             screen.orientation &&
             screen.orientation.type
@@ -1876,10 +2164,6 @@
 
         }
 
-
-        /*
-         * Respaldo por proporción.
-         */
 
         return (
             window.innerWidth >
@@ -1951,10 +2235,6 @@
     }
 
 
-    /*
-     * Evento moderno.
-     */
-
     if (
         screen.orientation
     ) {
@@ -1966,11 +2246,6 @@
 
     }
 
-
-    /*
-     * Respaldos para iPhone
-     * y navegadores diversos.
-     */
 
     window.addEventListener(
         "resize",
@@ -2003,14 +2278,6 @@
 
         iniciarDetectorMovimiento();
 
-
-        /*
-         * IMPORTANTE:
-         * llevamos la pantalla exactamente
-         * al comienzo de la nueva escena,
-         * donde aparecen primero
-         * los tres fueguitos.
-         */
 
         setTimeout(function() {
 
@@ -2068,11 +2335,6 @@
         }
 
 
-        /*
-         * Solamente contamos movimiento
-         * cuando el teléfono está horizontal.
-         */
-
         if (
             !estaEnHorizontal()
         ) {
@@ -2115,11 +2377,6 @@
             );
 
 
-        /*
-         * Umbral para reconocer
-         * una sacudida clara.
-         */
-
         if (
             magnitud > 17
         ) {
@@ -2128,11 +2385,6 @@
             const ahora =
                 Date.now();
 
-
-            /*
-             * Evitamos contar múltiples
-             * eventos del mismo movimiento.
-             */
 
             if (
                 ahora -
@@ -2204,8 +2456,7 @@
 
 
         /*
-         * Llenamos completamente
-         * la barra.
+         * Barra completa.
          */
 
         document
@@ -2217,8 +2468,7 @@
 
 
         /*
-         * Ocultamos las instrucciones
-         * de agitación.
+         * Ocultamos las instrucciones.
          */
 
         document
@@ -2238,9 +2488,7 @@
 
 
         /*
-         * Aparece inmediatamente
-         * el mensaje de "Bueno..."
-         * debajo de la barra.
+         * Aparece el mensaje.
          */
 
         const complete =
@@ -2254,11 +2502,61 @@
 
 
         /*
-         * Impacto visual inmediato.
+         * Reiniciamos la animación
+         * por si acaso.
          */
 
         complete.classList.remove(
             "impacto"
+        );
+
+
+        /*
+         * EXPLOSIÓN VISUAL
+         */
+
+        const explosion =
+            document.getElementById(
+                "explosionOverlay"
+            );
+
+
+        explosion.classList.remove(
+            "explotando"
+        );
+
+
+        document.body.classList.remove(
+            "explosion-shake"
+        );
+
+
+        /*
+         * Forzamos reflow para garantizar
+         * que la animación comience desde cero.
+         */
+
+        void explosion.offsetWidth;
+
+
+        /*
+         * Activamos simultáneamente:
+         *
+         * 1. Flash amarillo muy intenso.
+         * 2. Paso progresivo hacia naranja/rojo.
+         * 3. Desaparición hasta volver
+         *    exactamente al aspecto original.
+         * 4. Sacudida violenta de pantalla.
+         * 5. Impacto del mensaje.
+         */
+
+        explosion.classList.add(
+            "explotando"
+        );
+
+
+        document.body.classList.add(
+            "explosion-shake"
         );
 
 
@@ -2271,6 +2569,45 @@
 
             }
         );
+
+
+        /*
+         * Vibración breve si el dispositivo
+         * lo permite.
+         */
+
+        if (
+            "vibrate" in navigator
+        ) {
+
+            navigator.vibrate([
+                120,
+                50,
+                180,
+                40,
+                100
+            ]);
+
+        }
+
+
+        /*
+         * Después de la animación,
+         * eliminamos las clases para que
+         * todo quede completamente normal.
+         */
+
+        setTimeout(function() {
+
+            explosion.classList.remove(
+                "explotando"
+            );
+
+            document.body.classList.remove(
+                "explosion-shake"
+            );
+
+        }, 2300);
 
 
         /*
@@ -2303,7 +2640,7 @@
 
             );
 
-        }, 120);
+        }, 150);
 
     }
 
@@ -2380,11 +2717,6 @@
 
     function enviarAvisoGrowler() {
 
-        /*
-         * Evitamos enviar más de un aviso
-         * aunque se pulse varias veces.
-         */
-
         if (
             growlerAvisoEnviado
         ) {
@@ -2397,11 +2729,6 @@
         growlerAvisoEnviado =
             true;
 
-
-        /*
-         * Si EmailJS no cargó, no interrumpimos
-         * el recorrido: la página continúa.
-         */
 
         if (
             typeof emailjs ===
@@ -2430,17 +2757,6 @@
                 }
             );
 
-
-        /*
-         * Estos nombres corresponden a variables
-         * que pueden utilizarse en la plantilla
-         * de EmailJS:
-         *
-         * {{mesa}}
-         * {{hora}}
-         * {{evento}}
-         * {{mensaje}}
-         */
 
         const templateParams = {
 
@@ -2552,20 +2868,9 @@
                 "block";
 
 
-            /*
-             * Desactivamos el campo
-             * después de encontrar
-             * la respuesta correcta.
-             */
-
             campo.disabled =
                 true;
 
-
-            /*
-             * Enviamos el aviso en cuanto
-             * la clave correcta es validada.
-             */
 
             enviarAvisoGrowler();
 
