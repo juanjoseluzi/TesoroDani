@@ -634,6 +634,62 @@
 
 
         /* ==================================================
+           EFECTO DE LLEGADA
+        ================================================== */
+
+        #greenFlash {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            background: #72e2a0;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            z-index: 999999;
+
+            animation:
+                greenScreenFlash
+                0.8s
+                ease-out
+                5;
+
+            display: none;
+        }
+
+
+        @keyframes greenScreenFlash {
+
+            0% {
+                opacity: 0;
+            }
+
+            8% {
+                opacity: 0.82;
+            }
+
+            35% {
+                opacity: 0.50;
+            }
+
+            65% {
+                opacity: 0.18;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* ==================================================
            BOTONES
         ================================================== */
 
@@ -748,8 +804,6 @@
                 0;
         }
 
-
-        /* Espaciado especial para la carita con ojos de corazón */
 
         .love-eyes-emoji {
 
@@ -1575,10 +1629,6 @@
 <main class="document">
 
 
-    <!-- ==================================================
-         PRIMERA PANTALLA
-    ================================================== -->
-
     <section class="tree-hero">
 
         <div
@@ -1591,10 +1641,6 @@
 
     </section>
 
-
-    <!-- ==================================================
-         HISTORIA
-    ================================================== -->
 
     <div class="story-content">
 
@@ -1673,10 +1719,6 @@
         </div>
 
 
-        <!-- ==================================================
-             ALMA + RADAR
-        ================================================== -->
-
         <div class="soul-note">
 
             <strong>
@@ -1685,7 +1727,7 @@
 
             <br><br>
 
-            Y mi alma va a saber
+            Y como las almas tienen una percepción especial, voy a saber perfectamente
             cuando estés cerca de ese árbol.
 
             <br><br>
@@ -1726,14 +1768,10 @@
             En ese momento,
             recién cuando estés cerca,
             entonces vas a poder
-            continuar...
+            continuar... vos sólo tenés que acercarte y estar atenta a la pantalla...
 
         </div>
 
-
-        <!-- ==================================================
-             UBICACIÓN
-        ================================================== -->
 
         <div class="location-zone">
 
@@ -1749,7 +1787,11 @@
 
 
                 <div class="location-found-title">
+
                     ¡LO ENCONTRASTE!
+                    
+                    ¡ESTÁS EXACTAMENTE ACÁ!!!
+                    
                 </div>
 
 
@@ -1796,10 +1838,6 @@
 
         </div>
 
-
-        <!-- ==================================================
-             TEXTO FINAL
-        ================================================== -->
 
         <section
             id="finalSection"
@@ -1961,10 +1999,6 @@
             </div>
 
 
-            <!-- ==================================================
-                 BOTÓN FINAL
-            ================================================== -->
-
             <div class="final-button-area">
 
                 <button
@@ -1978,10 +2012,6 @@
 
             </div>
 
-
-            <!-- ==================================================
-                 CUENTA REGRESIVA
-            ================================================== -->
 
             <section
                 id="countdownSection"
@@ -2039,10 +2069,6 @@
 
             </section>
 
-
-            <!-- ==================================================
-                 HISTORIA NO TERMINA
-            ================================================== -->
 
             <section
                 id="loveSection"
@@ -2136,10 +2162,6 @@
             </section>
 
 
-            <!-- ==================================================
-                 CUMPLEAÑOS
-            ================================================== -->
-
             <section
                 id="birthdaySection"
                 class="birthday-section">
@@ -2192,6 +2214,8 @@
 
 </main>
 
+
+<div id="greenFlash"></div>
 
 
 <script>
@@ -2379,6 +2403,31 @@
         found.style.display =
             "block";
 
+
+        /* ==================================================
+           CINCO PARPADEOS VERDES DE PANTALLA
+           
+           La pantalla se ilumina de golpe en verde
+           y se atenúa cinco veces.
+        ================================================== */
+
+        const greenFlash =
+            document.getElementById(
+                "greenFlash"
+            );
+
+        greenFlash.style.display =
+            "block";
+
+        greenFlash.style.animation =
+            "none";
+
+        void greenFlash.offsetWidth;
+
+        greenFlash.style.animation =
+            "greenScreenFlash 0.8s ease-out 5";
+
+
         setTimeout(
             function() {
 
@@ -2388,7 +2437,7 @@
                 );
 
             },
-            100
+            4100
         );
     }
 
@@ -2477,10 +2526,6 @@
 
                     function() {
 
-                        /*
-                         * Silencioso.
-                         */
-
                     },
 
                     {
@@ -2521,10 +2566,6 @@
                     comprobarUbicacion,
 
                     function() {
-
-                        /*
-                         * Silencioso.
-                         */
 
                     },
 
@@ -3021,19 +3062,6 @@
 
     /* ==================================================
        CUENTA REGRESIVA
-       
-       30 → 10:
-       exactamente igual que antes,
-       un número entero por segundo.
-
-       9.9 → 1.0:
-       un decimal, actualizado cada segundo.
-
-       0.99 → 0.10:
-       dos decimales, actualizado cada 100 ms.
-
-       0.0999 → 0:
-       cuatro decimales, actualizado cada 1 ms.
     ================================================== */
 
     let countdownTimer =
@@ -3093,13 +3121,6 @@
         }
 
 
-        /*
-         * FASE 1
-         *
-         * 30, 29, 28...
-         * hasta 10.
-         */
-
         countdownTimer =
             setInterval(
                 function() {
@@ -3122,12 +3143,6 @@
                         return;
                     }
 
-
-                    /*
-                     * Cambiamos a la fase decimal.
-                     *
-                     * El próximo valor será 9.9.
-                     */
 
                     clearInterval(
                         countdownTimer
@@ -3154,8 +3169,6 @@
 
     /* ==================================================
        9.9 → 1.0
-       
-       Un cambio cada segundo.
     ================================================== */
 
     function iniciarCuentaDecimalLenta(
@@ -3197,10 +3210,6 @@
                     }
 
 
-                    /*
-                     * Pasamos a 0.99.
-                     */
-
                     clearInterval(
                         countdownTimer
                     );
@@ -3222,8 +3231,6 @@
 
     /* ==================================================
        0.99 → 0.10
-       
-       Cada décima de segundo.
     ================================================== */
 
     function iniciarCuentaCentimas(
@@ -3265,10 +3272,6 @@
                     }
 
 
-                    /*
-                     * Pasamos a 0.0999.
-                     */
-
                     clearInterval(
                         countdownTimer
                     );
@@ -3290,8 +3293,6 @@
 
     /* ==================================================
        0.0999 → 0
-       
-       Última fase acelerada.
     ================================================== */
 
     function iniciarCuentaFinal(
@@ -3418,10 +3419,6 @@
 
     /* ==================================================
        ATAJO OCULTO DE EMERGENCIA
-       
-       Código:
-       1111
-       ARBOL
     ================================================== */
 
     const hiddenShortcut =
