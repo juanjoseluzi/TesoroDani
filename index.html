@@ -309,6 +309,22 @@
         }
 
 
+        .no-entry {
+
+            display: block;
+
+            color: #d12b2b;
+
+            font-size: 48px;
+
+            line-height: 1;
+
+            margin-top: 20px;
+
+            margin-bottom: 24px;
+        }
+
+
         /* ==================================================
            MENSAJE CLASIFICADO
         ================================================== */
@@ -329,7 +345,7 @@
 
             color: #999999;
 
-            font-size: 18px;
+            font-size: 20px;
 
             line-height: 1.7;
         }
@@ -339,7 +355,19 @@
 
             color: #dddddd;
 
-            font-size: 19px;
+            font-size: 20px;
+        }
+
+
+        .warning-emoji {
+
+            display: inline-block;
+
+            font-size: 38px;
+
+            line-height: 1;
+
+            margin: 4px 0 8px;
         }
 
 
@@ -546,7 +574,7 @@
 
             color: #d7d7d7;
 
-            text-align: left;
+            text-align: center;
 
             font-size: 19px;
 
@@ -806,6 +834,12 @@
                 font-size: 19px;
             }
 
+
+            .no-entry {
+
+                font-size: 43px;
+            }
+
         }
 
     </style>
@@ -881,6 +915,13 @@
     </span>
 
 
+    <span class="no-entry">
+
+        ❌
+
+    </span>
+
+
     Este expediente contiene información
     confidencial sobre una historia real.
 
@@ -905,8 +946,14 @@
     </strong>
 
 
-    <br><br>
+    <br>
 
+    <span class="warning-emoji">
+        ⚠️
+    </span>
+
+
+    <br>
 
     No existen contraseñas convencionales
     para acceder a este expediente.
@@ -1020,16 +1067,21 @@
 
         </div>
 
-
-        Pero eso lo sabe mucha gente.
+        Eso lo sabe mucha gente!
 
         <br><br>
 
         Por lo tanto,
 
+        <br>
+
         <strong>
+
             no es suficiente
+
         </strong>
+
+        <br>
 
         para confirmar la identidad
         de la persona única e indicada
