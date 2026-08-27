@@ -1,4 +1,6 @@
+```html
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -247,7 +249,7 @@
             line-height: 1;
 
             margin:
-                12px
+                45px
                 0;
         }
 
@@ -261,7 +263,7 @@
                 Courier,
                 monospace;
 
-            font-size: 18px;
+            font-size: 21px;
 
             line-height: 1.6;
 
@@ -815,6 +817,18 @@
         }
 
 
+        .surprise-emoji,
+        .emotion-emoji,
+        .smile-emoji,
+        .laugh-emoji {
+
+            margin:
+                10px
+                0
+                3em;
+        }
+
+
         /* ==================================================
            BOTÓN FINAL
         ================================================== */
@@ -1262,6 +1276,20 @@
         }
 
 
+        .birthday-party-second {
+
+            margin-top: 30px;
+
+            line-height: 1.7;
+        }
+
+
+        .birthday-party-third {
+
+            margin-top: 55px;
+        }
+
+
         /* ==================================================
            ANIMACIONES
         ================================================== */
@@ -1555,11 +1583,12 @@
 
             .mystery-tree {
                 font-size: 62px;
+                margin: 45px 0;
             }
 
 
             .mystery-small {
-                font-size: 17px;
+                font-size: 20px;
             }
 
 
@@ -1926,6 +1955,16 @@
 
                 <br>
 
+                Espero que te hayas reído.
+
+                <br>
+
+                <span class="final-emoji laugh-emoji">
+                    😂
+                </span>
+
+                <br>
+
                 que hayas recordado,
                 que hayas disfrutado cada pequeño
                 paso de este recorrido.
@@ -2179,12 +2218,17 @@
 
                 <div class="birthday-title">
                     FELIZ CUMPLEAÑOS DANI
-                      
                 </div>
 
 
-                <div class="party">
-                    🥂  🎂  🎈  ✨  🎊
+                <div class="party birthday-party-second">
+
+                    🥳  🎂
+
+                    <br>
+
+                    🎈  🎊
+
                 </div>
 
 
@@ -2196,9 +2240,9 @@
                 </div>
 
 
-                <div class="party">
+                <div class="party birthday-party-third">
 
-                    ❤️🥂❤️
+                    🥂❤️
 
                 </div>
 
@@ -2223,9 +2267,9 @@
 
     /* ==================================================
        ÁRBOL INICIAL
-       
+
        Después de 2 segundos aparece de golpe.
-       Luego permanece 2 segundos.
+       Permanece visible durante 4 segundos.
        Después desaparece durante 2 segundos.
     ================================================== */
 
@@ -2251,7 +2295,7 @@
                     );
 
                 },
-                2000
+                4000
             );
 
         },
@@ -2403,13 +2447,6 @@
         found.style.display =
             "block";
 
-
-        /* ==================================================
-           CINCO PARPADEOS VERDES DE PANTALLA
-           
-           La pantalla se ilumina de golpe en verde
-           y se atenúa cinco veces.
-        ================================================== */
 
         const greenFlash =
             document.getElementById(
@@ -3062,14 +3099,17 @@
 
     /* ==================================================
        CUENTA REGRESIVA
+       
+       TODOS los cambios ocurren cada 1 segundo.
+
+       30 → 29 → 28 ... → 10
+       10 → 9.9 → 9.8 ... → 0.1 → 0
+
+       No existen cambios de 100 ms ni de 1 ms.
     ================================================== */
 
     let countdownTimer =
         null;
-
-
-    let countdownPhase =
-        "integer";
 
 
     let countdownValue =
@@ -3092,10 +3132,6 @@
 
         countdownValue =
             30;
-
-
-        countdownPhase =
-            "integer";
 
 
         status.textContent =
@@ -3125,13 +3161,12 @@
             setInterval(
                 function() {
 
-                    countdownValue--;
-
-
                     if (
-                        countdownValue >=
+                        countdownValue >
                         10
                     ) {
+
+                        countdownValue--;
 
                         mostrarNumero(
                             numberElement,
@@ -3144,218 +3179,72 @@
                     }
 
 
-                    clearInterval(
-                        countdownTimer
-                    );
+                    if (
+                        countdownValue ===
+                        10
+                    ) {
+
+                        countdownValue =
+                            9.9;
+
+                        mostrarNumero(
+                            numberElement,
+                            countdownValue.toFixed(1)
+                        );
+
+                        return;
+                    }
 
 
-                    countdownTimer =
-                        null;
+                    if (
+                        countdownValue >
+                        0
+                    ) {
+
+                        countdownValue =
+                            Math.round(
+                                (countdownValue - 0.1) *
+                                10
+                            ) / 10;
+
+                        if (
+                            countdownValue >
+                            0
+                        ) {
+
+                            mostrarNumero(
+                                numberElement,
+                                countdownValue.toFixed(1)
+                            );
+
+                            return;
+                        }
 
 
-                    countdownPhase =
-                        "decimal10";
+                        countdownValue =
+                            0;
+
+                        mostrarNumero(
+                            numberElement,
+                            "0"
+                        );
 
 
-                    iniciarCuentaDecimalLenta(
-                        numberElement
-                    );
+                        clearInterval(
+                            countdownTimer
+                        );
+
+
+                        countdownTimer =
+                            null;
+
+
+                        statusFinal();
+
+                    }
 
                 },
                 1000
-            );
-    }
-
-
-    /* ==================================================
-       9.9 → 1.0
-    ================================================== */
-
-    function iniciarCuentaDecimalLenta(
-        element
-    ) {
-
-        let value =
-            9.9;
-
-
-        mostrarNumero(
-            element,
-            value.toFixed(1)
-        );
-
-
-        countdownTimer =
-            setInterval(
-                function() {
-
-                    value =
-                        Math.round(
-                            (value - 0.1) *
-                            10
-                        ) / 10;
-
-
-                    if (
-                        value >=
-                        1.0
-                    ) {
-
-                        mostrarNumero(
-                            element,
-                            value.toFixed(1)
-                        );
-
-                        return;
-                    }
-
-
-                    clearInterval(
-                        countdownTimer
-                    );
-
-
-                    countdownTimer =
-                        null;
-
-
-                    iniciarCuentaCentimas(
-                        element
-                    );
-
-                },
-                1000
-            );
-    }
-
-
-    /* ==================================================
-       0.99 → 0.10
-    ================================================== */
-
-    function iniciarCuentaCentimas(
-        element
-    ) {
-
-        let value =
-            0.99;
-
-
-        mostrarNumero(
-            element,
-            value.toFixed(2)
-        );
-
-
-        countdownTimer =
-            setInterval(
-                function() {
-
-                    value =
-                        Math.round(
-                            (value - 0.01) *
-                            100
-                        ) / 100;
-
-
-                    if (
-                        value >=
-                        0.10
-                    ) {
-
-                        mostrarNumero(
-                            element,
-                            value.toFixed(2)
-                        );
-
-                        return;
-                    }
-
-
-                    clearInterval(
-                        countdownTimer
-                    );
-
-
-                    countdownTimer =
-                        null;
-
-
-                    iniciarCuentaFinal(
-                        element
-                    );
-
-                },
-                100
-            );
-    }
-
-
-    /* ==================================================
-       0.0999 → 0
-    ================================================== */
-
-    function iniciarCuentaFinal(
-        element
-    ) {
-
-        let value =
-            0.0999;
-
-
-        mostrarNumero(
-            element,
-            value.toFixed(4)
-        );
-
-
-        countdownTimer =
-            setInterval(
-                function() {
-
-                    value =
-                        Math.round(
-                            (value - 0.0001) *
-                            10000
-                        ) / 10000;
-
-
-                    if (
-                        value > 0
-                    ) {
-
-                        mostrarNumero(
-                            element,
-                            value.toFixed(4)
-                        );
-
-                        return;
-                    }
-
-
-                    value =
-                        0;
-
-
-                    clearInterval(
-                        countdownTimer
-                    );
-
-
-                    countdownTimer =
-                        null;
-
-
-                    mostrarNumero(
-                        element,
-                        "0"
-                    );
-
-
-                    statusFinal();
-
-                },
-                1
             );
     }
 
@@ -3603,3 +3492,4 @@
 </body>
 
 </html>
+```
