@@ -1,2016 +1,2066 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <title>Dani & Juan — Growler Café</title>
-
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
+<title>Dani & Juan — Growler Café</title>
 
 
-        html,
-        body {
+<style>
 
-            margin: 0;
-            padding: 0;
-
-            width: 100%;
-            min-height: 100%;
-        }
+    * {
+        box-sizing: border-box;
+    }
 
 
-        body {
+    html,
+    body {
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #783846 0%,
-                    #4b232e 38%,
-                    #210f16 72%,
-                    #0a0608 100%
-                );
+        margin: 0;
+        padding: 0;
 
-            color: #eeeeee;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            min-height: 100vh;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: flex-start;
-
-            padding: 20px 15px 50px;
-
-            transition:
-                background 2s ease;
-        }
+        width: 100%;
+        min-height: 100%;
+    }
 
 
-        /* =================================
-           EXPLOSIÓN
-        ================================= */
+    body {
 
-        .explosion-overlay {
+        background:
+            radial-gradient(
+                circle at center,
+                #783846 0%,
+                #4b232e 38%,
+                #210f16 72%,
+                #0a0608 100%
+            );
 
-            position: fixed;
+        color: #eeeeee;
 
-            inset: 0;
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
 
-            z-index: 9999;
+        min-height: 100vh;
 
-            pointer-events: none;
+        display: flex;
+
+        justify-content: center;
+
+        align-items: flex-start;
+
+        padding: 20px 15px 50px;
+
+        transition:
+            background 2s ease;
+    }
+
+
+    /* =================================
+       EXPLOSIÓN
+    ================================= */
+
+    .explosion-overlay {
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 9999;
+
+        pointer-events: none;
+
+        opacity: 0;
+
+        background:
+            radial-gradient(
+                circle at center,
+                #fff9a0 0%,
+                #ffd21c 18%,
+                #ff9d00 38%,
+                #d52b20 68%,
+                #7a1018 100%
+            );
+
+        mix-blend-mode: screen;
+    }
+
+
+    .explosion-overlay.explotando {
+
+        animation:
+            explosionFlash 2.2s
+            cubic-bezier(.15,.75,.25,1)
+            forwards;
+    }
+
+
+    body.explosion-shake {
+
+        animation:
+            screenExplosionShake 1.15s
+            cubic-bezier(.36,.07,.19,.97);
+    }
+
+
+    /* =================================
+       3 IMPACTOS AMARILLOS INICIALES
+       Y LUEGO ATENUACIÓN NORMAL
+    ================================= */
+
+    @keyframes explosionFlash {
+
+        0% {
 
             opacity: 0;
 
+            transform:
+                scale(1);
+        }
+
+
+        /* PRIMER DESTELLO */
+
+        3% {
+
+            opacity: 1;
+
+            transform:
+                scale(1.06);
+        }
+
+
+        6% {
+
+            opacity: 0.12;
+
+            transform:
+                scale(1.02);
+        }
+
+
+        /* SEGUNDO DESTELLO */
+
+        9% {
+
+            opacity: 1;
+
+            transform:
+                scale(1.06);
+        }
+
+
+        12% {
+
+            opacity: 0.12;
+
+            transform:
+                scale(1.02);
+        }
+
+
+        /* TERCER DESTELLO */
+
+        15% {
+
+            opacity: 1;
+
+            transform:
+                scale(1.06);
+        }
+
+
+        18% {
+
+            opacity: 0.98;
+
+            transform:
+                scale(1.02);
+        }
+
+
+        /* DESDE ACÁ COMIENZA
+           LA ATENUACIÓN ORIGINAL */
+
+        35% {
+
+            opacity: 0.82;
+
             background:
                 radial-gradient(
                     circle at center,
-                    #fff9a0 0%,
-                    #ffd21c 18%,
-                    #ff9d00 38%,
-                    #d52b20 68%,
-                    #7a1018 100%
+                    #fff16b 0%,
+                    #ffb300 22%,
+                    #f04b20 52%,
+                    #a61c25 100%
                 );
-
-            mix-blend-mode: screen;
         }
 
 
-        .explosion-overlay.explotando {
+        55% {
 
-            animation:
-                explosionFlash 2.2s
-                cubic-bezier(.15,.75,.25,1)
-                forwards;
+            opacity: 0.62;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #ffbd2e 0%,
+                    #ef5725 30%,
+                    #a71d28 65%,
+                    #55111b 100%
+                );
         }
 
 
-        body.explosion-shake {
+        75% {
 
-            animation:
-                screenExplosionShake 1.15s
-                cubic-bezier(.36,.07,.19,.97);
+            opacity: 0.32;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #e97832 0%,
+                    #a82b2f 45%,
+                    #54131c 100%
+                );
         }
 
 
-        @keyframes explosionFlash {
+        100% {
 
-            0% {
+            opacity: 0;
 
-                opacity: 0;
+            transform:
+                scale(1);
+        }
 
-                transform:
-                    scale(1);
-            }
+    }
 
-            6% {
 
-                opacity: 1;
+    @keyframes screenExplosionShake {
 
-                transform:
-                    scale(1.06);
-            }
+        0%,
+        100% {
+            transform: translate(0, 0);
+        }
 
-            18% {
+        8% {
+            transform: translate(-12px, 7px) rotate(-0.8deg);
+        }
 
-                opacity: 0.98;
+        16% {
+            transform: translate(14px, -8px) rotate(0.8deg);
+        }
 
-                transform:
-                    scale(1.02);
-            }
+        24% {
+            transform: translate(-10px, -6px) rotate(-0.6deg);
+        }
 
-            35% {
+        32% {
+            transform: translate(11px, 7px) rotate(0.6deg);
+        }
 
-                opacity: 0.82;
+        40% {
+            transform: translate(-7px, 4px) rotate(-0.4deg);
+        }
 
-                background:
-                    radial-gradient(
-                        circle at center,
-                        #fff16b 0%,
-                        #ffb300 22%,
-                        #f04b20 52%,
-                        #a61c25 100%
-                    );
-            }
+        50% {
+            transform: translate(7px, -4px) rotate(0.4deg);
+        }
 
-            55% {
+        65% {
+            transform: translate(-4px, 2px);
+        }
 
-                opacity: 0.62;
+        80% {
+            transform: translate(3px, -2px);
+        }
 
-                background:
-                    radial-gradient(
-                        circle at center,
-                        #ffbd2e 0%,
-                        #ef5725 30%,
-                        #a71d28 65%,
-                        #55111b 100%
-                    );
-            }
+        100% {
+            transform: translate(0, 0);
+        }
 
-            75% {
+    }
 
-                opacity: 0.32;
 
-                background:
-                    radial-gradient(
-                        circle at center,
-                        #e97832 0%,
-                        #a82b2f 45%,
-                        #54131c 100%
-                    );
-            }
+    .document {
 
-            100% {
+        width: 100%;
 
-                opacity: 0;
+        max-width: 540px;
 
-                transform:
-                    scale(1);
-            }
+        text-align: center;
 
+        padding: 18px 20px 40px;
+    }
+
+
+    /* =================================
+       ENCABEZADO
+    ================================= */
+
+    .place-label {
+
+        color: #c9aab2;
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .big-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 72px;
+
+        line-height: 1;
+
+        margin: 8px 0 24px;
+
+        animation:
+            flotar 2.5s ease-in-out infinite;
+    }
+
+
+    .title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 31px;
+
+        line-height: 1.35;
+
+        color: #ffffff;
+
+        margin-bottom: 24px;
+    }
+
+
+    .title strong {
+        color: #ffffff;
+    }
+
+
+    .intro {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 22px;
+
+        line-height: 1.75;
+
+        color: #eadcdf;
+
+        margin-bottom: 28px;
+    }
+
+
+    /* =================================
+       FUEGO LATENTE
+    ================================= */
+
+    .fire-inline {
+
+        display: block;
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 78px;
+
+        line-height: 1;
+
+        margin: 28px auto 28px;
+
+        animation:
+            latidoFuego 0.9s ease-in-out infinite;
+
+        transform-origin: center center;
+    }
+
+
+    .subtle {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 20px;
+
+        line-height: 1.7;
+
+        color: #d6bec4;
+
+        margin: 25px 0 32px;
+    }
+
+
+    /* =================================
+       BLOQUE DE CAMBIO
+    ================================= */
+
+    .change-block {
+
+        margin: 32px 0;
+
+        padding: 24px 14px;
+
+        border-top:
+            1px solid rgba(255,255,255,0.14);
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.14);
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .change-text {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 23px;
+
+        line-height: 1.7;
+
+        color: #f1e2e5;
+    }
+
+
+    .change-text strong {
+
+        color: #ffffff;
+    }
+
+
+    /* =================================
+       DOS PERSONAS GRANDES Y CENTRADAS
+    ================================= */
+
+    .couple-emoji {
+
+        display: block;
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 105px;
+
+        line-height: 1;
+
+        text-align: center;
+
+        margin: 25px auto 12px;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    /* =================================
+       CAMBIO DE POSICIÓN
+    ================================= */
+
+    .position-note {
+
+        margin-top: 22px;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 20px;
+
+        line-height: 1.7;
+
+        color: #d6bec4;
+    }
+
+
+    /* =================================
+       TAZA DE CAFÉ
+    ================================= */
+
+    .coffee-emoji {
+
+        display: block;
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 82px;
+
+        line-height: 1;
+
+        text-align: center;
+
+        margin: 18px auto 10px;
+    }
+
+
+    /* =================================
+       INSTRUCCIÓN HORIZONTAL
+    ================================= */
+
+    .orientation-section {
+
+        margin-top: 36px;
+
+        padding: 25px 12px;
+
+        border:
+            1px solid rgba(255,255,255,0.10);
+
+        background:
+            rgba(0,0,0,0.12);
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .orientation-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 68px;
+
+        line-height: 1;
+
+        margin-bottom: 16px;
+    }
+
+
+    .orientation-title {
+
+        font-size: 24px;
+
+        font-weight: bold;
+
+        color: #ffffff;
+
+        line-height: 1.45;
+
+        margin-bottom: 15px;
+
+        padding: 18px 0;
+    }
+
+
+    .orientation-help {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 19px;
+
+        line-height: 1.65;
+
+        color: #dec8cd;
+    }
+
+
+    /* =================================
+       GUIÑO GRANDE Y CENTRADO
+    ================================= */
+
+    .wink-emoji {
+
+        display: block;
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 82px;
+
+        line-height: 1;
+
+        text-align: center;
+
+        margin: 18px auto 12px;
+    }
+
+
+    .orientation-status {
+
+        margin-top: 20px;
+
+        color: #ad949b;
+
+        font-size: 14px;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* =================================
+       PARTE DE TENSIÓN
+    ================================= */
+
+    .tension-section {
+
+        display: none;
+
+        margin-top: 35px;
+
+        padding-top: 80px;
+
+        animation:
+            aparecer 0.9s ease;
+
+        scroll-margin-top: 20px;
+    }
+
+
+    .fire {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 84px;
+
+        line-height: 1;
+
+        margin-bottom: 18px;
+
+        animation:
+            fuego 0.75s ease-in-out infinite alternate;
+    }
+
+
+    .tension-title {
+
+        font-size: 29px;
+
+        font-weight: bold;
+
+        color: #ffffff;
+
+        line-height: 1.4;
+
+        margin-bottom: 24px;
+    }
+
+
+    .tension-text {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 21px;
+
+        line-height: 1.75;
+
+        color: #e9d7dc;
+
+        margin-bottom: 30px;
+    }
+
+
+    .tension-text strong {
+
+        color: #ffffff;
+    }
+
+
+    .movement-note {
+
+        margin-top: 24px;
+
+        padding: 20px 14px;
+
+        border-top:
+            1px solid rgba(255,255,255,0.12);
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.12);
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 20px;
+
+        line-height: 1.7;
+
+        color: #e7d2d7;
+    }
+
+
+    /* =================================
+       BARRA ROJA
+    ================================= */
+
+    .progress-bar {
+
+        width: 100%;
+
+        height: 34px;
+
+        margin: 34px auto 0;
+
+        background:
+            rgba(0,0,0,0.48);
+
+        border:
+            1px solid #6e323e;
+
+        overflow: hidden;
+
+        box-shadow:
+            inset 0 0 10px rgba(0,0,0,0.4);
+    }
+
+
+    .progress-fill {
+
+        width: 0%;
+
+        height: 100%;
+
+        background:
+            linear-gradient(
+                90deg,
+                #6b1727,
+                #9e2237,
+                #d03a50
+            );
+
+        transition:
+            width 0.18s ease;
+
+        box-shadow:
+            0 0 16px rgba(190,34,58,0.30);
+    }
+
+
+    /* =================================
+       MENSAJE DESPUÉS DE LA BARRA
+    ================================= */
+
+    .shake-complete {
+
+        display: none;
+
+        margin-top: 28px;
+
+        padding: 26px 10px 30px;
+
+        border:
+            1px solid rgba(208,58,80,0.0);
+
+        transform-origin: center;
+
+    }
+
+
+    .shake-complete.impacto {
+
+        animation:
+            impactoMensaje 1.55s
+            cubic-bezier(.08,.92,.18,1.28)
+            both;
+
+    }
+
+
+    .shake-complete-title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 25px;
+
+        line-height: 1.65;
+
+        color: #ffffff;
+    }
+
+
+    .shake-complete-title strong {
+
+        color: #ffffff;
+    }
+
+
+    .shake-help {
+
+        margin-top: 20px;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 18px;
+
+        line-height: 1.7;
+
+        color: #d9c2c8;
+    }
+
+
+    .shake-help strong {
+
+        color: #ffffff;
+    }
+
+
+    .shake-hint {
+
+        margin-top: 16px;
+
+        color: #af969d;
+
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    .return-help {
+
+        margin-top: 20px;
+
+        color: #d4bcc2;
+
+        font-size: 22px;
+
+        line-height: 1.7;
+    }
+
+
+    /* =================================
+       BOTONES
+    ================================= */
+
+    .button {
+
+        width: 100%;
+
+        min-height: 68px;
+
+        margin-top: 25px;
+
+        padding: 12px 18px;
+
+        border: none;
+
+        background: #e5d3d7;
+
+        color: #321820;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 19px;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+
+        cursor: pointer;
+
+        transition:
+            transform .2s ease,
+            background .3s ease;
+    }
+
+
+    .button:active {
+
+        transform:
+            scale(0.98);
+    }
+
+
+    /* =================================
+       VIDEO
+    ================================= */
+
+    .video-section {
+
+        display: none;
+
+        margin-top: 42px;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .video-title {
+
+        color: #cfafb7;
+
+        font-size: 14px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .video-wrapper {
+
+        position: relative;
+
+        width: 100%;
+
+        max-width: 360px;
+
+        margin: 0 auto;
+
+        aspect-ratio: 9 / 16;
+
+        overflow: hidden;
+
+        background: #000000;
+
+        border:
+            1px solid #8a5d68;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,0.5);
+    }
+
+
+    .video-wrapper iframe {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        border: 0;
+    }
+
+
+    /* =================================
+       CLAVE DE MESA
+    ================================= */
+
+    .table-section {
+
+        display: none;
+
+        margin-top: 38px;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .table-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 70px;
+
+        line-height: 1;
+
+        margin-bottom: 17px;
+    }
+
+
+    .table-title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 24px;
+
+        line-height: 1.6;
+
+        color: #ffffff;
+
+        margin-bottom: 22px;
+    }
+
+
+    .table-text {
+
+        color: #dcc5ca;
+
+        font-size: 20px;
+
+        line-height: 1.7;
+
+        margin-bottom: 22px;
+    }
+
+
+    .table-text strong {
+
+        color: #ffffff;
+    }
+
+
+    /* =================================
+       DETECTIVE
+    ================================= */
+
+    .detective-emoji {
+
+        display: block;
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 78px;
+
+        line-height: 1;
+
+        text-align: center;
+
+        margin: 28px auto 30px;
+    }
+
+
+    input {
+
+        width: 100%;
+
+        height: 64px;
+
+        background:
+            rgba(0,0,0,0.42);
+
+        border:
+            2px solid #855965;
+
+        color: #ffffff;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 24px;
+
+        text-align: center;
+
+        padding: 10px 14px;
+
+        outline: none;
+
+        border-radius: 0;
+    }
+
+
+    input:focus {
+
+        border-color: #c49da8;
+
+        box-shadow:
+            0 0 12px rgba(196,157,168,0.15);
+    }
+
+
+    .table-error {
+
+        display: none;
+
+        margin-top: 18px;
+
+        padding: 13px;
+
+        border:
+            1px solid #8d4f5c;
+
+        color: #edc0c8;
+
+        font-size: 16px;
+
+        line-height: 1.5;
+    }
+
+
+    /* =================================
+       ÉXITO AL ENCONTRAR LA MESA
+    ================================= */
+
+    .table-success {
+
+        display: none;
+
+        margin-top: 30px;
+
+        padding-top: 35px;
+
+        scroll-margin-top: 70px;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .success-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 76px;
+
+        line-height: 1;
+
+        margin-bottom: 15px;
+    }
+
+
+    .success-title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 27px;
+
+        font-weight: bold;
+
+        line-height: 1.45;
+
+        color: #ffffff;
+
+        margin-bottom: 22px;
+    }
+
+
+    .success-text {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 21px;
+
+        line-height: 1.75;
+
+        color: #eadcdf;
+
+    }
+
+
+    .success-text strong {
+
+        color: #ffffff;
+    }
+
+
+    /* =================================
+       CONTINUAR HISTORIA
+    ================================= */
+
+    .story-button {
+
+        display: none;
+
+        margin-top: 30px;
+
+        background: #d9bdc4;
+    }
+
+
+    /* =================================
+       ANIMACIONES
+    ================================= */
+
+    @keyframes impactoMensaje {
+
+        0% {
+
+            opacity: 0;
+
+            transform:
+                scale(0.20)
+                translateY(100px)
+                rotate(-5deg);
+
+            border-color:
+                rgba(208,58,80,0);
+
+            box-shadow:
+                0 0 0 rgba(208,58,80,0);
         }
 
 
-        @keyframes screenExplosionShake {
+        12% {
 
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
+            opacity: 1;
 
-            8% {
-                transform: translate(-12px, 7px) rotate(-0.8deg);
-            }
+            transform:
+                scale(1.55)
+                translateY(-25px)
+                rotate(4deg);
 
-            16% {
-                transform: translate(14px, -8px) rotate(0.8deg);
-            }
+            border-color:
+                rgba(255,225,80,0.95);
 
-            24% {
-                transform: translate(-10px, -6px) rotate(-0.6deg);
-            }
-
-            32% {
-                transform: translate(11px, 7px) rotate(0.6deg);
-            }
-
-            40% {
-                transform: translate(-7px, 4px) rotate(-0.4deg);
-            }
-
-            50% {
-                transform: translate(7px, -4px) rotate(0.4deg);
-            }
-
-            65% {
-                transform: translate(-4px, 2px);
-            }
-
-            80% {
-                transform: translate(3px, -2px);
-            }
-
-            100% {
-                transform: translate(0, 0);
-            }
-
+            box-shadow:
+                0 0 70px rgba(255,190,30,0.95),
+                0 0 130px rgba(255,70,20,0.65),
+                0 0 180px rgba(208,58,80,0.40);
         }
 
 
-        .document {
+        24% {
 
-            width: 100%;
+            transform:
+                scale(0.78)
+                translateY(12px)
+                rotate(-3deg);
 
-            max-width: 540px;
+            border-color:
+                rgba(255,120,40,0.80);
 
-            text-align: center;
-
-            padding: 18px 20px 40px;
+            box-shadow:
+                0 0 45px rgba(255,110,30,0.65),
+                0 0 90px rgba(208,58,80,0.45);
         }
 
 
-        /* =================================
-           ENCABEZADO
-        ================================= */
+        38% {
 
-        .place-label {
+            transform:
+                scale(1.25)
+                translateY(-12px)
+                rotate(2deg);
 
-            color: #c9aab2;
+            border-color:
+                rgba(235,70,55,0.65);
 
-            font-size: 14px;
-
-            letter-spacing: 4px;
-
-            margin-bottom: 18px;
+            box-shadow:
+                0 0 38px rgba(235,70,55,0.50),
+                0 0 75px rgba(208,58,80,0.28);
         }
 
 
-        .big-emoji {
+        52% {
 
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
+            transform:
+                scale(0.94)
+                translateY(4px)
+                rotate(-1deg);
 
-            font-size: 72px;
+            border-color:
+                rgba(208,58,80,0.45);
 
-            line-height: 1;
-
-            margin: 8px 0 24px;
-
-            animation:
-                flotar 2.5s ease-in-out infinite;
+            box-shadow:
+                0 0 25px rgba(208,58,80,0.30);
         }
 
+
+        70% {
+
+            transform:
+                scale(1.06)
+                translateY(-2px)
+                rotate(0.5deg);
+
+            border-color:
+                rgba(208,58,80,0.30);
+
+            box-shadow:
+                0 0 18px rgba(208,58,80,0.18);
+        }
+
+
+        100% {
+
+            opacity: 1;
+
+            transform:
+                scale(1)
+                translateY(0)
+                rotate(0);
+
+            border-color:
+                rgba(208,58,80,0.18);
+
+            box-shadow:
+                0 0 10px rgba(208,58,80,0.10);
+        }
+
+    }
+
+
+    @keyframes aparecer {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(18px);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+    }
+
+
+    /* =================================
+       LATIDO DEL FUEGO
+    ================================= */
+
+    @keyframes latidoFuego {
+
+        0%,
+        100% {
+
+            transform:
+                scale(1);
+
+        }
+
+        50% {
+
+            transform:
+                scale(1.22);
+
+        }
+
+    }
+
+
+    @keyframes fuego {
+
+        from {
+
+            transform:
+                scale(1)
+                rotate(-3deg);
+
+        }
+
+        to {
+
+            transform:
+                scale(1.08)
+                rotate(3deg);
+
+        }
+    }
+
+
+    @keyframes flotar {
+
+        0%,
+        100% {
+
+            transform:
+                translateY(0);
+
+        }
+
+        50% {
+
+            transform:
+                translateY(-7px);
+
+        }
+
+    }
+
+
+    /* =================================
+       CELULAR PEQUEÑO
+    ================================= */
+
+    @media (max-width: 380px) {
 
         .title {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 31px;
-
-            line-height: 1.35;
-
-            color: #ffffff;
-
-            margin-bottom: 24px;
-        }
-
-
-        .title strong {
-            color: #ffffff;
+            font-size: 27px;
         }
 
 
         .intro {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 22px;
-
-            line-height: 1.75;
-
-            color: #eadcdf;
-
-            margin-bottom: 28px;
-        }
-
-
-        /* =================================
-           FUEGO LATENTE
-        ================================= */
-
-        .fire-inline {
-
-            display: block;
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 78px;
-
-            line-height: 1;
-
-            margin: 28px auto 28px;
-
-            animation:
-                latidoFuego 0.9s ease-in-out infinite;
-
-            transform-origin: center center;
-        }
-
-
-        .subtle {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
             font-size: 20px;
-
-            line-height: 1.7;
-
-            color: #d6bec4;
-
-            margin: 25px 0 32px;
-        }
-
-
-        /* =================================
-           BLOQUE DE CAMBIO
-        ================================= */
-
-        .change-block {
-
-            margin: 32px 0;
-
-            padding: 24px 14px;
-
-            border-top:
-                1px solid rgba(255,255,255,0.14);
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.14);
-
-            animation:
-                aparecer 1s ease;
         }
 
 
         .change-text {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 23px;
-
-            line-height: 1.7;
-
-            color: #f1e2e5;
+            font-size: 21px;
         }
 
-
-        .change-text strong {
-
-            color: #ffffff;
-        }
-
-
-        /* =================================
-           DOS PERSONAS GRANDES Y CENTRADAS
-        ================================= */
 
         .couple-emoji {
-
-            display: block;
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 105px;
-
-            line-height: 1;
-
-            text-align: center;
-
-            margin: 25px auto 12px;
-
-            animation:
-                aparecer 1s ease;
+            font-size: 92px;
         }
 
-
-        /* =================================
-           CAMBIO DE POSICIÓN
-        ================================= */
 
         .position-note {
-
-            margin-top: 22px;
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 20px;
-
-            line-height: 1.7;
-
-            color: #d6bec4;
+            font-size: 19px;
         }
 
 
-        /* =================================
-           TAZA DE CAFÉ
-        ================================= */
+        .fire-inline {
+            font-size: 70px;
+        }
+
 
         .coffee-emoji {
-
-            display: block;
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 82px;
-
-            line-height: 1;
-
-            text-align: center;
-
-            margin: 18px auto 10px;
+            font-size: 74px;
         }
 
-
-        /* =================================
-           INSTRUCCIÓN HORIZONTAL
-        ================================= */
-
-        .orientation-section {
-
-            margin-top: 36px;
-
-            padding: 25px 12px;
-
-            border:
-                1px solid rgba(255,255,255,0.10);
-
-            background:
-                rgba(0,0,0,0.12);
-
-            animation:
-                aparecer 1s ease;
-        }
-
-
-        .orientation-emoji {
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 68px;
-
-            line-height: 1;
-
-            margin-bottom: 16px;
-        }
-
-
-        .orientation-title {
-
-            font-size: 24px;
-
-            font-weight: bold;
-
-            color: #ffffff;
-
-            line-height: 1.45;
-
-            margin-bottom: 15px;
-
-            padding: 18px 0;
-        }
-
-
-        .orientation-help {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 19px;
-
-            line-height: 1.65;
-
-            color: #dec8cd;
-        }
-
-
-        /* =================================
-           GUIÑO GRANDE Y CENTRADO
-        ================================= */
 
         .wink-emoji {
-
-            display: block;
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 82px;
-
-            line-height: 1;
-
-            text-align: center;
-
-            margin: 18px auto 12px;
-        }
-
-
-        .orientation-status {
-
-            margin-top: 20px;
-
-            color: #ad949b;
-
-            font-size: 14px;
-
-            letter-spacing: 2px;
-        }
-
-
-        /* =================================
-           PARTE DE TENSIÓN
-        ================================= */
-
-        .tension-section {
-
-            display: none;
-
-            margin-top: 35px;
-
-            padding-top: 80px;
-
-            animation:
-                aparecer 0.9s ease;
-
-            scroll-margin-top: 20px;
-        }
-
-
-        .fire {
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 84px;
-
-            line-height: 1;
-
-            margin-bottom: 18px;
-
-            animation:
-                fuego 0.75s ease-in-out infinite alternate;
+            font-size: 74px;
         }
 
 
         .tension-title {
-
-            font-size: 29px;
-
-            font-weight: bold;
-
-            color: #ffffff;
-
-            line-height: 1.4;
-
-            margin-bottom: 24px;
+            font-size: 25px;
         }
 
 
         .tension-text {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 21px;
-
-            line-height: 1.75;
-
-            color: #e9d7dc;
-
-            margin-bottom: 30px;
-        }
-
-
-        .tension-text strong {
-
-            color: #ffffff;
+            font-size: 19px;
         }
 
 
         .movement-note {
-
-            margin-top: 24px;
-
-            padding: 20px 14px;
-
-            border-top:
-                1px solid rgba(255,255,255,0.12);
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.12);
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 20px;
-
-            line-height: 1.7;
-
-            color: #e7d2d7;
-        }
-
-
-        /* =================================
-           BARRA ROJA
-        ================================= */
-
-        .progress-bar {
-
-            width: 100%;
-
-            height: 34px;
-
-            margin: 34px auto 0;
-
-            background:
-                rgba(0,0,0,0.48);
-
-            border:
-                1px solid #6e323e;
-
-            overflow: hidden;
-
-            box-shadow:
-                inset 0 0 10px rgba(0,0,0,0.4);
-        }
-
-
-        .progress-fill {
-
-            width: 0%;
-
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #6b1727,
-                    #9e2237,
-                    #d03a50
-                );
-
-            transition:
-                width 0.18s ease;
-
-            box-shadow:
-                0 0 16px rgba(190,34,58,0.30);
-        }
-
-
-        /* =================================
-           MENSAJE DESPUÉS DE LA BARRA
-        ================================= */
-
-        .shake-complete {
-
-            display: none;
-
-            margin-top: 28px;
-
-            padding: 26px 10px 30px;
-
-            border:
-                1px solid rgba(208,58,80,0.0);
-
-            transform-origin: center;
-
-        }
-
-
-        .shake-complete.impacto {
-
-            animation:
-                impactoMensaje 1.55s
-                cubic-bezier(.08,.92,.18,1.28)
-                both;
-
-        }
-
-
-        .shake-complete-title {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 25px;
-
-            line-height: 1.65;
-
-            color: #ffffff;
-        }
-
-
-        .shake-complete-title strong {
-
-            color: #ffffff;
+            font-size: 18px;
         }
 
 
         .shake-help {
-
-            margin-top: 20px;
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
             font-size: 18px;
-
-            line-height: 1.7;
-
-            color: #d9c2c8;
-        }
-
-
-        .shake-help strong {
-
-            color: #ffffff;
-        }
-
-
-        .shake-hint {
-
-            margin-top: 16px;
-
-            color: #af969d;
-
-            font-size: 14px;
-
-            line-height: 1.6;
         }
 
 
         .return-help {
-
-            margin-top: 20px;
-
-            color: #d4bcc2;
-
-            font-size: 22px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =================================
-           BOTONES
-        ================================= */
-
-        .button {
-
-            width: 100%;
-
-            min-height: 68px;
-
-            margin-top: 25px;
-
-            padding: 12px 18px;
-
-            border: none;
-
-            background: #e5d3d7;
-
-            color: #321820;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 19px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            cursor: pointer;
-
-            transition:
-                transform .2s ease,
-                background .3s ease;
-        }
-
-
-        .button:active {
-
-            transform:
-                scale(0.98);
-        }
-
-
-        /* =================================
-           VIDEO
-        ================================= */
-
-        .video-section {
-
-            display: none;
-
-            margin-top: 42px;
-
-            animation:
-                aparecer 1s ease;
-        }
-
-
-        .video-title {
-
-            color: #cfafb7;
-
-            font-size: 14px;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 16px;
-        }
-
-
-        .video-wrapper {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 360px;
-
-            margin: 0 auto;
-
-            aspect-ratio: 9 / 16;
-
-            overflow: hidden;
-
-            background: #000000;
-
-            border:
-                1px solid #8a5d68;
-
-            box-shadow:
-                0 15px 40px rgba(0,0,0,0.5);
-        }
-
-
-        .video-wrapper iframe {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            border: 0;
-        }
-
-
-        /* =================================
-           CLAVE DE MESA
-        ================================= */
-
-        .table-section {
-
-            display: none;
-
-            margin-top: 38px;
-
-            animation:
-                aparecer 1s ease;
-        }
-
-
-        .table-emoji {
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 70px;
-
-            line-height: 1;
-
-            margin-bottom: 17px;
-        }
-
-
-        .table-title {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 24px;
-
-            line-height: 1.6;
-
-            color: #ffffff;
-
-            margin-bottom: 22px;
+            font-size: 20px;
         }
 
 
         .table-text {
-
-            color: #dcc5ca;
-
-            font-size: 20px;
-
-            line-height: 1.7;
-
-            margin-bottom: 22px;
+            font-size: 19px;
         }
 
-
-        .table-text strong {
-
-            color: #ffffff;
-        }
-
-
-        /* =================================
-           DETECTIVE
-        ================================= */
 
         .detective-emoji {
-
-            display: block;
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 78px;
-
-            line-height: 1;
-
-            text-align: center;
-
-            margin: 28px auto 30px;
+            font-size: 70px;
         }
 
 
-        input {
-
-            width: 100%;
-
-            height: 64px;
-
-            background:
-                rgba(0,0,0,0.42);
-
-            border:
-                2px solid #855965;
-
-            color: #ffffff;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 24px;
-
-            text-align: center;
-
-            padding: 10px 14px;
-
-            outline: none;
-
-            border-radius: 0;
-        }
-
-
-        input:focus {
-
-            border-color: #c49da8;
-
-            box-shadow:
-                0 0 12px rgba(196,157,168,0.15);
-        }
-
-
-        .table-error {
-
-            display: none;
-
-            margin-top: 18px;
-
-            padding: 13px;
-
-            border:
-                1px solid #8d4f5c;
-
-            color: #edc0c8;
-
-            font-size: 16px;
-
-            line-height: 1.5;
-        }
-
-
-        /* =================================
-           ÉXITO AL ENCONTRAR LA MESA
-        ================================= */
-
-        .table-success {
-
-            display: none;
-
-            margin-top: 30px;
-
-            padding-top: 35px;
-
-            scroll-margin-top: 70px;
-
-            animation:
-                aparecer 1s ease;
-        }
-
-
-        .success-emoji {
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 76px;
-
-            line-height: 1;
-
-            margin-bottom: 15px;
+        .button {
+            font-size: 17px;
         }
 
 
         .success-title {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 27px;
-
-            font-weight: bold;
-
-            line-height: 1.45;
-
-            color: #ffffff;
-
-            margin-bottom: 22px;
+            font-size: 24px;
         }
 
 
         .success-text {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 21px;
-
-            line-height: 1.75;
-
-            color: #eadcdf;
-
+            font-size: 19px;
         }
 
+    }
 
-        .success-text strong {
+</style>
 
-            color: #ffffff;
-        }
 
+<!-- =========================================
+     EMAILJS
+========================================== -->
 
-        /* =================================
-           CONTINUAR HISTORIA
-        ================================= */
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
-        .story-button {
+<script type="text/javascript">
 
-            display: none;
+    (function() {
 
-            margin-top: 30px;
+        emailjs.init({
+            publicKey: "sLFfAQu2olv9Gzvx-"
+        });
 
-            background: #d9bdc4;
-        }
+    })();
 
-
-        /* =================================
-           ANIMACIONES
-        ================================= */
-
-        @keyframes impactoMensaje {
-
-            0% {
-
-                opacity: 0;
-
-                transform:
-                    scale(0.20)
-                    translateY(100px)
-                    rotate(-5deg);
-
-                border-color:
-                    rgba(208,58,80,0);
-
-                box-shadow:
-                    0 0 0 rgba(208,58,80,0);
-            }
-
-
-            12% {
-
-                opacity: 1;
-
-                transform:
-                    scale(1.55)
-                    translateY(-25px)
-                    rotate(4deg);
-
-                border-color:
-                    rgba(255,225,80,0.95);
-
-                box-shadow:
-                    0 0 70px rgba(255,190,30,0.95),
-                    0 0 130px rgba(255,70,20,0.65),
-                    0 0 180px rgba(208,58,80,0.40);
-            }
-
-
-            24% {
-
-                transform:
-                    scale(0.78)
-                    translateY(12px)
-                    rotate(-3deg);
-
-                border-color:
-                    rgba(255,120,40,0.80);
-
-                box-shadow:
-                    0 0 45px rgba(255,110,30,0.65),
-                    0 0 90px rgba(208,58,80,0.45);
-            }
-
-
-            38% {
-
-                transform:
-                    scale(1.25)
-                    translateY(-12px)
-                    rotate(2deg);
-
-                border-color:
-                    rgba(235,70,55,0.65);
-
-                box-shadow:
-                    0 0 38px rgba(235,70,55,0.50),
-                    0 0 75px rgba(208,58,80,0.28);
-            }
-
-
-            52% {
-
-                transform:
-                    scale(0.94)
-                    translateY(4px)
-                    rotate(-1deg);
-
-                border-color:
-                    rgba(208,58,80,0.45);
-
-                box-shadow:
-                    0 0 25px rgba(208,58,80,0.30);
-            }
-
-
-            70% {
-
-                transform:
-                    scale(1.06)
-                    translateY(-2px)
-                    rotate(0.5deg);
-
-                border-color:
-                    rgba(208,58,80,0.30);
-
-                box-shadow:
-                    0 0 18px rgba(208,58,80,0.18);
-            }
-
-
-            100% {
-
-                opacity: 1;
-
-                transform:
-                    scale(1)
-                    translateY(0)
-                    rotate(0);
-
-                border-color:
-                    rgba(208,58,80,0.18);
-
-                box-shadow:
-                    0 0 10px rgba(208,58,80,0.10);
-            }
-
-        }
-
-
-        @keyframes aparecer {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(18px);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        /* =================================
-           LATIDO DEL FUEGO
-        ================================= */
-
-        @keyframes latidoFuego {
-
-            0%,
-            100% {
-
-                transform:
-                    scale(1);
-
-            }
-
-            50% {
-
-                transform:
-                    scale(1.22);
-
-            }
-
-        }
-
-
-        @keyframes fuego {
-
-            from {
-
-                transform:
-                    scale(1)
-                    rotate(-3deg);
-
-            }
-
-            to {
-
-                transform:
-                    scale(1.08)
-                    rotate(3deg);
-
-            }
-        }
-
-
-        @keyframes flotar {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0);
-
-            }
-
-            50% {
-
-                transform:
-                    translateY(-7px);
-
-            }
-
-        }
-
-
-        /* =================================
-           CELULAR PEQUEÑO
-        ================================= */
-
-        @media (max-width: 380px) {
-
-            .title {
-                font-size: 27px;
-            }
-
-
-            .intro {
-                font-size: 20px;
-            }
-
-
-            .change-text {
-                font-size: 21px;
-            }
-
-
-            .couple-emoji {
-                font-size: 92px;
-            }
-
-
-            .position-note {
-                font-size: 19px;
-            }
-
-
-            .fire-inline {
-                font-size: 70px;
-            }
-
-
-            .coffee-emoji {
-                font-size: 74px;
-            }
-
-
-            .wink-emoji {
-                font-size: 74px;
-            }
-
-
-            .tension-title {
-                font-size: 25px;
-            }
-
-
-            .tension-text {
-                font-size: 19px;
-            }
-
-
-            .movement-note {
-                font-size: 18px;
-            }
-
-
-            .shake-help {
-                font-size: 18px;
-            }
-
-
-            .return-help {
-                font-size: 20px;
-            }
-
-
-            .table-text {
-                font-size: 19px;
-            }
-
-
-            .detective-emoji {
-                font-size: 70px;
-            }
-
-
-            .button {
-                font-size: 17px;
-            }
-
-
-            .success-title {
-                font-size: 24px;
-            }
-
-
-            .success-text {
-                font-size: 19px;
-            }
-
-        }
-
-    </style>
-
-
-    <!-- =========================================
-         EMAILJS
-    ========================================== -->
-
-    <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-
-    <script type="text/javascript">
-
-        (function() {
-
-            emailjs.init({
-                publicKey: "sLFfAQu2olv9Gzvx-"
-            });
-
-        })();
-
-    </script>
+</script>
 
 </head>
 
-
 <body>
-
 
 <div
     id="explosionOverlay"
     class="explosion-overlay">
 </div>
 
-
 <main class="document">
 
-
-    <div class="place-label">
-        POSTA 05
-    </div>
-
-
-    <div class="big-emoji">
-        
-    </div>
+<div class="place-label">
+    POSTA 05
+</div>
 
 
-    <div class="title">
-
-        Después de aquella noche
-        en Materia Prima...
-
-    </div>
+<div class="big-emoji">
+    
+</div>
 
 
-    <div class="intro">
+<div class="title">
 
-        ... quedó algo latente.
+    Después de aquella noche
+    en Materia Prima...
 
-        <span class="fire-inline">
-            🔥
-        </span>
+</div>
 
-        Habíamos quedado en
+
+<div class="intro">
+
+    ... quedó algo latente.
+
+    <span class="fire-inline">
+        🔥
+    </span>
+
+    Habíamos quedado en
+
+    <strong>
+        "coordinar"...
+    </strong>
+
+</div>
+
+
+<div class="change-block">
+
+    <div class="change-text">
+
+        Hasta ese momento,
+        casi todo había sucedido
+        de una determinada manera.
+
+        <br><br>
+
+        Nos encontrábamos,
+        hablábamos,
+        caminábamos...
+
+        <br><br>
 
         <strong>
-            "coordinar"...
+            siempre de pie, siempre en vertical.
+        </strong>
+
+
+        <div class="couple-emoji">
+            🧍🏻‍♂️🧍🏼‍♀️
+        </div>
+
+    </div>
+
+
+    <div class="position-note">
+
+        Pero ese domingo iba a haber
+        un pequeño cambio de posición...
+
+    </div>
+
+</div>
+
+
+<div class="subtle">
+
+    Primero, un café en Growler
+
+    <div class="coffee-emoji">
+        ☕
+    </div>
+
+    Después...
+
+    <strong>
+        bueno...
+    </strong>
+
+    <br><br>
+
+    Mejor no adelantemos
+    tanto la historia.
+
+</div>
+
+
+<section class="orientation-section">
+
+
+    <div class="orientation-emoji">
+        ↔️
+    </div>
+
+
+    <div class="orientation-title">
+
+        Llegado este momento
+        hay cosas
+        que requieren una 
+        posición diferente
+
+    </div>
+
+
+    <div class="orientation-help">
+
+        Hasta acá la historia
+        venia sucediendo
+        toda en vertical.
+
+        <br><br>
+
+        Hay una parte de la historia
+        que necesita contarse en horizontal...
+
+        <div class="wink-emoji">
+            😉
+        </div>
+
+        <br>
+
+        <strong>
+
+            Girá el teléfono para continuar...
+
         </strong>
 
     </div>
 
 
-    <div class="change-block">
+    <div
+        id="orientationStatus"
+        class="orientation-status">
 
-        <div class="change-text">
-
-            Hasta ese momento,
-            casi todo había sucedido
-            de una determinada manera.
-
-            <br><br>
-
-            Nos encontrábamos,
-            hablábamos,
-            caminábamos...
-
-            <br><br>
-
-            <strong>
-                siempre de pie, siempre en vertical.
-            </strong>
-
-
-            <div class="couple-emoji">
-                🧍🏻‍♂️🧍🏼‍♀️
-            </div>
-
-        </div>
-
-
-        <div class="position-note">
-
-            Pero ese domingo iba a haber
-            un pequeño cambio de posición...
-
-        </div>
+        ESPERANDO CAMBIO DE POSICIÓN...
 
     </div>
 
 
-    <div class="subtle">
+</section>
 
-        Primero, un café en Growler
 
-        <div class="coffee-emoji">
-            ☕
-        </div>
+<section
+    id="tensionSection"
+    class="tension-section">
 
-        Después...
+
+    <div class="fire">
+
+        🔥🔥🔥
+
+    </div>
+
+
+    <div class="tension-title">
+
+        Ahora sí!
+
+        <br>
+
+        Esta posición horizontal
+        sí tiene sentido!
+
+    </div>
+
+
+    <div class="tension-text">
+
+        Ese domingo había
 
         <strong>
-            bueno...
+            nervios.
         </strong>
 
         <br><br>
 
-        Mejor no adelantemos
-        tanto la historia.
+        Había expectativa,
+        miradas que duraban un poquito más
+        de lo necesario...
+
+        <br><br>
+
+        y una tensión que venía siendo
+        bastante difícil
+        de disimular.
+
+        <br><br>
+
+        Cuando la tensión aumenta tanto,
+        el cuerpo necesita alguna
+        manera de descargarla:
+
+        <strong>
+            movimiento,
+            ritmo,
+            un pequeño vaivén...
+        </strong>
+
+        <br><br>
 
     </div>
 
 
-    <section class="orientation-section">
+    <div class="movement-note">
+
+        Parece que teníamos
+        un pequeño exceso de energía
+        acumulada.
+
+        <br><br>
+
+        <strong>
+            Habrá que moverse y agitarse un poco
+             para aliviar
+            esa tensión, como sucedió
+            aquella tarde...
+        </strong>
+
+    </div>
 
 
-        <div class="orientation-emoji">
-            ↔️
+    <div class="progress-bar">
+
+        <div
+            id="progressFill"
+            class="progress-fill">
         </div>
 
-
-        <div class="orientation-title">
-
-            Llegado este momento
-            hay cosas
-            que requieren una 
-            posición diferente
-
-        </div>
+    </div>
 
 
-        <div class="orientation-help">
+    <div
+        id="shakeComplete"
+        class="shake-complete">
 
-            Hasta acá la historia
-            venia sucediendo
-            toda en vertical.
 
-            <br><br>
-
-            Hay una parte de la historia
-            que necesita contarse en horizontal...
-
-            <div class="wink-emoji">
-                😉
-            </div>
-
-            <br>
+        <div class="shake-complete-title">
 
             <strong>
 
-                Girá el teléfono para continuar...
+                Bueno... bueno...!
 
+            </strong>
+
+            creo que ya entendimos bien
+            el concepto de cómo se aliviaron
+            las tensiones...
+            <br><br>
+
+            🔥  😏  🔥
+
+        </div>
+
+
+        <div class="return-help">
+
+            Parece que aquella tensión
+            finalmente encontró
+            una fantástica manera de descargarse.
+
+            <br><br>
+
+            Ahora la historia vuelve
+            a ponerse de pie para seguir caminando, para seguir avanzando.
+
+            <br><br>
+
+            <strong>
+                Volvé a poner el teléfono
+                en vertical.
             </strong>
 
         </div>
 
 
-        <div
-            id="orientationStatus"
-            class="orientation-status">
+    </div>
 
-            ESPERANDO CAMBIO DE POSICIÓN...
+
+    <div
+        id="shakeHelp"
+        class="shake-help">
+
+        Agitá el teléfono con decisión,
+        como se agitaron las cosas
+        esa tarde.
+
+        <br><br>
+
+        <strong>
+            Un poco de ritmo,
+            un poco de movimiento,
+            dale que la tensión ya no se aguanta! Pero dejá siempre el teléfono en horizontal!
+        </strong>
+
+    </div>
+
+
+    <div
+        id="shakeHint"
+        class="shake-hint">
+
+        No hace falta romper el teléfono.
+        Todavía lo necesitamos.
+
+    </div>
+
+
+</section>
+
+
+<section
+    id="videoSection"
+    class="video-section">
+
+
+    <div class="video-title">
+
+        ARCHIVO · GROWLER CAFÉ
+
+    </div>
+
+
+    <div class="video-wrapper">
+
+        <iframe
+            src="https://www.youtube.com/embed/EANrePVB_jg"
+            title="Growler Café"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+</section>
+
+
+<section
+    id="tableSection"
+    class="table-section">
+
+
+    <div class="table-emoji">
+        ☕🪑🔎
+    </div>
+
+
+    <div class="table-title">
+
+        Ahora hay que hacer
+        algo de manera presencial,
+        porque éste recorrido hay
+        que vivirlo
+
+    </div>
+
+
+    <div class="table-text">
+
+        <br><br>
+
+        Vas a tener que averiguar
+        que número de mesa tiene
+        la que estuvimos sentados
+        aquella tarde... si si... en
+        Growler cafe!
+
+        <div class="detective-emoji">
+            🕵️‍♀️
+        </div>
+
+        Podés preguntarle a los mozos,
+        en la admisión... O mejor todavía,
+        pedir un café y seguir recordando
+        y reviviendo nuestra historia. Pero no te demores tanto que ésto sigue!
+
+        <br><br>
+
+        <br><br>
+
+        Cuando encuentres el número de aquella mesa,
+        ingresalo acá <strong><em>en letras</em></strong>.
+
+    </div>
+
+
+    <input
+        type="text"
+        id="tableInput"
+        inputmode="text"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="CÓDIGO"
+    >
+
+
+    <button
+        class="button"
+        type="button"
+        onclick="verificarMesa()">
+
+        VERIFICAR CÓDIGO
+
+    </button>
+
+
+    <div
+        id="tableError"
+        class="table-error">
+
+        Mmmmm esa no es la clave.
+
+        <br><br>
+
+        Seguí investigando.
+
+    </div>
+
+
+    <div
+        id="tableSuccess"
+        class="table-success">
+
+
+        <div class="success-emoji">
+
+            🎉👏🥂
 
         </div>
 
 
-    </section>
+        <div class="success-title">
 
-
-    <section
-        id="tensionSection"
-        class="tension-section">
-
-
-        <div class="fire">
-
-            🔥🔥🔥
+            ¡FANTÁSTICO!
 
         </div>
 
 
-        <div class="tension-title">
-
-            Ahora sí!
-
-            <br>
-
-            Esta posición horizontal
-            sí tiene sentido!
-
-        </div>
-
-
-        <div class="tension-text">
-
-            Ese domingo había
+        <div class="success-text">
 
             <strong>
-                nervios.
+                ¡Qué hermoso que hayas ido hasta ahí,
+                y que hayas revivido aquel momento!
             </strong>
 
             <br><br>
 
-            Había expectativa,
-            miradas que duraban un poquito más
-            de lo necesario...
+            <br><br>
+
+            Y justamente de eso se trata
+            este recorrido.
 
             <br><br>
 
-            y una tensión que venía siendo
-            bastante difícil
-            de disimular.
-
-            <br><br>
-
-            Cuando la tensión aumenta tanto,
-            el cuerpo necesita alguna
-            manera de descargarla:
-
-            <strong>
-                movimiento,
-                ritmo,
-                un pequeño vaivén...
-            </strong>
-
-            <br><br>
-
-        </div>
-
-
-        <div class="movement-note">
-
-            Parece que teníamos
-            un pequeño exceso de energía
-            acumulada.
+            De volver, aunque sea por un rato,
+            a esos primeros encuentros,
+            a esos pequeños lugares
+            que terminaron siendo enormes
+            en nuestra historia.
 
             <br><br>
 
             <strong>
-                Habrá que moverse y agitarse un poco
-                 para aliviar
-                esa tensión, como sucedió
-                aquella tarde...
+                Qué lindo poder recorrer
+                juntos nuestra historia
+                y como empezó todo!
             </strong>
 
         </div>
 
 
-        <div class="progress-bar">
+    </div>
 
-            <div
-                id="progressFill"
-                class="progress-fill">
-            </div>
 
-        </div>
+    <button
+        id="storyButton"
+        class="button story-button"
+        type="button"
+        onclick="continuarHistoria()">
 
+        CONTINUAR HISTORIA
 
-        <div
-            id="shakeComplete"
-            class="shake-complete">
+    </button>
 
 
-            <div class="shake-complete-title">
-
-                <strong>
-
-                    Bueno... bueno...!
-
-                </strong>
-
-                creo que ya entendimos bien
-                el concepto de cómo se aliviaron
-                las tensiones...
-                <br><br>
-
-                🔥  😏  🔥
-
-            </div>
-
-
-            <div class="return-help">
-
-                Parece que aquella tensión
-                finalmente encontró
-                una fantástica manera de descargarse.
-
-                <br><br>
-
-                Ahora la historia vuelve
-                a ponerse de pie para seguir caminando, para seguir avanzando.
-
-                <br><br>
-
-                <strong>
-                    Volvé a poner el teléfono
-                    en vertical.
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            id="shakeHelp"
-            class="shake-help">
-
-            Agitá el teléfono con decisión,
-            como se agitaron las cosas
-            esa tarde.
-
-            <br><br>
-
-            <strong>
-                Un poco de ritmo,
-                un poco de movimiento,
-                dale que la tensión ya no se aguanta!
-            </strong>
-
-        </div>
-
-
-        <div
-            id="shakeHint"
-            class="shake-hint">
-
-            No hace falta romper el teléfono.
-            Todavía lo necesitamos.
-
-        </div>
-
-
-    </section>
-
-
-    <section
-        id="videoSection"
-        class="video-section">
-
-
-        <div class="video-title">
-
-            ARCHIVO · GROWLER CAFÉ
-
-        </div>
-
-
-        <div class="video-wrapper">
-
-            <iframe
-                src="https://www.youtube.com/embed/EANrePVB_jg"
-                title="Growler Café"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-
-    </section>
-
-
-    <section
-        id="tableSection"
-        class="table-section">
-
-
-        <div class="table-emoji">
-            ☕🪑🔎
-        </div>
-
-
-        <div class="table-title">
-
-            Ahora hay que hacer
-            algo de manera presencial,
-            porque éste recorrido hay
-            que vivirlo
-
-        </div>
-
-
-        <div class="table-text">
-
-            <br><br>
-
-            Vas a tener que averiguar
-            que número de mesa tiene
-            la que estuvimos sentados
-            aquella tarde... si si... en
-            Growler cafe!
-
-            <div class="detective-emoji">
-                🕵️‍♀️
-            </div>
-
-            Podés preguntarle a los mozos,
-            en la admisión... O mejor todavía,
-            pedir un café y seguir recordando
-            y reviviendo nuestra historia. Pero no te demores tanto que ésto sigue!
-
-            <br><br>
-
-            <br><br>
-
-            Cuando encuentres el número de aquella mesa,
-            ingresalo acá <strong><em>en letras</em></strong>.
-
-        </div>
-
-
-        <input
-            type="text"
-            id="tableInput"
-            inputmode="text"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="CÓDIGO"
-        >
-
-
-        <button
-            class="button"
-            type="button"
-            onclick="verificarMesa()">
-
-            VERIFICAR CÓDIGO
-
-        </button>
-
-
-        <div
-            id="tableError"
-            class="table-error">
-
-            Mmmmm esa no es la clave.
-
-            <br><br>
-
-            Seguí investigando.
-
-        </div>
-
-
-        <div
-            id="tableSuccess"
-            class="table-success">
-
-
-            <div class="success-emoji">
-
-                🎉👏🥂
-
-            </div>
-
-
-            <div class="success-title">
-
-                ¡FANTÁSTICO!
-
-            </div>
-
-
-            <div class="success-text">
-
-                <strong>
-                    ¡Qué hermoso que hayas ido hasta ahí,
-                    y que hayas revivido aquel momento!
-                </strong>
-
-                <br><br>
-
-                <br><br>
-
-                Y justamente de eso se trata
-                este recorrido.
-
-                <br><br>
-
-                De volver, aunque sea por un rato,
-                a esos primeros encuentros,
-                a esos pequeños lugares
-                que terminaron siendo enormes
-                en nuestra historia.
-
-                <br><br>
-
-                <strong>
-                    Qué lindo poder recorrer
-                    juntos nuestra historia
-                    y como empezó todo!
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-        <button
-            id="storyButton"
-            class="button story-button"
-            type="button"
-            onclick="continuarHistoria()">
-
-            CONTINUAR HISTORIA
-
-        </button>
-
-
-    </section>
-
+</section>
 
 </main>
-
-
 
 <script>
 
@@ -2447,16 +2497,34 @@
         );
 
 
+        /* =============================================
+           VIBRACIÓN INTERMITENTE
+           
+           Antes:
+           120 ms
+           pausa 50 ms
+           180 ms
+           pausa 40 ms
+           100 ms
+
+           Ahora: TRIPLE DE DURACIÓN
+           360 ms
+           pausa 120 ms
+           540 ms
+           pausa 120 ms
+           300 ms
+        ============================================= */
+
         if (
             "vibrate" in navigator
         ) {
 
             navigator.vibrate([
+                360,
                 120,
-                50,
-                180,
-                40,
-                100
+                540,
+                120,
+                300
             ]);
 
         }
@@ -2815,7 +2883,6 @@
 
 
 </script>
-
 
 </body>
 
