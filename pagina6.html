@@ -13,6 +13,39 @@
     <title>Dani & Juan — El árbol</title>
 
 
+    <!-- ==================================================
+         EMAILJS
+    ================================================== -->
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <script type="text/javascript">
+
+        const EMAILJS_SERVICE_ID =
+            "service_acoc9zl";
+
+        const EMAILJS_TEMPLATE_ID =
+            "template_b9kud7t";
+
+        const EMAILJS_PUBLIC_KEY =
+            "sLFfAQu2olv9Gzvx-";
+
+
+        (function() {
+
+            emailjs.init({
+                publicKey:
+                    EMAILJS_PUBLIC_KEY
+            });
+
+        })();
+
+    </script>
+
+
     <style>
 
         * {
@@ -2209,11 +2242,6 @@
         </div>
 
 
-        <!-- ==================================================
-             NUEVA INSTANCIA:
-             LOS SENTIDOS
-        ================================================== -->
-
         <section
             id="sensesSection"
             class="intermediate-section">
@@ -2352,11 +2380,6 @@
 
         </section>
 
-
-        <!-- ==================================================
-             NUEVA INSTANCIA:
-             CONTEMPLACIÓN
-        ================================================== -->
 
         <section
             id="contemplationSection"
@@ -2607,11 +2630,6 @@
         </section>
 
 
-        <!-- ==================================================
-             NUEVA INSTANCIA:
-             PREPARARSE
-        ================================================== -->
-
         <section
             id="attentionSection"
             class="attention-section">
@@ -2706,10 +2724,6 @@
 
         </section>
 
-
-        <!-- ==================================================
-             SECCIÓN ORIGINAL
-        ================================================== -->
 
         <section
             id="finalSection"
@@ -3110,10 +3124,6 @@
 
     /* ==================================================
        ÁRBOL INICIAL
-
-       Después de 2 segundos aparece de golpe.
-       Permanece visible durante 4 segundos.
-       Después desaparece durante 2 segundos.
     ================================================== */
 
     const initialTree =
@@ -3168,7 +3178,15 @@
 
 
     /* ==================================================
-       ESTADOS DE LAS NUEVAS INSTANCIAS
+       CONTROL DEL CORREO
+    ================================================== */
+
+    let correoArbolEnviado =
+        false;
+
+
+    /* ==================================================
+       ESTADOS
     ================================================== */
 
     let sensesShown =
@@ -3182,6 +3200,122 @@
 
     let attentionShown =
         false;
+
+
+    /* ==================================================
+       ENVIAR CORREO DE NOTIFICACIÓN
+       
+       Se ejecuta cuando:
+       
+       1. El GPS confirma la llegada.
+       2. Se utiliza el atajo "arbol".
+       3. Se utiliza el atajo "1111".
+       
+       El correo se envía solamente una vez.
+    ================================================== */
+
+    function enviarNotificacionArbol(
+        origen,
+        datosGPS = {}
+    ) {
+
+        if (correoArbolEnviado) {
+
+            console.log(
+                "EmailJS: el correo ya fue enviado."
+            );
+
+            return;
+        }
+
+
+        correoArbolEnviado =
+            true;
+
+
+        const fechaHora =
+            new Date().toLocaleString(
+                "es-AR",
+                {
+                    dateStyle:
+                        "full",
+
+                    timeStyle:
+                        "medium"
+                }
+            );
+
+
+        const templateParams = {
+
+            origen:
+                origen,
+
+            evento:
+                "POSTA 06 — ÁRBOL ENCONTRADO",
+
+            fecha_hora:
+                fechaHora,
+
+            latitud:
+                datosGPS.latitud ??
+                "No disponible",
+
+            longitud:
+                datosGPS.longitud ??
+                "No disponible",
+
+            distancia_metros:
+                datosGPS.distancia ??
+                "No disponible",
+
+            mensaje:
+                "Dani llegó a la posta del árbol.",
+
+        };
+
+
+        console.log(
+            "EmailJS: enviando notificación...",
+            templateParams
+        );
+
+
+        emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        )
+        .then(
+            function(response) {
+
+                console.log(
+                    "EmailJS: correo enviado correctamente.",
+                    response.status,
+                    response.text
+                );
+
+            },
+
+            function(error) {
+
+                console.error(
+                    "EmailJS: error al enviar el correo.",
+                    error
+                );
+
+                /*
+                 * Si EmailJS falla, permitimos volver
+                 * a intentar el envío si la función
+                 * vuelve a ejecutarse.
+                 */
+
+                correoArbolEnviado =
+                    false;
+            }
+        );
+
+    }
 
 
     /* ==================================================
@@ -3230,10 +3364,6 @@
 
     /* ==================================================
        COMPROBAR UBICACIÓN
-
-       ESTA ES LA ÚNICA VERIFICACIÓN GPS.
-       Cuando entra dentro del radio de 50 metros,
-       se considera que llegó al árbol.
     ================================================== */
 
     function comprobarUbicacion(position) {
@@ -3272,7 +3402,33 @@
 
             detenerGeolocalizacion();
 
-            mostrarArbolEncontrado();
+
+            /*
+             * NUEVO:
+             * Se envía el correo inmediatamente
+             * cuando el GPS confirma la llegada.
+             */
+
+            enviarNotificacionArbol(
+                "LOCALIZACIÓN GPS",
+                {
+                    latitud:
+                        lat,
+
+                    longitud:
+                        lon,
+
+                    distancia:
+                        Math.round(
+                            distancia
+                        )
+                }
+            );
+
+
+            mostrarArbolEncontrado(
+                "LOCALIZACIÓN GPS"
+            );
         }
     }
 
@@ -3301,7 +3457,9 @@
        MOSTRAR LLEGADA
     ================================================== */
 
-    function mostrarArbolEncontrado() {
+    function mostrarArbolEncontrado(
+        origen = "LOCALIZACIÓN GPS"
+    ) {
 
         const found =
             document.getElementById(
@@ -3535,10 +3693,6 @@
 
     /* ==================================================
        PREPARAR BOTÓN DEL ÁRBOL
-
-       Ya no se realiza ninguna segunda consulta GPS.
-       El botón queda preparado para que la usuaria
-       confirme manualmente que tocó el árbol.
     ================================================== */
 
     function prepararBotonArbol() {
@@ -3564,14 +3718,8 @@
 
     /* ==================================================
        CONFIRMAR QUE ESTÁ JUNTO AL ÁRBOL
-
-       IMPORTANTE:
-       NO SE HACE UNA SEGUNDA VERIFICACIÓN GPS.
-
-       La primera verificación GPS ya confirmó que
-       está dentro del radio de 50 metros.
-
-       Al tocar el botón, se continúa directamente.
+       
+       NO HACE SEGUNDA CONSULTA GPS.
     ================================================== */
 
     function confirmarArbolTocado() {
@@ -4181,11 +4329,6 @@
 
     /* ==================================================
        CUENTA REGRESIVA
-
-       TODOS los cambios ocurren cada 1 segundo.
-
-       30 → 29 → 28 ... → 10
-       10 → 9.9 → 9.8 ... → 0.1 → 0
     ================================================== */
 
     let countdownTimer =
@@ -4383,6 +4526,8 @@
 
             }
         );
+
+
     }
 
 
@@ -4503,10 +4648,32 @@
                 detenerGeolocalizacion();
 
 
+                /*
+                 * NUEVO:
+                 * El atajo también dispara el correo.
+                 */
+
+                enviarNotificacionArbol(
+                    "ATAJO: " + value,
+                    {
+                        latitud:
+                            "No disponible",
+
+                        longitud:
+                            "No disponible",
+
+                        distancia:
+                            "No disponible"
+                    }
+                );
+
+
                 hiddenShortcut.remove();
 
 
-                mostrarArbolEncontrado();
+                mostrarArbolEncontrado(
+                    "ATAJO: " + value
+                );
 
             } else {
 
