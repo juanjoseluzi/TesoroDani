@@ -1,1402 +1,1464 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <title>Dani & Juan — Materia Prima</title>
-
-
-    <!-- =================================================
-         EMAILJS
-    ================================================== -->
-
-    <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+<title>Dani & Juan — Materia Prima</title>
 
 
-    <script>
+<!-- =================================================
+     EMAILJS
+================================================== -->
 
-        (function () {
-
-            emailjs.init({
-
-                publicKey:
-                    "sLFfAQu2olv9Gzvx-"
-
-            });
-
-        })();
-
-    </script>
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
 
-    <style>
+<script>
 
-        * {
-            box-sizing: border-box;
+    (function () {
+
+        emailjs.init({
+
+            publicKey:
+                "sLFfAQu2olv9Gzvx-"
+
+        });
+
+    })();
+
+</script>
+
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+
+        width: 100%;
+        min-height: 100%;
+    }
+
+
+    body {
+
+        background:
+            radial-gradient(
+                circle at center,
+                #783846 0%,
+                #4c242f 38%,
+                #241017 72%,
+                #0b0608 100%
+            );
+
+        color: #eeeeee;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        min-height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: flex-start;
+
+        padding: 20px 15px 50px;
+
+        transition:
+            background 2s ease;
+    }
+
+
+    .document {
+
+        width: 100%;
+
+        max-width: 540px;
+
+        text-align: center;
+
+        padding: 18px 20px 40px;
+    }
+
+
+    /* =========================================
+       ENCABEZADO
+    ========================================= */
+
+    .place-label {
+
+        color: #cdaab3;
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .big-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 64px;
+
+        line-height: 1;
+
+        margin: 10px 0 22px;
+
+        animation:
+            flotar 2.5s ease-in-out infinite;
+    }
+
+
+    .title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 31px;
+
+        line-height: 1.35;
+
+        color: #ffffff;
+
+        margin-bottom: 22px;
+    }
+
+
+    .title strong {
+
+        color: #ffffff;
+    }
+
+
+    .intro {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 22px;
+
+        line-height: 1.7;
+
+        color: #eadcdf;
+
+        margin-bottom: 30px;
+    }
+
+
+    .emotional {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 22px;
+
+        line-height: 1.7;
+
+        color: #f0dfe3;
+
+        margin: 30px 4px;
+    }
+
+
+    /* =========================================
+       RASPADITA
+    ========================================= */
+
+    .scratch-section {
+
+        margin-top: 42px;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .scratch-title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 27px;
+
+        line-height: 1.5;
+
+        color: #ffffff;
+
+        margin-bottom: 12px;
+    }
+
+
+    .scratch-subtitle {
+
+        color: #e0c8ce;
+
+        font-size: 18px;
+
+        line-height: 1.7;
+
+        margin-bottom: 28px;
+    }
+
+
+    .kiss-instruction {
+
+        margin: 25px 5px;
+
+        padding: 20px 14px;
+
+        border-top:
+            1px solid rgba(255,255,255,0.15);
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.15);
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 21px;
+
+        line-height: 1.7;
+
+        color: #f0e1e5;
+    }
+
+
+    .kiss-instruction strong {
+
+        color: #ffffff;
+    }
+
+
+    .kiss-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 72px;
+
+        line-height: 1;
+
+        margin: 10px 0 18px;
+
+        animation:
+            beso 1.4s ease-in-out infinite;
+    }
+
+
+    /* =========================================
+       ÁREA RASPADITA
+    ========================================= */
+
+    .scratch-area {
+
+        position: relative;
+
+        width: 100%;
+
+        max-width: 360px;
+
+        aspect-ratio: 1 / 1;
+
+        margin: 0 auto;
+
+        overflow: hidden;
+
+        border:
+            2px solid #93626d;
+
+        background: #111111;
+
+        box-shadow:
+            0 16px 40px rgba(0,0,0,0.5);
+
+        touch-action: none;
+
+        user-select: none;
+    }
+
+
+    .scratch-image {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+
+        user-select: none;
+
+        pointer-events: none;
+    }
+
+
+    #scratchCanvas {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        touch-action: none;
+
+        cursor: crosshair;
+    }
+
+
+    /* =========================================
+       CONTADOR
+    ========================================= */
+
+    .kiss-counter {
+
+        margin-top: 20px;
+
+        color: #e1c9ce;
+
+        font-size: 17px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .kiss-number {
+
+        color: #ffffff;
+
+        font-size: 25px;
+
+        font-weight: bold;
+    }
+
+
+    .progress-text {
+
+        margin-top: 8px;
+
+        color: #aa8c94;
+
+        font-size: 13px;
+    }
+
+
+    /* =========================================
+       BOTÓN BESOS
+    ========================================= */
+
+    #enoughKissesButton {
+
+        display: none;
+
+        width: 100%;
+
+        height: 68px;
+
+        margin-top: 28px;
+
+        border: none;
+
+        background: #efdde1;
+
+        color: #321820;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 19px;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+
+        cursor: pointer;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    /* =========================================
+       CLAVE COORDINAMOS
+    ========================================= */
+
+    .key-section {
+
+        display: none;
+
+        margin-top: 55px;
+
+        padding-top: 30px;
+
+        animation:
+            aparecer 1s ease;
+
+        scroll-margin-top: 28px;
+    }
+
+
+    .key-intro {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 24px;
+
+        line-height: 1.65;
+
+        color: #ffffff;
+
+        margin-bottom: 23px;
+    }
+
+
+    .key-hint {
+
+        color: #d6bec4;
+
+        font-size: 16px;
+
+        line-height: 1.65;
+
+        margin-bottom: 22px;
+    }
+
+
+    input {
+
+        width: 100%;
+
+        height: 64px;
+
+        background:
+            rgba(0,0,0,0.42);
+
+        border:
+            2px solid #855965;
+
+        color: #ffffff;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 22px;
+
+        text-align: center;
+
+        padding: 10px 14px;
+
+        outline: none;
+
+        border-radius: 0;
+    }
+
+
+    input:focus {
+
+        border-color: #c39aa5;
+
+        box-shadow:
+            0 0 12px rgba(195,154,165,0.15);
+    }
+
+
+    /* =========================================
+       BOTONES GENERALES
+    ========================================= */
+
+    .button {
+
+        display: block;
+
+        width: 100%;
+
+        height: 68px;
+
+        min-height: 68px;
+
+        margin-top: 20px;
+
+        padding: 12px 16px;
+
+        border: none;
+
+        background: #e5d3d7;
+
+        color: #321820;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 19px;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+
+        line-height: normal;
+
+        text-align: center;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            background 0.3s ease;
+    }
+
+
+    .button:active {
+
+        transform:
+            scale(0.98);
+    }
+
+
+    .button:hover {
+
+        background: #f0e2e5;
+    }
+
+
+    .key-button {
+
+        width: 100%;
+
+        height: 68px;
+
+        min-height: 68px;
+
+        margin-top: 18px;
+
+        border: none;
+
+        background: #e5d3d7;
+
+        color: #321820;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 19px;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+
+        line-height: normal;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================================
+       MENSAJE ESPERA SIGUIENTE ETAPA
+    ========================================= */
+
+    .next-stage-message {
+
+        display: none;
+
+        margin-top: 20px;
+
+        padding: 16px 10px;
+
+        color: #d9c1c7;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 18px;
+
+        line-height: 1.6;
+
+        animation:
+            aparecer 0.8s ease;
+
+    }
+
+
+    .next-stage-message strong {
+
+        color: #ffffff;
+
+    }
+
+
+    /* =========================================
+       ERROR
+    ========================================= */
+
+    .key-error {
+
+        display: none;
+
+        margin-top: 18px;
+
+        padding: 14px;
+
+        border:
+            1px solid #8a4e5c;
+
+        color: #efc3cb;
+
+        font-size: 16px;
+
+        line-height: 1.55;
+    }
+
+
+    /* =========================================
+       RECUERDOS
+    ========================================= */
+
+    .memory-section {
+
+        display: none;
+
+        margin-top: 55px;
+
+        padding-top: 32px;
+
+        animation:
+            aparecer 1s ease;
+
+        scroll-margin-top: 28px;
+    }
+
+
+    .memory-emoji {
+
+        font-family:
+            "Segoe UI Emoji",
+            "Apple Color Emoji",
+            sans-serif;
+
+        font-size: 72px;
+
+        line-height: 1;
+
+        margin-bottom: 20px;
+    }
+
+
+    .memory-title {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 27px;
+
+        line-height: 1.5;
+
+        color: #ffffff;
+
+        margin-bottom: 24px;
+    }
+
+
+    .memory-text {
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 21px;
+
+        line-height: 1.75;
+
+        color: #eadcdf;
+
+        margin-bottom: 30px;
+    }
+
+
+    .memory-text strong {
+
+        color: #ffffff;
+    }
+
+
+    /* =========================================
+       VIDEO
+    ========================================= */
+
+    .video-section {
+
+        display: none;
+
+        margin-top: 55px;
+
+        padding-top: 32px;
+
+        animation:
+            aparecer 1s ease;
+
+        scroll-margin-top: 28px;
+    }
+
+
+    .video-title {
+
+        color: #d0afb7;
+
+        font-size: 14px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .video-wrapper {
+
+        position: relative;
+
+        width: 100%;
+
+        max-width: 360px;
+
+        margin: 0 auto;
+
+        aspect-ratio: 9 / 16;
+
+        overflow: hidden;
+
+        background: #000000;
+
+        border:
+            1px solid #8b5e68;
+
+        box-shadow:
+            0 16px 40px rgba(0,0,0,0.5);
+    }
+
+
+    .video-wrapper iframe {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        border: 0;
+    }
+
+
+    /* =========================================
+       PISTA DESPUÉS DEL VIDEO
+    ========================================= */
+
+    .window-clue {
+
+        display: none;
+
+        margin-top: 38px;
+
+        padding-top: 30px;
+
+        animation:
+            aparecer 1s ease;
+
+        scroll-margin-top: 28px;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 21px;
+
+        line-height: 1.7;
+
+        color: #eadbdf;
+    }
+
+
+    .window-clue strong {
+
+        color: #ffffff;
+    }
+
+
+    .mp2-section {
+
+        display: none;
+
+        margin-top: 30px;
+
+        animation:
+            aparecer 1s ease;
+    }
+
+
+    .mp2-button {
+
+        margin-top: 18px;
+    }
+
+
+    /* =========================================
+       ANIMACIONES
+    ========================================= */
+
+    @keyframes aparecer {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(20px);
         }
 
+        to {
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
+            opacity: 1;
 
-            width: 100%;
-            min-height: 100%;
+            transform:
+                translateY(0);
+        }
+    }
+
+
+    @keyframes beso {
+
+        0%,
+        100% {
+
+            transform:
+                scale(1)
+                rotate(-3deg);
+
         }
 
+        50% {
 
-        body {
+            transform:
+                scale(1.1)
+                rotate(3deg);
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #783846 0%,
-                    #4c242f 38%,
-                    #241017 72%,
-                    #0b0608 100%
-                );
-
-            color: #eeeeee;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            min-height: 100vh;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: flex-start;
-
-            padding: 20px 15px 50px;
-
-            transition:
-                background 2s ease;
         }
 
+    }
 
-        .document {
 
-            width: 100%;
+    @keyframes flotar {
 
-            max-width: 540px;
+        0%,
+        100% {
 
-            text-align: center;
+            transform:
+                translateY(0);
 
-            padding: 18px 20px 40px;
         }
 
+        50% {
 
-        /* =========================================
-           ENCABEZADO
-        ========================================= */
+            transform:
+                translateY(-7px);
 
-        .place-label {
-
-            color: #cdaab3;
-
-            font-size: 14px;
-
-            letter-spacing: 4px;
-
-            margin-bottom: 18px;
         }
 
+    }
 
-        .big-emoji {
 
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
+    /* =========================================
+       CELULARES PEQUEÑOS
+    ========================================= */
 
-            font-size: 64px;
-
-            line-height: 1;
-
-            margin: 10px 0 22px;
-
-            animation:
-                flotar 2.5s ease-in-out infinite;
-        }
-
+    @media (max-width: 380px) {
 
         .title {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 31px;
-
-            line-height: 1.35;
-
-            color: #ffffff;
-
-            margin-bottom: 22px;
-        }
-
-
-        .title strong {
-
-            color: #ffffff;
+            font-size: 27px;
         }
 
 
         .intro {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 22px;
-
-            line-height: 1.7;
-
-            color: #eadcdf;
-
-            margin-bottom: 30px;
+            font-size: 20px;
         }
 
 
         .emotional {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 22px;
-
-            line-height: 1.7;
-
-            color: #f0dfe3;
-
-            margin: 30px 4px;
-        }
-
-
-        /* =========================================
-           RASPADITA
-        ========================================= */
-
-        .scratch-section {
-
-            margin-top: 42px;
-
-            animation:
-                aparecer 1s ease;
+            font-size: 20px;
         }
 
 
         .scratch-title {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 27px;
-
-            line-height: 1.5;
-
-            color: #ffffff;
-
-            margin-bottom: 12px;
-        }
-
-
-        .scratch-subtitle {
-
-            color: #e0c8ce;
-
-            font-size: 18px;
-
-            line-height: 1.7;
-
-            margin-bottom: 28px;
+            font-size: 24px;
         }
 
 
         .kiss-instruction {
 
-            margin: 25px 5px;
-
-            padding: 20px 14px;
-
-            border-top:
-                1px solid rgba(255,255,255,0.15);
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.15);
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 21px;
-
-            line-height: 1.7;
-
-            color: #f0e1e5;
+            font-size: 19px;
         }
 
 
-        .kiss-instruction strong {
+        .big-emoji {
 
-            color: #ffffff;
+            font-size: 58px;
         }
 
 
         .kiss-emoji {
 
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 72px;
-
-            line-height: 1;
-
-            margin: 10px 0 18px;
-
-            animation:
-                beso 1.4s ease-in-out infinite;
-        }
-
-
-        /* =========================================
-           ÁREA RASPADITA
-        ========================================= */
-
-        .scratch-area {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 360px;
-
-            aspect-ratio: 1 / 1;
-
-            margin: 0 auto;
-
-            overflow: hidden;
-
-            border:
-                2px solid #93626d;
-
-            background: #111111;
-
-            box-shadow:
-                0 16px 40px rgba(0,0,0,0.5);
-
-            touch-action: none;
-
-            user-select: none;
-        }
-
-
-        .scratch-image {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            user-select: none;
-
-            pointer-events: none;
-        }
-
-
-        #scratchCanvas {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            touch-action: none;
-
-            cursor: crosshair;
-        }
-
-
-        /* =========================================
-           CONTADOR
-        ========================================= */
-
-        .kiss-counter {
-
-            margin-top: 20px;
-
-            color: #e1c9ce;
-
-            font-size: 17px;
-
-            letter-spacing: 1px;
-        }
-
-
-        .kiss-number {
-
-            color: #ffffff;
-
-            font-size: 25px;
-
-            font-weight: bold;
-        }
-
-
-        .progress-text {
-
-            margin-top: 8px;
-
-            color: #aa8c94;
-
-            font-size: 13px;
-        }
-
-
-        /* =========================================
-           BOTÓN BESOS
-        ========================================= */
-
-        #enoughKissesButton {
-
-            display: none;
-
-            width: 100%;
-
-            height: 68px;
-
-            margin-top: 28px;
-
-            border: none;
-
-            background: #efdde1;
-
-            color: #321820;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 19px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            cursor: pointer;
-
-            animation:
-                aparecer 1s ease;
-        }
-
-
-        /* =========================================
-           CLAVE COORDINAMOS
-        ========================================= */
-
-        .key-section {
-
-            display: none;
-
-            margin-top: 55px;
-
-            padding-top: 30px;
-
-            animation:
-                aparecer 1s ease;
-
-            scroll-margin-top: 28px;
+            font-size: 64px;
         }
 
 
         .key-intro {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 24px;
-
-            line-height: 1.65;
-
-            color: #ffffff;
-
-            margin-bottom: 23px;
-        }
-
-
-        .key-hint {
-
-            color: #d6bec4;
-
-            font-size: 16px;
-
-            line-height: 1.65;
-
-            margin-bottom: 22px;
-        }
-
-
-        input {
-
-            width: 100%;
-
-            height: 64px;
-
-            background:
-                rgba(0,0,0,0.42);
-
-            border:
-                2px solid #855965;
-
-            color: #ffffff;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 22px;
-
-            text-align: center;
-
-            padding: 10px 14px;
-
-            outline: none;
-
-            border-radius: 0;
-        }
-
-
-        input:focus {
-
-            border-color: #c39aa5;
-
-            box-shadow:
-                0 0 12px rgba(195,154,165,0.15);
-        }
-
-
-        /* =========================================
-           BOTONES GENERALES
-        ========================================= */
-
-        .button {
-
-            display: block;
-
-            width: 100%;
-
-            height: 68px;
-
-            min-height: 68px;
-
-            margin-top: 20px;
-
-            padding: 12px 16px;
-
-            border: none;
-
-            background: #e5d3d7;
-
-            color: #321820;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 19px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            line-height: normal;
-
-            text-align: center;
-
-            cursor: pointer;
-
-            transition:
-                transform 0.2s ease,
-                background 0.3s ease;
-        }
-
-
-        .button:active {
-
-            transform:
-                scale(0.98);
-        }
-
-
-        .button:hover {
-
-            background: #f0e2e5;
-        }
-
-
-        .key-button {
-
-            width: 100%;
-
-            height: 68px;
-
-            min-height: 68px;
-
-            margin-top: 18px;
-
-            border: none;
-
-            background: #e5d3d7;
-
-            color: #321820;
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 19px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            line-height: normal;
-
-            cursor: pointer;
-        }
-
-
-        /* =========================================
-           ERROR
-        ========================================= */
-
-        .key-error {
-
-            display: none;
-
-            margin-top: 18px;
-
-            padding: 14px;
-
-            border:
-                1px solid #8a4e5c;
-
-            color: #efc3cb;
-
-            font-size: 16px;
-
-            line-height: 1.55;
-        }
-
-
-        /* =========================================
-           RECUERDOS
-        ========================================= */
-
-        .memory-section {
-
-            display: none;
-
-            margin-top: 55px;
-
-            padding-top: 32px;
-
-            animation:
-                aparecer 1s ease;
-
-            scroll-margin-top: 28px;
-        }
-
-
-        .memory-emoji {
-
-            font-family:
-                "Segoe UI Emoji",
-                "Apple Color Emoji",
-                sans-serif;
-
-            font-size: 72px;
-
-            line-height: 1;
-
-            margin-bottom: 20px;
+            font-size: 21px;
         }
 
 
         .memory-title {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 27px;
-
-            line-height: 1.5;
-
-            color: #ffffff;
-
-            margin-bottom: 24px;
+            font-size: 24px;
         }
 
 
         .memory-text {
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 21px;
-
-            line-height: 1.75;
-
-            color: #eadcdf;
-
-            margin-bottom: 30px;
+            font-size: 19px;
         }
 
 
-        .memory-text strong {
+        .button,
+        .key-button {
 
-            color: #ffffff;
+            font-size: 18px;
         }
 
+    }
 
-        /* =========================================
-           VIDEO
-        ========================================= */
-
-        .video-section {
-
-            display: none;
-
-            margin-top: 55px;
-
-            padding-top: 32px;
-
-            animation:
-                aparecer 1s ease;
-
-            scroll-margin-top: 28px;
-        }
-
-
-        .video-title {
-
-            color: #d0afb7;
-
-            font-size: 14px;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 16px;
-        }
-
-
-        .video-wrapper {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 360px;
-
-            margin: 0 auto;
-
-            aspect-ratio: 9 / 16;
-
-            overflow: hidden;
-
-            background: #000000;
-
-            border:
-                1px solid #8b5e68;
-
-            box-shadow:
-                0 16px 40px rgba(0,0,0,0.5);
-        }
-
-
-        .video-wrapper iframe {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            border: 0;
-        }
-
-
-        /* =========================================
-           PISTA DESPUÉS DEL VIDEO
-        ========================================= */
-
-        .window-clue {
-
-            display: none;
-
-            margin-top: 38px;
-
-            padding-top: 30px;
-
-            animation:
-                aparecer 1s ease;
-
-            scroll-margin-top: 28px;
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
-            font-size: 21px;
-
-            line-height: 1.7;
-
-            color: #eadbdf;
-        }
-
-
-        .window-clue strong {
-
-            color: #ffffff;
-        }
-
-
-        .mp2-section {
-
-            display: none;
-
-            margin-top: 30px;
-
-            animation:
-                aparecer 1s ease;
-        }
-
-
-        .mp2-button {
-
-            margin-top: 18px;
-        }
-
-
-        /* =========================================
-           ANIMACIONES
-        ========================================= */
-
-        @keyframes aparecer {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(20px);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        @keyframes beso {
-
-            0%,
-            100% {
-
-                transform:
-                    scale(1)
-                    rotate(-3deg);
-
-            }
-
-            50% {
-
-                transform:
-                    scale(1.1)
-                    rotate(3deg);
-
-            }
-        }
-
-
-        @keyframes flotar {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0);
-
-            }
-
-            50% {
-
-                transform:
-                    translateY(-7px);
-
-            }
-
-        }
-
-
-        /* =========================================
-           CELULARES PEQUEÑOS
-        ========================================= */
-
-        @media (max-width: 380px) {
-
-            .title {
-
-                font-size: 27px;
-            }
-
-
-            .intro {
-
-                font-size: 20px;
-            }
-
-
-            .emotional {
-
-                font-size: 20px;
-            }
-
-
-            .scratch-title {
-
-                font-size: 24px;
-            }
-
-
-            .kiss-instruction {
-
-                font-size: 19px;
-            }
-
-
-            .big-emoji {
-
-                font-size: 58px;
-            }
-
-
-            .kiss-emoji {
-
-                font-size: 64px;
-            }
-
-
-            .key-intro {
-
-                font-size: 21px;
-            }
-
-
-            .memory-title {
-
-                font-size: 24px;
-            }
-
-
-            .memory-text {
-
-                font-size: 19px;
-            }
-
-
-            .button,
-            .key-button {
-
-                font-size: 18px;
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
-
 
 <main class="document">
 
+```
+<!-- =====================================
+     ENCABEZADO
+====================================== -->
 
-    <!-- =====================================
-         ENCABEZADO
-    ====================================== -->
+<div class="place-label">
 
-    <div class="place-label">
+    MATERIA PRIMA · POSTA 04B
 
-        MATERIA PRIMA · POSTA 04B
+</div>
+
+
+<div class="big-emoji">
+
+    🥂❤️
+
+</div>
+
+
+<div class="title">
+
+    Y ahora estamos
+    <br>
+    <strong>acá.</strong>
+
+</div>
+
+
+<div class="intro">
+
+    En Materia Prima.
+
+    <br><br>
+
+    El lugar donde aquella noche
+    pasó algo que todavía recuerdo
+    con una sonrisa.
+
+</div>
+
+
+<!-- =====================================
+     RASPADITA
+====================================== -->
+
+<section class="scratch-section">
+
+
+    <div class="scratch-title">
+
+        Hay un recuerdo
+        que quiero que descubras.
 
     </div>
 
 
-    <div class="big-emoji">
+    <div class="kiss-emoji">
 
-        🥂❤️
-
-    </div>
-
-
-    <div class="title">
-
-        Y ahora estamos
-        <br>
-        <strong>acá.</strong>
+        💋
 
     </div>
 
 
-    <div class="intro">
+    <div class="kiss-instruction">
 
-        En Materia Prima.
+        Esa noche hubo un primer beso.
 
         <br><br>
 
-        El lugar donde aquella noche
-        pasó algo que todavía recuerdo
-        con una sonrisa.
+        Y si queremos recuperar
+        lo que vino después...
 
-    </div>
-
-
-    <!-- =====================================
-         RASPADITA
-    ====================================== -->
-
-    <section class="scratch-section">
-
-
-        <div class="scratch-title">
-
-            Hay un recuerdo
-            que quiero que descubras.
-
-        </div>
-
-
-        <div class="kiss-emoji">
-
-            💋
-
-        </div>
-
-
-        <div class="kiss-instruction">
-
-            Esa noche hubo un primer beso.
-
-            <br><br>
-
-            Y si queremos recuperar
-            lo que vino después...
-
-            <br><br>
-
-            <strong>
-                vas a tener que besar
-                esta imagen.
-            </strong>
-
-            <br><br>
-
-            Como aquella noche.
-
-        </div>
-
-
-        <div class="scratch-subtitle">
-
-            Apoyá los labios sobre la pantalla
-            y recorré la imagen.
-
-            <br><br>
-
-            Cada beso va a descubrir
-            un pedacito del recuerdo.
-
-        </div>
-
-
-        <div class="scratch-area">
-
-
-            <img
-                class="scratch-image"
-                src="MP2.jpg"
-                alt="Recuerdo de Materia Prima"
-            >
-
-
-            <canvas
-                id="scratchCanvas">
-            </canvas>
-
-
-        </div>
-
-
-        <div class="kiss-counter">
-
-            BESOS DADOS:
-
-            <span
-                id="kissNumber"
-                class="kiss-number">
-
-                0
-
-            </span>
-
-        </div>
-
-
-        <div
-            id="progressText"
-            class="progress-text">
-
-            El recuerdo todavía está escondido...
-
-        </div>
-
-
-        <button
-            id="enoughKissesButton"
-            onclick="mostrarClave()">
-
-            YA DI LOS SUFICIENTES BESOS
-
-        </button>
-
-
-    </section>
-
-
-    <!-- =====================================
-         CLAVE COORDINAMOS
-    ====================================== -->
-
-    <section
-        id="keySection"
-        class="key-section">
-
-
-        <div class="key-intro">
-
-            Y después del beso...
-
-            <br><br>
-
-            nos dijimos algo.
-
-        </div>
-
-
-        <div class="key-hint">
-
-            Sin ese beso,
-            probablemente no se habría dicho.
-
-            <br><br>
-
-            Y sin eso que se dijo...
-
-            <br>
-
-            <strong>
-                esta historia no habría seguido igual.
-            </strong>
-
-        </div>
-
-
-        <div class="key-hint">
-
-            La palabra está escondida
-            en la imagen que acabás de descubrir.
-
-        </div>
-
-
-        <input
-            type="text"
-            id="coordinamosInput"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="Ingresá la palabra..."
-        >
-
-
-        <button
-            class="key-button"
-            onclick="verificarCoordinamos()">
-
-            CONTINUAR
-
-        </button>
-
-
-        <div
-            id="coordinamosError"
-            class="key-error">
-
-            Mmm...
-
-            <br><br>
-
-            Estuviste bastante cerca.
-
-            <br>
-
-            Mirá otra vez la imagen.
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================
-         RECUERDOS
-    ====================================== -->
-
-    <section
-        id="memorySection"
-        class="memory-section">
-
-
-        <div class="memory-emoji">
-
-            🥂❤️✨
-
-        </div>
-
-
-        <div class="memory-title">
-
-            Esperá... sí, sí.
-
-            <br>
-
-            Vamos a coordinar lo que hablamos.
-
-        </div>
-
-
-        <div class="memory-text">
-
-            Pero antes...
-
-            <br><br>
-
-            ¿qué recuerdos tenés de aquella
-            noche en Materia Prima?
-
-            <br><br>
-
-            <strong>
-                Seguro que te acordás
-                de más de una cosa...
-            </strong>
-
-            <br><br>
-
-            Hay cosas que vale la pena
-            volver a mirar antes de seguir.
-
-        </div>
-
-
-        <button
-            id="rememberButton"
-            class="button"
-            type="button"
-            onclick="mostrarVideo()">
-
-            SEGUIR RECORDANDO
-
-        </button>
-
-
-    </section>
-
-
-    <!-- =====================================
-         VIDEO
-    ====================================== -->
-
-    <section
-        id="videoSection"
-        class="video-section">
-
-
-        <div class="video-title">
-
-            RECUERDOS RECUPERADOS
-
-        </div>
-
-
-        <div class="video-wrapper">
-
-            <iframe
-                src="https://www.youtube.com/embed/jo3LQ9UsOSs"
-                title="Recuerdos de Materia Prima"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =====================================
-         PISTA PARA MATERIA PRIMA
-    ====================================== -->
-
-    <section
-        id="windowClue"
-        class="window-clue">
-
+        <br><br>
 
         <strong>
-            Y ahora sí...
+            vas a tener que besar
+            esta imagen.
         </strong>
 
         <br><br>
 
-        Es momento de volver
-        a Materia Prima.
+        Como aquella noche.
+
+    </div>
+
+
+    <div class="scratch-subtitle">
+
+        Apoyá los labios sobre la pantalla
+        y recorré la imagen.
 
         <br><br>
 
-        Podés entrar y tomar algo...
-        o mirar por la ventana.
-        Pero siempre desde el punto de vista donde estabas vos aquella noche
+        Cada beso va a descubrir
+        un pedacito del recuerdo.
 
-        <br><br>
-
-        Hay una última clave
-        esperando por vos.
-
-    </section>
+    </div>
 
 
-    <!-- =====================================
-         CLAVE DEL VERMUT
-    ====================================== -->
-
-    <section
-        id="mp2Section"
-        class="mp2-section">
+    <div class="scratch-area">
 
 
-        <input
-            type="text"
-            id="mp2Input"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="Ingresá la clave..."
+        <img
+            class="scratch-image"
+            src="MP2.jpg"
+            alt="Recuerdo de Materia Prima"
         >
 
 
-        <button
-            class="key-button mp2-button"
-            onclick="verificarMP2()">
-
-            ABRIR SIGUIENTE ETAPA
-
-        </button>
+        <canvas
+            id="scratchCanvas">
+        </canvas>
 
 
-        <div
-            id="mp2Error"
-            class="key-error">
-
-            La clave ingresada es incorrecta.
-
-            <br><br>
-
-            Mirá bien los carteles que están
-            en la pared.
-
-            <br><br>
-
-            Pensá en el punto de vista
-            que tenías aquella noche:
-
-            <br><br>
-
-            <strong>
-                estabas de espaldas
-                a la ventana que daba a la calle.
-            </strong>
-
-        </div>
+    </div>
 
 
-    </section>
+    <div class="kiss-counter">
 
+        BESOS DADOS:
+
+        <span
+            id="kissNumber"
+            class="kiss-number">
+
+            0
+
+        </span>
+
+    </div>
+
+
+    <div
+        id="progressText"
+        class="progress-text">
+
+        El recuerdo todavía está escondido...
+
+    </div>
+
+
+    <button
+        id="enoughKissesButton"
+        onclick="mostrarClave()">
+
+        YA DI LOS SUFICIENTES BESOS
+
+    </button>
+
+
+</section>
+
+
+<!-- =====================================
+     CLAVE COORDINAMOS
+====================================== -->
+
+<section
+    id="keySection"
+    class="key-section">
+
+
+    <div class="key-intro">
+
+        Y después del beso...
+
+        <br><br>
+
+        nos dijimos algo.
+
+    </div>
+
+
+    <div class="key-hint">
+
+        Sin ese beso,
+        probablemente no se habría dicho.
+
+        <br><br>
+
+        Y sin eso que se dijo...
+
+        <br>
+
+        <strong>
+            esta historia no habría seguido igual.
+        </strong>
+
+    </div>
+
+
+    <div class="key-hint">
+
+        La palabra está escondida
+        en la imagen que acabás de descubrir.
+
+    </div>
+
+
+    <input
+        type="text"
+        id="coordinamosInput"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Ingresá la palabra..."
+    >
+
+
+    <button
+        class="key-button"
+        onclick="verificarCoordinamos()">
+
+        CONTINUAR
+
+    </button>
+
+
+    <div
+        id="coordinamosError"
+        class="key-error">
+
+        Mmm...
+
+        <br><br>
+
+        Estuviste bastante cerca.
+
+        <br>
+
+        Mirá otra vez la imagen.
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     RECUERDOS
+====================================== -->
+
+<section
+    id="memorySection"
+    class="memory-section">
+
+
+    <div class="memory-emoji">
+
+        🥂❤️✨
+
+    </div>
+
+
+    <div class="memory-title">
+
+        Esperá... sí, sí.
+
+        <br>
+
+        Vamos a coordinar lo que hablamos.
+
+    </div>
+
+
+    <div class="memory-text">
+
+        Pero antes...
+
+        <br><br>
+
+        ¿qué recuerdos tenés de aquella
+        noche en Materia Prima?
+
+        <br><br>
+
+        <strong>
+            Seguro que te acordás
+            de más de una cosa...
+        </strong>
+
+        <br><br>
+
+        Hay cosas que vale la pena
+        volver a mirar antes de seguir.
+
+    </div>
+
+
+    <button
+        id="rememberButton"
+        class="button"
+        type="button"
+        onclick="mostrarVideo()">
+
+        SEGUIR RECORDANDO
+
+    </button>
+
+
+</section>
+
+
+<!-- =====================================
+     VIDEO
+====================================== -->
+
+<section
+    id="videoSection"
+    class="video-section">
+
+
+    <div class="video-title">
+
+        RECUERDOS RECUPERADOS
+
+    </div>
+
+
+    <div class="video-wrapper">
+
+        <iframe
+            src="https://www.youtube.com/embed/jo3LQ9UsOSs"
+            title="Recuerdos de Materia Prima"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     PISTA PARA MATERIA PRIMA
+====================================== -->
+
+<section
+    id="windowClue"
+    class="window-clue">
+
+
+    <strong>
+        Y ahora sí...
+    </strong>
+
+    <br><br>
+
+    Es momento de volver
+    a Materia Prima.
+
+    <br><br>
+
+    Podés entrar y tomar algo...
+    o mirar por la ventana.
+    Pero siempre desde el punto de vista donde estabas vos aquella noche
+
+    <br><br>
+
+    Hay una última clave
+    esperando por vos.
+
+</section>
+
+
+<!-- =====================================
+     CLAVE DEL VERMUT
+====================================== -->
+
+<section
+    id="mp2Section"
+    class="mp2-section">
+
+
+    <input
+        type="text"
+        id="mp2Input"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="Ingresá la clave..."
+    >
+
+
+    <button
+        id="mp2Button"
+        class="key-button mp2-button"
+        onclick="verificarMP2()">
+
+        ABRIR SIGUIENTE ETAPA
+
+    </button>
+
+
+    <!-- MENSAJE DURANTE LOS 5 SEGUNDOS -->
+
+    <div
+        id="nextStageMessage"
+        class="next-stage-message">
+
+        <strong>
+            Clave correcta.
+        </strong>
+
+        <br><br>
+
+        Prosiguiendo a la siguiente etapa...
+
+        <br>
+
+        <span id="countdownNumber">
+            5
+        </span>
+
+        segundos.
+
+    </div>
+
+
+    <div
+        id="mp2Error"
+        class="key-error">
+
+        La clave ingresada es incorrecta.
+
+        <br><br>
+
+        Mirá bien los carteles que están
+        en la pared.
+
+        <br><br>
+
+        Pensá en el punto de vista
+        que tenías aquella noche:
+
+        <br><br>
+
+        <strong>
+            estabas de espaldas
+            a la ventana que daba a la calle.
+        </strong>
+
+    </div>
+
+
+</section>
+```
 
 </main>
-
-
 
 <script>
 
@@ -1416,6 +1478,11 @@
     const EMAILJS_PUBLIC_KEY =
         "sLFfAQu2olv9Gzvx-";
 
+
+    /*
+     * Evita enviar el mismo aviso
+     * más de una vez durante esta carga.
+     */
 
     let avisoEnviado =
         false;
@@ -2076,6 +2143,9 @@
        coordinamos.
        coordinamos...
        1111
+
+       IMPORTANTE:
+       AQUÍ YA NO SE ENVÍA EMAIL.
     ================================================= */
 
     function verificarCoordinamos() {
@@ -2157,11 +2227,10 @@
 
 
     /* =================================================
-       MOSTRAR VIDEO + ENVIAR EMAIL
-       
+       MOSTRAR VIDEO
+
        IMPORTANTE:
-       EL EMAIL SE ENVÍA AQUÍ,
-       AL APRETAR "SEGUIR RECORDANDO".
+       YA NO ENVÍA EMAIL.
     ================================================== */
 
     async function mostrarVideo() {
@@ -2172,11 +2241,6 @@
                 "rememberButton"
             );
 
-
-        /*
-         * Evitamos múltiples clics
-         * mientras se procesa el aviso.
-         */
 
         if (
             boton.disabled
@@ -2196,151 +2260,13 @@
 
 
         /*
-         * =============================================
-         * ENVIAR AVISO EMAILJS
-         * =============================================
+         * NO HAY EMAILJS AQUÍ.
+         *
+         * El correo ahora se dispara
+         * exclusivamente al validar
+         * la clave de vermut.
          */
 
-        if (
-            !avisoEnviado
-        ) {
-
-
-            const ahora =
-                new Date();
-
-
-            const fechaHora =
-                ahora.toLocaleString(
-                    "es-AR",
-                    {
-                        dateStyle:
-                            "short",
-
-                        timeStyle:
-                            "medium"
-                    }
-                );
-
-
-            const templateParams = {
-
-                evento:
-                    "Dani llegó a la etapa de recuerdos de Materia Prima",
-
-                mensaje:
-                    "Dani acaba de apretar el botón SEGUIR RECORDANDO en la posta de Materia Prima.",
-
-                clave:
-                    "coordinamos",
-
-                hora:
-                    fechaHora,
-
-                pagina:
-                    "pagina4b.html"
-
-            };
-
-
-            console.log(
-                "================================="
-            );
-
-
-            console.log(
-                "EMAILJS: intentando enviar aviso..."
-            );
-
-
-            console.log(
-                "Service ID:",
-                EMAILJS_SERVICE_ID
-            );
-
-
-            console.log(
-                "Template ID:",
-                EMAILJS_TEMPLATE_ID
-            );
-
-
-            console.log(
-                "Parámetros:",
-                templateParams
-            );
-
-
-            try {
-
-
-                const respuestaEmail =
-                    await emailjs.send(
-
-                        EMAILJS_SERVICE_ID,
-
-                        EMAILJS_TEMPLATE_ID,
-
-                        templateParams
-
-                    );
-
-
-                console.log(
-                    "EMAILJS ENVIADO CORRECTAMENTE"
-                );
-
-
-                console.log(
-                    "Status:",
-                    respuestaEmail.status
-                );
-
-
-                console.log(
-                    "Respuesta:",
-                    respuestaEmail.text
-                );
-
-
-                avisoEnviado =
-                    true;
-
-
-            } catch (
-                emailError
-            ) {
-
-
-                console.error(
-                    "================================="
-                );
-
-
-                console.error(
-                    "ERROR EMAILJS"
-                );
-
-
-                console.error(
-                    emailError
-                );
-
-
-                console.error(
-                    "================================="
-                );
-
-            }
-
-        }
-
-
-        /*
-         * =============================================
-         * MOSTRAR VIDEO
-         * =============================================
-         */
 
         const video =
             document.getElementById(
@@ -2355,13 +2281,6 @@
         boton.textContent =
             "RECUERDOS RECUPERADOS";
 
-
-        /*
-         * El video es la nueva escena.
-         *
-         * La pantalla se posiciona
-         * arriba del video.
-         */
 
         setTimeout(
             function() {
@@ -2395,11 +2314,6 @@
             150
         );
 
-
-        /*
-         * La pista posterior se prepara
-         * pero NO hacemos scroll hasta ella.
-         */
 
         setTimeout(
             mostrarPistaVentana,
@@ -2439,6 +2353,157 @@
 
 
     /* =================================================
+       ENVIAR EMAIL DE LA ETAPA VERMUT
+    ================================================== */
+
+    async function enviarAvisoVermut() {
+
+
+        /*
+         * Evita enviar dos correos
+         * si se pulsa varias veces.
+         */
+
+        if (
+            avisoEnviado
+        ) {
+
+            return;
+
+        }
+
+
+        avisoEnviado =
+            true;
+
+
+        const ahora =
+            new Date();
+
+
+        const fechaHora =
+            ahora.toLocaleString(
+                "es-AR",
+                {
+                    dateStyle:
+                        "short",
+
+                    timeStyle:
+                        "medium"
+                }
+            );
+
+
+        const templateParams = {
+
+            evento:
+                "Dani llegó a la etapa siguiente de Materia Prima",
+
+            mensaje:
+                "Dani ingresó correctamente la clave de la etapa vermut y apretó ABRIR SIGUIENTE ETAPA.",
+
+            clave:
+                "vermut",
+
+            hora:
+                fechaHora,
+
+            pagina:
+                "pagina4b.html"
+
+        };
+
+
+        console.log(
+            "================================="
+        );
+
+
+        console.log(
+            "EMAILJS: intentando enviar aviso..."
+        );
+
+
+        console.log(
+            "Service ID:",
+            EMAILJS_SERVICE_ID
+        );
+
+
+        console.log(
+            "Template ID:",
+            EMAILJS_TEMPLATE_ID
+        );
+
+
+        console.log(
+            "Parámetros:",
+            templateParams
+        );
+
+
+        try {
+
+
+            const respuestaEmail =
+                await emailjs.send(
+
+                    EMAILJS_SERVICE_ID,
+
+                    EMAILJS_TEMPLATE_ID,
+
+                    templateParams
+
+                );
+
+
+            console.log(
+                "EMAILJS ENVIADO CORRECTAMENTE"
+            );
+
+
+            console.log(
+                "Status:",
+                respuestaEmail.status
+            );
+
+
+            console.log(
+                "Respuesta:",
+                respuestaEmail.text
+            );
+
+
+        } catch (
+            emailError
+        ) {
+
+
+            console.error(
+                "================================="
+            );
+
+
+            console.error(
+                "ERROR EMAILJS"
+            );
+
+
+            console.error(
+                emailError
+            );
+
+
+            console.error(
+                "================================="
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
        VERIFICAR CLAVE VERMUT
 
        Válidos:
@@ -2448,6 +2513,11 @@
        vermut
        pichincha
        1111
+
+       AL SER CORRECTA:
+       1. ENVÍA EMAIL
+       2. ESPERA 5 SEGUNDOS
+       3. VA A pagina5.html
     ================================================= */
 
     function verificarMP2() {
@@ -2462,6 +2532,24 @@
         const error =
             document.getElementById(
                 "mp2Error"
+            );
+
+
+        const boton =
+            document.getElementById(
+                "mp2Button"
+            );
+
+
+        const mensaje =
+            document.getElementById(
+                "nextStageMessage"
+            );
+
+
+        const contador =
+            document.getElementById(
+                "countdownNumber"
             );
 
 
@@ -2491,29 +2579,15 @@
                 "1111";
 
 
+        /*
+         * =========================================
+         * CLAVE INCORRECTA
+         * =========================================
+         */
+
         if (
-            valida
+            !valida
         ) {
-
-
-            error.style.display =
-                "none";
-
-
-            /*
-             * YA NO SE ENVÍA NINGÚN EMAIL AQUÍ.
-             *
-             * El email se envía solamente
-             * cuando se pulsa
-             * "SEGUIR RECORDANDO".
-             */
-
-
-            window.location.href =
-                "pagina5.html";
-
-
-        } else {
 
 
             error.style.display =
@@ -2528,7 +2602,122 @@
 
             campo.focus();
 
+
+            return;
+
         }
+
+
+        /*
+         * =========================================
+         * CLAVE CORRECTA
+         * =========================================
+         */
+
+        error.style.display =
+            "none";
+
+
+        /*
+         * Bloqueamos el botón inmediatamente
+         * para evitar múltiples envíos.
+         */
+
+        boton.disabled =
+            true;
+
+
+        boton.textContent =
+            "ETAPA DESBLOQUEADA";
+
+
+        campo.disabled =
+            true;
+
+
+        /*
+         * =========================================
+         * ENVIAR EMAIL
+         * =========================================
+         *
+         * El correo se dispara EXACTAMENTE
+         * en este punto, cuando la clave fue
+         * validada correctamente.
+         */
+
+        enviarAvisoVermut();
+
+
+        /*
+         * =========================================
+         * MOSTRAR ESPERA
+         * =========================================
+         */
+
+        mensaje.style.display =
+            "block";
+
+
+        contador.textContent =
+            "5";
+
+
+        desplazarASeccion(
+            mensaje,
+            80
+        );
+
+
+        /*
+         * =========================================
+         * CUENTA REGRESIVA
+         * ========================================= */
+
+        let segundos =
+            5;
+
+
+        const intervalo =
+            setInterval(
+                function() {
+
+
+                    segundos--;
+
+
+                    if (
+                        segundos > 0
+                    ) {
+
+                        contador.textContent =
+                            segundos;
+
+                    } else {
+
+
+                        clearInterval(
+                            intervalo
+                        );
+
+
+                        contador.textContent =
+                            "0";
+
+
+                        /*
+                         * =================================
+                         * IR A LA SIGUIENTE PÁGINA
+                         * =================================
+                         */
+
+                        window.location.href =
+                            "pagina5.html";
+
+                    }
+
+                },
+                1000
+            );
 
     }
 
@@ -2658,7 +2847,6 @@
     );
 
 </script>
-
 
 </body>
 
