@@ -2265,7 +2265,7 @@
                 <br>
 
                 <strong>
-                    tocá su tronco.
+                    tocalo...
                 </strong>
 
                 <br><br>
@@ -2317,7 +2317,7 @@
                 <br>
 
                 Acercate al árbol físicamente
-                y tocá su tronco.
+                y tocalo...
 
                 <br><br>
 
@@ -2345,7 +2345,7 @@
                 id="touchStatus"
                 class="touch-status">
 
-                VERIFICANDO TU UBICACIÓN...
+                ACERCATE AL ÁRBOL Y TOCÁ SU TRONCO
 
             </div>
 
@@ -3230,6 +3230,10 @@
 
     /* ==================================================
        COMPROBAR UBICACIÓN
+
+       ESTA ES LA ÚNICA VERIFICACIÓN GPS.
+       Cuando entra dentro del radio de 50 metros,
+       se considera que llegó al árbol.
     ================================================== */
 
     function comprobarUbicacion(position) {
@@ -3531,6 +3535,10 @@
 
     /* ==================================================
        PREPARAR BOTÓN DEL ÁRBOL
+
+       Ya no se realiza ninguna segunda consulta GPS.
+       El botón queda preparado para que la usuaria
+       confirme manualmente que tocó el árbol.
     ================================================== */
 
     function prepararBotonArbol() {
@@ -3557,9 +3565,13 @@
     /* ==================================================
        CONFIRMAR QUE ESTÁ JUNTO AL ÁRBOL
 
-       La web no puede detectar físicamente el contacto
-       con el tronco. Se comprueba nuevamente el GPS
-       antes de permitir continuar.
+       IMPORTANTE:
+       NO SE HACE UNA SEGUNDA VERIFICACIÓN GPS.
+
+       La primera verificación GPS ya confirmó que
+       está dentro del radio de 50 metros.
+
+       Al tocar el botón, se continúa directamente.
     ================================================== */
 
     function confirmarArbolTocado() {
@@ -3568,100 +3580,7 @@
             return;
         }
 
-
-        const button =
-            document.getElementById(
-                "touchTreeButton"
-            );
-
-        const status =
-            document.getElementById(
-                "touchStatus"
-            );
-
-
-        if (!navigator.geolocation) {
-
-            mostrarConfirmacionArbol();
-
-            return;
-        }
-
-
-        button.disabled =
-            true;
-
-        status.textContent =
-            "COMPROBANDO QUE ESTÉS REALMENTE AL LADO DEL ÁRBOL...";
-
-
-        navigator.geolocation.getCurrentPosition(
-
-            function(position) {
-
-                const lat =
-                    position.coords.latitude;
-
-                const lon =
-                    position.coords.longitude;
-
-                const distancia =
-                    distanciaMetros(
-                        lat,
-                        lon,
-                        ARBOL_LAT,
-                        ARBOL_LON
-                    );
-
-
-                console.log(
-                    "Verificación del árbol:",
-                    Math.round(distancia),
-                    "metros"
-                );
-
-
-                if (
-                    distancia <=
-                    RADIO_METROS
-                ) {
-
-                    mostrarConfirmacionArbol();
-
-                } else {
-
-                    button.disabled =
-                        false;
-
-                    status.textContent =
-                        "TODAVÍA ESTÁS DEMASIADO LEJOS. ACERCATE AL ÁRBOL Y VOLVÉ A INTENTARLO.";
-
-                }
-
-            },
-
-            function() {
-
-                button.disabled =
-                    false;
-
-                status.textContent =
-                    "NO PUDE VERIFICAR TU UBICACIÓN. ACERCATE AL ÁRBOL Y VOLVÉ A INTENTARLO.";
-
-            },
-
-            {
-
-                enableHighAccuracy:
-                    true,
-
-                timeout:
-                    12000,
-
-                maximumAge:
-                    0
-            }
-        );
+        mostrarConfirmacionArbol();
     }
 
 
@@ -4262,7 +4181,7 @@
 
     /* ==================================================
        CUENTA REGRESIVA
-       
+
        TODOS los cambios ocurren cada 1 segundo.
 
        30 → 29 → 28 ... → 10
