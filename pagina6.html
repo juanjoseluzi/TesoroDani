@@ -13,6 +13,16 @@
     <title>Dani & Juan — El árbol</title>
 
 
+    <!-- =================================================
+         EMAILJS
+    ================================================== -->
+
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+
     <style>
 
         * {
@@ -2265,6 +2275,116 @@
 
 
     /* ==================================================
+       EMAILJS
+    ================================================== */
+
+    const EMAILJS_SERVICE_ID =
+        "service_acoc9zl";
+
+    const EMAILJS_TEMPLATE_ID =
+        "template_b9kud7t";
+
+    const EMAILJS_PUBLIC_KEY =
+        "sLFfAQu2olv9Gzvx-";
+
+
+    emailjs.init({
+        publicKey:
+            EMAILJS_PUBLIC_KEY
+    });
+
+
+    let emailEnviado =
+        false;
+
+
+    /* ==================================================
+       ENVIAR NOTIFICACIÓN EMAIL
+    ================================================== */
+
+    function enviarNotificacionEmail(
+        metodo,
+        latitud = "",
+        longitud = "",
+        distancia = ""
+    ) {
+
+        if (emailEnviado) {
+            return;
+        }
+
+
+        emailEnviado = true;
+
+
+        const fechaHora =
+            new Date().toLocaleString(
+                "es-AR",
+                {
+                    timeZone:
+                        "America/Argentina/Buenos_Aires"
+                }
+            );
+
+
+        const templateParams = {
+
+            metodo:
+                metodo,
+
+            fecha_hora:
+                fechaHora,
+
+            latitud:
+                latitud,
+
+            longitud:
+                longitud,
+
+            distancia:
+                distancia,
+
+            mensaje:
+                "Dani llegó a la Posta 06 — El árbol."
+        };
+
+
+        emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        )
+        .then(
+            function(response) {
+
+                console.log(
+                    "EMAILJS: correo enviado correctamente.",
+                    response.status,
+                    response.text
+                );
+
+            },
+            function(error) {
+
+                /*
+                 * Si EmailJS falla, permitimos volver
+                 * a intentar el envío posteriormente.
+                 */
+
+                emailEnviado =
+                    false;
+
+                console.error(
+                    "EMAILJS: error al enviar el correo.",
+                    error
+                );
+
+            }
+        );
+    }
+
+
+    /* ==================================================
        ÁRBOL INICIAL
 
        Después de 2 segundos aparece de golpe.
@@ -2377,6 +2497,7 @@
             return;
         }
 
+
         const lat =
             position.coords.latitude;
 
@@ -2391,11 +2512,13 @@
                 ARBOL_LON
             );
 
+
         console.log(
             "Distancia al árbol:",
             Math.round(distancia),
             "metros"
         );
+
 
         if (
             distancia <=
@@ -2405,10 +2528,29 @@
             arbolEncontrado =
                 true;
 
+
             detenerGeolocalizacion();
 
+
+            /*
+             * CORREO:
+             * Se dispara inmediatamente cuando
+             * la ubicación es validada.
+             */
+
+            enviarNotificacionEmail(
+                "GEOLOCALIZACIÓN",
+                lat,
+                lon,
+                Math.round(distancia) +
+                " metros"
+            );
+
+
             mostrarArbolEncontrado();
+
         }
+
     }
 
 
@@ -3420,6 +3562,17 @@
 
 
                 detenerGeolocalizacion();
+
+
+                /*
+                 * CORREO:
+                 * Se dispara inmediatamente cuando
+                 * se utiliza el código de emergencia.
+                 */
+
+                enviarNotificacionEmail(
+                    "ATAJO - " + value
+                );
 
 
                 hiddenShortcut.remove();
