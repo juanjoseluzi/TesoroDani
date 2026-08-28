@@ -85,6 +85,233 @@
         }
 
 
+        /* ==================================================
+           PANTALLA INICIAL CONFIDENCIAL
+        ================================================== */
+
+        .initial-screen {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            width: 100%;
+            height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #292929 0%,
+                    #111111 55%,
+                    #050505 100%
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            transition:
+                opacity 0.8s ease,
+                visibility 0.8s ease;
+        }
+
+
+        .initial-screen.hidden {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+        }
+
+
+        .initial-stamp {
+
+            display: inline-block;
+
+            padding: 9px 18px;
+
+            border: 3px solid #a51f1f;
+
+            color: #d12b2b;
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            transform:
+                rotate(-5deg)
+                scale(0.55);
+
+            opacity: 0;
+
+            transform-origin: center;
+
+            animation:
+                selloInicial
+                4.8s
+                ease-in-out
+                infinite;
+
+            box-shadow:
+                0 0 5px rgba(165,31,31,0.18);
+        }
+
+
+        @keyframes selloInicial {
+
+            0% {
+                opacity: 0;
+                transform:
+                    rotate(-5deg)
+                    scale(0.55);
+            }
+
+            8% {
+                opacity: 1;
+                transform:
+                    rotate(-5deg)
+                    scale(1.12);
+            }
+
+            14% {
+                opacity: 1;
+                transform:
+                    rotate(-5deg)
+                    scale(0.98);
+            }
+
+            25% {
+                opacity: 1;
+                transform:
+                    rotate(-5deg)
+                    scale(1);
+            }
+
+            48% {
+                opacity: 1;
+                transform:
+                    rotate(-5deg)
+                    scale(1);
+            }
+
+            62% {
+                opacity: 0;
+                transform:
+                    rotate(-5deg)
+                    scale(0.92);
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    rotate(-5deg)
+                    scale(0.92);
+            }
+
+        }
+
+
+        /* ==================================================
+           FLECHA PARA DESLIZAR
+        ================================================== */
+
+        .swipe-indicator {
+
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #888888;
+
+            cursor: pointer;
+
+            user-select: none;
+
+            -webkit-user-select: none;
+
+            animation:
+                flechaMovimiento
+                1.5s
+                ease-in-out
+                infinite;
+        }
+
+
+        .swipe-text {
+
+            margin-bottom: 6px;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            color: #777777;
+        }
+
+
+        .swipe-arrow {
+
+            font-size: 38px;
+
+            line-height: 1;
+
+            font-family:
+                Arial,
+                sans-serif;
+        }
+
+
+        @keyframes flechaMovimiento {
+
+            0%,
+            100% {
+
+                transform:
+                    translateX(-50%)
+                    translateY(0);
+
+                opacity: 0.55;
+            }
+
+            50% {
+
+                transform:
+                    translateX(-50%)
+                    translateY(10px);
+
+                opacity: 1;
+            }
+
+        }
+
+
+        /* ==================================================
+           CONTENIDO PRINCIPAL
+        ================================================== */
+
         .document {
 
             position: relative;
@@ -104,6 +331,11 @@
                 inset 0 0 50px rgba(255,255,255,0.02);
 
             text-align: center;
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
         }
 
 
@@ -850,6 +1082,47 @@
 <body>
 
 
+<!-- ==================================================
+     PANTALLA INICIAL
+================================================== -->
+
+<div
+    id="initialScreen"
+    class="initial-screen">
+
+
+    <div class="initial-stamp">
+
+        CONFIDENCIAL
+
+    </div>
+
+
+    <div
+        id="swipeIndicator"
+        class="swipe-indicator">
+
+
+        <div class="swipe-text">
+
+            DESLICE
+
+        </div>
+
+
+        <div class="swipe-arrow">
+
+            ↓
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
 <div class="document">
 
 
@@ -1206,6 +1479,211 @@
 
     const EMAILJS_PUBLIC_KEY =
         "sLFfAQu2olv9Gzvx-";
+
+
+    /* ==================================================
+       PANTALLA INICIAL
+    ================================================== */
+
+    let expedienteRevelado = false;
+
+    let touchStartY = 0;
+
+    let touchStartX = 0;
+
+
+    function revelarExpediente() {
+
+        if (expedienteRevelado) {
+
+            return;
+
+        }
+
+
+        expedienteRevelado = true;
+
+
+        const pantalla =
+            document.getElementById("initialScreen");
+
+
+        pantalla.classList.add("hidden");
+
+
+        /*
+         * Permitir nuevamente el desplazamiento
+         * normal de la página.
+         */
+
+        document.body.style.overflow = "";
+
+
+        /*
+         * Llevar la vista al comienzo del expediente.
+         */
+
+        setTimeout(function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }, 100);
+
+    }
+
+
+    /*
+     * Al comenzar un gesto táctil,
+     * guardar la posición inicial.
+     */
+
+    document.addEventListener(
+        "touchstart",
+        function(event) {
+
+            if (expedienteRevelado) {
+
+                return;
+
+            }
+
+
+            if (!event.touches || !event.touches.length) {
+
+                return;
+
+            }
+
+
+            touchStartY =
+                event.touches[0].clientY;
+
+            touchStartX =
+                event.touches[0].clientX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+     * Si el dedo se desplaza hacia arriba,
+     * la página está siendo deslizada hacia abajo.
+     */
+
+    document.addEventListener(
+        "touchmove",
+        function(event) {
+
+            if (expedienteRevelado) {
+
+                return;
+
+            }
+
+
+            if (!event.touches || !event.touches.length) {
+
+                return;
+
+            }
+
+
+            const currentY =
+                event.touches[0].clientY;
+
+            const currentX =
+                event.touches[0].clientX;
+
+
+            const differenceY =
+                touchStartY - currentY;
+
+            const differenceX =
+                Math.abs(
+                    touchStartX - currentX
+                );
+
+
+            /*
+             * Se considera un deslizamiento válido
+             * cuando se mueve al menos 45 px hacia arriba
+             * y el movimiento es principalmente vertical.
+             */
+
+            if (
+                differenceY > 45 &&
+                differenceY > differenceX
+            ) {
+
+                revelarExpediente();
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+     * En computadora:
+     * si se utiliza la rueda hacia abajo,
+     * revelar el expediente.
+     */
+
+    document.addEventListener(
+        "wheel",
+        function(event) {
+
+            if (expedienteRevelado) {
+
+                return;
+
+            }
+
+
+            if (event.deltaY > 5) {
+
+                revelarExpediente();
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+     * También se puede tocar la flecha.
+     */
+
+    document
+        .getElementById("swipeIndicator")
+        .addEventListener(
+            "click",
+            function() {
+
+                revelarExpediente();
+
+            }
+        );
+
+
+    /*
+     * Mientras está visible la pantalla inicial,
+     * bloquear el scroll normal.
+     */
+
+    document.body.style.overflow = "hidden";
 
 
     /* ==================================================
